@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data>
+
+<record id="account_bank_receipt_view_tree" model="ir.ui.view">
+    <field name="name">account.bank_receipt tree</field>
+    <field name="model">account.bank_receipt</field>
+    <field name="inherit_id" ref="account_voucher_bank_cash.account_bank_voucher_view_tree"/>
+    <field name="mode">primary</field>
+    <field name="arch" type="xml">
+        <data>
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="string"># Bank Receipt</attribute>
+            </xpath>
+        </data>
+
+    </field>
+</record>
+
+<record id="account_bank_receipt_view_form" model="ir.ui.view">
+    <field name="name">account.bank_receipt form</field>
+    <field name="model">account.bank_receipt</field>
+    <field name="inherit_id" ref="account_voucher_bank_cash.account_bank_voucher_view_form"/>
+    <field name="mode">primary</field>
+    <field name="arch" type="xml">
+        <data>
+            <xpath expr="//label[@for='name']" position="attributes">
+                <attribute name="string"># Bank Receipt</attribute>
+            </xpath>
+            <xpath expr="//field[@name='line_ids']" position="attributes">
+                <attribute name="name">line_cr_ids</attribute>
+                <attribute name="context">{'default_type': 'cr', 'default_partner_id':partner_id}</attribute>
+            </xpath>
+        </data>
+    </field>
+</record>
+
+<record id="account_bank_receipt_action" model="ir.actions.act_window">
+    <field name="name">Bank Receipt</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">account.bank_receipt</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+    <field name="search_view_id" ref="account_voucher_common.account_voucher_common_view_search"/>
+    <field name="context">{'default_filter_grp_draft':1,'default_filter_grp_confirm':1,'default_filter_grp_approve':1,'default_filter_grp_proforma':1}</field>
+</record>
+
+<menuitem
+    id="account_bank_receipt_menu"
+    name="Bank Receipt"
+    parent="account.menu_finance_bank_and_cash"
+    groups="account.group_account_user"
+    action="account_bank_receipt_action"
+    sequence="10"
+    />
+
+
+</data>
+</openerp>
