@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data>
+
+<record id="account_voucher_type_view_tree" model="ir.ui.view">
+    <field name="name">account.voucher_type tree</field>
+    <field name="model">account.voucher_type</field>
+    <field name="arch" type="xml">
+        <tree create="false" delete="false">
+            <field name="name"/>
+        </tree>
+    </field>
+</record>
+
+<record id="account_voucher_type_view_form" model="ir.ui.view">
+    <field name="name">account.voucher_type form</field>
+    <field name="model">account.voucher_type</field>
+    <field name="arch" type="xml">
+        <form>
+            <label for="name"/>
+            <h1>
+                <field name="name"/>
+            </h1>
+            <notebook colspan="4">
+                <page name="page_config" string="Configuration">
+                    <group name="group_1" colspan="4" col="2">
+                        <field name="check_total"/>
+                        <field name="check_debit_credit"/>
+                        <field name="check_partner"/>
+                        <field name="header_allow_negative"/>
+                        <field name="detail_allow_negative"/>
+                        <field name="create_header_item"/>
+                        <field name="header_type"/>
+                    </group>
+                </page>
+                <page name="page_journal" string="Allowed Journal">
+                    <field name="allowed_journal_ids" colspan="4" nolabel="1">
+                        <tree editable="bottom">
+                            <field name="journal_id"/>
+                            <field name="sequence_id"/>
+                        </tree>
+                    </field>
+                </page>
+            </notebook> 
+        </form>
+    </field>
+</record>
+
+<record id="account_voucher_type_action" model="ir.actions.act_window">
+    <field name="name">Voucher Type</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">account.voucher_type</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
+<menuitem
+    id="account_voucher_type_menu"
+    name="Voucher Type"
+    parent="account.menu_finance_configuration"
+    groups="account.group_account_user"
+    action="account_voucher_type_action"
+    sequence="10"
+    />
+
+
+</data>
+</openerp>
