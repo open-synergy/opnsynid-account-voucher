@@ -14,7 +14,7 @@ class VoucherLineTaxCommon(models.AbstractModel):
         "tax_id", "base_amount_computation_method",
         "manual_base_amount", "tax_amount_computation_method",
         "manual_tax_amount",
-        )
+    )
     def _compute_amount(self):
         for tax in self:
             base_amount = tax_amount = tax_amount_in_company_currency = 0.0

@@ -15,7 +15,7 @@ class VoucherLineCommon(models.AbstractModel):
     @api.depends(
         "amount", "move_line_id",
         "tax_ids", "tax_ids.tax_amount",
-        )
+    )
     def _compute_amount(self):
         for line in self:
             amount_company_currency_move_date = \
@@ -207,6 +207,7 @@ class VoucherLineCommon(models.AbstractModel):
     def _create_aml(self):
         self.ensure_one()
         obj_move_line = self.env["account.move.line"]
+        pair = False
         move = obj_move_line.create(
             self._prepare_move_line())
         if self.amount_diff_in_company_currency > 0:
@@ -217,7 +218,7 @@ class VoucherLineCommon(models.AbstractModel):
                 tax._prepare_move_line())
         if self.move_line_id:
             pair = move + self.move_line_id
-            pair.reconcile_partial()
+        return pair
 
     @api.multi
     def _prepare_move_line(self):
