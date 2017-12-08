@@ -65,14 +65,21 @@ class VoucherCommon(models.AbstractModel):
         for voucher in self:
             amount_company_currency = 0.0
             line_total = 0.0
+            debit = credit = 0.0
             amount_company_currency = voucher.amount * voucher.exchange_rate
             voucher.amount_in_company_currency = amount_company_currency
 
             for line in voucher.line_ids:
                 line_total += line.amount_after_tax
+                if line.type == "dr":
+                    debit += line.amount_after_tax
+                else:
+                    credit += line.amount_after_tax
 
             amount_diff = voucher.amount - line_total
             voucher.amount_diff = amount_diff
+            voucher.amount_debit = debit
+            voucher.amount_credit = credit
 
     name = fields.Char(
         string="# Voucher",
@@ -216,6 +223,16 @@ class VoucherCommon(models.AbstractModel):
     )
     amount_diff = fields.Float(
         string="Amount Diff.",
+        compute="_compute_amount",
+        store=True,
+    )
+    amount_debit = fields.Float(
+        string="Debit",
+        compute="_compute_amount",
+        store=True,
+    )
+    amount_credit = fields.Float(
+        string="Credit",
         compute="_compute_amount",
         store=True,
     )
@@ -503,10 +520,15 @@ class VoucherCommon(models.AbstractModel):
             result = False
         return result
 
-    @api.multi
+    @api.constrains(
+        "amount_debit", "amount_credit",
+        "type_id", "state")
     def _check_debit_credit(self):
-        self.ensure_one()
-        pass
+        str_error = _("Unequal debit credit")
+        if self.type_id.check_debit_credit and \
+                (self.amount_debit != self.amount_credit) and \
+                self.state == "confirm":
+            raise UserError(str_error)
 
     @api.multi
     def _prepare_account_move(self):
@@ -534,8 +556,13 @@ class VoucherCommon(models.AbstractModel):
     @api.multi
     def _create_line_aml(self):
         self.ensure_one()
+        pairs = []
         for line in self.line_ids:
-            line._create_aml()
+            result = line._create_aml()
+            if result:
+                pairs.append(result)
+        for pair in pairs:
+            pair.reconcile_partial()
 
     @api.multi
     def _prepare_move_header(self):
