@@ -32,7 +32,7 @@
             </xpath>
             <xpath expr="//field[@name='line_ids']" position="attributes">
                 <attribute name="name">line_cr_ids</attribute>
-                <attribute name="context">{'default_type': 'cr', 'default_partner_id':partner_id}</attribute>
+                <attribute name="context">{'default_type': 'cr', 'default_partner_id':partner_id, 'default_currency_id':currency_id, 'default_company_currency_id':company_currency_id}</attribute>
             </xpath>
         </data>
     </field>
