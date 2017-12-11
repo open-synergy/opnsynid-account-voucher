@@ -90,8 +90,8 @@
                         <field name="journal_id" domain="[('id', 'in', allowed_journal_ids[0][2])]"/>
                         <field name="allowed_journal_ids" widget="many2many_tags" invisible="1"/>
                         <field name="account_id" invisible="1"/>
-                        <field name="currency_id" invisible="0"/>
-                        <field name="company_currency_id" invisible="0"/>
+                        <field name="currency_id" invisible="1"/>
+                        <field name="company_currency_id" invisible="1"/>
                     </group>
                 </group>
                 <label for="description"/>
