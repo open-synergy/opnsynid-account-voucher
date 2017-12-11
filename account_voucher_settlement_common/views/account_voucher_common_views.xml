@@ -61,9 +61,9 @@
                     <form>
                         <group name="group_3" colspan="4" col="2">
                             <group name="group_3_1" colspan="1" col="2">
+                                <field name="partner_id"/>
                                 <field name="move_line_id"/>
                                 <field name="type" invisible="1"/>
-                                <field name="partner_id"/>
                                 <field name="account_id"/>
                                 <field name="analytic_account_id" groups="analytic.group_analytic_accounting"/>
                                 <field name="amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
@@ -165,9 +165,9 @@
                     <form>
                         <group name="group_6" colspan="4" col="2">
                             <group name="group_6_1" colspan="1" col="2">
+                                <field name="partner_id"/>
                                 <field name="move_line_id"/>
                                 <field name="type" invisible="1"/>
-                                <field name="partner_id"/>
                                 <field name="account_id"/>
                                 <field name="analytic_account_id" groups="analytic.group_analytic_accounting"/>
                                 <field name="amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
