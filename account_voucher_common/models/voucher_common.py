@@ -23,17 +23,74 @@ class VoucherCommon(models.AbstractModel):
     @api.multi
     @api.depends(
         "type_id",
+        "journal_id",
+    )
+    def _compute_policy(self):
+        obj_allowed = self.env["account.voucher_type_allowed_journal"]
+        for voucher in self:
+            user_group_ids = self.env.user.groups_id.ids
+            confirm_ok = approve_ok = proforma_ok = post_ok = \
+                cancel_ok = restart_ok = True
+            if voucher.journal_id:
+                criteria = [
+                    ("voucher_type_id", "=", voucher.type_id.id),
+                    ("journal_id", "=", voucher.journal_id.id),
+                ]
+                policies = obj_allowed.search(criteria, limit=1)
+                if len(policies) > 0:
+                    policy = policies[0]
+
+                    confirm_group_ids = policy.allowed_confirm_group_ids.ids
+                    if confirm_group_ids:
+                        if not (set(user_group_ids) & set(confirm_group_ids)):
+                            confirm_ok = False
+
+                    approve_group_ids = policy.allowed_approve_group_ids.ids
+                    if approve_group_ids:
+                        if not (set(user_group_ids) & set(approve_group_ids)):
+                            approve_ok = False
+
+                    proforma_group_ids = policy.allowed_proforma_group_ids.ids
+                    if proforma_group_ids:
+                        if not (set(user_group_ids) & set(proforma_group_ids)):
+                            proforma_ok = False
+
+                    post_group_ids = policy.allowed_post_group_ids.ids
+                    if post_group_ids:
+                        if not (set(user_group_ids) & set(post_group_ids)):
+                            post_ok = False
+
+                    cancel_group_ids = policy.allowed_cancel_group_ids.ids
+                    if cancel_group_ids:
+                        if not (set(user_group_ids) & set(cancel_group_ids)):
+                            cancel_ok = False
+
+                    restart_group_ids = policy.allowed_restart_group_ids.ids
+                    if restart_group_ids:
+                        if not (set(user_group_ids) & set(restart_group_ids)):
+                            restart_ok = False
+
+            voucher.confirm_ok = confirm_ok
+            voucher.approve_ok = approve_ok
+            voucher.proforma_ok = proforma_ok
+            voucher.post_ok = post_ok
+            voucher.cancel_ok = cancel_ok
+            voucher.restart_ok = restart_ok
+
+    @api.multi
+    @api.depends(
+        "type_id",
     )
     def _compute_allowed_journals(self):
         obj_allowed = self.env["account.voucher_type_allowed_journal"]
         for voucher in self:
             journal_ids = []
             criteria = [
-                ("voucher_type_id", "=", self.type_id.id),
+                ("voucher_type_id", "=", voucher.type_id.id),
             ]
             journal_ids = obj_allowed.search(criteria).mapped(
                 lambda r: r.journal_id.id)
-            self.allowed_journal_ids = journal_ids
+            voucher.allowed_journal_ids = journal_ids
 
     @api.multi
     @api.depends(
@@ -311,6 +368,91 @@ class VoucherCommon(models.AbstractModel):
         default="draft",
         copy=False,
     )
+    confirmed_date = fields.Datetime(
+        string="Confirmation Date",
+        readonly=True,
+        copy=False,
+    )
+    confirmed_user_id = fields.Many2one(
+        string="Confirmation By",
+        comodel_name="res.users",
+        readonly=True,
+        copy=False,
+    )
+    approved_date = fields.Datetime(
+        string="Approval Date",
+        readonly=True,
+        copy=False,
+    )
+    approved_user_id = fields.Many2one(
+        string="Approval By",
+        comodel_name="res.users",
+        readonly=True,
+        copy=False,
+    )
+    proforma_date = fields.Datetime(
+        string="Proforma Date",
+        readonly=True,
+        copy=False,
+    )
+    proforma_user_id = fields.Many2one(
+        string="Proforma By",
+        comodel_name="res.users",
+        readonly=True,
+        copy=False,
+    )
+    posted_date = fields.Datetime(
+        string="Post Date",
+        readonly=True,
+        copy=False,
+    )
+    posted_user_id = fields.Many2one(
+        string="Post By",
+        comodel_name="res.users",
+        readonly=True,
+        copy=False,
+    )
+    cancelled_date = fields.Datetime(
+        string="Cancellation Date",
+        readonly=True,
+        copy=False,
+    )
+    cancelled_user_id = fields.Many2one(
+        string="Cancellation By",
+        comodel_name="res.users",
+        readonly=True,
+        copy=False,
+    )
+    confirm_ok = fields.Boolean(
+        string="Can Confirm",
+        compute="_compute_policy",
+        store=False,
+    )
+    approve_ok = fields.Boolean(
+        string="Can Approve",
+        compute="_compute_policy",
+        store=False,
+    )
+    proforma_ok = fields.Boolean(
+        string="Can Proforma",
+        compute="_compute_policy",
+        store=False,
+    )
+    post_ok = fields.Boolean(
+        string="Can Post",
+        compute="_compute_policy",
+        store=False,
+    )
+    cancel_ok = fields.Boolean(
+        string="Can Cancel",
+        compute="_compute_policy",
+        store=False,
+    )
+    restart_ok = fields.Boolean(
+        string="Can Restart",
+        compute="_compute_policy",
+        store=False,
+    )
 
     @api.multi
     def workflow_action_confirm(self):
@@ -356,6 +498,8 @@ class VoucherCommon(models.AbstractModel):
         self.ensure_one()
         data = {
             "state": "confirm",
+            "confirmed_date": fields.Datetime.now(),
+            "confirmed_user_id": self.env.user.id,
         }
         return data
 
@@ -364,6 +508,8 @@ class VoucherCommon(models.AbstractModel):
         self.ensure_one()
         data = {
             "state": "approve",
+            "approved_date": fields.Datetime.now(),
+            "approved_user_id": self.env.user.id,
         }
         return data
 
@@ -372,6 +518,8 @@ class VoucherCommon(models.AbstractModel):
         self.ensure_one()
         data = {
             "state": "proforma",
+            "proforma_date": fields.Datetime.now(),
+            "proforma_user_id": self.env.user.id,
         }
         return data
 
@@ -383,6 +531,8 @@ class VoucherCommon(models.AbstractModel):
         data = {
             "state": "post",
             "move_id": move.id,
+            "posted_date": fields.Datetime.now(),
+            "posted_user_id": self.env.user.id,
         }
         return data
 
@@ -391,6 +541,8 @@ class VoucherCommon(models.AbstractModel):
         self.ensure_one()
         data = {
             "state": "cancel",
+            "cancelled_date": fields.Datetime.now(),
+            "cancelled_user_id": self.env.user.id,
         }
         return data
 
@@ -399,6 +551,16 @@ class VoucherCommon(models.AbstractModel):
         self.ensure_one()
         data = {
             "state": "draft",
+            "confirmed_date": False,
+            "confirmed_user_id": False,
+            "approved_date": False,
+            "approved_user_id": False,
+            "proforma_date": False,
+            "proforma_user_id": False,
+            "posted_date": False,
+            "posted_user_id": False,
+            "cancelled_date": False,
+            "cancelled_user_id": False,
         }
         return data
 
