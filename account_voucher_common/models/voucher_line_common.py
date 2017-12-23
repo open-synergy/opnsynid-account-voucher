@@ -97,6 +97,7 @@ class VoucherLineCommon(models.AbstractModel):
         string="Move Line",
         comodel_name="account.move.line",
         copy=False,
+        ondelete="restrict",
     )
     currency_id = fields.Many2one(
         string="Currency",

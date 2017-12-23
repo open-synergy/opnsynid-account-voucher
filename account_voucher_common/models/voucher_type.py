@@ -62,3 +62,45 @@ class VoucherTypeAllowedJournal(models.Model):
         string="Sequence",
         comodel_name="ir.sequence",
     )
+    allowed_confirm_group_ids = fields.Many2many(
+        string="Allow to Confirm",
+        comodel_name="res.groups",
+        relation="rel_vtype_journal_confirm_group",
+        column1="vtype_journal_id",
+        column2="group_id",
+    )
+    allowed_approve_group_ids = fields.Many2many(
+        string="Allow to Approve",
+        comodel_name="res.groups",
+        relation="rel_vtype_journal_approve_group",
+        column1="vtype_journal_id",
+        column2="group_id",
+    )
+    allowed_proforma_group_ids = fields.Many2many(
+        string="Allow to Proforma",
+        comodel_name="res.groups",
+        relation="rel_vtype_journal_proforma_group",
+        column1="vtype_journal_id",
+        column2="group_id",
+    )
+    allowed_post_group_ids = fields.Many2many(
+        string="Allow to Post",
+        comodel_name="res.groups",
+        relation="rel_vtype_journal_post_group",
+        column1="vtype_journal_id",
+        column2="group_id",
+    )
+    allowed_cancel_group_ids = fields.Many2many(
+        string="Allow to Cancel",
+        comodel_name="res.groups",
+        relation="rel_vtype_journal_cancel_group",
+        column1="vtype_journal_id",
+        column2="group_id",
+    )
+    allowed_restart_group_ids = fields.Many2many(
+        string="Allow to Restart",
+        comodel_name="res.groups",
+        relation="rel_vtype_journal_restart_group",
+        column1="vtype_journal_id",
+        column2="group_id",
+    )
