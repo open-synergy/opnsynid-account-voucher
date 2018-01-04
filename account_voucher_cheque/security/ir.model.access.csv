@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+account_cheque_receipt_accountant,account.cheque_receipt,model_account_cheque_receipt,account.group_account_user,1,1,1,1
+account_cheque_receipt_line_accountant,account.cheque_receipt_line,model_account_cheque_receipt_line,account.group_account_user,1,1,1,1
+account_cheque_payment_accountant,account.cheque_payment,model_account_cheque_payment,account.group_account_user,1,1,1,1
+account_cheque_payment_line_accountant,account.cheque_payment_line,model_account_cheque_payment_line,account.group_account_user,1,1,1,1
