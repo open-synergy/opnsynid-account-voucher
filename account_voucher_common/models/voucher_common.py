@@ -14,7 +14,7 @@ class VoucherCommon(models.AbstractModel):
 
     @api.model
     def _default_company_id(self):
-        return self.env.user.id
+        return self.env.user.company_id.id
 
     @api.model
     def _default_date_voucher(self):
