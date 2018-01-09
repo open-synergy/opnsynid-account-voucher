@@ -484,9 +484,7 @@ class VoucherCommon(models.AbstractModel):
         for voucher in self:
             voucher._unreconcile_aml()
             if voucher._check_move() == True:
-                voucher.move_id.write({
-                    "state": "draft"    
-                })
+                voucher.move_id.button_cancel()
             voucher.move_id.unlink()
             data = voucher._prepare_cancel_data()
             voucher.write(data)
