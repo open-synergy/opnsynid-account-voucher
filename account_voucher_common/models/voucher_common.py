@@ -483,6 +483,10 @@ class VoucherCommon(models.AbstractModel):
     def workflow_action_cancel(self):
         for voucher in self:
             voucher._unreconcile_aml()
+            if voucher._check_move() == True:
+                voucher.move_id.write({
+                    "state": "draft"    
+                })
             voucher.move_id.unlink()
             data = voucher._prepare_cancel_data()
             voucher.write(data)
@@ -638,6 +642,14 @@ class VoucherCommon(models.AbstractModel):
     def onchange_date(self):
         self.period_id = self.env[
             "account.period"].find(self.date_voucher).id
+
+    @api.multi
+    def _check_move(self):
+        self.ensure_one()
+        result = False
+        if self.move_id.state == "posted":
+            result = True
+        return result
 
     @api.multi
     def _unreconcile_aml(self):
