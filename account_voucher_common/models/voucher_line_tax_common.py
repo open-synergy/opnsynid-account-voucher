@@ -149,10 +149,17 @@ class VoucherLineTaxCommon(models.AbstractModel):
         self.ensure_one()
         debit = credit = 0.0
         vline = self.voucher_line_id
+        amount = self.tax_amount_in_company_currency
         if vline.type == "dr":
-            debit = self.tax_amount_in_company_currency
+            if amount > 0:
+                debit = amount
+            else:
+                credit = amount
         else:
-            credit = self.tax_amount_in_company_currency
+            if amount > 0:
+                credit = amount
+            else:
+                debit = amount
         return (debit, credit)
 
     @api.multi

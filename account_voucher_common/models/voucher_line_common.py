@@ -164,10 +164,17 @@ class VoucherLineCommon(models.AbstractModel):
     def _get_debit_credit(self):
         self.ensure_one()
         debit = credit = 0.0
+        amount = self.amount_company_currency_move_date
         if self.type == "dr":
-            debit = self.amount_company_currency_move_date
+            if amount > 0:
+                debit = abs(amount)
+            else:
+                credit = abs(amount)
         else:
-            credit = self.amount_company_currency_move_date
+            if amount > 0:
+                credit = abs(amount)
+            else:
+                debit = abs(amount)
         return (debit, credit)
 
     @api.multi
