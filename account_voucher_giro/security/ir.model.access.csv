@@ -1,5 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 account_giro_receipt_accountant,account.giro_receipt,model_account_giro_receipt,account.group_account_user,1,1,1,1
 account_giro_receipt_line_accountant,account.giro_receipt_line,model_account_giro_receipt_line,account.group_account_user,1,1,1,1
+account_giro_receipt_line_tax_accountant,account.giro_receipt_line_tax,model_account_giro_receipt_line_tax,account.group_account_user,1,1,1,1
 account_giro_payment_accountant,account.giro_payment,model_account_giro_payment,account.group_account_user,1,1,1,1
 account_giro_payment_line_accountant,account.giro_payment_line,model_account_giro_payment_line,account.group_account_user,1,1,1,1
+account_giro_payment_line_tax_accountant,account.giro_payment_line_tax,model_account_giro_payment_line_tax,account.group_account_user,1,1,1,1
