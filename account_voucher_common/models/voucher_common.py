@@ -483,7 +483,7 @@ class VoucherCommon(models.AbstractModel):
     def workflow_action_cancel(self):
         for voucher in self:
             voucher._unreconcile_aml()
-            if voucher._check_move() == True:
+            if voucher._check_move():
                 voucher.move_id.button_cancel()
             voucher.move_id.unlink()
             data = voucher._prepare_cancel_data()
