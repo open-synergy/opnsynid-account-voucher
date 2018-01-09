@@ -13,6 +13,7 @@
         "account_voucher_settlement_common",
     ],
     "data": [
+        "security/ir.model.access.csv",
         "data/account_voucher_type_data.xml",
         "views/account_sale_advance_settlement_views.xml",
         "views/account_purchase_advance_settlement_views.xml",
