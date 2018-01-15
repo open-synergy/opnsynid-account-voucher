@@ -367,6 +367,7 @@ class VoucherCommon(models.AbstractModel):
         readonly=True,
         default="draft",
         copy=False,
+        track_visibility="onchange",
     )
     confirmed_date = fields.Datetime(
         string="Confirmation Date",
@@ -582,7 +583,7 @@ class VoucherCommon(models.AbstractModel):
     )
     def _check_total(self):
         if self.state == "confirm" and self.type_id.check_total and \
-                self.amount_diff != 0.0:
+                not self.currency_id.is_zero(self.amount_diff):
             raise UserError(_("There are still amount difference"))
 
     @api.model
