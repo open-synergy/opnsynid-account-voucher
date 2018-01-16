@@ -11,6 +11,7 @@
     <field name="create_header_item" eval="1"/>
     <field name="check_total" eval="1"/>
     <field name="check_debit_credit" eval="0"/>
+    <field name="detail_allow_negative" eval="1"/>
 </record>
 
 <record id="voucher_type_cheque_payment" model="account.voucher_type">
@@ -19,6 +20,7 @@
     <field name="create_header_item" eval="1"/>
     <field name="check_total" eval="1"/>
     <field name="check_debit_credit" eval="0"/>
+    <field name="detail_allow_negative" eval="1"/>
 </record>
 </data>
 </openerp>
