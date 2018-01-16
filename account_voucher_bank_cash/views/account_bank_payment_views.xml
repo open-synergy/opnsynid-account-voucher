@@ -30,6 +30,9 @@
             <xpath expr="//label[@for='name']" position="attributes">
                 <attribute name="string"># Bank Payment</attribute>
             </xpath>
+            <xpath expr="//field[@name='line_ids']" position="before">
+                <button name="%(account_voucher_common.wizard_import_move_line_action)d" type="action" string="Import Move Lines" states="draft" context="{'import_type':'cr'}"/>
+            </xpath>
             <xpath expr="//field[@name='line_ids']" position="attributes">
                 <attribute name="name">line_dr_ids</attribute>
                 <attribute name="context">{'default_type': 'dr', 'default_partner_id':partner_id, 'default_currency_id':currency_id, 'default_company_currency_id':company_currency_id}</attribute>
