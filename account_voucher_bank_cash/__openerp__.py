@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Bank & Cash Accounting Voucher",
-    "version": "8.0.1.5.0",
+    "version": "8.0.1.6.0",
     "category": "Accounting",
     "website": "https://opensynergy-indonesia.com/",
     "author": "OpenSynergy Indonesia",
