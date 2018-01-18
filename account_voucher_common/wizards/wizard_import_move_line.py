@@ -74,7 +74,7 @@ class WizardImportMoveLine(models.TransientModel):
         lines = []
 
         for move in self.move_line_ids:
-            amount = self.import_type == "dr" and move.debit or move.credit
+            amount = move.amount_residual / voucher.exchange_rate
             line_type = self.import_type == "dr" and "cr" or "dr"
             res = (0, 0, {
                 "name": move.name,
