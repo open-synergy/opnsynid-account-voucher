@@ -145,6 +145,7 @@
                             widget="monetary" 
                             options="{'currency_field': 'currency_id'}"
                             />
+                        <field name="writeoff_account_id"/>
                     </group>
                 </group>
             </sheet>

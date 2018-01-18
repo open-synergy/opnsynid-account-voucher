@@ -134,6 +134,9 @@ class VoucherCommon(models.AbstractModel):
                     credit += line.amount_after_tax
 
             amount_diff = voucher.amount - line_total
+            amount_diff_company_currency = amount_diff * voucher.exchange_rate
+            voucher.amount_diff_company_currency =\
+                amount_diff_company_currency
             voucher.amount_diff = amount_diff
             voucher.amount_debit = debit
             voucher.amount_credit = credit
@@ -203,6 +206,19 @@ class VoucherCommon(models.AbstractModel):
                 ("readonly", False),
             ],
         },
+    )
+    writeoff_account_id = fields.Many2one(
+        string="Write-Off Account",
+        comodel_name="account.account",
+        readonly=True,
+        states={
+            "draft": [
+                ("readonly", False),
+            ],
+        },
+        domain=[
+            ("type", "not in", ["view", "consolidation", "closed"]),
+            ],
     )
     type_id = fields.Many2one(
         string="Voucher Type",
@@ -280,6 +296,11 @@ class VoucherCommon(models.AbstractModel):
     )
     amount_diff = fields.Float(
         string="Amount Diff.",
+        compute="_compute_amount",
+        store=True,
+    )
+    amount_diff_company_currency = fields.Float(
+        string="Amount Diff. in Company Currency",
         compute="_compute_amount",
         store=True,
     )
@@ -583,7 +604,8 @@ class VoucherCommon(models.AbstractModel):
     )
     def _check_total(self):
         if self.state == "confirm" and self.type_id.check_total and \
-                not self.currency_id.is_zero(self.amount_diff):
+                not self.currency_id.is_zero(self.amount_diff) and \
+                not self.writeoff_account_id:
             raise UserError(_("There are still amount difference"))
 
     @api.model
@@ -721,9 +743,14 @@ class VoucherCommon(models.AbstractModel):
         self.ensure_one()
         data = []
         vtype = self.type_id
+        writeoff_account =\
+            self.writeoff_account_id
 
         if vtype.create_header_item:
             data.append((0, 0, self._prepare_move_header()))
+        if writeoff_account and \
+                not self.currency_id.is_zero(self.amount_diff):
+            data.append((0, 0, self._prepare_writeoff_header()))
         return data
 
     @api.multi
@@ -756,6 +783,24 @@ class VoucherCommon(models.AbstractModel):
         return data
 
     @api.multi
+    def _prepare_writeoff_header(self):
+        self.ensure_one()
+        debit, credit = self._get_writeoff_debit_credit()
+        partner_id = self.partner_id and \
+            self.partner_id.commercial_partner_id.id or \
+            False
+        data = {
+            "name": "Write-Off " + self.description,
+            "debit": debit,
+            "credit": credit,
+            "account_id": self.writeoff_account_id.id,
+            "amount_currency": self._get_writeoff_amount_currency(),
+            "currency_id": self._get_move_currency(),
+            "partner_id": partner_id,
+        }
+        return data
+
+    @api.multi
     def _get_move_currency(self):
         self.ensure_one()
         result = False
@@ -776,6 +821,18 @@ class VoucherCommon(models.AbstractModel):
         return result
 
     @api.multi
+    def _get_writeoff_amount_currency(self):
+        self.ensure_one()
+        result = 0.0
+        vtype = self.type_id
+        if self.currency_id != self.company_currency_id:
+            if vtype.header_type == "dr":
+                result = self.amount_diff
+            else:
+                result = -1.0 * self.amount_diff
+        return result
+
+    @api.multi
     def _get_header_debit_credit(self):
         self.ensure_one()
         debit = credit = 0.0
@@ -784,4 +841,28 @@ class VoucherCommon(models.AbstractModel):
             debit = self.amount_in_company_currency
         elif vtype.header_type == "cr":
             credit = self.amount_in_company_currency
+        return (debit, credit)
+
+    @api.multi
+    def _get_writeoff_debit_credit(self):
+        self.ensure_one()
+        debit = credit = 0.0
+        vtype = self.type_id
+        amount_diff_company_currency =\
+            self.amount_diff_company_currency
+
+        if amount_diff_company_currency < 0:
+            if vtype.header_type == "dr":
+                debit = abs(
+                    amount_diff_company_currency)
+            elif vtype.header_type == "cr":
+                credit = abs(
+                    amount_diff_company_currency)
+        else:
+            if vtype.header_type == "dr":
+                credit = abs(
+                    amount_diff_company_currency)
+            elif vtype.header_type == "cr":
+                debit = abs(
+                    amount_diff_company_currency)
         return (debit, credit)
