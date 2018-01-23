@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+    <data>
+
+        <record id="account_voucher_line_common_view_tree" model="ir.ui.view">
+            <field name="name">Tree Account Voucher Line Common</field>
+            <field name="model">account.voucher_line_common</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="account_id"/>
+                    <field name="analytic_account_id" groups="analytic.group_analytic_accounting"/>
+                    <field name="amount"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="account_voucher_line_common_view_form" model="ir.ui.view">
+            <field name="name">Form Account Voucher Line Common</field>
+            <field name="model">account.voucher_line_common</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group name="group_1" colspan="4" col="2">
+                            <group name="group_1_1" colspan="1" col="2">
+                                <field name="partner_id"/>
+                                <field name="move_line_id"/>
+                                <field name="type" invisible="1"/>
+                                <field name="account_id"/>
+                                <field name="analytic_account_id" groups="analytic.group_analytic_accounting"/>
+                                <field name="amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            </group>
+                            <group name="group_1_2" colspan="1" col="2">
+                                <field name="currency_id" invisible="1"/>
+                                <field name="company_currency_id" invisible="1"/>
+                                <field name="amount_company_currency_move_date" 
+                                    widget="monetary" 
+                                    options="{'currency_field': 'company_currency_id'}"
+                                    />
+                                <field name="amount_company_currency_voucher_date" 
+                                    widget="monetary" 
+                                    options="{'currency_field': 'company_currency_id'}"
+                                    />
+                                <field name="amount_diff_in_company_currency" 
+                                    widget="monetary" 
+                                    options="{'currency_field': 'company_currency_id'}"
+                                    />
+                            </group>
+                        </group>
+                        <label for="name"/>
+                        <field name="name"/>
+                        <label for="tax_ids"/>
+                        <field name="tax_ids" colspan="4" nolabel="1">
+                            <tree>
+                                <field name="name"/>
+                                <field name="tax_id"/>
+                                <field name="base_amount"/>
+                                <field name="tax_amount"/>
+                                <field name="tax_amount_in_company_currency"/>
+                            </tree>
+                            <form>
+                                <group name="group_2" colspan="4" col="2">
+                                    <group name="group_2_1" colspan="1" col="2">
+                                        <field name="tax_id"/>
+                                        <field name="name"/>
+                                        <field name="currency_id" invisible="1"/>
+                                        <field name="company_currency_id" invisible="1"/>
+                                    </group>
+                                    <group name="group_2_2" colspan="1" col="2">
+                                        <field name="base_amount_computation_method"/>
+                                        <field name="manual_base_amount"
+                                            widget="monetary"
+                                            options="{'currency_field':'currency_id'}"
+                                            attrs="{'invisible':[('base_amount_computation_method','=','system')]}"
+                                            />
+                                        <field name="base_amount"
+                                            attrs="{'invisible':[('base_amount_computation_method','=','manual')]}"
+                                            widget="monetary"
+                                            options="{'currency_field':'currency_id'}"
+                                            />
+                                        <field name="tax_amount_computation_method"/>
+                                        <field name="manual_tax_amount"
+                                            widget="monetary"
+                                            options="{'currency_field':'currency_id'}"
+                                            attrs="{'invisible':[('tax_amount_computation_method','=','system')]}"
+                                            />
+                                        <field name="tax_amount"
+                                            attrs="{'invisible':[('tax_amount_computation_method','=','manual')]}"
+                                            widget="monetary"
+                                            options="{'currency_field':'currency_id'}"
+                                            />
+                                        <field name="tax_amount_in_company_currency"
+                                            widget="monetary"
+                                            options="{'currency_field':'company_currency_id'}"
+                                            />
+                                    </group>
+                                </group>
+                            </form>
+                        </field>
+                        <group name="group_3" colspan="4" col="2">
+                            <field name="amount_before_tax"
+                                widget="monetary"
+                                options="{'currency_field':'currency_id'}"
+                                />
+                            <field name="amount_tax"
+                                widget="monetary"
+                                options="{'currency_field':'currency_id'}"
+                                />
+                            <field name="amount_after_tax"
+                                widget="monetary"
+                                options="{'currency_field':'currency_id'}"
+                                />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</openerp>

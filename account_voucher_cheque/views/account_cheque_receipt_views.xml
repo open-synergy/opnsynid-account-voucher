@@ -3,63 +3,91 @@
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 
 <openerp>
-<data>
+    <data>
 
-<record id="account_cheque_receipt_view_tree" model="ir.ui.view">
-    <field name="name">account.cheque_receipt tree</field>
-    <field name="model">account.cheque_receipt</field>
-    <field name="inherit_id" ref="account_voucher_cheque.account_cheque_voucher_view_tree"/>
-    <field name="mode">primary</field>
-    <field name="arch" type="xml">
-        <data>
-            <xpath expr="//field[@name='name']" position="attributes">
-                <attribute name="string"># Cheque</attribute>
-            </xpath>
-        </data>
+        <record id="account_cheque_receipt_view_tree" model="ir.ui.view">
+            <field name="name">account.cheque_receipt tree</field>
+            <field name="model">account.cheque_receipt</field>
+            <field name="inherit_id" ref="account_voucher_cheque.account_cheque_voucher_view_tree"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='name']" position="attributes">
+                        <attribute name="string"># Cheque</attribute>
+                    </xpath>
+                </data>
 
-    </field>
-</record>
+            </field>
+        </record>
 
-<record id="account_cheque_receipt_view_form" model="ir.ui.view">
-    <field name="name">account.cheque_receipt form</field>
-    <field name="model">account.cheque_receipt</field>
-    <field name="inherit_id" ref="account_voucher_cheque.account_cheque_voucher_view_form"/>
-    <field name="mode">primary</field>
-    <field name="arch" type="xml">
-        <data>
-            <xpath expr="//label[@for='name']" position="attributes">
-                <attribute name="string"># Cheque</attribute>
-            </xpath>
-            <xpath expr="//field[@name='line_ids']" position="before">
-                <button name="%(account_voucher_common.wizard_import_move_line_action)d" type="action" string="Import Move Lines" states="draft" context="{'import_type':'dr'}"/>
-            </xpath>
-            <xpath expr="//field[@name='line_ids']" position="attributes">
-                <attribute name="name">line_cr_ids</attribute>
-                <attribute name="context">{'default_type': 'cr', 'default_partner_id':partner_id, 'default_currency_id':currency_id, 'default_company_currency_id':company_currency_id}</attribute>
-            </xpath>
-        </data>
-    </field>
-</record>
+        <record id="account_cheque_receipt_view_form" model="ir.ui.view">
+            <field name="name">account.cheque_receipt form</field>
+            <field name="model">account.cheque_receipt</field>
+            <field name="inherit_id" ref="account_voucher_cheque.account_cheque_voucher_view_form"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//label[@for='name']" position="attributes">
+                        <attribute name="string"># Cheque</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='line_ids']" position="before">
+                        <button name="%(account_voucher_common.wizard_import_move_line_action)d" type="action" string="Import Move Lines" states="draft" context="{'import_type':'dr'}"/>
+                    </xpath>
+                    <xpath expr="//field[@name='line_ids']" position="attributes">
+                        <attribute name="name">line_cr_ids</attribute>
+                        <attribute name="context">{'default_type': 'cr', 'default_partner_id':partner_id, 'default_currency_id':currency_id, 'default_company_currency_id':company_currency_id}</attribute>
+                    </xpath>
+                </data>
+            </field>
+        </record>
 
-<record id="account_cheque_receipt_action" model="ir.actions.act_window">
-    <field name="name">Cheque Receipt</field>
-    <field name="type">ir.actions.act_window</field>
-    <field name="res_model">account.cheque_receipt</field>
-    <field name="view_type">form</field>
-    <field name="view_mode">tree,form</field>
-    <field name="search_view_id" ref="account_voucher_common.account_voucher_common_view_search"/>
-    <field name="context">{'default_filter_grp_draft':1,'default_filter_grp_confirm':1,'default_filter_grp_approve':1,'default_filter_grp_proforma':1}</field>
-</record>
+        <record id="account_cheque_receipt_line_view_tree" model="ir.ui.view">
+            <field name="name">account.cheque_receipt_line tree</field>
+            <field name="model">account.cheque_receipt_line</field>
+            <field name="inherit_id" ref="account_voucher_common.account_voucher_line_common_view_tree"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='name']" position="attributes">
+                        <attribute name="string">Description</attribute>
+                    </xpath>
+                </data>
+            </field>
+        </record>
 
-<menuitem
-    id="account_cheque_receipt_menu"
-    name="Cheque Receipt"
-    parent="account.menu_finance_bank_and_cash"
-    groups="account.group_account_user"
-    action="account_cheque_receipt_action"
-    sequence="11"
-    />
+        <record id="account_cheque_receipt_line_view_form" model="ir.ui.view">
+            <field name="name">account.cheque_receipt_line form</field>
+            <field name="model">account.cheque_receipt_line</field>
+            <field name="inherit_id" ref="account_voucher_common.account_voucher_line_common_view_form"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='name']" position="attributes">
+                        <attribute name="string">Description</attribute>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+        <record id="account_cheque_receipt_action" model="ir.actions.act_window">
+            <field name="name">Cheque Receipt</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.cheque_receipt</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="account_voucher_common.account_voucher_common_view_search"/>
+            <field name="context">{'default_filter_grp_draft':1,'default_filter_grp_confirm':1,'default_filter_grp_approve':1,'default_filter_grp_proforma':1}</field>
+        </record>
+
+        <menuitem
+            id="account_cheque_receipt_menu"
+            name="Cheque Receipt"
+            parent="account.menu_finance_bank_and_cash"
+            groups="account.group_account_user"
+            action="account_cheque_receipt_action"
+            sequence="11"
+            />
 
 
-</data>
+    </data>
 </openerp>
