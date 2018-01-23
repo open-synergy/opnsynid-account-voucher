@@ -10,8 +10,8 @@
             <field name="model">account.voucher_line_common</field>
             <field name="inherit_id" ref="account_voucher_common.account_voucher_line_common_view_tree"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='analytic_account_id']" position="replace">
-                    <field name="analytic_plan_account_id"/>
+                <xpath expr="//field[@name='analytic_account_id']" position="attributes">
+                    <attribute name="name">analytic_plan_account_id</attribute>
                 </xpath>
             </field>
         </record>
@@ -21,8 +21,8 @@
             <field name="model">account.voucher_line_common</field>
             <field name="inherit_id" ref="account_voucher_common.account_voucher_line_common_view_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='analytic_account_id']" position="replace">
-                    <field name="analytic_plan_account_id"/>
+                <xpath expr="//field[@name='analytic_account_id']" position="attributes">
+                    <attribute name="name">analytic_plan_account_id</attribute>
                 </xpath>
             </field>
         </record>

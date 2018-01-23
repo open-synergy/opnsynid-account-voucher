@@ -9,7 +9,7 @@ class VoucherLineCommon(models.AbstractModel):
     _inherit = "account.voucher_line_common"
 
     analytic_plan_account_id = fields.Many2one(
-        string="Voucher",
+        string="Analytic Plan",
         comodel_name="account.analytic.plan.instance"
     )
 
