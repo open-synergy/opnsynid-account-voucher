@@ -101,6 +101,20 @@
                                 </group>
                             </form>
                         </field>
+                        <group name="group_3" colspan="4" col="2">
+                            <field name="amount_before_tax"
+                                widget="monetary"
+                                options="{'currency_field':'currency_id'}"
+                                />
+                            <field name="amount_tax"
+                                widget="monetary"
+                                options="{'currency_field':'currency_id'}"
+                                />
+                            <field name="amount_after_tax"
+                                widget="monetary"
+                                options="{'currency_field':'currency_id'}"
+                                />
+                        </group>
                     </sheet>
                 </form>
             </field>
