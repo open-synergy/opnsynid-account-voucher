@@ -12,6 +12,7 @@ class PurchaseAdvanceSettlementLine(models.Model):
         "account.voucher_line_common"
     ]
 
+
 class PurchaseAdvanceSettlementLineTax(models.Model):
     _name = "account.purchase_advance_settlement_line_tax"
     _inherit = [
