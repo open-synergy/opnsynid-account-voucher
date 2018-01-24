@@ -12,6 +12,7 @@ class ChequeReceiptLine(models.Model):
         "account.voucher_line_common"
     ]
 
+
 class ChequeReceiptLineTax(models.Model):
     _name = "account.cheque_receipt_line_tax"
     _inherit = [
