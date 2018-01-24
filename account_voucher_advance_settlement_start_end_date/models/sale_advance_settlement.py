@@ -12,6 +12,7 @@ class SaleAdvanceSettlementLine(models.Model):
         "account.voucher_line_common"
     ]
 
+
 class SaleAdvanceSettlementLineTax(models.Model):
     _name = "account.sale_advance_settlement_line_tax"
     _inherit = [
