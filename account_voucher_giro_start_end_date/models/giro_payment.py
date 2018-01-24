@@ -12,6 +12,7 @@ class GiroPaymentLine(models.Model):
         "account.voucher_line_common"
     ]
 
+
 class GiroPaymentLineTax(models.Model):
     _name = "account.giro_payment_line_tax"
     _inherit = [
