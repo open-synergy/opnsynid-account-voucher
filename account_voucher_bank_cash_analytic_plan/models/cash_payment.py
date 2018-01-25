@@ -18,4 +18,4 @@ class CashPaymentLineTax(models.Model):
     _inherit = [
         "account.cash_payment_line_tax",
         "account.voucher_line_tax_common"
-    ]       
+    ]
