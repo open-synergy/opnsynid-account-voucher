@@ -7,9 +7,15 @@ from openerp import models
 
 class GiroPaymentLine(models.Model):
     _name = "account.giro_payment_line"
-    _inherit = "account.voucher_line_common"
+    _inherit = [
+        "account.giro_payment_line",
+        "account.voucher_line_common"
+    ]
 
 
 class GiroPaymentLineTax(models.Model):
     _name = "account.giro_payment_line_tax"
-    _inherit = "account.voucher_line_tax_common"
+    _inherit = [
+        "account.giro_payment_line_tax",
+        "account.voucher_line_tax_common"
+    ]
