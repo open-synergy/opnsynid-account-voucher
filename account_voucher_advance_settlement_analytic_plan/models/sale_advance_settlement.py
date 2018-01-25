@@ -7,9 +7,15 @@ from openerp import models
 
 class SaleAdvanceSettlementLine(models.Model):
     _name = "account.sale_advance_settlement_line"
-    _inherit = "account.voucher_line_common"
+    _inherit = [
+        "account.voucher_line_common",
+        "account.sale_advance_settlement_line"
+    ]
 
 
 class SaleAdvanceSettlementLineTax(models.Model):
     _name = "account.sale_advance_settlement_line_tax"
-    _inherit = "account.voucher_line_tax_common"
+    _inherit = [
+        "account.sale_advance_settlement_line_tax",
+        "account.voucher_line_tax_common"
+    ]
