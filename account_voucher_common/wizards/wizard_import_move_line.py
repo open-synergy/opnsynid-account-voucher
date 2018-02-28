@@ -49,24 +49,21 @@ class WizardImportMoveLine(models.TransientModel):
     def onchange_move_line_ids(self):
         result = {
             "domain": {
-                "move_line_ids": []
+                "move_line_ids": [("id", "=", 0)],
             }
         }
-        domain = [
-            ("reconcile_id", "=", False)
-        ]
         self.move_line_ids = False
         if self.partner_id and self.import_type:
-            domain.append(("partner_id", "=", self.partner_id.id))
-            domain.append(("account_id.reconcile", "=", True))
-
+            criteria = [
+                ("partner_id", "=", self.partner_id.id),
+                ("account_id.reconcile", "=", True),
+                ("reconcile_id", "=", False)
+            ]
             if self.import_type == "dr":
-                domain.append(("debit", ">", 0))
+                criteria.append(("debit", ">", 0))
             else:
-                domain.append(("credit", ">", 0))
-        else:
-            result["domain"]["move_line_ids"] = False
-        result["domain"]["move_line_ids"] = domain
+                criteria.append(("credit", ">", 0))
+            result["domain"]["move_line_ids"] = criteria
         return result
 
     @api.multi
