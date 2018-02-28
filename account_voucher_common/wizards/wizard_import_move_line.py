@@ -64,8 +64,9 @@ class WizardImportMoveLine(models.TransientModel):
                 domain.append(("debit", ">", 0))
             else:
                 domain.append(("credit", ">", 0))
-
-            result["domain"]["move_line_ids"] = domain
+        else:
+            result["domain"]["move_line_ids"] = False
+        result["domain"]["move_line_ids"] = domain
         return result
 
     @api.multi
