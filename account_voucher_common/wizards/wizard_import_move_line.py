@@ -49,7 +49,7 @@ class WizardImportMoveLine(models.TransientModel):
     def onchange_move_line_ids(self):
         result = {
             "domain": {
-                "move_line_ids": [],
+                "move_line_ids": [("id", "=", 0)],
             }
         }
         self.move_line_ids = False
@@ -57,6 +57,7 @@ class WizardImportMoveLine(models.TransientModel):
             criteria = [
                 ("partner_id", "=", self.partner_id.id),
                 ("account_id.reconcile", "=", True),
+                ("reconcile_id", "=", False)
             ]
             if self.import_type == "dr":
                 criteria.append(("debit", ">", 0))
