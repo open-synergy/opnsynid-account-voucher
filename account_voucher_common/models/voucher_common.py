@@ -84,9 +84,10 @@ class VoucherCommon(models.AbstractModel):
     def _compute_allowed_journals(self):
         obj_allowed = self.env["account.voucher_type_allowed_journal"]
         for voucher in self:
-            journal_ids = []
+            journal_ids = self.env["account.journal"].search([]).ids
             criteria = [
                 ("voucher_type_id", "=", voucher.type_id.id),
+                ("journal_id", "in", journal_ids),
             ]
             journal_ids = obj_allowed.search(criteria).mapped(
                 lambda r: r.journal_id.id)
@@ -218,7 +219,7 @@ class VoucherCommon(models.AbstractModel):
         },
         domain=[
             ("type", "not in", ["view", "consolidation", "closed"]),
-            ],
+        ],
     )
     type_id = fields.Many2one(
         string="Voucher Type",
