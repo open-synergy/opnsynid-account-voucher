@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Common Accounting Voucher Analytic Plan Feature",
-    "version": "8.0.1.0.0",
+    "version": "8.0.1.2.0",
     "category": "Accounting",
     "website": "https://opensynergy-indonesia.com/",
     "author": "OpenSynergy Indonesia",
@@ -11,7 +11,7 @@
     "installable": True,
     "depends": [
         "account_analytic_plans",
-        "account_voucher_common"
+        "account_voucher_common_analytic_default",
     ],
     "auto_install": True,
 }
