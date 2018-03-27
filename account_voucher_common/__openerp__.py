@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Common Accounting Voucher Feature",
-    "version": "8.0.5.1.0",
+    "version": "8.0.5.1.1",
     "category": "Accounting",
     "website": "https://opensynergy-indonesia.com/",
     "author": "OpenSynergy Indonesia",
