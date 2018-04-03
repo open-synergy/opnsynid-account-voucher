@@ -30,7 +30,8 @@ class VoucherLineCommon(models.AbstractModel):
             product_id=self.product_id and self.product_id.id or False,
             user_id=self.env.user.id,
         )
-        self.analytic_plan_account_id = analytic_default.analytics_id
+        self.analytic_plan_account_id = analytic_default and \
+            analytic_default.analytics_id or False
 
     @api.onchange(
         "partner_id",
