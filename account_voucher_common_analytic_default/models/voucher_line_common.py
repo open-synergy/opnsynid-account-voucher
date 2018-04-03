@@ -40,4 +40,5 @@ class VoucherLineCommon(models.AbstractModel):
             product_id=self.product_id and self.product_id.id or False,
             user_id=self.env.user.id,
         )
-        self.analytic_account_id = analytic_default.analytic_id
+        self.analytic_account_id = analytic_default and \
+            analytic_default.analytic_id or False
