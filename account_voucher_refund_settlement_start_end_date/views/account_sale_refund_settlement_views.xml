@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+    <data>
+        <record id="account_sale_refund_settlement_view_form" model="ir.ui.view">
+            <field name="name">account.sale_refund_settlement form</field>
+            <field name="model">account.sale_refund_settlement</field>
+            <field name="inherit_id" ref="account_voucher_refund_settlement.account_sale_refund_settlement_view_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='line_dr_ids']/form//field[@name='account_id']" position="after">
+                        <field name="date_start"/>
+                        <field name="date_end"/>
+                    </xpath>
+                    <xpath expr="//field[@name='line_dr_ids']/tree/field[@name='account_id']" position="after">
+                        <field name="date_start"/>
+                        <field name="date_end"/>
+                    </xpath>
+                    <xpath expr="//field[@name='line_cr_ids']/form//field[@name='account_id']" position="after">
+                        <field name="date_start"/>
+                        <field name="date_end"/>
+                    </xpath>
+                    <xpath expr="//field[@name='line_cr_ids']/tree/field[@name='account_id']" position="after">
+                        <field name="date_start"/>
+                        <field name="date_end"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    </data>
+</openerp>
