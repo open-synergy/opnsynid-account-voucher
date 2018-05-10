@@ -19,7 +19,7 @@
     <field name="name">account.voucher_type form</field>
     <field name="model">account.voucher_type</field>
     <field name="arch" type="xml">
-        <form>
+        <form create="false" delete="false">
             <label for="name"/>
             <h1>
                 <field name="name"/>
