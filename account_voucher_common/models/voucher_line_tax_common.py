@@ -23,7 +23,7 @@ class VoucherLineTaxCommon(models.AbstractModel):
             if tax.base_amount_computation_method == "system":
                 base_amount = vline.amount
             else:
-                base_amount = vline.manual_base_amount
+                base_amount = tax.manual_base_amount
 
             if tax.tax_amount_computation_method == "system":
                 if tax.tax_id:
@@ -32,7 +32,7 @@ class VoucherLineTaxCommon(models.AbstractModel):
                     tax_amount = tax_compute["total_included"] - \
                         tax_compute["total"]
             else:
-                tax_amount = vline.manual_tax_amount
+                tax_amount = tax.manual_tax_amount
 
             tax_amount_in_company_currency = voucher.exchange_rate * tax_amount
 
