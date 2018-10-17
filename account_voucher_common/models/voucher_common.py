@@ -867,3 +867,13 @@ class VoucherCommon(models.AbstractModel):
                 debit = abs(
                     amount_diff_company_currency)
         return (debit, credit)
+
+    @api.multi
+    def unlink(self):
+        strWarning = _("You can only delete data on draft state")
+        for voucher in self:
+            if voucher.state != "draft":
+                if not self.env.context.get("force_unlink", False):
+                    raise UserError(strWarning)
+        _super = super(VoucherCommon, self)
+        _super.unlink()
