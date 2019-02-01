@@ -1,0 +1,766 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* account_voucher_common
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-02-01 07:00+0000\n"
+"PO-Revision-Date: 2019-02-01 07:00+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_voucher_common
+#: field:account.voucher_common,name:0
+msgid "# Voucher"
+msgstr ""
+
+#. module: account_voucher_common
+#: model:ir.model,name:account_voucher_common.model_account_voucher_common
+msgid "Abstract Class for Accounting Voucher"
+msgstr ""
+
+#. module: account_voucher_common
+#: model:ir.model,name:account_voucher_common.model_account_voucher_line_common
+msgid "Abstract Class for Voucher Line"
+msgstr ""
+
+#. module: account_voucher_common
+#: model:ir.model,name:account_voucher_common.model_account_voucher_line_tax_common
+msgid "Abstract Class for Voucher Line Tax"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,account_id:0
+#: field:account.voucher_line_common,account_id:0
+msgid "Account"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,move_id:0
+msgid "Accounting Entry"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+msgid "Accounting Information"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_type,detail_allow_negative:0
+msgid "Allow Negative on Detail"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_type,header_allow_negative:0
+msgid "Allow Negative on Header"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_type_allowed_journal,allowed_approve_group_ids:0
+msgid "Allow to Approve"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_type_allowed_journal,allowed_cancel_group_ids:0
+msgid "Allow to Cancel"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_type_allowed_journal,allowed_confirm_group_ids:0
+msgid "Allow to Confirm"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_type_allowed_journal,allowed_post_group_ids:0
+msgid "Allow to Post"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_type_allowed_journal,allowed_proforma_group_ids:0
+msgid "Allow to Proforma"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_type_allowed_journal,allowed_restart_group_ids:0
+msgid "Allow to Restart"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_type:account_voucher_common.account_voucher_type_view_form
+msgid "Allowed Journal"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_type,allowed_journal_ids:0
+msgid "Allowed Journals"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_line_common,amount:0
+msgid "Amount"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_line_common,amount_after_tax:0
+msgid "Amount After Tax"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_line_common,amount_before_tax:0
+msgid "Amount Before Tax"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,amount_diff:0
+msgid "Amount Diff."
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,amount_diff_company_currency:0
+msgid "Amount Diff. in Company Currency"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_line_common,amount_company_currency_move_date:0
+msgid "Amount In Company Currency At Move Date"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_line_common,amount_company_currency_voucher_date:0
+msgid "Amount In Company Currency At Voucher Date"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_line_common,amount_tax:0
+msgid "Amount Tax"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_line_common,analytic_account_id:0
+msgid "Analytic Account"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+msgid "Approval"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,approved_user_id:0
+msgid "Approval By"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,approved_date:0
+msgid "Approval Date"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+msgid "Approve"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_search
+msgid "Approved"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_line_tax_common,base_amount:0
+#: field:account.voucher_line_tax_common,manual_base_amount:0
+msgid "Base Amount"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_line_tax_common,base_amount_computation_method:0
+msgid "Base Amount Computation Method"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+#: selection:account.voucher_common,state:0
+#: view:account.wizard_import_move_line:account_voucher_common.wizard_import_move_line_view_form
+#: view:account.wizard_post_voucher:account_voucher_common.wizard_post_voucher_view_form
+msgid "Cancel"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+msgid "Cancellation"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,cancelled_user_id:0
+msgid "Cancellation By"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,cancelled_date:0
+msgid "Cancellation Date"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_search
+msgid "Cancelled"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_type,check_debit_credit:0
+msgid "Check Dr/Cr"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_type,check_partner:0
+msgid "Check Partner"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_type,check_total:0
+msgid "Check Total"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_search
+#: field:account.voucher_common,company_id:0
+msgid "Company"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,company_currency_id:0
+#: field:account.voucher_line_common,company_currency_id:0
+#: field:account.voucher_line_tax_common,company_currency_id:0
+msgid "Company Currency"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_type:account_voucher_common.account_voucher_type_view_form
+msgid "Configuration"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+msgid "Confirm"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+msgid "Confirmation"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,confirmed_user_id:0
+msgid "Confirmation By"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,confirmed_date:0
+msgid "Confirmation Date"
+msgstr ""
+
+#. module: account_voucher_common
+#: selection:account.voucher_line_common,type:0
+#: selection:account.wizard_import_move_line,import_type:0
+msgid "Cr"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_type,create_header_item:0
+msgid "Create Header Move Line"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_type,create_uid:0
+#: field:account.voucher_type_allowed_journal,create_uid:0
+#: field:account.wizard_import_move_line,create_uid:0
+#: field:account.wizard_post_voucher,create_uid:0
+msgid "Created by"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_type,create_date:0
+#: field:account.voucher_type_allowed_journal,create_date:0
+#: field:account.wizard_import_move_line,create_date:0
+#: field:account.wizard_post_voucher,create_date:0
+msgid "Created on"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,amount_credit:0
+#: field:account.voucher_common,line_cr_ids:0
+#: selection:account.voucher_type,header_type:0
+msgid "Credit"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_search
+#: field:account.voucher_common,currency_id:0
+#: field:account.voucher_line_common,currency_id:0
+#: field:account.voucher_line_tax_common,currency_id:0
+msgid "Currency"
+msgstr ""
+
+#. module: account_voucher_common
+#: code:addons/account_voucher_common/models/voucher_line_common.py:261
+#, python-format
+msgid "Currency exchange for "
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,date_voucher:0
+msgid "Date"
+msgstr ""
+
+#. module: account_voucher_common
+#: help:account.voucher_common,message_last_post:0
+msgid "Date of the last message posted on the record."
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,amount_debit:0
+#: field:account.voucher_common,line_dr_ids:0
+#: selection:account.voucher_type,header_type:0
+msgid "Debit"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,description:0
+#: field:account.voucher_line_common,name:0
+#: field:account.voucher_line_tax_common,name:0
+msgid "Description"
+msgstr ""
+
+#. module: account_voucher_common
+#: code:addons/account_voucher_common/models/voucher_line_common.py:326
+#, python-format
+msgid "Detail value has to be greater than 0"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_line_common,amount_diff_in_company_currency:0
+msgid "Diff Amount In Company Currency"
+msgstr ""
+
+#. module: account_voucher_common
+#: selection:account.voucher_line_common,type:0
+#: selection:account.wizard_import_move_line,import_type:0
+msgid "Dr"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_search
+#: selection:account.voucher_common,state:0
+msgid "Draft"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,exchange_rate:0
+msgid "Exchange Rate"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,message_follower_ids:0
+msgid "Followers"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_search
+msgid "Group By.."
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_type,header_type:0
+msgid "Header Type"
+msgstr ""
+
+#. module: account_voucher_common
+#: code:addons/account_voucher_common/models/voucher_common.py:654
+#, python-format
+msgid "Header value has to be greater than 0"
+msgstr ""
+
+#. module: account_voucher_common
+#: help:account.voucher_common,message_summary:0
+msgid "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,id:0
+#: field:account.voucher_line_common,id:0
+#: field:account.voucher_line_tax_common,id:0
+#: field:account.voucher_type,id:0
+#: field:account.voucher_type_allowed_journal,id:0
+#: field:account.wizard_import_move_line,id:0
+#: field:account.wizard_post_voucher,id:0
+msgid "ID"
+msgstr ""
+
+#. module: account_voucher_common
+#: help:account.voucher_common,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.wizard_import_move_line:account_voucher_common.wizard_import_move_line_view_form
+msgid "Import"
+msgstr ""
+
+#. module: account_voucher_common
+#: model:ir.actions.act_window,name:account_voucher_common.wizard_import_move_line_action
+msgid "Import Move Lines"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,message_is_follower:0
+msgid "Is a Follower"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_search
+#: field:account.voucher_common,journal_id:0
+#: field:account.voucher_type_allowed_journal,journal_id:0
+msgid "Journal"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,message_last_post:0
+msgid "Last Message Date"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_type,write_uid:0
+#: field:account.voucher_type_allowed_journal,write_uid:0
+#: field:account.wizard_import_move_line,write_uid:0
+#: field:account.wizard_post_voucher,write_uid:0
+msgid "Last Updated by"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_type,write_date:0
+#: field:account.voucher_type_allowed_journal,write_date:0
+#: field:account.wizard_import_move_line,write_date:0
+#: field:account.wizard_post_voucher,write_date:0
+msgid "Last Updated on"
+msgstr ""
+
+#. module: account_voucher_common
+#: code:addons/account_voucher_common/models/voucher_common.py:645
+#, python-format
+msgid "Line partner is different from header partner"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+msgid "Log"
+msgstr ""
+
+#. module: account_voucher_common
+#: selection:account.voucher_line_tax_common,base_amount_computation_method:0
+#: selection:account.voucher_line_tax_common,tax_amount_computation_method:0
+msgid "Manual"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,message_ids:0
+msgid "Messages"
+msgstr ""
+
+#. module: account_voucher_common
+#: help:account.voucher_common,message_ids:0
+msgid "Messages and communication history"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_line_common,move_line_id:0
+msgid "Move Line"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.wizard_import_move_line,move_line_ids:0
+msgid "Move Lines"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,note:0
+msgid "Note"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+msgid "Notes"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_search
+#: field:account.voucher_common,partner_id:0
+#: field:account.voucher_line_common,partner_id:0
+#: field:account.wizard_import_move_line,partner_id:0
+msgid "Partner"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_search
+#: field:account.voucher_common,period_id:0
+msgid "Period"
+msgstr ""
+
+#. module: account_voucher_common
+#: code:addons/account_voucher_common/models/voucher_line_common.py:21
+#, python-format
+msgid "Please select journal"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+msgid "Policy"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+#: view:account.wizard_post_voucher:account_voucher_common.wizard_post_voucher_view_form
+msgid "Post"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,posted_user_id:0
+msgid "Post By"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,posted_date:0
+#: field:account.wizard_post_voucher,date_post:0
+msgid "Post Date"
+msgstr ""
+
+#. module: account_voucher_common
+#: model:ir.actions.act_window,name:account_voucher_common.wizard_post_voucher_action
+msgid "Post Voucher"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_search
+#: selection:account.voucher_common,state:0
+msgid "Posted"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_search
+msgid "Pro-Forma"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_line_common,product_id:0
+msgid "Product"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+#: selection:account.voucher_common,state:0
+msgid "Proforma"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,proforma_user_id:0
+msgid "Proforma By"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,proforma_date:0
+msgid "Proforma Date"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_line_common,product_qty:0
+msgid "Qty"
+msgstr ""
+
+#. module: account_voucher_common
+#: selection:account.voucher_common,state:0
+msgid "Ready to Process"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+msgid "Reset to Draft"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_type_allowed_journal,sequence_id:0
+msgid "Sequence"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_search
+#: field:account.voucher_common,state:0
+msgid "State"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,message_summary:0
+msgid "Summary"
+msgstr ""
+
+#. module: account_voucher_common
+#: selection:account.voucher_line_tax_common,base_amount_computation_method:0
+#: selection:account.voucher_line_tax_common,tax_amount_computation_method:0
+msgid "System"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_line_tax_common,tax_id:0
+msgid "Tax"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_line_tax_common,tax_amount:0
+msgid "Tax Amount"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_line_tax_common,manual_tax_amount:0
+msgid "Tax Amount Amount"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_line_tax_common,tax_amount_computation_method:0
+msgid "Tax Amount Computation Method"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_line_tax_common,tax_amount_in_company_currency:0
+msgid "Tax Amount in Company Currency"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_line_common,tax_ids:0
+msgid "Taxes"
+msgstr ""
+
+#. module: account_voucher_common
+#: code:addons/account_voucher_common/models/voucher_common.py:610
+#, python-format
+msgid "There are still amount difference"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,amount:0
+msgid "Total Voucher"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,amount_in_company_currency:0
+msgid "Total Voucher in Company Currency"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_line_common,type:0
+#: field:account.wizard_import_move_line,import_type:0
+msgid "Type"
+msgstr ""
+
+#. module: account_voucher_common
+#: code:addons/account_voucher_common/models/voucher_common.py:723
+#, python-format
+msgid "Unequal debit credit"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_line_common,product_unit_price:0
+msgid "Unit Price"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,message_unread:0
+msgid "Unread Messages"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_line_common,product_uom_id:0
+msgid "UoM"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_line_common,voucher_id:0
+msgid "Voucher"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_search
+msgid "Voucher Date by Day"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_search
+msgid "Voucher Date by Month"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_search
+msgid "Voucher Date by Week"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+msgid "Voucher Detail"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,line_ids:0
+#: field:account.voucher_line_tax_common,voucher_line_id:0
+msgid "Voucher Line"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,type_id:0
+#: field:account.voucher_type,name:0
+#: field:account.voucher_type_allowed_journal,voucher_type_id:0
+#: model:ir.actions.act_window,name:account_voucher_common.account_voucher_type_action
+#: model:ir.model,name:account_voucher_common.model_account_voucher_type
+#: model:ir.ui.menu,name:account_voucher_common.account_voucher_type_menu
+msgid "Voucher Type"
+msgstr ""
+
+#. module: account_voucher_common
+#: model:ir.model,name:account_voucher_common.model_account_voucher_type_allowed_journal
+msgid "Voucher Type Allowed Journal"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_search
+#: selection:account.voucher_common,state:0
+msgid "Waiting for Approval"
+msgstr ""
+
+#. module: account_voucher_common
+#: model:ir.model,name:account_voucher_common.model_account_wizard_import_move_line
+msgid "Wizard Import Move Line"
+msgstr ""
+
+#. module: account_voucher_common
+#: model:ir.model,name:account_voucher_common.model_account_wizard_post_voucher
+msgid "Wizard Post Voucher"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,writeoff_account_id:0
+msgid "Write-Off Account"
+msgstr ""
+
+#. module: account_voucher_common
+#: code:addons/account_voucher_common/models/voucher_common.py:873
+#, python-format
+msgid "You can only delete data on draft state"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.wizard_import_move_line:account_voucher_common.wizard_import_move_line_view_form
+#: view:account.wizard_post_voucher:account_voucher_common.wizard_post_voucher_view_form
+msgid "or"
+msgstr ""
+
