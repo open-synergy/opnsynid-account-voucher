@@ -1,0 +1,782 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* account_voucher_giro
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_voucher_giro
+#: view:account.giro_payment:account_voucher_giro.account_giro_payment_view_form
+#: view:account.giro_payment:account_voucher_giro.account_giro_payment_view_tree
+#: field:account.giro_payment,name:0
+#: view:account.giro_receipt:account_voucher_giro.account_giro_receipt_view_form
+#: view:account.giro_receipt:account_voucher_giro.account_giro_receipt_view_tree
+#: field:account.giro_receipt,name:0
+#: field:account.giro_voucher,name:0
+msgid "# Giro"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,account_id:0
+#: field:account.giro_payment_line,account_id:0
+#: field:account.giro_receipt,account_id:0
+#: field:account.giro_receipt_line,account_id:0
+#: field:account.giro_voucher,account_id:0
+msgid "Account"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,move_id:0
+#: field:account.giro_receipt,move_id:0
+#: field:account.giro_voucher,move_id:0
+msgid "Accounting Entry"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,allowed_journal_ids:0
+#: field:account.giro_receipt,allowed_journal_ids:0
+#: field:account.giro_voucher,allowed_journal_ids:0
+msgid "Allowed Journals"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment_line,amount:0
+#: field:account.giro_receipt_line,amount:0
+msgid "Amount"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment_line,amount_after_tax:0
+#: field:account.giro_receipt_line,amount_after_tax:0
+msgid "Amount After Tax"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment_line,amount_before_tax:0
+#: field:account.giro_receipt_line,amount_before_tax:0
+msgid "Amount Before Tax"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,amount_diff:0
+#: field:account.giro_receipt,amount_diff:0
+#: field:account.giro_voucher,amount_diff:0
+msgid "Amount Diff."
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,amount_diff_company_currency:0
+#: field:account.giro_receipt,amount_diff_company_currency:0
+#: field:account.giro_voucher,amount_diff_company_currency:0
+msgid "Amount Diff. in Company Currency"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment_line,amount_company_currency_move_date:0
+#: field:account.giro_receipt_line,amount_company_currency_move_date:0
+msgid "Amount In Company Currency At Move Date"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment_line,amount_company_currency_voucher_date:0
+#: field:account.giro_receipt_line,amount_company_currency_voucher_date:0
+msgid "Amount In Company Currency At Voucher Date"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment_line,amount_tax:0
+#: field:account.giro_receipt_line,amount_tax:0
+msgid "Amount Tax"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment_line,analytic_account_id:0
+#: field:account.giro_receipt_line,analytic_account_id:0
+msgid "Analytic Account"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,approved_user_id:0
+#: field:account.giro_receipt,approved_user_id:0
+#: field:account.giro_voucher,approved_user_id:0
+msgid "Approval By"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,approved_date:0
+#: field:account.giro_receipt,approved_date:0
+#: field:account.giro_voucher,approved_date:0
+msgid "Approval Date"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment_line_tax,base_amount:0
+#: field:account.giro_payment_line_tax,manual_base_amount:0
+#: field:account.giro_receipt_line_tax,base_amount:0
+#: field:account.giro_receipt_line_tax,manual_base_amount:0
+msgid "Base Amount"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment_line_tax,base_amount_computation_method:0
+#: field:account.giro_receipt_line_tax,base_amount_computation_method:0
+msgid "Base Amount Computation Method"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,approve_ok:0
+#: field:account.giro_receipt,approve_ok:0
+#: field:account.giro_voucher,approve_ok:0
+msgid "Can Approve"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,cancel_ok:0
+#: field:account.giro_receipt,cancel_ok:0
+#: field:account.giro_voucher,cancel_ok:0
+msgid "Can Cancel"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,confirm_ok:0
+#: field:account.giro_receipt,confirm_ok:0
+#: field:account.giro_voucher,confirm_ok:0
+msgid "Can Confirm"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,post_ok:0
+#: field:account.giro_receipt,post_ok:0
+#: field:account.giro_voucher,post_ok:0
+msgid "Can Post"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,proforma_ok:0
+#: field:account.giro_receipt,proforma_ok:0
+#: field:account.giro_voucher,proforma_ok:0
+msgid "Can Proforma"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,restart_ok:0
+#: field:account.giro_receipt,restart_ok:0
+#: field:account.giro_voucher,restart_ok:0
+msgid "Can Restart"
+msgstr ""
+
+#. module: account_voucher_giro
+#: selection:account.giro_payment,state:0
+#: selection:account.giro_receipt,state:0
+#: selection:account.giro_voucher,state:0
+msgid "Cancel"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,cancelled_user_id:0
+#: field:account.giro_receipt,cancelled_user_id:0
+#: field:account.giro_voucher,cancelled_user_id:0
+msgid "Cancellation By"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,cancelled_date:0
+#: field:account.giro_receipt,cancelled_date:0
+#: field:account.giro_voucher,cancelled_date:0
+msgid "Cancellation Date"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,company_id:0
+#: field:account.giro_receipt,company_id:0
+#: field:account.giro_voucher,company_id:0
+msgid "Company"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,company_currency_id:0
+#: field:account.giro_payment_line,company_currency_id:0
+#: field:account.giro_payment_line_tax,company_currency_id:0
+#: field:account.giro_receipt,company_currency_id:0
+#: field:account.giro_receipt_line,company_currency_id:0
+#: field:account.giro_receipt_line_tax,company_currency_id:0
+#: field:account.giro_voucher,company_currency_id:0
+msgid "Company Currency"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,confirmed_user_id:0
+#: field:account.giro_receipt,confirmed_user_id:0
+#: field:account.giro_voucher,confirmed_user_id:0
+msgid "Confirmation By"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,confirmed_date:0
+#: field:account.giro_receipt,confirmed_date:0
+#: field:account.giro_voucher,confirmed_date:0
+msgid "Confirmation Date"
+msgstr ""
+
+#. module: account_voucher_giro
+#: selection:account.giro_payment_line,type:0
+#: selection:account.giro_receipt_line,type:0
+msgid "Cr"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,create_uid:0
+#: field:account.giro_payment_line,create_uid:0
+#: field:account.giro_payment_line_tax,create_uid:0
+#: field:account.giro_receipt,create_uid:0
+#: field:account.giro_receipt_line,create_uid:0
+#: field:account.giro_receipt_line_tax,create_uid:0
+msgid "Created by"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,create_date:0
+#: field:account.giro_payment_line,create_date:0
+#: field:account.giro_payment_line_tax,create_date:0
+#: field:account.giro_receipt,create_date:0
+#: field:account.giro_receipt_line,create_date:0
+#: field:account.giro_receipt_line_tax,create_date:0
+msgid "Created on"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,amount_credit:0
+#: field:account.giro_payment,line_cr_ids:0
+#: field:account.giro_receipt,amount_credit:0
+#: field:account.giro_receipt,line_cr_ids:0
+#: field:account.giro_voucher,amount_credit:0
+#: field:account.giro_voucher,line_cr_ids:0
+msgid "Credit"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,currency_id:0
+#: field:account.giro_payment_line,currency_id:0
+#: field:account.giro_payment_line_tax,currency_id:0
+#: field:account.giro_receipt,currency_id:0
+#: field:account.giro_receipt_line,currency_id:0
+#: field:account.giro_receipt_line_tax,currency_id:0
+#: field:account.giro_voucher,currency_id:0
+msgid "Currency"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,date_voucher:0
+#: field:account.giro_receipt,date_voucher:0
+#: field:account.giro_voucher,date_voucher:0
+msgid "Date"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,date_due:0
+#: field:account.giro_receipt,date_due:0
+#: field:account.giro_voucher,date_due:0
+msgid "Date Due"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,date_issue:0
+#: field:account.giro_receipt,date_issue:0
+#: field:account.giro_voucher,date_issue:0
+msgid "Date Issued"
+msgstr ""
+
+#. module: account_voucher_giro
+#: help:account.giro_payment,message_last_post:0
+#: help:account.giro_receipt,message_last_post:0
+#: help:account.giro_voucher,message_last_post:0
+msgid "Date of the last message posted on the record."
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,amount_debit:0
+#: field:account.giro_payment,line_dr_ids:0
+#: field:account.giro_receipt,amount_debit:0
+#: field:account.giro_receipt,line_dr_ids:0
+#: field:account.giro_voucher,amount_debit:0
+#: field:account.giro_voucher,line_dr_ids:0
+msgid "Debit"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,description:0
+#: field:account.giro_payment_line,name:0
+#: field:account.giro_payment_line_tax,name:0
+#: field:account.giro_receipt,description:0
+#: field:account.giro_receipt_line,name:0
+#: field:account.giro_receipt_line_tax,name:0
+#: field:account.giro_voucher,description:0
+msgid "Description"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,destination_bank_id:0
+#: field:account.giro_receipt,destination_bank_id:0
+#: field:account.giro_voucher,destination_bank_id:0
+msgid "Destination Bank Account"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment_line,amount_diff_in_company_currency:0
+#: field:account.giro_receipt_line,amount_diff_in_company_currency:0
+msgid "Diff Amount In Company Currency"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,display_name:0
+#: field:account.giro_payment_line,display_name:0
+#: field:account.giro_payment_line_tax,display_name:0
+#: field:account.giro_receipt,display_name:0
+#: field:account.giro_receipt_line,display_name:0
+#: field:account.giro_receipt_line_tax,display_name:0
+#: field:account.giro_voucher,display_name:0
+msgid "Display Name"
+msgstr ""
+
+#. module: account_voucher_giro
+#: selection:account.giro_payment_line,type:0
+#: selection:account.giro_receipt_line,type:0
+msgid "Dr"
+msgstr ""
+
+#. module: account_voucher_giro
+#: selection:account.giro_payment,state:0
+#: selection:account.giro_receipt,state:0
+#: selection:account.giro_voucher,state:0
+msgid "Draft"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,exchange_rate:0
+#: field:account.giro_receipt,exchange_rate:0
+#: field:account.giro_voucher,exchange_rate:0
+msgid "Exchange Rate"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,message_follower_ids:0
+#: field:account.giro_receipt,message_follower_ids:0
+#: field:account.giro_voucher,message_follower_ids:0
+msgid "Followers"
+msgstr ""
+
+#. module: account_voucher_giro
+#: model:ir.actions.act_window,name:account_voucher_giro.account_giro_payment_action
+#: model:ir.model,name:account_voucher_giro.model_account_giro_payment
+#: model:ir.ui.menu,name:account_voucher_giro.account_giro_payment_menu
+msgid "Giro Payment"
+msgstr ""
+
+#. module: account_voucher_giro
+#: model:ir.model,name:account_voucher_giro.model_account_giro_payment_line
+msgid "Giro Payment Line"
+msgstr ""
+
+#. module: account_voucher_giro
+#: model:ir.model,name:account_voucher_giro.model_account_giro_payment_line_tax
+msgid "Giro Payment Line Tax"
+msgstr ""
+
+#. module: account_voucher_giro
+#: model:ir.actions.act_window,name:account_voucher_giro.account_giro_receipt_action
+#: model:ir.model,name:account_voucher_giro.model_account_giro_receipt
+#: model:ir.ui.menu,name:account_voucher_giro.account_giro_receipt_menu
+msgid "Giro Receipt"
+msgstr ""
+
+#. module: account_voucher_giro
+#: model:ir.model,name:account_voucher_giro.model_account_giro_receipt_line
+msgid "Giro Receipt Line"
+msgstr ""
+
+#. module: account_voucher_giro
+#: model:ir.model,name:account_voucher_giro.model_account_giro_receipt_line_tax
+msgid "Giro Receipt Line Tax"
+msgstr ""
+
+#. module: account_voucher_giro
+#: model:ir.model,name:account_voucher_giro.model_account_giro_voucher
+msgid "Giro Voucher"
+msgstr ""
+
+#. module: account_voucher_giro
+#: help:account.giro_payment,message_summary:0
+#: help:account.giro_receipt,message_summary:0
+#: help:account.giro_voucher,message_summary:0
+msgid "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,id:0
+#: field:account.giro_payment_line,id:0
+#: field:account.giro_payment_line_tax,id:0
+#: field:account.giro_receipt,id:0
+#: field:account.giro_receipt_line,id:0
+#: field:account.giro_receipt_line_tax,id:0
+#: field:account.giro_voucher,id:0
+msgid "ID"
+msgstr ""
+
+#. module: account_voucher_giro
+#: help:account.giro_payment,message_unread:0
+#: help:account.giro_receipt,message_unread:0
+#: help:account.giro_voucher,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr ""
+
+#. module: account_voucher_giro
+#: view:account.giro_payment:account_voucher_giro.account_giro_payment_view_form
+#: view:account.giro_receipt:account_voucher_giro.account_giro_receipt_view_form
+msgid "Import Move Lines"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,message_is_follower:0
+#: field:account.giro_receipt,message_is_follower:0
+#: field:account.giro_voucher,message_is_follower:0
+msgid "Is a Follower"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,journal_id:0
+#: field:account.giro_receipt,journal_id:0
+#: field:account.giro_voucher,journal_id:0
+msgid "Journal"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,message_last_post:0
+#: field:account.giro_receipt,message_last_post:0
+#: field:account.giro_voucher,message_last_post:0
+msgid "Last Message Date"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,__last_update:0
+#: field:account.giro_payment_line,__last_update:0
+#: field:account.giro_payment_line_tax,__last_update:0
+#: field:account.giro_receipt,__last_update:0
+#: field:account.giro_receipt_line,__last_update:0
+#: field:account.giro_receipt_line_tax,__last_update:0
+#: field:account.giro_voucher,__last_update:0
+msgid "Last Modified on"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,write_uid:0
+#: field:account.giro_payment_line,write_uid:0
+#: field:account.giro_payment_line_tax,write_uid:0
+#: field:account.giro_receipt,write_uid:0
+#: field:account.giro_receipt_line,write_uid:0
+#: field:account.giro_receipt_line_tax,write_uid:0
+msgid "Last Updated by"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,write_date:0
+#: field:account.giro_payment_line,write_date:0
+#: field:account.giro_payment_line_tax,write_date:0
+#: field:account.giro_receipt,write_date:0
+#: field:account.giro_receipt_line,write_date:0
+#: field:account.giro_receipt_line_tax,write_date:0
+msgid "Last Updated on"
+msgstr ""
+
+#. module: account_voucher_giro
+#: selection:account.giro_payment_line_tax,base_amount_computation_method:0
+#: selection:account.giro_payment_line_tax,tax_amount_computation_method:0
+#: selection:account.giro_receipt_line_tax,base_amount_computation_method:0
+#: selection:account.giro_receipt_line_tax,tax_amount_computation_method:0
+msgid "Manual"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,message_ids:0
+#: field:account.giro_receipt,message_ids:0
+#: field:account.giro_voucher,message_ids:0
+msgid "Messages"
+msgstr ""
+
+#. module: account_voucher_giro
+#: help:account.giro_payment,message_ids:0
+#: help:account.giro_receipt,message_ids:0
+#: help:account.giro_voucher,message_ids:0
+msgid "Messages and communication history"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment_line,move_line_id:0
+#: field:account.giro_receipt_line,move_line_id:0
+msgid "Move Line"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,move_line_ids:0
+#: field:account.giro_receipt,move_line_ids:0
+#: field:account.giro_voucher,move_line_ids:0
+msgid "Move Lines"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,note:0
+#: field:account.giro_receipt,note:0
+#: field:account.giro_voucher,note:0
+msgid "Note"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,partner_id:0
+#: field:account.giro_payment_line,partner_id:0
+#: field:account.giro_receipt,partner_id:0
+#: field:account.giro_receipt_line,partner_id:0
+#: field:account.giro_voucher,partner_id:0
+msgid "Partner"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,period_id:0
+#: field:account.giro_receipt,period_id:0
+#: field:account.giro_voucher,period_id:0
+msgid "Period"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,posted_user_id:0
+#: field:account.giro_receipt,posted_user_id:0
+#: field:account.giro_voucher,posted_user_id:0
+msgid "Post By"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,posted_date:0
+#: field:account.giro_receipt,posted_date:0
+#: field:account.giro_voucher,posted_date:0
+msgid "Post Date"
+msgstr ""
+
+#. module: account_voucher_giro
+#: selection:account.giro_payment,state:0
+#: selection:account.giro_receipt,state:0
+#: selection:account.giro_voucher,state:0
+msgid "Posted"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment_line,product_id:0
+#: field:account.giro_receipt_line,product_id:0
+msgid "Product"
+msgstr ""
+
+#. module: account_voucher_giro
+#: selection:account.giro_payment,state:0
+#: selection:account.giro_receipt,state:0
+#: selection:account.giro_voucher,state:0
+msgid "Proforma"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,proforma_user_id:0
+#: field:account.giro_receipt,proforma_user_id:0
+#: field:account.giro_voucher,proforma_user_id:0
+msgid "Proforma By"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,proforma_date:0
+#: field:account.giro_receipt,proforma_date:0
+#: field:account.giro_voucher,proforma_date:0
+msgid "Proforma Date"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment_line,product_qty:0
+#: field:account.giro_receipt_line,product_qty:0
+msgid "Qty"
+msgstr ""
+
+#. module: account_voucher_giro
+#: selection:account.giro_payment,state:0
+#: selection:account.giro_receipt,state:0
+#: selection:account.giro_voucher,state:0
+msgid "Ready to Process"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,source_bank_id:0
+#: field:account.giro_receipt,source_bank_id:0
+#: field:account.giro_voucher,source_bank_id:0
+msgid "Source Bank Account"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,state:0
+#: field:account.giro_receipt,state:0
+#: field:account.giro_voucher,state:0
+msgid "State"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,message_summary:0
+#: field:account.giro_receipt,message_summary:0
+#: field:account.giro_voucher,message_summary:0
+msgid "Summary"
+msgstr ""
+
+#. module: account_voucher_giro
+#: selection:account.giro_payment_line_tax,base_amount_computation_method:0
+#: selection:account.giro_payment_line_tax,tax_amount_computation_method:0
+#: selection:account.giro_receipt_line_tax,base_amount_computation_method:0
+#: selection:account.giro_receipt_line_tax,tax_amount_computation_method:0
+msgid "System"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment_line_tax,tax_id:0
+#: field:account.giro_receipt_line_tax,tax_id:0
+msgid "Tax"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment_line_tax,tax_amount:0
+#: field:account.giro_receipt_line_tax,tax_amount:0
+msgid "Tax Amount"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment_line_tax,manual_tax_amount:0
+#: field:account.giro_receipt_line_tax,manual_tax_amount:0
+msgid "Tax Amount Amount"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment_line_tax,tax_amount_computation_method:0
+#: field:account.giro_receipt_line_tax,tax_amount_computation_method:0
+msgid "Tax Amount Computation Method"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment_line_tax,tax_amount_in_company_currency:0
+#: field:account.giro_receipt_line_tax,tax_amount_in_company_currency:0
+msgid "Tax Amount in Company Currency"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment_line,tax_ids:0
+#: field:account.giro_receipt_line,tax_ids:0
+msgid "Taxes"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,amount:0
+#: field:account.giro_receipt,amount:0
+#: field:account.giro_voucher,amount:0
+msgid "Total Voucher"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,amount_in_company_currency:0
+#: field:account.giro_receipt,amount_in_company_currency:0
+#: field:account.giro_voucher,amount_in_company_currency:0
+msgid "Total Voucher in Company Currency"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment_line,type:0
+#: field:account.giro_receipt_line,type:0
+msgid "Type"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment_line,product_unit_price:0
+#: field:account.giro_receipt_line,product_unit_price:0
+msgid "Unit Price"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,message_unread:0
+#: field:account.giro_receipt,message_unread:0
+#: field:account.giro_voucher,message_unread:0
+msgid "Unread Messages"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment_line,product_uom_id:0
+#: field:account.giro_receipt_line,product_uom_id:0
+msgid "UoM"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment_line,voucher_id:0
+#: field:account.giro_receipt_line,voucher_id:0
+msgid "Voucher"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,line_ids:0
+#: field:account.giro_payment_line_tax,voucher_line_id:0
+#: field:account.giro_receipt,line_ids:0
+#: field:account.giro_receipt_line_tax,voucher_line_id:0
+#: field:account.giro_voucher,line_ids:0
+msgid "Voucher Line"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,type_id:0
+#: field:account.giro_receipt,type_id:0
+#: field:account.giro_voucher,type_id:0
+msgid "Voucher Type"
+msgstr ""
+
+#. module: account_voucher_giro
+#: selection:account.giro_payment,state:0
+#: selection:account.giro_receipt,state:0
+#: selection:account.giro_voucher,state:0
+msgid "Waiting for Approval"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,writeoff_account_id:0
+#: field:account.giro_receipt,writeoff_account_id:0
+#: field:account.giro_voucher,writeoff_account_id:0
+msgid "Write-Off Account"
+msgstr ""
+
+#. module: account_voucher_giro
+#: code:addons/account_voucher_giro/models/giro_voucher.py:70
+#, python-format
+msgid "You cannot post giro before due date"
+msgstr ""
+
+#. module: account_voucher_giro
+#: view:account.giro_receipt:account_voucher_giro.account_giro_receipt_view_form
+msgid "line_cr_ids"
+msgstr ""
+
+#. module: account_voucher_giro
+#: view:account.giro_payment:account_voucher_giro.account_giro_payment_view_form
+msgid "line_dr_ids"
+msgstr ""
+
+#. module: account_voucher_giro
+#: view:account.giro_receipt:account_voucher_giro.account_giro_receipt_view_form
+msgid "{'default_type': 'cr', 'default_partner_id':partner_id, 'default_currency_id':currency_id, 'default_company_currency_id':company_currency_id}"
+msgstr ""
+
+#. module: account_voucher_giro
+#: view:account.giro_payment:account_voucher_giro.account_giro_payment_view_form
+msgid "{'default_type': 'dr', 'default_partner_id':partner_id, 'default_currency_id':currency_id, 'default_company_currency_id':company_currency_id}"
+msgstr ""
+
