@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright 2017 OpenSynergy Indonesia
+<!-- Copyright 2017-2019 OpenSynergy Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 
 <openerp>
@@ -17,6 +17,7 @@
             <field name="company_id" groups="base.group_multi_company"/>
             <field name="currency_id" groups="base.group_multi_currency"/>
             <field name="type_id" invisible="1"/>
+            <field name="journal_id"/>
             <field name="state"/>
             <group name="group_state" string="State">
                 <filter name="grp_draft" string="Draft" domain="[('state','=','draft')]"/>
