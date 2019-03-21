@@ -38,6 +38,7 @@
                 <filter name="grp_date_day" string="Voucher Date by Day" context="{'group_by':'date_voucher:day'}"/>
                 <filter name="grp_date_week" string="Voucher Date by Week" context="{'group_by':'date_voucher:week'}"/>
                 <filter name="grp_date_month" string="Voucher Date by Month" context="{'group_by':'date_voucher:month'}"/>
+                <filter name="grp_date_year" string="Voucher Date by Year" context="{'group_by':'date_voucher:year'}"/>
             </group>
         </search>
     </field>
@@ -53,7 +54,7 @@
             <field name="partner_id"/>
             <field name="date_voucher"/>
             <field name="period_id"/>
-            <field name="company_id"/>
+            <field name="company_id" groups="base.group_multi_company"/>
             <field name="journal_id"/>
             <field name="currency_id"/>
             <field name="type_id" invisible="1"/>
@@ -83,7 +84,7 @@
                 </h1>
                 <group name="group_1" colspan="4" col="2">
                     <group name="group_1_1" colspan="1" col="2">
-                        <field name="company_id"/>
+                        <field name="company_id" groups="base.group_multi_company"/>
                         <field name="date_voucher"/>
                         <field name="period_id"/>
                         <field name="type_id" invisible="1"/>
@@ -105,8 +106,10 @@
                         <field name="note"/>
                     </page>
                     <page name="page_accounting" string="Accounting Information">
-                        <group name="group_4" colspan="4" col="2">
+                        <group name="accounting_1" colspan="4" col="2">
                             <field name="move_id"/>
+                        </group>
+                        <group name="accounting_2" colspan="4" col="2">
                             <field name="move_line_ids" nolabel="1"/>
                         </group>
                     </page>
