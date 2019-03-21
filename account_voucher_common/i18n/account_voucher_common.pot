@@ -758,6 +758,11 @@ msgid "Voucher Date by Week"
 msgstr ""
 
 #. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_search
+msgid "Voucher Date by Year"
+msgstr ""
+
+#. module: account_voucher_common
 #: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
 msgid "Voucher Detail"
 msgstr ""
