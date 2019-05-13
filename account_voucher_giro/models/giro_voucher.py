@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2017 OpenSynergy Indonesia
+# Copyright 2017-2019 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from openerp import models, fields, api
@@ -38,7 +38,7 @@ class GiroVoucher(models.AbstractModel):
     source_bank_id = fields.Many2one(
         string="Source Bank Account",
         comodel_name="res.partner.bank",
-        required=True,
+        required=False,
         readonly=True,
         states={
             "draft": [
@@ -49,7 +49,7 @@ class GiroVoucher(models.AbstractModel):
     destination_bank_id = fields.Many2one(
         string="Destination Bank Account",
         comodel_name="res.partner.bank",
-        required=True,
+        required=False,
         readonly=True,
         states={
             "draft": [
