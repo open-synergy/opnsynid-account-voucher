@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-# Copyright 2017 OpenSynergy Indonesia
+# Copyright 2017-2019 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Giro Accounting Voucher",
-    "version": "8.0.1.3.0",
+    "version": "8.0.1.4.0",
     "category": "Accounting",
     "website": "https://opensynergy-indonesia.com/",
     "author": "OpenSynergy Indonesia",
