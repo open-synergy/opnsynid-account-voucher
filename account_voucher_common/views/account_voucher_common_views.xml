@@ -75,6 +75,7 @@
                 <button name="%(wizard_post_voucher_action)d" type="action" string="Post" class="oe_highlight" attrs="{'invisible':['|', ('state','not in',['proforma','approve']),('post_ok','=',False)]}"/>
                 <button name="workflow_action_cancel" type="object" string="Cancel" attrs="{'invisible':['|', ('state','=','cancel'),('cancel_ok','=',False)]}"/>
                 <button name="workflow_action_restart" type="object" string="Reset to Draft" attrs="{'invisible':['|', ('state','!=','cancel'),('restart_ok','=',False)]}"/>
+                <button name="%(base_print_policy.base_print_document_action)d" string="Print" type="action" class="oe_highlight" icon="gtk-print"/>
                 <field name="state" widget="statusbar" statusbar_visible="draft,confirm,approve,proforma,post"/>
             </header>
             <sheet>
