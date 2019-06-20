@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+account_invoice_settlement_accountant,account.invoice_settlement,model_account_invoice_settlement,account.group_account_user,1,1,1,1
+account_invoice_settlement_line_accountant,account.invoice_settlement_line,model_account_invoice_settlement_line,account.group_account_user,1,1,1,1
+account_invoice_settlement_line_tax_accountant,account.invoice_settlement_line_tax,model_account_invoice_settlement_line_tax,account.group_account_user,1,1,1,1
