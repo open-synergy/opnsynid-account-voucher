@@ -53,11 +53,15 @@ class WizardImportMoveLine(models.TransientModel):
             }
         }
         self.move_line_ids = False
+
         if self.partner_id and self.import_type:
+            commercial_partner_id =\
+                self.partner_id.commercial_partner_id.id
+
             criteria = [
-                ("partner_id", "=", self.partner_id.id),
                 ("account_id.reconcile", "=", True),
-                ("reconcile_id", "=", False)
+                ("reconcile_id", "=", False),
+                ("partner_id", "=", commercial_partner_id)
             ]
             if self.import_type == "dr":
                 criteria.append(("debit", ">", 0))

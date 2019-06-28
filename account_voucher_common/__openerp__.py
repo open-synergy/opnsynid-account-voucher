@@ -4,7 +4,7 @@
 # pylint: disable=locally-disabled, manifest-required-author
 {
     "name": "Common Accounting Voucher Feature",
-    "version": "8.0.6.0.0",
+    "version": "8.0.6.0.1",
     "category": "Accounting",
     "website": "https://opensynergy-indonesia.com/",
     "author": "OpenSynergy Indonesia",
