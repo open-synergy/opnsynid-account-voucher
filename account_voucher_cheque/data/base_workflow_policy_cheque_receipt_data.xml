@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data>
+
+<!-- CHEQUE RECEIPT -->
+<record id="base_workflow_cheque_receipt" model="base.workflow_policy">
+    <field name="model_id" ref="account_voucher_cheque.model_account_cheque_receipt"/>
+</record>
+<record id="base_workflow_line_cheque_receipt_confirm" model="base.workflow_policy_line">
+    <field name="workflow_id" ref="account_voucher_cheque.base_workflow_cheque_receipt"/>
+    <field name="field_id" search="[('model_id.model','=','account.cheque_receipt'),('name','=','confirm_ok')]"/>
+    <field name="python_code">obj_voucher_type_allowed_journal =\
+    env["account.voucher_type_allowed_journal"]
+criteria = [
+    ("voucher_type_id", "=", document.type_id.id),
+    ("journal_id", "=", document.journal_id.id)
+]
+allowed_wokflow_policy =\
+    obj_voucher_type_allowed_journal.search(criteria)
+if allowed_wokflow_policy:
+    result = allowed_wokflow_policy.allowed_confirm_group_ids.ids
+else:
+    result = False
+    </field>
+</record>
+<record id="base_workflow_line_cheque_receipt_approve" model="base.workflow_policy_line">
+    <field name="workflow_id" ref="account_voucher_cheque.base_workflow_cheque_receipt"/>
+    <field name="field_id" search="[('model_id.model','=','account.cheque_receipt'),('name','=','approve_ok')]"/>
+    <field name="python_code">obj_voucher_type_allowed_journal =\
+    env["account.voucher_type_allowed_journal"]
+criteria = [
+    ("voucher_type_id", "=", document.type_id.id),
+    ("journal_id", "=", document.journal_id.id)
+]
+allowed_wokflow_policy =\
+    obj_voucher_type_allowed_journal.search(criteria)
+if allowed_wokflow_policy:
+    result = allowed_wokflow_policy.allowed_approve_group_ids.ids
+else:
+    result = False
+    </field>
+</record>
+<record id="base_workflow_line_cheque_receipt_proforma" model="base.workflow_policy_line">
+    <field name="workflow_id" ref="account_voucher_cheque.base_workflow_cheque_receipt"/>
+    <field name="field_id" search="[('model_id.model','=','account.cheque_receipt'),('name','=','proforma_ok')]"/>
+    <field name="python_code">obj_voucher_type_allowed_journal =\
+    env["account.voucher_type_allowed_journal"]
+criteria = [
+    ("voucher_type_id", "=", document.type_id.id),
+    ("journal_id", "=", document.journal_id.id)
+]
+allowed_wokflow_policy =\
+    obj_voucher_type_allowed_journal.search(criteria)
+if allowed_wokflow_policy:
+    result = allowed_wokflow_policy.allowed_proforma_group_ids.ids
+else:
+    result = False
+    </field>
+</record>
+<record id="base_workflow_line_cheque_receipt_post" model="base.workflow_policy_line">
+    <field name="workflow_id" ref="account_voucher_cheque.base_workflow_cheque_receipt"/>
+    <field name="field_id" search="[('model_id.model','=','account.cheque_receipt'),('name','=','post_ok')]"/>
+    <field name="python_code">obj_voucher_type_allowed_journal =\
+    env["account.voucher_type_allowed_journal"]
+criteria = [
+    ("voucher_type_id", "=", document.type_id.id),
+    ("journal_id", "=", document.journal_id.id)
+]
+allowed_wokflow_policy =\
+    obj_voucher_type_allowed_journal.search(criteria)
+if allowed_wokflow_policy:
+    result = allowed_wokflow_policy.allowed_post_group_ids.ids
+else:
+    result = False
+    </field>
+</record>
+<record id="base_workflow_line_cheque_receipt_cancel" model="base.workflow_policy_line">
+    <field name="workflow_id" ref="account_voucher_cheque.base_workflow_cheque_receipt"/>
+    <field name="field_id" search="[('model_id.model','=','account.cheque_receipt'),('name','=','cancel_ok')]"/>
+    <field name="python_code">obj_voucher_type_allowed_journal =\
+    env["account.voucher_type_allowed_journal"]
+criteria = [
+    ("voucher_type_id", "=", document.type_id.id),
+    ("journal_id", "=", document.journal_id.id)
+]
+allowed_wokflow_policy =\
+    obj_voucher_type_allowed_journal.search(criteria)
+if allowed_wokflow_policy:
+    result = allowed_wokflow_policy.allowed_cancel_group_ids.ids
+else:
+    result = False
+    </field>
+</record>
+<record id="base_workflow_line_cheque_receipt_restart" model="base.workflow_policy_line">
+    <field name="workflow_id" ref="account_voucher_cheque.base_workflow_cheque_receipt"/>
+    <field name="field_id" search="[('model_id.model','=','account.cheque_receipt'),('name','=','restart_ok')]"/>
+    <field name="python_code">obj_voucher_type_allowed_journal =\
+    env["account.voucher_type_allowed_journal"]
+criteria = [
+    ("voucher_type_id", "=", document.type_id.id),
+    ("journal_id", "=", document.journal_id.id)
+]
+allowed_wokflow_policy =\
+    obj_voucher_type_allowed_journal.search(criteria)
+if allowed_wokflow_policy:
+    result = allowed_wokflow_policy.allowed_restart_group_ids.ids
+else:
+    result = False
+    </field>
+</record>
+
+</data>
+</openerp>
