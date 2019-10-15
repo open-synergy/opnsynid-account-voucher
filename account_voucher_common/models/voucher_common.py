@@ -9,7 +9,12 @@ from openerp.exceptions import Warning as UserError
 
 class VoucherCommon(models.AbstractModel):
     _name = "account.voucher_common"
-    _inherit = ["mail.thread"]
+    _inherit = [
+        "mail.thread",
+        "base.sequence_document",
+        "base.workflow_policy_object",
+        "base.cancel.reason_common",
+    ]
     _description = "Abstract Class for Accounting Voucher"
 
     @api.model
@@ -21,61 +26,9 @@ class VoucherCommon(models.AbstractModel):
         return fields.Datetime.now()
 
     @api.multi
-    @api.depends(
-        "type_id",
-        "journal_id",
-    )
     def _compute_policy(self):
-        obj_allowed = self.env["account.voucher_type_allowed_journal"]
-        for voucher in self:
-            user_group_ids = self.env.user.groups_id.ids
-            confirm_ok = approve_ok = proforma_ok = post_ok = \
-                cancel_ok = restart_ok = True
-            if voucher.journal_id:
-                criteria = [
-                    ("voucher_type_id", "=", voucher.type_id.id),
-                    ("journal_id", "=", voucher.journal_id.id),
-                ]
-                policies = obj_allowed.search(criteria, limit=1)
-                if len(policies) > 0:
-                    policy = policies[0]
-
-                    confirm_group_ids = policy.allowed_confirm_group_ids.ids
-                    if confirm_group_ids:
-                        if not (set(user_group_ids) & set(confirm_group_ids)):
-                            confirm_ok = False
-
-                    approve_group_ids = policy.allowed_approve_group_ids.ids
-                    if approve_group_ids:
-                        if not (set(user_group_ids) & set(approve_group_ids)):
-                            approve_ok = False
-
-                    proforma_group_ids = policy.allowed_proforma_group_ids.ids
-                    if proforma_group_ids:
-                        if not (set(user_group_ids) & set(proforma_group_ids)):
-                            proforma_ok = False
-
-                    post_group_ids = policy.allowed_post_group_ids.ids
-                    if post_group_ids:
-                        if not (set(user_group_ids) & set(post_group_ids)):
-                            post_ok = False
-
-                    cancel_group_ids = policy.allowed_cancel_group_ids.ids
-                    if cancel_group_ids:
-                        if not (set(user_group_ids) & set(cancel_group_ids)):
-                            cancel_ok = False
-
-                    restart_group_ids = policy.allowed_restart_group_ids.ids
-                    if restart_group_ids:
-                        if not (set(user_group_ids) & set(restart_group_ids)):
-                            restart_ok = False
-
-            voucher.confirm_ok = confirm_ok
-            voucher.approve_ok = approve_ok
-            voucher.proforma_ok = proforma_ok
-            voucher.post_ok = post_ok
-            voucher.cancel_ok = cancel_ok
-            voucher.restart_ok = restart_ok
+        _super = super(VoucherCommon, self)
+        _super._compute_policy()
 
     @api.multi
     @api.depends(
@@ -589,15 +542,6 @@ class VoucherCommon(models.AbstractModel):
         }
         return data
 
-    @api.model
-    def _prepare_create_data(self, values):
-        name = values.get("name", False)
-        if name == "/" or not name:
-            values["name"] = self._create_sequence(
-                values["type_id"], values["journal_id"])
-
-        return values
-
     @api.constrains(
         "type_id",
         "amount_diff",
@@ -611,33 +555,12 @@ class VoucherCommon(models.AbstractModel):
 
     @api.model
     def create(self, values):
-        values = self._prepare_create_data(values)
         _super = super(VoucherCommon, self)
-        return _super.create(values)
-
-    @api.model
-    def _create_sequence(self, type_id, journal_id):
-        sequence_id = self._get_sequence(
-            type_id, journal_id)
-        sequence = self.env["ir.sequence"].\
-            next_by_id(sequence_id)
-        return sequence
-
-    @api.model
-    def _get_sequence(self, type_id, journal_id):
-        result = self.env["account.journal"].\
-            browse(journal_id)[0].sequence_id.id
-
-        criteria = [
-            ("voucher_type_id", "=", type_id),
-            ("journal_id", "=", journal_id),
-        ]
-        policies = self.env["account.voucher_type_allowed_journal"].\
-            search(criteria)
-        if policies:
-            policy = policies[0]
-            if policy.sequence_id:
-                result = policy.sequence_id.id
+        result = _super.create(values)
+        sequence = result._create_sequence()
+        result.write({
+            "name": sequence,
+        })
         return result
 
     @api.constrains("partner_id", "line_ids")
