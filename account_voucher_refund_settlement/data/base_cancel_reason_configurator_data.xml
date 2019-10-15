@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+    <data>
+        <record id="cancel_reason_purchase_refund_settlement" model="base.cancel.reason_config">
+            <field name="name" ref="account_voucher_refund_settlement.model_account_purchase_refund_settlement"/>
+            <field name="method_cancel_name">workflow_action_cancel</field>
+        </record>
+        <record id="cancel_reason_sale_refund_settlement" model="base.cancel.reason_config">
+            <field name="name" ref="account_voucher_refund_settlement.model_account_sale_refund_settlement"/>
+            <field name="method_cancel_name">workflow_action_cancel</field>
+        </record>
+    </data>
+</openerp>
