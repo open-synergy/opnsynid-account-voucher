@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data>
+<!-- INVOICE SETTLEMENT -->
+<record id="base_sequence_invoice_settlement" model="base.sequence_configurator">
+    <field name="model_id" ref="account_voucher_invoice_settlement.model_account_invoice_settlement"/>
+    <field name="sequence_field_id" search="[('model_id.model','=','account.invoice_settlement'),('name','=','name')]"/>
+    <field name="fallback_sequence_id" ref="account_voucher_invoice_settlement.sequence_invoice_settlement"/>
+</record>
+
+<record id="base_sequence_invoice_line" model="base.sequence_configurator_line">
+    <field name="generator_id" ref="account_voucher_invoice_settlement.base_sequence_invoice_settlement"/>
+    <field name="sequence" eval="1"/>
+    <field name="sequence_computation_code">result = False
+obj_voucher_type_allowed_journal = env["account.voucher_type_allowed_journal"]
+criteria = [
+    ("voucher_type_id", "=", document.type_id.id),
+    ("journal_id", "=", document.journal_id.id)
+]
+sequence =\
+    obj_voucher_type_allowed_journal.search(criteria)
+if sequence:
+    result = sequence.sequence_id
+
+if not result:
+    result = document.journal_id.sequence_id
+    </field>
+</record>
+
+</data>
+</openerp>
