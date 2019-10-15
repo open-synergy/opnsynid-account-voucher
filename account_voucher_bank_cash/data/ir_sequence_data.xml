@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!-- Copyright 2019 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.0) -->
+<openerp>
+<data noupdate="1">
+<record id="sequence_bank_payment" model="ir.sequence">
+    <field name="name">General Sequence: Bank Payment</field>
+    <field name="padding">6</field>
+    <field name="prefix">BNK-PAY/%(y)s/</field>
+    <field eval="1" name="number_increment"/>
+</record>
+<record id="sequence_bank_receipt" model="ir.sequence">
+    <field name="name">General Sequence: Bank Receipt</field>
+    <field name="padding">6</field>
+    <field name="prefix">BNK-RCPT/%(y)s/</field>
+    <field eval="1" name="number_increment"/>
+</record>
+<record id="sequence_cash_payment" model="ir.sequence">
+    <field name="name">General Sequence: Cash Payment</field>
+    <field name="padding">6</field>
+    <field name="prefix">CASH-PAY/%(y)s/</field>
+    <field eval="1" name="number_increment"/>
+</record>
+<record id="sequence_cash_receipt" model="ir.sequence">
+    <field name="name">General Sequence: Cash Receipt</field>
+    <field name="padding">6</field>
+    <field name="prefix">CASH-RCPT/%(y)s/</field>
+    <field eval="1" name="number_increment"/>
+</record>
+</data>
+</openerp>
