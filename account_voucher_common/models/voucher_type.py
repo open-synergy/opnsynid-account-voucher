@@ -2,7 +2,8 @@
 # Copyright 2016 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields
+from openerp import models, fields, api, _
+from openerp.exceptions import Warning as UserError
 
 
 class VoucherType(models.Model):
@@ -104,3 +105,18 @@ class VoucherTypeAllowedJournal(models.Model):
         column1="vtype_journal_id",
         column2="group_id",
     )
+
+    @api.constrains(
+        "voucher_type_id",
+        "journal_id",
+    )
+    def _check_journal_id(self):
+        if self.journal_id and self.voucher_type_id:
+            strWarning = _("No duplicate journal")
+            check_journal =\
+                self.search([
+                    ("voucher_type_id", "=", self.voucher_type_id.id),
+                    ("journal_id", "=", self.journal_id.id)
+                ])
+            if len(check_journal) > 1:
+                raise UserError(strWarning)
