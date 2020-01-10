@@ -292,6 +292,15 @@ msgid "Cancel"
 msgstr ""
 
 #. module: account_voucher_bank_cash
+#: field:account.bank_payment,cancel_reason_id:0
+#: field:account.bank_receipt,cancel_reason_id:0
+#: field:account.bank_voucher,cancel_reason_id:0
+#: field:account.cash_payment,cancel_reason_id:0
+#: field:account.cash_receipt,cancel_reason_id:0
+msgid "Cancel Reason"
+msgstr ""
+
+#. module: account_voucher_bank_cash
 #: field:account.bank_payment,cancelled_user_id:0
 #: field:account.bank_receipt,cancelled_user_id:0
 #: field:account.bank_voucher,cancelled_user_id:0
