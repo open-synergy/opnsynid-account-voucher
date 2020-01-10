@@ -220,6 +220,16 @@ msgid "Cancel"
 msgstr ""
 
 #. module: account_voucher_common
+#: field:account.voucher_common,cancel_reason_id:0
+msgid "Cancel Reason"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+msgid "Cancel Voucher. Are you sure?"
+msgstr ""
+
+#. module: account_voucher_common
 #: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
 msgid "Cancellation"
 msgstr ""
@@ -232,6 +242,11 @@ msgstr ""
 #. module: account_voucher_common
 #: field:account.voucher_common,cancelled_date:0
 msgid "Cancellation Date"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+msgid "Cancellation reason:"
 msgstr ""
 
 #. module: account_voucher_common
@@ -419,7 +434,7 @@ msgid "Header Type"
 msgstr ""
 
 #. module: account_voucher_common
-#: code:addons/account_voucher_common/models/voucher_common.py:654
+#: code:addons/account_voucher_common/models/voucher_common.py:577
 #, python-format
 msgid "Header value has to be greater than 0"
 msgstr ""
@@ -500,7 +515,7 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: account_voucher_common
-#: code:addons/account_voucher_common/models/voucher_common.py:645
+#: code:addons/account_voucher_common/models/voucher_common.py:568
 #, python-format
 msgid "Line partner is different from header partner"
 msgstr ""
@@ -535,6 +550,12 @@ msgstr ""
 #: field:account.voucher_common,move_line_ids:0
 #: field:account.wizard_import_move_line,move_line_ids:0
 msgid "Move Lines"
+msgstr ""
+
+#. module: account_voucher_common
+#: code:addons/account_voucher_common/models/voucher_type.py:115
+#, python-format
+msgid "No duplicate journal"
 msgstr ""
 
 #. module: account_voucher_common
@@ -700,7 +721,7 @@ msgid "Taxes"
 msgstr ""
 
 #. module: account_voucher_common
-#: code:addons/account_voucher_common/models/voucher_common.py:610
+#: code:addons/account_voucher_common/models/voucher_common.py:554
 #, python-format
 msgid "There are still amount difference"
 msgstr ""
@@ -722,7 +743,7 @@ msgid "Type"
 msgstr ""
 
 #. module: account_voucher_common
-#: code:addons/account_voucher_common/models/voucher_common.py:723
+#: code:addons/account_voucher_common/models/voucher_common.py:646
 #, python-format
 msgid "Unequal debit credit"
 msgstr ""
@@ -815,7 +836,7 @@ msgid "Write-Off Account"
 msgstr ""
 
 #. module: account_voucher_common
-#: code:addons/account_voucher_common/models/voucher_common.py:873
+#: code:addons/account_voucher_common/models/voucher_common.py:796
 #, python-format
 msgid "You can only delete data on draft state"
 msgstr ""
