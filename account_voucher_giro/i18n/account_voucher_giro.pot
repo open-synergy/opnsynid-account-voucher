@@ -181,6 +181,13 @@ msgid "Cancel"
 msgstr ""
 
 #. module: account_voucher_giro
+#: field:account.giro_payment,cancel_reason_id:0
+#: field:account.giro_receipt,cancel_reason_id:0
+#: field:account.giro_voucher,cancel_reason_id:0
+msgid "Cancel Reason"
+msgstr ""
+
+#. module: account_voucher_giro
 #: field:account.giro_payment,cancelled_user_id:0
 #: field:account.giro_receipt,cancelled_user_id:0
 #: field:account.giro_voucher,cancelled_user_id:0
