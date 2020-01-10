@@ -181,6 +181,13 @@ msgid "Cancel"
 msgstr ""
 
 #. module: account_voucher_cheque
+#: field:account.cheque_payment,cancel_reason_id:0
+#: field:account.cheque_receipt,cancel_reason_id:0
+#: field:account.cheque_voucher,cancel_reason_id:0
+msgid "Cancel Reason"
+msgstr ""
+
+#. module: account_voucher_cheque
 #: field:account.cheque_payment,cancelled_user_id:0
 #: field:account.cheque_receipt,cancelled_user_id:0
 #: field:account.cheque_voucher,cancelled_user_id:0
