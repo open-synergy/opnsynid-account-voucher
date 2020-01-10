@@ -142,6 +142,11 @@ msgid "Cancel"
 msgstr ""
 
 #. module: account_voucher_invoice_settlement
+#: field:account.invoice_settlement,cancel_reason_id:0
+msgid "Cancel Reason"
+msgstr ""
+
+#. module: account_voucher_invoice_settlement
 #: field:account.invoice_settlement,cancelled_user_id:0
 msgid "Cancellation By"
 msgstr ""
