@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright 2016 OpenSynergy Indonesia
+# Copyright 2020 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from openerp import models, fields, api, _
@@ -70,10 +71,10 @@ class VoucherTypeAllowedJournal(models.Model):
         column1="vtype_journal_id",
         column2="group_id",
     )
-    allowed_approve_group_ids = fields.Many2many(
-        string="Allow to Approve",
+    allowed_restart_validation_group_ids = fields.Many2many(
+        string="Allow To Restart Validation",
         comodel_name="res.groups",
-        relation="rel_vtype_journal_approve_group",
+        relation="rel_vtype_journal_restart_validation_group",
         column1="vtype_journal_id",
         column2="group_id",
     )

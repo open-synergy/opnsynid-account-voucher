@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright 2017-2019 OpenSynergy Indonesia
+     Copyright 2020 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 
 <openerp>
@@ -19,10 +20,12 @@
             <field name="type_id" invisible="1"/>
             <field name="journal_id"/>
             <field name="state"/>
+            <filter name="needs_review" string="Needs my Review"
+                    domain="[('reviewer_ids','in',uid), ('state', 'not in', ['done', 'cancel'])]"/>
             <group name="group_state" string="State">
                 <filter name="grp_draft" string="Draft" domain="[('state','=','draft')]"/>
                 <filter name="grp_confirm" string="Waiting for Approval" domain="[('state','=','confirm')]"/>
-                <filter name="grp_confirm" string="Approved" domain="[('state','=','approve')]"/>
+                <filter name="grp_approved" string="Approved" domain="[('state','=','approve')]"/>
                 <filter name="grp_proforma" string="Pro-Forma" domain="[('state','=','proforma')]"/>
                 <filter name="grp_post" string="Posted" domain="[('state','=','post')]"/>
                 <filter name="grp_cancel" string="Cancelled" domain="[('state','=','cancel')]"/>
@@ -69,14 +72,53 @@
     <field name="arch" type="xml">
         <form>
             <header>
+                <button name="request_validation"
+                    string="Request Validation"
+                    attrs="{'invisible': ['|','|',('need_validation', '!=', True),('rejected','=',True),('state','not in',['confirm'])]}"
+                    type="object"/>
+                <button name="restart_validation"
+                    string="Restart Validation"
+                    attrs="{'invisible': ['|','|','|',('review_ids', '=', []),('rejected','=',False),('state','not in',['confirm']),('restart_validation_ok','=',False)]}"
+                    type="object"/>
                 <button name="workflow_action_confirm" type="object" string="Confirm" class="oe_highlight" attrs="{'invisible':['|', ('state','!=','draft'),('confirm_ok','=',False)]}"/>
-                <button name="workflow_action_approve" type="object" string="Approve" class="oe_highlight" attrs="{'invisible':['|', ('state','!=','confirm'),('approve_ok','=',False)]}"/>
                 <button name="workflow_action_proforma" type="object" string="Pro-Forma" class="oe_highlight" attrs="{'invisible':['|', ('state','!=','approve'),('proforma_ok','=',False)]}"/>
                 <button name="%(wizard_post_voucher_action)d" type="action" string="Post" class="oe_highlight" attrs="{'invisible':['|', ('state','not in',['proforma','approve']),('post_ok','=',False)]}"/>
                 <button name="%(base_cancel_reason.base_cancel_reason_wizard_action)d" type="action" string="Cancel" attrs="{'invisible':['|',('state','=','cancel'),('cancel_ok','=',False)]}" confirm="Cancel Voucher. Are you sure?"/>
                 <button name="workflow_action_restart" type="object" string="Reset to Draft" attrs="{'invisible':['|', ('state','!=','cancel'),('restart_ok','=',False)]}"/>
                 <button name="%(base_print_policy.base_print_document_action)d" string="Print" type="action" class="oe_highlight" icon="gtk-print"/>
                 <field name="state" widget="statusbar" statusbar_visible="draft,confirm,approve,proforma,post"/>
+                <field name="need_validation" invisible="1"/>
+                <field name="validated" invisible="1"/>
+                <field name="rejected" invisible="1"/>
+                <div class="alert alert-warning"
+                     attrs="{'invisible': ['|', '|', '|',
+                     ('validated', '=', True), ('state', 'not in', ['confirm']),
+                     ('rejected', '=', True), ('review_ids', '=', [])]}"
+                     style="margin-bottom:0px;">
+                    <p><i class="fa fa-info-circle"/>This data needs to be validated.
+                        <button name="validate_tier"
+                            string="Validate"
+                            attrs="{'invisible': [('review_ids', '=', [])]}"
+                            type="object"
+                            class="oe_inline oe_button btn-success"
+                            icon="terp-check"/>
+                        <button name="reject_tier"
+                            string="Reject"
+                            type="object"
+                            class="btn-icon btn-danger"
+                            icon="terp-gtk-stop"/>
+                    </p>
+                </div>
+                <div class="alert alert-success"
+                     attrs="{'invisible': ['|', '|', ('validated', '!=', True), ('state', 'not in', ['confirm']), ('review_ids', '=', [])]}"
+                     style="margin-bottom:0px;">
+                    <p><i class="fa fa-thumbs-up"/> Operation has been <b>validated</b>!</p>
+                </div>
+                <div class="alert alert-danger"
+                     attrs="{'invisible': ['|', '|', ('rejected', '!=', True), ('state', 'not in', ['confirm']), ('review_ids', '=', [])]}"
+                     style="margin-bottom:0px;">
+                    <p><i class="fa fa-thumbs-down"/> Operation has been <b>rejected</b>.</p>
+                </div>
             </header>
             <sheet>
                 <div class="oe_right oe_button_box" style="width: 300px;" name="buttons">
@@ -143,11 +185,18 @@
                     <page name="page_policy" string="Policy" groups="base.group_system">
                         <group name="group_policy_1" colspan="4" col="2">
                             <field name="confirm_ok"/>
-                            <field name="approve_ok"/>
                             <field name="proforma_ok"/>
                             <field name="post_ok"/>
                             <field name="cancel_ok"/>
                             <field name="restart_ok"/>
+                            <field name="restart_validation_ok"/>
+                        </group>
+                    </page>
+                    <page string="Reviews" name="tier_validation">
+                        <group>
+                            <field name="definition_id"/>
+                            <field name="reviewer_partner_ids" widget="many2many_tags"/>
+                            <field name="review_ids" readonly="1"/>
                         </group>
                     </page>
 

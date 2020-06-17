@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright 2016 OpenSynergy Indonesia
+# Copyright 2020 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from openerp import models, fields, api
@@ -9,13 +10,16 @@ from openerp.exceptions import Warning as UserError
 
 class VoucherCommon(models.AbstractModel):
     _name = "account.voucher_common"
+    _description = "Abstract Class for Accounting Voucher"
     _inherit = [
         "mail.thread",
         "base.sequence_document",
         "base.workflow_policy_object",
         "base.cancel.reason_common",
+        "tier.validation",
     ]
-    _description = "Abstract Class for Accounting Voucher"
+    _state_from = ["draft", "confirm"]
+    _state_to = ["approve"]
 
     @api.model
     def _default_company_id(self):
@@ -404,11 +408,6 @@ class VoucherCommon(models.AbstractModel):
         compute="_compute_policy",
         store=False,
     )
-    approve_ok = fields.Boolean(
-        string="Can Approve",
-        compute="_compute_policy",
-        store=False,
-    )
     proforma_ok = fields.Boolean(
         string="Can Proforma",
         compute="_compute_policy",
@@ -429,12 +428,17 @@ class VoucherCommon(models.AbstractModel):
         compute="_compute_policy",
         store=False,
     )
+    restart_validation_ok = fields.Boolean(
+        string="Can Restart Validation",
+        compute="_compute_policy",
+    )
 
     @api.multi
     def workflow_action_confirm(self):
         for voucher in self:
             data = voucher._prepare_confirm_data()
             voucher.write(data)
+            voucher.request_validation()
 
     @api.multi
     def workflow_action_approve(self):
@@ -463,6 +467,7 @@ class VoucherCommon(models.AbstractModel):
                 voucher.move_id.button_cancel()
             voucher.move_id.unlink()
             data = voucher._prepare_cancel_data()
+            voucher.restart_validation()
             voucher.write(data)
 
     @api.multi
@@ -800,3 +805,18 @@ class VoucherCommon(models.AbstractModel):
                     raise UserError(strWarning)
         _super = super(VoucherCommon, self)
         _super.unlink()
+
+    @api.multi
+    def validate_tier(self):
+        _super = super(VoucherCommon, self)
+        _super.validate_tier()
+        for document in self:
+            if document.validated:
+                document.workflow_action_approve()
+
+    @api.multi
+    def restart_validation(self):
+        _super = super(VoucherCommon, self)
+        _super.restart_validation()
+        for document in self:
+            document.request_validation()
