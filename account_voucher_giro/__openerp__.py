@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 # Copyright 2017-2019 OpenSynergy Indonesia
+# Copyright 2020 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Giro Accounting Voucher",
-    "version": "8.0.1.5.0",
+    "version": "8.0.2.0.0",
     "category": "Accounting",
-    "website": "https://opensynergy-indonesia.com/",
+    "website": "https://simetri-sinergi.id",
+    "author": "PT. Simetri Sinergi Indonesia, OpenSynergy Indonesia",
     "author": "OpenSynergy Indonesia",
     "license": "AGPL-3",
     "installable": True,
@@ -23,5 +25,8 @@
         "views/account_giro_voucher_views.xml",
         "views/account_giro_receipt_views.xml",
         "views/account_giro_payment_views.xml",
+    ],
+    "images": [
+        "static/description/banner.png",
     ],
 }
