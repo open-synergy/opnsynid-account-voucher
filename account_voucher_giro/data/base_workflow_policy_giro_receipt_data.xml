@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright 2019 OpenSynergy Indonesia
+     Copyright 2020 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 
 <openerp>
@@ -26,9 +27,9 @@ else:
     result = False
     </field>
 </record>
-<record id="base_workflow_line_giro_receipt_approve" model="base.workflow_policy_line">
+<record id="base_workflow_line_giro_receipt_restart_validation" model="base.workflow_policy_line">
     <field name="workflow_id" ref="account_voucher_giro.base_workflow_giro_receipt"/>
-    <field name="field_id" search="[('model_id.model','=','account.giro_receipt'),('name','=','approve_ok')]"/>
+    <field name="field_id" search="[('model_id.model','=','account.giro_receipt'),('name','=','restart_validation_ok')]"/>
     <field name="python_code">obj_voucher_type_allowed_journal =\
     env["account.voucher_type_allowed_journal"]
 criteria = [
@@ -38,7 +39,7 @@ criteria = [
 allowed_wokflow_policy =\
     obj_voucher_type_allowed_journal.search(criteria)
 if allowed_wokflow_policy:
-    result = allowed_wokflow_policy.allowed_approve_group_ids.ids
+    result = allowed_wokflow_policy.allowed_restart_validation_group_ids.ids
 else:
     result = False
     </field>
