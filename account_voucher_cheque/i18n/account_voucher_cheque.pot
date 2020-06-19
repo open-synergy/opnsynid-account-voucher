@@ -132,13 +132,6 @@ msgid "Base Amount Computation Method"
 msgstr ""
 
 #. module: account_voucher_cheque
-#: field:account.cheque_payment,approve_ok:0
-#: field:account.cheque_receipt,approve_ok:0
-#: field:account.cheque_voucher,approve_ok:0
-msgid "Can Approve"
-msgstr ""
-
-#. module: account_voucher_cheque
 #: field:account.cheque_payment,cancel_ok:0
 #: field:account.cheque_receipt,cancel_ok:0
 #: field:account.cheque_voucher,cancel_ok:0
@@ -171,6 +164,13 @@ msgstr ""
 #: field:account.cheque_receipt,restart_ok:0
 #: field:account.cheque_voucher,restart_ok:0
 msgid "Can Restart"
+msgstr ""
+
+#. module: account_voucher_cheque
+#: field:account.cheque_payment,restart_validation_ok:0
+#: field:account.cheque_receipt,restart_validation_ok:0
+#: field:account.cheque_voucher,restart_validation_ok:0
+msgid "Can Restart Validation"
 msgstr ""
 
 #. module: account_voucher_cheque
@@ -351,6 +351,13 @@ msgid "Debit"
 msgstr ""
 
 #. module: account_voucher_cheque
+#: field:account.cheque_payment,definition_id:0
+#: field:account.cheque_receipt,definition_id:0
+#: field:account.cheque_voucher,definition_id:0
+msgid "Definition"
+msgstr ""
+
+#. module: account_voucher_cheque
 #: field:account.cheque_payment,description:0
 #: field:account.cheque_payment_line,name:0
 #: field:account.cheque_payment_line_tax,name:0
@@ -524,6 +531,13 @@ msgid "Move Lines"
 msgstr ""
 
 #. module: account_voucher_cheque
+#: field:account.cheque_payment,need_validation:0
+#: field:account.cheque_receipt,need_validation:0
+#: field:account.cheque_voucher,need_validation:0
+msgid "Need Validation"
+msgstr ""
+
+#. module: account_voucher_cheque
 #: field:account.cheque_payment,note:0
 #: field:account.cheque_receipt,note:0
 #: field:account.cheque_voucher,note:0
@@ -612,6 +626,27 @@ msgstr ""
 #: selection:account.cheque_receipt,state:0
 #: selection:account.cheque_voucher,state:0
 msgid "Ready to Process"
+msgstr ""
+
+#. module: account_voucher_cheque
+#: field:account.cheque_payment,rejected:0
+#: field:account.cheque_receipt,rejected:0
+#: field:account.cheque_voucher,rejected:0
+msgid "Rejected"
+msgstr ""
+
+#. module: account_voucher_cheque
+#: field:account.cheque_payment,reviewer_partner_ids:0
+#: field:account.cheque_receipt,reviewer_partner_ids:0
+#: field:account.cheque_voucher,reviewer_partner_ids:0
+msgid "Review Partners"
+msgstr ""
+
+#. module: account_voucher_cheque
+#: field:account.cheque_payment,reviewer_ids:0
+#: field:account.cheque_receipt,reviewer_ids:0
+#: field:account.cheque_voucher,reviewer_ids:0
+msgid "Reviewers"
 msgstr ""
 
 #. module: account_voucher_cheque
@@ -716,6 +751,20 @@ msgstr ""
 #: field:account.cheque_payment_line,product_uom_id:0
 #: field:account.cheque_receipt_line,product_uom_id:0
 msgid "UoM"
+msgstr ""
+
+#. module: account_voucher_cheque
+#: field:account.cheque_payment,validated:0
+#: field:account.cheque_receipt,validated:0
+#: field:account.cheque_voucher,validated:0
+msgid "Validated"
+msgstr ""
+
+#. module: account_voucher_cheque
+#: field:account.cheque_payment,review_ids:0
+#: field:account.cheque_receipt,review_ids:0
+#: field:account.cheque_voucher,review_ids:0
+msgid "Validations"
 msgstr ""
 
 #. module: account_voucher_cheque
