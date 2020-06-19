@@ -60,8 +60,8 @@ msgid "Allow Negative on Header"
 msgstr ""
 
 #. module: account_voucher_common
-#: field:account.voucher_type_allowed_journal,allowed_approve_group_ids:0
-msgid "Allow to Approve"
+#: field:account.voucher_type_allowed_journal,allowed_restart_validation_group_ids:0
+msgid "Allow To Restart Validation"
 msgstr ""
 
 #. module: account_voucher_common
@@ -161,11 +161,6 @@ msgid "Approval Date"
 msgstr ""
 
 #. module: account_voucher_common
-#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
-msgid "Approve"
-msgstr ""
-
-#. module: account_voucher_common
 #: view:account.voucher_common:account_voucher_common.account_voucher_common_view_search
 msgid "Approved"
 msgstr ""
@@ -179,11 +174,6 @@ msgstr ""
 #. module: account_voucher_common
 #: field:account.voucher_line_tax_common,base_amount_computation_method:0
 msgid "Base Amount Computation Method"
-msgstr ""
-
-#. module: account_voucher_common
-#: field:account.voucher_common,approve_ok:0
-msgid "Can Approve"
 msgstr ""
 
 #. module: account_voucher_common
@@ -209,6 +199,11 @@ msgstr ""
 #. module: account_voucher_common
 #: field:account.voucher_common,restart_ok:0
 msgid "Can Restart"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,restart_validation_ok:0
+msgid "Can Restart Validation"
 msgstr ""
 
 #. module: account_voucher_common
@@ -350,7 +345,7 @@ msgid "Currency"
 msgstr ""
 
 #. module: account_voucher_common
-#: code:addons/account_voucher_common/models/voucher_line_common.py:261
+#: code:addons/account_voucher_common/models/voucher_line_common.py:262
 #, python-format
 msgid "Currency exchange for "
 msgstr ""
@@ -373,6 +368,11 @@ msgid "Debit"
 msgstr ""
 
 #. module: account_voucher_common
+#: field:account.voucher_common,definition_id:0
+msgid "Definition"
+msgstr ""
+
+#. module: account_voucher_common
 #: field:account.voucher_common,description:0
 #: field:account.voucher_line_common,name:0
 #: field:account.voucher_line_tax_common,name:0
@@ -380,7 +380,7 @@ msgid "Description"
 msgstr ""
 
 #. module: account_voucher_common
-#: code:addons/account_voucher_common/models/voucher_line_common.py:326
+#: code:addons/account_voucher_common/models/voucher_line_common.py:327
 #, python-format
 msgid "Detail value has to be greater than 0"
 msgstr ""
@@ -434,7 +434,7 @@ msgid "Header Type"
 msgstr ""
 
 #. module: account_voucher_common
-#: code:addons/account_voucher_common/models/voucher_common.py:577
+#: code:addons/account_voucher_common/models/voucher_common.py:582
 #, python-format
 msgid "Header value has to be greater than 0"
 msgstr ""
@@ -515,7 +515,7 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: account_voucher_common
-#: code:addons/account_voucher_common/models/voucher_common.py:568
+#: code:addons/account_voucher_common/models/voucher_common.py:573
 #, python-format
 msgid "Line partner is different from header partner"
 msgstr ""
@@ -553,7 +553,17 @@ msgid "Move Lines"
 msgstr ""
 
 #. module: account_voucher_common
-#: code:addons/account_voucher_common/models/voucher_type.py:115
+#: field:account.voucher_common,need_validation:0
+msgid "Need Validation"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_search
+msgid "Needs my Review"
+msgstr ""
+
+#. module: account_voucher_common
+#: code:addons/account_voucher_common/models/voucher_type.py:116
 #, python-format
 msgid "No duplicate journal"
 msgstr ""
@@ -566,6 +576,11 @@ msgstr ""
 #. module: account_voucher_common
 #: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
 msgid "Notes"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+msgid "Operation has been"
 msgstr ""
 
 #. module: account_voucher_common
@@ -583,7 +598,7 @@ msgid "Period"
 msgstr ""
 
 #. module: account_voucher_common
-#: code:addons/account_voucher_common/models/voucher_line_common.py:21
+#: code:addons/account_voucher_common/models/voucher_line_common.py:22
 #, python-format
 msgid "Please select journal"
 msgstr ""
@@ -665,7 +680,42 @@ msgstr ""
 
 #. module: account_voucher_common
 #: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+msgid "Reject"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,rejected:0
+msgid "Rejected"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+msgid "Request Validation"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
 msgid "Reset to Draft"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+msgid "Restart Validation"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,reviewer_partner_ids:0
+msgid "Review Partners"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,reviewer_ids:0
+msgid "Reviewers"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+msgid "Reviews"
 msgstr ""
 
 #. module: account_voucher_common
@@ -721,9 +771,14 @@ msgid "Taxes"
 msgstr ""
 
 #. module: account_voucher_common
-#: code:addons/account_voucher_common/models/voucher_common.py:554
+#: code:addons/account_voucher_common/models/voucher_common.py:559
 #, python-format
 msgid "There are still amount difference"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+msgid "This data needs to be validated."
 msgstr ""
 
 #. module: account_voucher_common
@@ -743,7 +798,7 @@ msgid "Type"
 msgstr ""
 
 #. module: account_voucher_common
-#: code:addons/account_voucher_common/models/voucher_common.py:646
+#: code:addons/account_voucher_common/models/voucher_common.py:651
 #, python-format
 msgid "Unequal debit credit"
 msgstr ""
@@ -761,6 +816,21 @@ msgstr ""
 #. module: account_voucher_common
 #: field:account.voucher_line_common,product_uom_id:0
 msgid "UoM"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+msgid "Validate"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,validated:0
+msgid "Validated"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,review_ids:0
+msgid "Validations"
 msgstr ""
 
 #. module: account_voucher_common
@@ -836,7 +906,7 @@ msgid "Write-Off Account"
 msgstr ""
 
 #. module: account_voucher_common
-#: code:addons/account_voucher_common/models/voucher_common.py:796
+#: code:addons/account_voucher_common/models/voucher_common.py:801
 #, python-format
 msgid "You can only delete data on draft state"
 msgstr ""
@@ -845,5 +915,15 @@ msgstr ""
 #: view:account.wizard_import_move_line:account_voucher_common.wizard_import_move_line_view_form
 #: view:account.wizard_post_voucher:account_voucher_common.wizard_post_voucher_view_form
 msgid "or"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+msgid "rejected"
+msgstr ""
+
+#. module: account_voucher_common
+#: view:account.voucher_common:account_voucher_common.account_voucher_common_view_form
+msgid "validated"
 msgstr ""
 
