@@ -132,13 +132,6 @@ msgid "Base Amount Computation Method"
 msgstr ""
 
 #. module: account_voucher_giro
-#: field:account.giro_payment,approve_ok:0
-#: field:account.giro_receipt,approve_ok:0
-#: field:account.giro_voucher,approve_ok:0
-msgid "Can Approve"
-msgstr ""
-
-#. module: account_voucher_giro
 #: field:account.giro_payment,cancel_ok:0
 #: field:account.giro_receipt,cancel_ok:0
 #: field:account.giro_voucher,cancel_ok:0
@@ -171,6 +164,13 @@ msgstr ""
 #: field:account.giro_receipt,restart_ok:0
 #: field:account.giro_voucher,restart_ok:0
 msgid "Can Restart"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,restart_validation_ok:0
+#: field:account.giro_receipt,restart_validation_ok:0
+#: field:account.giro_voucher,restart_validation_ok:0
+msgid "Can Restart Validation"
 msgstr ""
 
 #. module: account_voucher_giro
@@ -316,6 +316,13 @@ msgstr ""
 #: field:account.giro_voucher,amount_debit:0
 #: field:account.giro_voucher,line_dr_ids:0
 msgid "Debit"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,definition_id:0
+#: field:account.giro_receipt,definition_id:0
+#: field:account.giro_voucher,definition_id:0
+msgid "Definition"
 msgstr ""
 
 #. module: account_voucher_giro
@@ -538,6 +545,13 @@ msgid "Move Lines"
 msgstr ""
 
 #. module: account_voucher_giro
+#: field:account.giro_payment,need_validation:0
+#: field:account.giro_receipt,need_validation:0
+#: field:account.giro_voucher,need_validation:0
+msgid "Need Validation"
+msgstr ""
+
+#. module: account_voucher_giro
 #: field:account.giro_payment,note:0
 #: field:account.giro_receipt,note:0
 #: field:account.giro_voucher,note:0
@@ -619,6 +633,27 @@ msgstr ""
 #: selection:account.giro_receipt,state:0
 #: selection:account.giro_voucher,state:0
 msgid "Ready to Process"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,rejected:0
+#: field:account.giro_receipt,rejected:0
+#: field:account.giro_voucher,rejected:0
+msgid "Rejected"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,reviewer_partner_ids:0
+#: field:account.giro_receipt,reviewer_partner_ids:0
+#: field:account.giro_voucher,reviewer_partner_ids:0
+msgid "Review Partners"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,reviewer_ids:0
+#: field:account.giro_receipt,reviewer_ids:0
+#: field:account.giro_voucher,reviewer_ids:0
+msgid "Reviewers"
 msgstr ""
 
 #. module: account_voucher_giro
@@ -726,6 +761,20 @@ msgid "UoM"
 msgstr ""
 
 #. module: account_voucher_giro
+#: field:account.giro_payment,validated:0
+#: field:account.giro_receipt,validated:0
+#: field:account.giro_voucher,validated:0
+msgid "Validated"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,review_ids:0
+#: field:account.giro_receipt,review_ids:0
+#: field:account.giro_voucher,review_ids:0
+msgid "Validations"
+msgstr ""
+
+#. module: account_voucher_giro
 #: field:account.giro_payment_line,voucher_id:0
 #: field:account.giro_receipt_line,voucher_id:0
 msgid "Voucher"
@@ -762,7 +811,7 @@ msgid "Write-Off Account"
 msgstr ""
 
 #. module: account_voucher_giro
-#: code:addons/account_voucher_giro/models/giro_voucher.py:70
+#: code:addons/account_voucher_giro/models/giro_voucher.py:71
 #, python-format
 msgid "You cannot post giro before due date"
 msgstr ""
