@@ -229,15 +229,6 @@ msgid "Base Amount Computation Method"
 msgstr ""
 
 #. module: account_voucher_bank_cash
-#: field:account.bank_payment,approve_ok:0
-#: field:account.bank_receipt,approve_ok:0
-#: field:account.bank_voucher,approve_ok:0
-#: field:account.cash_payment,approve_ok:0
-#: field:account.cash_receipt,approve_ok:0
-msgid "Can Approve"
-msgstr ""
-
-#. module: account_voucher_bank_cash
 #: field:account.bank_payment,cancel_ok:0
 #: field:account.bank_receipt,cancel_ok:0
 #: field:account.bank_voucher,cancel_ok:0
@@ -280,6 +271,15 @@ msgstr ""
 #: field:account.cash_payment,restart_ok:0
 #: field:account.cash_receipt,restart_ok:0
 msgid "Can Restart"
+msgstr ""
+
+#. module: account_voucher_bank_cash
+#: field:account.bank_payment,restart_validation_ok:0
+#: field:account.bank_receipt,restart_validation_ok:0
+#: field:account.bank_voucher,restart_validation_ok:0
+#: field:account.cash_payment,restart_validation_ok:0
+#: field:account.cash_receipt,restart_validation_ok:0
+msgid "Can Restart Validation"
 msgstr ""
 
 #. module: account_voucher_bank_cash
@@ -497,6 +497,15 @@ msgstr ""
 #: field:account.cash_receipt,amount_debit:0
 #: field:account.cash_receipt,line_dr_ids:0
 msgid "Debit"
+msgstr ""
+
+#. module: account_voucher_bank_cash
+#: field:account.bank_payment,definition_id:0
+#: field:account.bank_receipt,definition_id:0
+#: field:account.bank_voucher,definition_id:0
+#: field:account.cash_payment,definition_id:0
+#: field:account.cash_receipt,definition_id:0
+msgid "Definition"
 msgstr ""
 
 #. module: account_voucher_bank_cash
@@ -743,6 +752,15 @@ msgid "Move Lines"
 msgstr ""
 
 #. module: account_voucher_bank_cash
+#: field:account.bank_payment,need_validation:0
+#: field:account.bank_receipt,need_validation:0
+#: field:account.bank_voucher,need_validation:0
+#: field:account.cash_payment,need_validation:0
+#: field:account.cash_receipt,need_validation:0
+msgid "Need Validation"
+msgstr ""
+
+#. module: account_voucher_bank_cash
 #: field:account.bank_payment,note:0
 #: field:account.bank_receipt,note:0
 #: field:account.bank_voucher,note:0
@@ -857,6 +875,33 @@ msgstr ""
 #: selection:account.cash_payment,state:0
 #: selection:account.cash_receipt,state:0
 msgid "Ready to Process"
+msgstr ""
+
+#. module: account_voucher_bank_cash
+#: field:account.bank_payment,rejected:0
+#: field:account.bank_receipt,rejected:0
+#: field:account.bank_voucher,rejected:0
+#: field:account.cash_payment,rejected:0
+#: field:account.cash_receipt,rejected:0
+msgid "Rejected"
+msgstr ""
+
+#. module: account_voucher_bank_cash
+#: field:account.bank_payment,reviewer_partner_ids:0
+#: field:account.bank_receipt,reviewer_partner_ids:0
+#: field:account.bank_voucher,reviewer_partner_ids:0
+#: field:account.cash_payment,reviewer_partner_ids:0
+#: field:account.cash_receipt,reviewer_partner_ids:0
+msgid "Review Partners"
+msgstr ""
+
+#. module: account_voucher_bank_cash
+#: field:account.bank_payment,reviewer_ids:0
+#: field:account.bank_receipt,reviewer_ids:0
+#: field:account.bank_voucher,reviewer_ids:0
+#: field:account.cash_payment,reviewer_ids:0
+#: field:account.cash_receipt,reviewer_ids:0
+msgid "Reviewers"
 msgstr ""
 
 #. module: account_voucher_bank_cash
@@ -986,6 +1031,24 @@ msgstr ""
 #: field:account.cash_payment_line,product_uom_id:0
 #: field:account.cash_receipt_line,product_uom_id:0
 msgid "UoM"
+msgstr ""
+
+#. module: account_voucher_bank_cash
+#: field:account.bank_payment,validated:0
+#: field:account.bank_receipt,validated:0
+#: field:account.bank_voucher,validated:0
+#: field:account.cash_payment,validated:0
+#: field:account.cash_receipt,validated:0
+msgid "Validated"
+msgstr ""
+
+#. module: account_voucher_bank_cash
+#: field:account.bank_payment,review_ids:0
+#: field:account.bank_receipt,review_ids:0
+#: field:account.bank_voucher,review_ids:0
+#: field:account.cash_payment,review_ids:0
+#: field:account.cash_receipt,review_ids:0
+msgid "Validations"
 msgstr ""
 
 #. module: account_voucher_bank_cash
