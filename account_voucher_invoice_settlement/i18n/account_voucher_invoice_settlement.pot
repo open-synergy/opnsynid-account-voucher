@@ -36,6 +36,11 @@ msgid "Accounting Entry"
 msgstr ""
 
 #. module: account_voucher_invoice_settlement
+#: field:account.invoice_settlement,active_reviewer_ids:0
+msgid "Active Reviewers"
+msgstr ""
+
+#. module: account_voucher_invoice_settlement
 #: field:account.invoice_settlement,allowed_journal_ids:0
 msgid "Allowed Journals"
 msgstr ""
@@ -369,6 +374,11 @@ msgstr ""
 #. module: account_voucher_invoice_settlement
 #: field:account.invoice_settlement,need_validation:0
 msgid "Need Validation"
+msgstr ""
+
+#. module: account_voucher_invoice_settlement
+#: field:account.invoice_settlement,next_reviewer_ids:0
+msgid "Next Reviewers"
 msgstr ""
 
 #. module: account_voucher_invoice_settlement
