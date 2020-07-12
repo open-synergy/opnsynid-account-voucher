@@ -41,6 +41,13 @@ msgid "Accounting Entry"
 msgstr ""
 
 #. module: account_voucher_cheque
+#: field:account.cheque_payment,active_reviewer_ids:0
+#: field:account.cheque_receipt,active_reviewer_ids:0
+#: field:account.cheque_voucher,active_reviewer_ids:0
+msgid "Active Reviewers"
+msgstr ""
+
+#. module: account_voucher_cheque
 #: field:account.cheque_payment,allowed_journal_ids:0
 #: field:account.cheque_receipt,allowed_journal_ids:0
 #: field:account.cheque_voucher,allowed_journal_ids:0
@@ -535,6 +542,13 @@ msgstr ""
 #: field:account.cheque_receipt,need_validation:0
 #: field:account.cheque_voucher,need_validation:0
 msgid "Need Validation"
+msgstr ""
+
+#. module: account_voucher_cheque
+#: field:account.cheque_payment,next_reviewer_ids:0
+#: field:account.cheque_receipt,next_reviewer_ids:0
+#: field:account.cheque_voucher,next_reviewer_ids:0
+msgid "Next Reviewers"
 msgstr ""
 
 #. module: account_voucher_cheque
