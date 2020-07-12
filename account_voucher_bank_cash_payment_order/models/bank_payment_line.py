@@ -21,7 +21,7 @@ class BankPaymentLine(models.Model):
         result = [0, 0, {
             "communication": self.name,
             "amount_currency": self.amount_company_currency_move_date,
-            "company_currency": self.company_id.currency_id.id,
+            "company_currency": self.voucher_id.company_id.currency_id.id,
             "currency": self.voucher_id.currency_id.id,
             "bank_id": bank_id,
             "partner_id": partner_id,
