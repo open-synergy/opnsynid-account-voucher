@@ -15,7 +15,7 @@ class BankPaymentLine(models.Model):
     def _prepare_payment_order_line(self):
         self.ensure_one()
         move_line_id = self.move_line_id and self.move_line_id.id or False
-        partner_id = self.partner_id and self.partner_id or False
+        partner_id = self.partner_id and self.partner_id.id or False
         bank_id = self.partner_id.bank_ids and \
             self.partner_id.bank_ids[0].id or False
         result = [0, 0, {
