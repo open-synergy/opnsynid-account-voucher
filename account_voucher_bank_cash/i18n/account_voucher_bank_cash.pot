@@ -69,6 +69,15 @@ msgid "Accounting Entry"
 msgstr ""
 
 #. module: account_voucher_bank_cash
+#: field:account.bank_payment,active_reviewer_ids:0
+#: field:account.bank_receipt,active_reviewer_ids:0
+#: field:account.bank_voucher,active_reviewer_ids:0
+#: field:account.cash_payment,active_reviewer_ids:0
+#: field:account.cash_receipt,active_reviewer_ids:0
+msgid "Active Reviewers"
+msgstr ""
+
+#. module: account_voucher_bank_cash
 #: field:account.bank_payment,allowed_journal_ids:0
 #: field:account.bank_receipt,allowed_journal_ids:0
 #: field:account.bank_voucher,allowed_journal_ids:0
@@ -758,6 +767,15 @@ msgstr ""
 #: field:account.cash_payment,need_validation:0
 #: field:account.cash_receipt,need_validation:0
 msgid "Need Validation"
+msgstr ""
+
+#. module: account_voucher_bank_cash
+#: field:account.bank_payment,next_reviewer_ids:0
+#: field:account.bank_receipt,next_reviewer_ids:0
+#: field:account.bank_voucher,next_reviewer_ids:0
+#: field:account.cash_payment,next_reviewer_ids:0
+#: field:account.cash_receipt,next_reviewer_ids:0
+msgid "Next Reviewers"
 msgstr ""
 
 #. module: account_voucher_bank_cash
