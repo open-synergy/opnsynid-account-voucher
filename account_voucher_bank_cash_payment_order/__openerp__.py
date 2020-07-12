@@ -4,7 +4,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Bank & Cash Accounting Voucher - Integration with Payment Order",
-    "version": "8.0.1.0.2",
+    "version": "8.0.1.0.3",
     "category": "Accounting",
     "website": "https://simetri-sinergi.id",
     "author": "PT. Simetri Sinergi Indonesia, OpenSynergy Indonesia",
