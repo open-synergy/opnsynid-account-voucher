@@ -50,6 +50,11 @@ msgid "Accounting Information"
 msgstr ""
 
 #. module: account_voucher_common
+#: field:account.voucher_common,active_reviewer_ids:0
+msgid "Active Reviewers"
+msgstr ""
+
+#. module: account_voucher_common
 #: field:account.voucher_type,detail_allow_negative:0
 msgid "Allow Negative on Detail"
 msgstr ""
@@ -560,6 +565,11 @@ msgstr ""
 #. module: account_voucher_common
 #: view:account.voucher_common:account_voucher_common.account_voucher_common_view_search
 msgid "Needs my Review"
+msgstr ""
+
+#. module: account_voucher_common
+#: field:account.voucher_common,next_reviewer_ids:0
+msgid "Next Reviewers"
 msgstr ""
 
 #. module: account_voucher_common
