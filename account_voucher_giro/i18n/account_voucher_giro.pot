@@ -41,6 +41,13 @@ msgid "Accounting Entry"
 msgstr ""
 
 #. module: account_voucher_giro
+#: field:account.giro_payment,active_reviewer_ids:0
+#: field:account.giro_receipt,active_reviewer_ids:0
+#: field:account.giro_voucher,active_reviewer_ids:0
+msgid "Active Reviewers"
+msgstr ""
+
+#. module: account_voucher_giro
 #: field:account.giro_payment,allowed_journal_ids:0
 #: field:account.giro_receipt,allowed_journal_ids:0
 #: field:account.giro_voucher,allowed_journal_ids:0
@@ -549,6 +556,13 @@ msgstr ""
 #: field:account.giro_receipt,need_validation:0
 #: field:account.giro_voucher,need_validation:0
 msgid "Need Validation"
+msgstr ""
+
+#. module: account_voucher_giro
+#: field:account.giro_payment,next_reviewer_ids:0
+#: field:account.giro_receipt,next_reviewer_ids:0
+#: field:account.giro_voucher,next_reviewer_ids:0
+msgid "Next Reviewers"
 msgstr ""
 
 #. module: account_voucher_giro
