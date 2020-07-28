@@ -15,3 +15,4 @@
 # sale-workflow https://github.com/OCA/sale-workflow branchname
 account-closing https://github.com/OCA/account-closing.git 8.0
 opnsynid-server-tools https://github.com/open-synergy/opnsynid-server-tools 8.0
+opnsynid-account-financial-tools https://github.com/open-synergy/opnsynid-account-financial-tools.git 8.0
