@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 OpenSynergy Indonesia
+     Copyright 2020 PT Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data>
+    <!--    # Bank Receipt -->
+    <record id="dashboard_tile_all_account_voucher_bank_receipt_draft" model="tile.tile">
+        <field name="name">All Bank Receipt: Draft</field>
+        <field name="sequence">1</field>
+        <field name="domain">
+        [
+            ('state', '=', 'draft'),
+        ]
+        </field>
+        <field name="model_id" ref="account_voucher_bank_cash.model_account_bank_receipt" />
+        <field name="action_id" ref="account_voucher_bank_cash.account_bank_receipt_action" />
+        <field name="primary_function">count</field>
+        <field name="background_color">#776D8A</field>
+    </record>
+    <record id="dashboard_tile_all_account_voucher_bank_receipt_waiting_for_approval" model="tile.tile">
+        <field name="name">All Bank Receipt: Waiting For Approval</field>
+        <field name="sequence">1</field>
+        <field name="domain">
+        [
+            ('state', '=', 'confirm'),
+        ]
+        </field>
+        <field name="model_id" ref="account_voucher_bank_cash.model_account_bank_receipt" />
+        <field name="action_id" ref="account_voucher_bank_cash.account_bank_receipt_action" />
+        <field name="primary_function">count</field>
+        <field name="background_color">#776D8A</field>
+    </record>
+    <record id="dashboard_tile_all_account_voucher_bank_receipt_ready_to_process" model="tile.tile">
+        <field name="name">All Bank Receipt: Ready To Process</field>
+        <field name="sequence">1</field>
+        <field name="domain">
+        [
+            ('state', '=', 'approve'),
+        ]
+        </field>
+        <field name="model_id" ref="account_voucher_bank_cash.model_account_bank_receipt" />
+        <field name="action_id" ref="account_voucher_bank_cash.account_bank_receipt_action" />
+        <field name="primary_function">count</field>
+        <field name="background_color">#776D8A</field>
+    </record>
+
+    <!--    # Bank Payment -->
+    <record id="dashboard_tile_all_account_voucher_bank_payment_draft" model="tile.tile">
+        <field name="name">All Bank Payment: Draft</field>
+        <field name="sequence">2</field>
+        <field name="domain">
+        [
+            ('state', '=', 'draft'),
+        ]
+        </field>
+        <field name="model_id" ref="account_voucher_bank_cash.model_account_bank_payment" />
+        <field name="action_id" ref="account_voucher_bank_cash.account_bank_payment_action" />
+        <field name="primary_function">count</field>
+        <field name="background_color">#9CADA4</field>
+    </record>
+    <record id="dashboard_tile_all_account_voucher_bank_payment_waiting_for_approval" model="tile.tile">
+        <field name="name">All Bank Payment: Waiting For Approval</field>
+        <field name="sequence">2</field>
+        <field name="domain">
+        [
+            ('state', '=', 'confirm'),
+        ]
+        </field>
+        <field name="model_id" ref="account_voucher_bank_cash.model_account_bank_payment" />
+        <field name="action_id" ref="account_voucher_bank_cash.account_bank_payment_action" />
+        <field name="primary_function">count</field>
+        <field name="background_color">#9CADA4</field>
+    </record>
+    <record id="dashboard_tile_all_account_voucher_bank_payment_ready_to_process" model="tile.tile">
+        <field name="name">All Bank Payment: Ready To Process</field>
+        <field name="sequence">2</field>
+        <field name="domain">
+        [
+            ('state', '=', 'approve'),
+        ]
+        </field>
+        <field name="model_id" ref="account_voucher_bank_cash.model_account_bank_payment" />
+        <field name="action_id" ref="account_voucher_bank_cash.account_bank_payment_action" />
+        <field name="primary_function">count</field>
+        <field name="background_color">#9CADA4</field>
+    </record>
+    <!--    # Cash Receipt -->
+    <record id="dashboard_tile_all_account_voucher_cash_receipt_draft" model="tile.tile">
+        <field name="name">All Cash Receipt: Draft</field>
+        <field name="sequence">3</field>
+        <field name="domain">
+        [
+            ('state', '=', 'draft'),
+        ]
+        </field>
+        <field name="model_id" ref="account_voucher_bank_cash.model_account_cash_receipt" />
+        <field name="action_id" ref="account_voucher_bank_cash.account_cash_receipt_action" />
+        <field name="primary_function">count</field>
+        <field name="background_color">#F5B971</field>
+    </record>
+    <record id="dashboard_tile_all_account_voucher_cash_receipt_waiting_for_approval" model="tile.tile">
+        <field name="name">All Cash Receipt: Waiting For Approval</field>
+        <field name="sequence">3</field>
+        <field name="domain">
+        [
+            ('state', '=', 'confirm'),
+        ]
+        </field>
+        <field name="model_id" ref="account_voucher_bank_cash.model_account_cash_receipt" />
+        <field name="action_id" ref="account_voucher_bank_cash.account_cash_receipt_action" />
+        <field name="primary_function">count</field>
+        <field name="background_color">#F5B971</field>
+    </record>
+    <record id="dashboard_tile_all_account_voucher_cash_receipt_ready_to_process" model="tile.tile">
+        <field name="name">All Cash Receipt: ReadyTo Process</field>
+        <field name="sequence">3</field>
+        <field name="domain">
+        [
+            ('state', '=', 'approve'),
+        ]
+        </field>
+        <field name="model_id" ref="account_voucher_bank_cash.model_account_cash_receipt" />
+        <field name="action_id" ref="account_voucher_bank_cash.account_cash_receipt_action" />
+        <field name="primary_function">count</field>
+        <field name="background_color">#F5B971</field>
+    </record>
+    <!--    # Cash Payment -->
+    <record id="dashboard_tile_all_account_voucher_cash_payment_draft" model="tile.tile">
+        <field name="name">All Cash Payment: Draft</field>
+        <field name="sequence">4</field>
+        <field name="domain">
+        [
+            ('state', '=', 'draft'),
+        ]
+        </field>
+        <field name="model_id" ref="account_voucher_bank_cash.model_account_cash_payment" />
+        <field name="action_id" ref="account_voucher_bank_cash.account_cash_payment_action" />
+        <field name="primary_function">count</field>
+        <field name="background_color">#BD574E</field>
+    </record>
+    <record id="dashboard_tile_all_account_voucher_cash_payment_waiting_for_approval" model="tile.tile">
+        <field name="name">All Cash Payment: Waiting For Approval</field>
+        <field name="sequence">4</field>
+        <field name="domain">
+        [
+            ('state', '=', 'confirm'),
+        ]
+        </field>
+        <field name="model_id" ref="account_voucher_bank_cash.model_account_cash_payment" />
+        <field name="action_id" ref="account_voucher_bank_cash.account_cash_payment_action" />
+        <field name="primary_function">count</field>
+        <field name="background_color">#BD574E</field>
+    </record>
+    <record id="dashboard_tile_all_account_voucher_cash_payment_ready_to_process" model="tile.tile">
+        <field name="name">All Cash Payment: Ready To Process</field>
+        <field name="sequence">4</field>
+        <field name="domain">
+        [
+            ('state', '=', 'approve'),
+        ]
+        </field>
+        <field name="model_id" ref="account_voucher_bank_cash.model_account_cash_payment" />
+        <field name="action_id" ref="account_voucher_bank_cash.account_cash_payment_action" />
+        <field name="primary_function">count</field>
+        <field name="background_color">#BD574E</field>
+    </record>
+
+</data>
+</openerp>
