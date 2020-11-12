@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 OpenSynergy Indonesia
+     Copyright 2020 PT Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data>
+    <!--    # cheque Receipt -->
+    <record id="dashboard_tile_all_account_voucher_cheque_receipt_draft" model="tile.tile">
+        <field name="name">All cheque Receipt: Draft</field>
+        <field name="sequence">7</field>
+        <field name="domain">
+        [
+            ('state', '=', 'draft'),
+        ]
+        </field>
+        <field name="model_id" ref="account_voucher_cheque.model_account_cheque_receipt" />
+        <field name="action_id" ref="account_voucher_cheque.account_cheque_receipt_action" />
+        <field name="primary_function">count</field>
+        <field name="background_color">#776D8A</field>
+    </record>
+    <record id="dashboard_tile_all_account_voucher_cheque_receipt_waiting_for_approval" model="tile.tile">
+        <field name="name">All cheque Receipt: Waiting For Approval</field>
+        <field name="sequence">7</field>
+        <field name="domain">
+        [
+            ('state', '=', 'confirm'),
+        ]
+        </field>
+        <field name="model_id" ref="account_voucher_cheque.model_account_cheque_receipt" />
+        <field name="action_id" ref="account_voucher_cheque.account_cheque_receipt_action" />
+        <field name="primary_function">count</field>
+        <field name="background_color">#776D8A</field>
+    </record>
+    <record id="dashboard_tile_all_account_voucher_cheque_receipt_ready_to_process" model="tile.tile">
+        <field name="name">All cheque Receipt: Ready To Process</field>
+        <field name="sequence">7</field>
+        <field name="domain">
+        [
+            ('state', '=', 'approve'),
+        ]
+        </field>
+        <field name="model_id" ref="account_voucher_cheque.model_account_cheque_receipt" />
+        <field name="action_id" ref="account_voucher_cheque.account_cheque_receipt_action" />
+        <field name="primary_function">count</field>
+        <field name="background_color">#776D8A</field>
+    </record>
+    <!--    # cheque Payment -->
+    <record id="dashboard_tile_all_account_voucher_cheque_payment_draft" model="tile.tile">
+        <field name="name">All cheque Payment: Draft</field>
+        <field name="sequence">8</field>
+        <field name="domain">
+        [
+            ('state', '=', 'draft'),
+        ]
+        </field>
+        <field name="model_id" ref="account_voucher_cheque.model_account_cheque_payment" />
+        <field name="action_id" ref="account_voucher_cheque.account_cheque_payment_action" />
+        <field name="primary_function">count</field>
+        <field name="background_color">#9CADA4</field>
+    </record>
+    <record id="dashboard_tile_all_account_voucher_cheque_payment_waiting_for_approval" model="tile.tile">
+        <field name="name">All cheque Payment: Waiting For Approval</field>
+        <field name="sequence">8</field>
+        <field name="domain">
+        [
+            ('state', '=', 'confirm'),
+        ]
+        </field>
+        <field name="model_id" ref="account_voucher_cheque.model_account_cheque_payment" />
+        <field name="action_id" ref="account_voucher_cheque.account_cheque_payment_action" />
+        <field name="primary_function">count</field>
+        <field name="background_color">#9CADA4</field>
+    </record>
+    <record id="dashboard_tile_all_account_voucher_cheque_payment_ready_to_process" model="tile.tile">
+        <field name="name">All cheque Payment: Ready To Process</field>
+        <field name="sequence">8</field>
+        <field name="domain">
+        [
+            ('state', '=', 'approve'),
+        ]
+        </field>
+        <field name="model_id" ref="account_voucher_cheque.model_account_cheque_payment" />
+        <field name="action_id" ref="account_voucher_cheque.account_cheque_payment_action" />
+        <field name="primary_function">count</field>
+        <field name="background_color">#9CADA4</field>
+    </record>
+</data>
+</openerp>
