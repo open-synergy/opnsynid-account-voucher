@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 OpenSynergy Indonesia
+     Copyright 2020 PT Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data>
+    <!--  Invoice Settlement: -->
+    <record id="dashboard_tile_all_account_voucher_invoice_settlement_draft" model="tile.tile">
+        <field name="name">All Invoice Settlement: Draft</field>
+        <field name="sequence">11</field>
+        <field name="domain">
+        [
+            ('state', '=', 'draft'),
+        ]
+        </field>
+        <field name="model_id" ref="account_voucher_invoice_settlement.model_account_invoice_settlement" />
+        <field name="action_id" ref="account_voucher_invoice_settlement.account_invoice_settlement_action" />
+        <field name="primary_function">count</field>
+        <field name="background_color">#776D8A</field>
+    </record>
+    <record id="dashboard_tile_all_account_voucher_invoice_settlement_waiting_for_approval" model="tile.tile">
+        <field name="name">All Invoice Settlement: Waiting For Approval</field>
+        <field name="sequence">11</field>
+        <field name="domain">
+        [
+        ('state', '=', 'confirm'),
+        ]
+        </field>
+        <field name="model_id" ref="account_voucher_invoice_settlement.model_account_invoice_settlement" />
+        <field name="action_id" ref="account_voucher_invoice_settlement.account_invoice_settlement_action" />
+        <field name="primary_function">count</field>
+        <field name="background_color">#776D8A</field>
+    </record>
+    <record id="dashboard_tile_all_account_voucher_invoice_settlement_ready_to_process" model="tile.tile">
+        <field name="name">All Invoice Settlement: Ready To Process</field>
+        <field name="sequence">11</field>
+        <field name="domain">
+        [
+        ('state', '=', 'approve'),
+        ]
+        </field>
+        <field name="model_id" ref="account_voucher_invoice_settlement.model_account_invoice_settlement" />
+        <field name="action_id" ref="account_voucher_invoice_settlement.account_invoice_settlement_action" />
+        <field name="primary_function">count</field>
+        <field name="background_color">#776D8A</field>
+    </record>
+</data>
+</openerp>
