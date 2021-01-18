@@ -489,8 +489,10 @@ class VoucherCommon(models.AbstractModel):
     @api.multi
     def _prepare_approve_data(self):
         self.ensure_one()
+        sequence = self._create_sequence()
         data = {
             "state": "approve",
+            "name": sequence,
             "approved_date": fields.Datetime.now(),
             "approved_user_id": self.env.user.id,
         }
@@ -557,16 +559,6 @@ class VoucherCommon(models.AbstractModel):
                 not self.currency_id.is_zero(self.amount_diff) and \
                 not self.writeoff_account_id:
             raise UserError(_("There are still amount difference"))
-
-    @api.model
-    def create(self, values):
-        _super = super(VoucherCommon, self)
-        result = _super.create(values)
-        sequence = result._create_sequence()
-        result.write({
-            "name": sequence,
-        })
-        return result
 
     @api.constrains("partner_id", "line_ids")
     def _check_partner(self):
@@ -820,3 +812,14 @@ class VoucherCommon(models.AbstractModel):
         _super.restart_validation()
         for document in self:
             document.request_validation()
+
+    @api.multi
+    def name_get(self):
+        result = []
+        for record in self:
+            if record.name == "/":
+                name = "*" + str(record.id)
+            else:
+                name = record.name
+            result.append((record.id, name))
+        return result

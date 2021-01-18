@@ -52,7 +52,7 @@
     <field name="model">account.voucher_common</field>
     <field name="arch" type="xml">
         <tree>
-            <field name="name"/>
+            <field name="display_name"/>
             <field name="description"/>
             <field name="partner_id"/>
             <field name="date_voucher"/>
@@ -125,9 +125,9 @@
                 </div>
                 <div class="oe_left" style="width: 500px;">
                     <div class="oe_title" style="width: 500px;">
-                        <label for="name"/>
+                        <label for="display_name"/>
                         <h1>
-                            <field name="name"/>
+                            <field name="display_name"/>
                         </h1>
                         <h2 attrs="{'invisible': [('state', '!=', 'cancel')]}">
                             <label for="cancel_reason_id" string="Cancellation reason:"/>
