@@ -14,7 +14,7 @@
     <field name="priority" eval="71"/>
     <field name="arch" type="xml">
         <data>
-            <xpath expr="//field[@name='name']" position="attributes">
+            <xpath expr="//field[@name='display_name']" position="attributes">
                 <attribute name="string"># Cheque</attribute>
             </xpath>
         </data>
@@ -30,7 +30,7 @@
     <field name="priority" eval="71"/>
     <field name="arch" type="xml">
         <data>
-            <xpath expr="//label[@for='name']" position="attributes">
+            <xpath expr="//label[@for='display_name']" position="attributes">
                 <attribute name="string"># Cheque</attribute>
             </xpath>
             <xpath expr="//field[@name='line_ids']" position="before">
