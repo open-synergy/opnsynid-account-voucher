@@ -32,11 +32,11 @@
             </xpath>
             <xpath expr="//field[@name='exchange_rate']" position="before">
                 <field name="amount_debit"
-                    widget="monetary" 
+                    widget="monetary"
                     options="{'currency_field': 'currency_id'}"
                     />
                 <field name="amount_credit"
-                    widget="monetary" 
+                    widget="monetary"
                     options="{'currency_field': 'currency_id'}"
                     />
             </xpath>
@@ -73,16 +73,16 @@
                                 <group name="group_3_1" colspan="1" col="2">
                                     <field name="currency_id" invisible="1"/>
                                     <field name="company_currency_id" invisible="1"/>
-                                    <field name="amount_company_currency_move_date" 
-                                        widget="monetary" 
+                                    <field name="amount_company_currency_move_date"
+                                        widget="monetary"
                                         options="{'currency_field': 'company_currency_id'}"
                                         />
-                                    <field name="amount_company_currency_voucher_date" 
-                                        widget="monetary" 
+                                    <field name="amount_company_currency_voucher_date"
+                                        widget="monetary"
                                         options="{'currency_field': 'company_currency_id'}"
                                         />
-                                    <field name="amount_diff_in_company_currency" 
-                                        widget="monetary" 
+                                    <field name="amount_diff_in_company_currency"
+                                        widget="monetary"
                                         options="{'currency_field': 'company_currency_id'}"
                                         />
                                 </group>
@@ -180,16 +180,16 @@
                                 <group name="group_6_1" colspan="1" col="2">
                                     <field name="currency_id" invisible="1"/>
                                     <field name="company_currency_id" invisible="1"/>
-                                    <field name="amount_company_currency_move_date" 
-                                        widget="monetary" 
+                                    <field name="amount_company_currency_move_date"
+                                        widget="monetary"
                                         options="{'currency_field': 'company_currency_id'}"
                                         />
-                                    <field name="amount_company_currency_voucher_date" 
-                                        widget="monetary" 
+                                    <field name="amount_company_currency_voucher_date"
+                                        widget="monetary"
                                         options="{'currency_field': 'company_currency_id'}"
                                         />
-                                    <field name="amount_diff_in_company_currency" 
-                                        widget="monetary" 
+                                    <field name="amount_diff_in_company_currency"
+                                        widget="monetary"
                                         options="{'currency_field': 'company_currency_id'}"
                                         />
                                 </group>
