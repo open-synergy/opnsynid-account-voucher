@@ -20,6 +20,7 @@
             <field name="type_id" invisible="1"/>
             <field name="journal_id"/>
             <field name="state"/>
+            <field name="id"/>
             <filter name="needs_review" string="Needs my Review"
                     domain="[('reviewer_ids','in',uid), ('state', 'not in', ['done', 'cancel'])]"/>
             <group name="group_state" string="State">
@@ -61,6 +62,7 @@
             <field name="journal_id"/>
             <field name="currency_id"/>
             <field name="type_id" invisible="1"/>
+            <field name="id" invisible="1"/>
             <field name="state"/>
         </tree>
     </field>
