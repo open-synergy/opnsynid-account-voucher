@@ -229,7 +229,7 @@ class VoucherCommon(models.AbstractModel):
     amount = fields.Float(
         string="Total Voucher",
         readonly=True,
-        default=1.0,
+        default=0.0,
         states={
             "draft": [
                 ("readonly", False),
