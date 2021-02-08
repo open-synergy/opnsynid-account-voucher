@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright 2016 OpenSynergy Indonesia
-# Copyright 2020 PT. Simetri Sinergi Indonesia
+# Copyright 2021 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from openerp import models, fields, api
@@ -489,7 +489,13 @@ class VoucherCommon(models.AbstractModel):
     @api.multi
     def _prepare_approve_data(self):
         self.ensure_one()
-        sequence = self._create_sequence()
+        ctx = self.env.context.copy()
+        ctx.update(
+            {
+                "ir_sequence_date": self.date_voucher,
+            }
+        )
+        sequence = self.with_context(ctx)._create_sequence()
         data = {
             "state": "approve",
             "name": sequence,
