@@ -14,8 +14,12 @@ class VoucherLineCommon(models.AbstractModel):
 
     @api.multi
     @api.depends(
-        "amount", "move_line_id",
-        "tax_ids", "tax_ids.tax_amount",
+        "amount",
+        "move_line_id",
+        "tax_ids",
+        "tax_ids.tax_amount",
+        "voucher_id",
+        "voucher_id.exchange_rate",
     )
     def _compute_amount(self):
         for line in self:
