@@ -582,6 +582,15 @@ class VoucherCommon(models.AbstractModel):
                 self.amount < 0:
             raise UserError(str_error)
 
+    @api.constrains(
+        "exchange_rate",
+    )
+    def _check_exchange_rate(self):
+        str_error = _("Exchange rate value has to be greater than 0")
+        for document in self:
+            if document.exchange_rate <= 0:
+                raise UserError(str_error)
+
     @api.multi
     def _check_header_negative_value(self):
         self.ensure_one()
