@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2020 OpenSynergy Indonesia
+     Copyright 2020 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<openerp>
+    <data>
+
+      <menuitem
+            id="menu_configuration_sale_refund_settlement"
+            name="Sale Refund Settlement"
+            sequence="11"
+            parent="account_voucher_common.menu_account_configuration_voucher"
+        />
+
+      <menuitem
+            id="menu_configuration_purchase_refund_settlement"
+            name="Purchase Refund Settlement"
+            sequence="12"
+            parent="account_voucher_common.menu_account_configuration_voucher"
+        />
+    </data>
+</openerp>
