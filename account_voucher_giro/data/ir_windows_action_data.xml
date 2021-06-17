@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2021 OpenSynergy Indonesia
+     Copyright 2021 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<openerp>
+<data>
+
+  <record id="account_voucher_giro_receipt_action" model="ir.actions.act_window">
+      <field name="name">Giro Receipt Configuration</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">account.voucher_type</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">form</field>
+      <field name="target">inline</field>
+      <field name="res_id" ref="account_voucher_giro.voucher_type_giro_receipt" />
+  </record>
+
+  <menuitem
+            id="account_voucher_giro_receipt_menu"
+            name="Configuration"
+            parent="account_voucher_giro.menu_configuration_giro_receipt"
+            action="account_voucher_giro_receipt_action"
+            sequence="1"
+        />
+
+  <record
+            id="account_voucher_giro_receipt_journal_action"
+            model="ir.actions.act_window"
+        >
+      <field name="name">Giro Receipt Allowed Journal</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">account.voucher_type_allowed_journal</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field
+                name="domain"
+                eval="[('voucher_type_id','=',ref('account_voucher_giro.voucher_type_giro_receipt'))]"
+            />
+      <field
+                name="context"
+                eval="{'default_voucher_type_id': ref('account_voucher_giro.voucher_type_giro_receipt')}"
+            />
+  </record>
+
+  <menuitem
+            id="account_voucher_giro_receipt_journal_menu"
+            name="Allowed Journals"
+            parent="account_voucher_giro.menu_configuration_giro_receipt"
+            action="account_voucher_giro.account_voucher_giro_receipt_journal_action"
+            sequence="2"
+        />
+
+  <record id="account_voucher_giro_payment_action" model="ir.actions.act_window">
+      <field name="name">Giro Payment Configuration</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">account.voucher_type</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">form</field>
+      <field name="target">inline</field>
+      <field name="res_id" ref="account_voucher_giro.voucher_type_giro_payment" />
+  </record>
+
+  <menuitem
+            id="account_voucher_giro_payment_menu"
+            name="Configuration"
+            parent="account_voucher_giro.menu_configuration_giro_payment"
+            action="account_voucher_giro_payment_action"
+            sequence="1"
+        />
+
+  <record
+            id="account_voucher_giro_payment_journal_action"
+            model="ir.actions.act_window"
+        >
+      <field name="name">Giro Payment Allowed Journal</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">account.voucher_type_allowed_journal</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field
+                name="domain"
+                eval="[('voucher_type_id','=',ref('account_voucher_giro.voucher_type_giro_payment'))]"
+            />
+      <field
+                name="context"
+                eval="{'default_voucher_type_id': ref('account_voucher_giro.voucher_type_giro_payment')}"
+            />
+  </record>
+
+  <menuitem
+            id="account_voucher_giro_payment_journal_menu"
+            name="Allowed Journals"
+            parent="account_voucher_giro.menu_configuration_giro_payment"
+            action="account_voucher_giro.account_voucher_giro_payment_journal_action"
+            sequence="2"
+        />
+
+
+
+</data>
+</openerp>
