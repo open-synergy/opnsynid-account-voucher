@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2020 OpenSynergy Indonesia
+     Copyright 2020 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<openerp>
+    <data>
+
+      <menuitem
+            id="menu_account_configuration_voucher"
+            name="Voucher"
+            sequence="11"
+            parent="account.menu_finance_configuration"
+        />
+
+      <menuitem
+            id="menu_account_configuration_voucher_type"
+            name="Voucher Type"
+            parent="menu_account_configuration_voucher"
+            sequence="1"
+        />
+
+    </data>
+</openerp>

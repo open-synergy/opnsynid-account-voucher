@@ -1,9 +1,8 @@
-# -*- coding: utf-8 -*-
 # Copyright 2016 OpenSynergy Indonesia
 # Copyright 2020 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api, _
+from openerp import _, api, fields, models
 from openerp.exceptions import Warning as UserError
 
 
@@ -44,6 +43,10 @@ class VoucherType(models.Model):
             ("cr", "Credit"),
         ],
     )
+
+    @api.multi
+    def action_execute(self):
+        return True
 
 
 class VoucherTypeAllowedJournal(models.Model):
@@ -114,10 +117,11 @@ class VoucherTypeAllowedJournal(models.Model):
     def _check_journal_id(self):
         if self.journal_id and self.voucher_type_id:
             strWarning = _("No duplicate journal")
-            check_journal =\
-                self.search([
+            check_journal = self.search(
+                [
                     ("voucher_type_id", "=", self.voucher_type_id.id),
-                    ("journal_id", "=", self.journal_id.id)
-                ])
+                    ("journal_id", "=", self.journal_id.id),
+                ]
+            )
             if len(check_journal) > 1:
                 raise UserError(strWarning)
