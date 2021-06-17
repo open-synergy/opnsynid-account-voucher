@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2021 OpenSynergy Indonesia
+     Copyright 2021 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<openerp>
+<data>
+
+  <record id="account_voucher_invoice_settlement_action" model="ir.actions.act_window">
+      <field name="name">Invoice Settlement</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">account.voucher_type</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">form</field>
+      <field name="res_id" ref="voucher_type_invoice_settlement" />
+  </record>
+
+  <menuitem
+            id="account_voucher_invoice_settlement_menu"
+            name="Invoice Settlement"
+            parent="account_voucher_common.menu_account_configuration_voucher_type"
+            groups="account.group_account_user"
+            action="account_voucher_invoice_settlement_action"
+            sequence="13"
+        />
+
+</data>
+</openerp>
