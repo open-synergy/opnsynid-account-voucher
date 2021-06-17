@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2020 OpenSynergy Indonesia
+     Copyright 2020 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<openerp>
+    <data>
+
+      <menuitem
+            id="menu_configuration_bank_receipt"
+            name="Bank Receipt"
+            sequence="1"
+            parent="account_voucher_common.menu_account_configuration_voucher"
+        />
+
+      <menuitem
+            id="menu_configuration_bank_payment"
+            name="Bank Payment"
+            sequence="2"
+            parent="account_voucher_common.menu_account_configuration_voucher"
+        />
+
+      <menuitem
+            id="menu_configuration_cash_receipt"
+            name="Cash Receipt"
+            sequence="3"
+            parent="account_voucher_common.menu_account_configuration_voucher"
+        />
+
+      <menuitem
+            id="menu_configuration_cash_payment"
+            name="Cash Payment"
+            sequence="4"
+            parent="account_voucher_common.menu_account_configuration_voucher"
+        />
+
+    </data>
+</openerp>
