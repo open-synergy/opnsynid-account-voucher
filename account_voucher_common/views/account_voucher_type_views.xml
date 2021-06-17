@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2017 OpenSynergy Indonesia
      Copyright 2020 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <openerp>
 <data>
 
@@ -11,7 +10,7 @@
     <field name="model">account.voucher_type</field>
     <field name="arch" type="xml">
         <tree create="false" delete="false">
-            <field name="name"/>
+            <field name="name" />
         </tree>
     </field>
 </record>
@@ -21,64 +20,57 @@
     <field name="model">account.voucher_type</field>
     <field name="arch" type="xml">
         <form create="false" delete="false">
-            <label for="name"/>
-            <h1>
-                <field name="name"/>
-            </h1>
-            <notebook colspan="4">
-                <page name="page_config" string="Configuration">
-                    <group name="group_1" colspan="4" col="2">
-                        <field name="check_total"/>
-                        <field name="check_debit_credit"/>
-                        <field name="check_partner"/>
-                        <field name="header_allow_negative"/>
-                        <field name="detail_allow_negative"/>
-                        <field name="create_header_item"/>
-                        <field name="header_type"/>
-                    </group>
-                </page>
-                <page name="page_journal" string="Allowed Journal">
-                    <field name="allowed_journal_ids" colspan="4" nolabel="1">
-                        <tree>
-                            <field name="journal_id"/>
-                            <field name="sequence_id"/>
-                        </tree>
-                        <form>
-                            <group name="group_2" colspan="4" col="2">
-                                <field name="journal_id"/>
-                                <field name="sequence_id"/>
-                                <field name="allowed_confirm_group_ids" widget="many2many_tags"/>
-                                <field name="allowed_proforma_group_ids" widget="many2many_tags"/>
-                                <field name="allowed_post_group_ids" widget="many2many_tags"/>
-                                <field name="allowed_cancel_group_ids" widget="many2many_tags"/>
-                                <field name="allowed_restart_group_ids" widget="many2many_tags"/>
-                                <field name="allowed_restart_validation_group_ids" widget="many2many_tags"/>
-                            </group>
-                        </form>
-                    </field>
-                </page>
-            </notebook>
+            <header>
+                <button
+                            name="action_execute"
+                            type="object"
+                            string="Apply"
+                            class="oe_highlight"
+                            confirm="Apply configuration. Are you sure?"
+                        />
+            </header>
+            <group name="group_1">
+                <label for="id" string="Checks" />
+                <div>
+                    <div>
+                        <label for="check_total" />
+                        <field name="check_total" class="oe_inline" />
+                    </div>
+                    <div>
+                        <label for="check_debit_credit" />
+                        <field name="check_debit_credit" class="oe_inline" />
+                    </div>
+                    <div>
+                        <label for="check_partner" />
+                        <field name="check_partner" class="oe_inline" />
+                    </div>
+                </div>
+                <label for="id" string="Header" />
+                <div>
+                    <div>
+                        <label for="header_allow_negative" />
+                        <field name="header_allow_negative" class="oe_inline" />
+                    </div>
+                    <div>
+                        <label for="create_header_item" />
+                        <field name="create_header_item" class="oe_inline" />
+                    </div>
+                    <div>
+                        <label for="header_type" />
+                        <field name="header_type" class="oe_inline" />
+                    </div>
+                </div>
+                <label for="id" string="Detail" />
+                <div>
+                    <div>
+                        <label for="detail_allow_negative" />
+                        <field name="detail_allow_negative" class="oe_inline" />
+                    </div>
+                </div>
+            </group>
         </form>
     </field>
 </record>
-
-<record id="account_voucher_type_action" model="ir.actions.act_window">
-    <field name="name">Voucher Type</field>
-    <field name="type">ir.actions.act_window</field>
-    <field name="res_model">account.voucher_type</field>
-    <field name="view_type">form</field>
-    <field name="view_mode">tree,form</field>
-</record>
-
-<menuitem
-    id="account_voucher_type_menu"
-    name="Voucher Type"
-    parent="account.menu_finance_configuration"
-    groups="account.group_account_user"
-    action="account_voucher_type_action"
-    sequence="10"
-    />
-
 
 </data>
 </openerp>
