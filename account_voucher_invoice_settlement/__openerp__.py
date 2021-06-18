@@ -14,6 +14,7 @@
     ],
     "data": [
         "security/ir.model.access.csv",
+        "menu.xml",
         "data/account_voucher_type_data.xml",
         "data/ir_windows_action_data.xml",
         "data/ir_sequence_data.xml",
