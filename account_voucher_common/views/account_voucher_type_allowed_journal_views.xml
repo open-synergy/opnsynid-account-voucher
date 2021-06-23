@@ -43,6 +43,11 @@
                     <field name="allowed_cancel_group_ids" widget="many2many_tags" />
                     <field name="allowed_restart_group_ids" widget="many2many_tags" />
                 </group>
+                <notebook>
+                    <page name="page_python_expression" string="Domain Expression">
+                        <field name="python_code" nolabel="1" />
+                    </page>
+                </notebook>
             </sheet>
         </form>
     </field>

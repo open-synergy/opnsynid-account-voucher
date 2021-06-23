@@ -43,6 +43,12 @@ class VoucherType(models.Model):
             ("cr", "Credit"),
         ],
     )
+    python_code = fields.Text(
+        string="Domain Expression",
+        help="The result of executing the expresion must be a domain.",
+        default="# Available locals:\n#  - rec: current record\n"
+        "# - env: Environment",
+    )
 
     @api.multi
     def action_execute(self):
@@ -108,6 +114,12 @@ class VoucherTypeAllowedJournal(models.Model):
         relation="rel_vtype_journal_restart_group",
         column1="vtype_journal_id",
         column2="group_id",
+    )
+    python_code = fields.Text(
+        string="Domain Expression",
+        help="The result of executing the expresion must be a domain.",
+        default="# Available locals:\n#  - rec: current record\n"
+        "# - env: Environment",
     )
 
     @api.constrains(

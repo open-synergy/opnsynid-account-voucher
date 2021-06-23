@@ -68,6 +68,11 @@
                     </div>
                 </div>
             </group>
+            <notebook>
+                <page name="page_python_expression" string="Domain Expression">
+                    <field name="python_code" nolabel="1" />
+                </page>
+            </notebook>
         </form>
     </field>
 </record>

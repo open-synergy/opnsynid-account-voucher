@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2017-2019 OpenSynergy Indonesia
      Copyright 2020 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <openerp>
 <data>
 
@@ -11,38 +10,107 @@
     <field name="model">account.voucher_common</field>
     <field name="arch" type="xml">
         <search>
-            <field name="name"/>
-            <field name="partner_id"/>
-            <field name="date_voucher"/>
-            <field name="period_id"/>
-            <field name="company_id" groups="base.group_multi_company"/>
-            <field name="currency_id" groups="base.group_multi_currency"/>
-            <field name="type_id" invisible="1"/>
-            <field name="journal_id"/>
-            <field name="state"/>
-            <field name="id"/>
-            <filter name="needs_review" string="Needs my Review"
-                    domain="[('reviewer_ids','in',uid), ('state', 'not in', ['done', 'cancel'])]"/>
+            <field name="name" />
+            <field name="partner_id" />
+            <field name="date_voucher" />
+            <field name="period_id" />
+            <field name="company_id" groups="base.group_multi_company" />
+            <field name="currency_id" groups="base.group_multi_currency" />
+            <field name="type_id" invisible="1" />
+            <field name="journal_id" />
+            <field name="state" />
+            <field name="id" />
+            <filter
+                        name="needs_review"
+                        string="Needs my Review"
+                        domain="[('reviewer_ids','in',uid), ('state', 'not in', ['done', 'cancel'])]"
+                    />
             <group name="group_state" string="State">
-                <filter name="grp_draft" string="Draft" domain="[('state','=','draft')]"/>
-                <filter name="grp_confirm" string="Waiting for Approval" domain="[('state','=','confirm')]"/>
-                <filter name="grp_approved" string="Approved" domain="[('state','=','approve')]"/>
-                <filter name="grp_proforma" string="Pro-Forma" domain="[('state','=','proforma')]"/>
-                <filter name="grp_post" string="Posted" domain="[('state','=','post')]"/>
-                <filter name="grp_cancel" string="Cancelled" domain="[('state','=','cancel')]"/>
+                <filter
+                            name="grp_draft"
+                            string="Draft"
+                            domain="[('state','=','draft')]"
+                        />
+                <filter
+                            name="grp_confirm"
+                            string="Waiting for Approval"
+                            domain="[('state','=','confirm')]"
+                        />
+                <filter
+                            name="grp_approved"
+                            string="Approved"
+                            domain="[('state','=','approve')]"
+                        />
+                <filter
+                            name="grp_proforma"
+                            string="Pro-Forma"
+                            domain="[('state','=','proforma')]"
+                        />
+                <filter
+                            name="grp_post"
+                            string="Posted"
+                            domain="[('state','=','post')]"
+                        />
+                <filter
+                            name="grp_cancel"
+                            string="Cancelled"
+                            domain="[('state','=','cancel')]"
+                        />
             </group>
             <group name="group_main" string="Group By..">
-                <filter name="grp_partner" string="Partner" context="{'group_by':'partner_id'}"/>
-                <filter name="grp_period" string="Period" context="{'group_by':'period_id'}"/>
-                <filter name="grp_journal" string="Journal" context="{'group_by':'journal_id'}"/>
-                <filter name="grp_company" string="Company" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
-                <filter name="grp_currency" string="Currency" context="{'group_by':'currency_id'}" groups="base.group_multi_currency"/>
-                <filter name="grp_state" string="State" context="{'group_by':'state'}"/>
-                <separator/>
-                <filter name="grp_date_day" string="Voucher Date by Day" context="{'group_by':'date_voucher:day'}"/>
-                <filter name="grp_date_week" string="Voucher Date by Week" context="{'group_by':'date_voucher:week'}"/>
-                <filter name="grp_date_month" string="Voucher Date by Month" context="{'group_by':'date_voucher:month'}"/>
-                <filter name="grp_date_year" string="Voucher Date by Year" context="{'group_by':'date_voucher:year'}"/>
+                <filter
+                            name="grp_partner"
+                            string="Partner"
+                            context="{'group_by':'partner_id'}"
+                        />
+                <filter
+                            name="grp_period"
+                            string="Period"
+                            context="{'group_by':'period_id'}"
+                        />
+                <filter
+                            name="grp_journal"
+                            string="Journal"
+                            context="{'group_by':'journal_id'}"
+                        />
+                <filter
+                            name="grp_company"
+                            string="Company"
+                            context="{'group_by':'company_id'}"
+                            groups="base.group_multi_company"
+                        />
+                <filter
+                            name="grp_currency"
+                            string="Currency"
+                            context="{'group_by':'currency_id'}"
+                            groups="base.group_multi_currency"
+                        />
+                <filter
+                            name="grp_state"
+                            string="State"
+                            context="{'group_by':'state'}"
+                        />
+                <separator />
+                <filter
+                            name="grp_date_day"
+                            string="Voucher Date by Day"
+                            context="{'group_by':'date_voucher:day'}"
+                        />
+                <filter
+                            name="grp_date_week"
+                            string="Voucher Date by Week"
+                            context="{'group_by':'date_voucher:week'}"
+                        />
+                <filter
+                            name="grp_date_month"
+                            string="Voucher Date by Month"
+                            context="{'group_by':'date_voucher:month'}"
+                        />
+                <filter
+                            name="grp_date_year"
+                            string="Voucher Date by Year"
+                            context="{'group_by':'date_voucher:year'}"
+                        />
             </group>
         </search>
     </field>
@@ -53,17 +121,17 @@
     <field name="model">account.voucher_common</field>
     <field name="arch" type="xml">
         <tree>
-            <field name="display_name"/>
-            <field name="description"/>
-            <field name="partner_id"/>
-            <field name="date_voucher"/>
-            <field name="period_id"/>
-            <field name="company_id" groups="base.group_multi_company"/>
-            <field name="journal_id"/>
-            <field name="currency_id"/>
-            <field name="type_id" invisible="1"/>
-            <field name="id" invisible="1"/>
-            <field name="state"/>
+            <field name="display_name" />
+            <field name="description" />
+            <field name="partner_id" />
+            <field name="date_voucher" />
+            <field name="period_id" />
+            <field name="company_id" groups="base.group_multi_company" />
+            <field name="journal_id" />
+            <field name="currency_id" />
+            <field name="type_id" invisible="1" />
+            <field name="id" invisible="1" />
+            <field name="state" />
         </tree>
     </field>
 </record>
@@ -74,63 +142,121 @@
     <field name="arch" type="xml">
         <form>
             <header>
-                <button name="request_validation"
-                    string="Request Validation"
-                    attrs="{'invisible': ['|','|',('need_validation', '!=', True),('rejected','=',True),('state','not in',['confirm'])]}"
-                    type="object"/>
-                <button name="restart_validation"
-                    string="Restart Validation"
-                    attrs="{'invisible': ['|','|','|',('review_ids', '=', []),('rejected','=',False),('state','not in',['confirm']),('restart_validation_ok','=',False)]}"
-                    type="object"/>
-                <button name="workflow_action_confirm" type="object" string="Confirm" class="oe_highlight" attrs="{'invisible':['|', ('state','!=','draft'),('confirm_ok','=',False)]}"/>
-                <button name="workflow_action_proforma" type="object" string="Pro-Forma" class="oe_highlight" attrs="{'invisible':['|', ('state','!=','approve'),('proforma_ok','=',False)]}"/>
-                <button name="%(wizard_post_voucher_action)d" type="action" string="Post" class="oe_highlight" attrs="{'invisible':['|', ('state','not in',['proforma','approve']),('post_ok','=',False)]}"/>
-                <button name="%(base_cancel_reason.base_cancel_reason_wizard_action)d" type="action" string="Cancel" attrs="{'invisible':['|',('state','=','cancel'),('cancel_ok','=',False)]}" confirm="Cancel Voucher. Are you sure?"/>
-                <button name="workflow_action_restart" type="object" string="Reset to Draft" attrs="{'invisible':['|', ('state','!=','cancel'),('restart_ok','=',False)]}"/>
-                <button name="%(base_print_policy.base_print_document_action)d" string="Print" type="action" class="oe_highlight" icon="gtk-print"/>
-                <field name="state" widget="statusbar" statusbar_visible="draft,confirm,approve,proforma,post"/>
-                <field name="need_validation" invisible="1"/>
-                <field name="validated" invisible="1"/>
-                <field name="rejected" invisible="1"/>
-                <div class="alert alert-warning"
-                     attrs="{'invisible': ['|', '|', '|',
+                <button
+                            name="request_validation"
+                            string="Request Validation"
+                            attrs="{'invisible': ['|','|',('need_validation', '!=', True),('rejected','=',True),('state','not in',['confirm'])]}"
+                            type="object"
+                        />
+                <button
+                            name="restart_validation"
+                            string="Restart Validation"
+                            attrs="{'invisible': ['|','|','|',('review_ids', '=', []),('rejected','=',False),('state','not in',['confirm']),('restart_validation_ok','=',False)]}"
+                            type="object"
+                        />
+                <button
+                            name="workflow_action_confirm"
+                            type="object"
+                            string="Confirm"
+                            class="oe_highlight"
+                            attrs="{'invisible':['|', ('state','!=','draft'),('confirm_ok','=',False)]}"
+                        />
+                <button
+                            name="workflow_action_proforma"
+                            type="object"
+                            string="Pro-Forma"
+                            class="oe_highlight"
+                            attrs="{'invisible':['|', ('state','!=','approve'),('proforma_ok','=',False)]}"
+                        />
+                <button
+                            name="%(wizard_post_voucher_action)d"
+                            type="action"
+                            string="Post"
+                            class="oe_highlight"
+                            attrs="{'invisible':['|', ('state','not in',['proforma','approve']),('post_ok','=',False)]}"
+                        />
+                <button
+                            name="%(base_cancel_reason.base_cancel_reason_wizard_action)d"
+                            type="action"
+                            string="Cancel"
+                            attrs="{'invisible':['|',('state','=','cancel'),('cancel_ok','=',False)]}"
+                            confirm="Cancel Voucher. Are you sure?"
+                        />
+                <button
+                            name="workflow_action_restart"
+                            type="object"
+                            string="Reset to Draft"
+                            attrs="{'invisible':['|', ('state','!=','cancel'),('restart_ok','=',False)]}"
+                        />
+                <button
+                            name="%(base_print_policy.base_print_document_action)d"
+                            string="Print"
+                            type="action"
+                            class="oe_highlight"
+                            icon="gtk-print"
+                        />
+                <field
+                            name="state"
+                            widget="statusbar"
+                            statusbar_visible="draft,confirm,approve,proforma,post"
+                        />
+                <field name="need_validation" invisible="1" />
+                <field name="validated" invisible="1" />
+                <field name="rejected" invisible="1" />
+                <div
+                            class="alert alert-warning"
+                            attrs="{'invisible': ['|', '|', '|',
                      ('validated', '=', True), ('state', 'not in', ['confirm']),
                      ('rejected', '=', True), ('review_ids', '=', [])]}"
-                     style="margin-bottom:0px;">
-                    <p><i class="fa fa-info-circle"/>This data needs to be validated.
-                        <button name="validate_tier"
-                            string="Validate"
-                            attrs="{'invisible': [('review_ids', '=', [])]}"
-                            type="object"
-                            class="oe_inline oe_button btn-success"
-                            icon="terp-check"/>
-                        <button name="reject_tier"
-                            string="Reject"
-                            type="object"
-                            class="btn-icon btn-danger"
-                            icon="terp-gtk-stop"/>
+                            style="margin-bottom:0px;"
+                        >
+                    <p><i class="fa fa-info-circle" />This data needs to be validated.
+                        <button
+                                    name="validate_tier"
+                                    string="Validate"
+                                    attrs="{'invisible': [('review_ids', '=', [])]}"
+                                    type="object"
+                                    class="oe_inline oe_button btn-success"
+                                    icon="terp-check"
+                                />
+                        <button
+                                    name="reject_tier"
+                                    string="Reject"
+                                    type="object"
+                                    class="btn-icon btn-danger"
+                                    icon="terp-gtk-stop"
+                                />
                     </p>
                 </div>
-                <div class="alert alert-success"
-                     attrs="{'invisible': ['|', '|', ('validated', '!=', True), ('state', 'not in', ['confirm']), ('review_ids', '=', [])]}"
-                     style="margin-bottom:0px;">
-                    <p><i class="fa fa-thumbs-up"/> Operation has been <b>validated</b>!</p>
+                <div
+                            class="alert alert-success"
+                            attrs="{'invisible': ['|', '|', ('validated', '!=', True), ('state', 'not in', ['confirm']), ('review_ids', '=', [])]}"
+                            style="margin-bottom:0px;"
+                        >
+                    <p><i class="fa fa-thumbs-up" /> Operation has been <b
+                                >validated</b>!</p>
                 </div>
-                <div class="alert alert-danger"
-                     attrs="{'invisible': ['|', '|', ('rejected', '!=', True), ('state', 'not in', ['confirm']), ('review_ids', '=', [])]}"
-                     style="margin-bottom:0px;">
-                    <p><i class="fa fa-thumbs-down"/> Operation has been <b>rejected</b>.</p>
+                <div
+                            class="alert alert-danger"
+                            attrs="{'invisible': ['|', '|', ('rejected', '!=', True), ('state', 'not in', ['confirm']), ('review_ids', '=', [])]}"
+                            style="margin-bottom:0px;"
+                        >
+                    <p><i class="fa fa-thumbs-down" /> Operation has been <b
+                                >rejected</b>.</p>
                 </div>
             </header>
             <sheet>
-                <div class="oe_right oe_button_box" style="width: 300px;" name="buttons">
+                <div
+                            class="oe_right oe_button_box"
+                            style="width: 300px;"
+                            name="buttons"
+                        >
                 </div>
                 <div class="oe_left" style="width: 500px;">
                     <div class="oe_title" style="width: 500px;">
                         <label for="display_name" />
                         <h1>
-                            <field name="name" class="oe_edit_only" />
-                            <field name="display_name" class="oe_read_only" />
+                            <field name="display_name" />
                         </h1>
                         <h2 attrs="{'invisible': [('state', '!=', 'cancel')]}">
                             <label
@@ -143,86 +269,101 @@
                 </div>
                 <group name="group_1" colspan="4" col="2">
                     <group name="group_1_1" colspan="1" col="2">
-                        <field name="company_id" groups="base.group_multi_company"/>
-                        <field name="date_voucher"/>
-                        <field name="period_id"/>
-                        <field name="type_id" invisible="1"/>
+                        <field name="company_id" groups="base.group_multi_company" />
+                        <field name="date_voucher" />
+                        <field name="period_id" />
+                        <field name="type_id" invisible="1" />
                     </group>
                     <group name="group_1_2" colspan="1" col="2">
-                        <field name="journal_id" domain="[('id', 'in', allowed_journal_ids[0][2])]"/>
-                        <field name="allowed_journal_ids" widget="many2many_tags" invisible="1"/>
-                        <field name="account_id" invisible="1"/>
-                        <field name="currency_id" invisible="1"/>
-                        <field name="company_currency_id" invisible="1"/>
+                        <field
+                                    name="journal_id"
+                                    domain="[('id', 'in', allowed_journal_ids[0][2])]"
+                                />
+                        <field
+                                    name="allowed_journal_ids"
+                                    widget="many2many_tags"
+                                    invisible="1"
+                                />
+                        <field name="account_id" invisible="1" />
+                        <field name="currency_id" invisible="1" />
+                        <field name="company_currency_id" invisible="1" />
                     </group>
                 </group>
-                <label for="description"/>
-                <field name="description"/>
+                <label for="description" />
+                <field name="description" />
                 <notebook colspan="4">
                     <page name="page_detail" string="Voucher Detail">
                     </page>
                     <page name="page_note" string="Notes">
-                        <field name="note"/>
+                        <field name="note" />
                     </page>
                     <page name="page_accounting" string="Accounting Information">
                         <group name="accounting_1" colspan="4" col="2">
-                            <field name="move_id"/>
+                            <field name="move_id" />
                         </group>
                         <group name="accounting_2" colspan="4" col="2">
-                            <field name="move_line_ids" nolabel="1"/>
+                            <field name="move_line_ids" nolabel="1" />
                         </group>
                     </page>
                     <page name="page_log" string="Log" groups="base.group_system">
                         <group name="group_log_1" colspan="4" col="3">
                             <!-- <field name="create_date"/> -->
                             <!-- <field name="create_uid" nolabel="1"/> -->
-                            <field name="confirmed_date" string="Confirmation"/>
-                            <field name="confirmed_user_id" nolabel="1"/>
-                            <field name="approved_date" string="Approval"/>
-                            <field name="approved_user_id" nolabel="1"/>
-                            <field name="proforma_date" string="Proforma"/>
-                            <field name="proforma_user_id" nolabel="1"/>
-                            <field name="posted_date" string="Post"/>
-                            <field name="posted_user_id" nolabel="1"/>
-                            <field name="cancelled_date" string="Cancellation"/>
-                            <field name="cancelled_user_id" nolabel="1"/>
+                            <field name="confirmed_date" string="Confirmation" />
+                            <field name="confirmed_user_id" nolabel="1" />
+                            <field name="approved_date" string="Approval" />
+                            <field name="approved_user_id" nolabel="1" />
+                            <field name="proforma_date" string="Proforma" />
+                            <field name="proforma_user_id" nolabel="1" />
+                            <field name="posted_date" string="Post" />
+                            <field name="posted_user_id" nolabel="1" />
+                            <field name="cancelled_date" string="Cancellation" />
+                            <field name="cancelled_user_id" nolabel="1" />
                         </group>
                     </page>
                     <page name="page_policy" string="Policy" groups="base.group_system">
                         <group name="group_policy_1" colspan="4" col="2">
-                            <field name="confirm_ok"/>
-                            <field name="proforma_ok"/>
-                            <field name="post_ok"/>
-                            <field name="cancel_ok"/>
-                            <field name="restart_ok"/>
-                            <field name="restart_validation_ok"/>
+                            <field name="confirm_ok" />
+                            <field name="proforma_ok" />
+                            <field name="post_ok" />
+                            <field name="cancel_ok" />
+                            <field name="restart_ok" />
+                            <field name="restart_validation_ok" />
                         </group>
                     </page>
                     <page string="Reviews" name="tier_validation">
                         <group>
-                            <field name="definition_id"/>
-                            <field name="reviewer_partner_ids" widget="many2many_tags"/>
-                            <field name="review_ids" readonly="1"/>
+                            <field name="definition_id" />
+                            <field
+                                        name="reviewer_partner_ids"
+                                        widget="many2many_tags"
+                                    />
+                            <field name="review_ids" readonly="1" />
                         </group>
                     </page>
 
                 </notebook>
                 <group name="group_2" colspan="4" col="2">
                     <group name="group_2_1" colspan="1" col="2">
-                        <field name="exchange_rate"/>
+                        <field name="exchange_rate" />
                     </group>
                     <group name="group_2_2" colspan="1" col="2">
-                        <field name="amount_diff"
-                            widget="monetary"
-                            options="{'currency_field': 'currency_id'}"
-                            />
-                        <field name="writeoff_account_id"/>
+                        <field
+                                    name="amount_diff"
+                                    widget="monetary"
+                                    options="{'currency_field': 'currency_id'}"
+                                />
+                        <field name="writeoff_account_id" />
                     </group>
                 </group>
             </sheet>
             <div class="oe_chatter">
-                <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
-                <field name="message_ids" widget="mail_thread"/>
+                <field
+                            name="message_follower_ids"
+                            widget="mail_followers"
+                            groups="base.group_user"
+                        />
+                <field name="message_ids" widget="mail_thread" />
             </div>
         </form>
     </field>
