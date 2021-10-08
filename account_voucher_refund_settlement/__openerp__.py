@@ -25,4 +25,12 @@
         "views/account_sale_refund_settlement_views.xml",
         "views/account_purchase_refund_settlement_views.xml",
     ],
+    "demo": [
+        "demo/account_journal_demo.xml",
+        "demo/account_voucher_type_allowed_journal_demo.xml",
+        "demo/tier_definition_demo.xml",
+    ],
+    "images": [
+        "static/description/banner.png",
+    ],
 }
