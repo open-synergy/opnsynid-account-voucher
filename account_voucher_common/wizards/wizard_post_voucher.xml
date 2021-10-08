@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2016 OpenSynergy Indonesia
      Copyright 2020 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
-
 <openerp>
 <data>
 
@@ -12,16 +11,17 @@
     <field name="arch" type="xml">
         <form>
             <group name="group_1" colspan="4" col="2">
-                <field name="date_post"/>
+                <field name="date_post" />
             </group>
             <footer>
-                <button name="action_post_voucher"
-                        type="object"
-                        string="Post"
-                        class="oe_highlight"/>
+                <button
+                            name="action_post_voucher"
+                            type="object"
+                            string="Post"
+                            class="oe_highlight"
+                        />
                 or
-                <button special="cancel"
-                        string="Cancel"/>
+                <button special="cancel" string="Cancel" />
             </footer>
         </form>
     </field>

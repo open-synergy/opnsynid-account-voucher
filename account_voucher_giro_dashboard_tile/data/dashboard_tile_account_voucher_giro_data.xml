@@ -1,12 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2020 OpenSynergy Indonesia
      Copyright 2020 PT Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <openerp>
 <data>
     <!--    # Giro Receipt -->
-    <record id="dashboard_tile_all_account_voucher_giro_receipt_draft" model="tile.tile">
+    <record
+            id="dashboard_tile_all_account_voucher_giro_receipt_draft"
+            model="tile.tile"
+        >
         <field name="name">All Giro Receipt: Draft</field>
         <field name="sequence">5</field>
         <field name="domain">
@@ -15,11 +17,17 @@
         ]
         </field>
         <field name="model_id" ref="account_voucher_giro.model_account_giro_receipt" />
-        <field name="action_id" ref="account_voucher_giro.account_giro_receipt_action" />
+        <field
+                name="action_id"
+                ref="account_voucher_giro.account_giro_receipt_action"
+            />
         <field name="primary_function">count</field>
         <field name="background_color">#776D8A</field>
     </record>
-    <record id="dashboard_tile_all_account_voucher_giro_receipt_waiting_for_approval" model="tile.tile">
+    <record
+            id="dashboard_tile_all_account_voucher_giro_receipt_waiting_for_approval"
+            model="tile.tile"
+        >
         <field name="name">All Giro Receipt: Waiting For Approval</field>
         <field name="sequence">5</field>
         <field name="domain">
@@ -28,11 +36,17 @@
         ]
         </field>
         <field name="model_id" ref="account_voucher_giro.model_account_giro_receipt" />
-        <field name="action_id" ref="account_voucher_giro.account_giro_receipt_action" />
+        <field
+                name="action_id"
+                ref="account_voucher_giro.account_giro_receipt_action"
+            />
         <field name="primary_function">count</field>
         <field name="background_color">#776D8A</field>
     </record>
-    <record id="dashboard_tile_all_account_voucher_giro_receipt_ready_to_process" model="tile.tile">
+    <record
+            id="dashboard_tile_all_account_voucher_giro_receipt_ready_to_process"
+            model="tile.tile"
+        >
         <field name="name">All Giro Receipt: Ready To Process</field>
         <field name="sequence">5</field>
         <field name="domain">
@@ -41,12 +55,18 @@
         ]
         </field>
         <field name="model_id" ref="account_voucher_giro.model_account_giro_receipt" />
-        <field name="action_id" ref="account_voucher_giro.account_giro_receipt_action" />
+        <field
+                name="action_id"
+                ref="account_voucher_giro.account_giro_receipt_action"
+            />
         <field name="primary_function">count</field>
         <field name="background_color">#776D8A</field>
     </record>
     <!--    # Giro Payment -->
-    <record id="dashboard_tile_all_account_voucher_giro_payment_draft" model="tile.tile">
+    <record
+            id="dashboard_tile_all_account_voucher_giro_payment_draft"
+            model="tile.tile"
+        >
         <field name="name">All Giro Payment: Draft</field>
         <field name="sequence">6</field>
         <field name="domain">
@@ -55,11 +75,17 @@
         ]
         </field>
         <field name="model_id" ref="account_voucher_giro.model_account_giro_payment" />
-        <field name="action_id" ref="account_voucher_giro.account_giro_payment_action" />
+        <field
+                name="action_id"
+                ref="account_voucher_giro.account_giro_payment_action"
+            />
         <field name="primary_function">count</field>
         <field name="background_color">#9CADA4</field>
     </record>
-    <record id="dashboard_tile_all_account_voucher_giro_payment_waiting_for_approval" model="tile.tile">
+    <record
+            id="dashboard_tile_all_account_voucher_giro_payment_waiting_for_approval"
+            model="tile.tile"
+        >
         <field name="name">All Giro Payment: Waiting For Approval</field>
         <field name="sequence">6</field>
         <field name="domain">
@@ -68,11 +94,17 @@
         ]
         </field>
         <field name="model_id" ref="account_voucher_giro.model_account_giro_payment" />
-        <field name="action_id" ref="account_voucher_giro.account_giro_payment_action" />
+        <field
+                name="action_id"
+                ref="account_voucher_giro.account_giro_payment_action"
+            />
         <field name="primary_function">count</field>
         <field name="background_color">#9CADA4</field>
     </record>
-    <record id="dashboard_tile_all_account_voucher_giro_payment_ready_to_process" model="tile.tile">
+    <record
+            id="dashboard_tile_all_account_voucher_giro_payment_ready_to_process"
+            model="tile.tile"
+        >
         <field name="name">All Giro Payment: Ready To Process</field>
         <field name="sequence">6</field>
         <field name="domain">
@@ -81,7 +113,10 @@
         ]
         </field>
         <field name="model_id" ref="account_voucher_giro.model_account_giro_payment" />
-        <field name="action_id" ref="account_voucher_giro.account_giro_payment_action" />
+        <field
+                name="action_id"
+                ref="account_voucher_giro.account_giro_payment_action"
+            />
         <field name="primary_function">count</field>
         <field name="background_color">#9CADA4</field>
     </record>

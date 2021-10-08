@@ -1,26 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2017 OpenSynergy Indonesia
      Copyright 2020 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <openerp>
 <data>
 
 <record id="account_giro_voucher_view_tree" model="ir.ui.view">
     <field name="name">account.giro_voucher tree</field>
     <field name="model">account.giro_voucher</field>
-    <field name="inherit_id" ref="account_voucher_bank_cash.account_voucher_bank_cash_common_view_tree"/>
+    <field
+                name="inherit_id"
+                ref="account_voucher_bank_cash.account_voucher_bank_cash_common_view_tree"
+            />
     <field name="mode">primary</field>
-    <field name="priority" eval="70"/>
+    <field name="priority" eval="70" />
     <field name="arch" type="xml">
         <data>
             <xpath expr="//field[@name='partner_id']" position="after">
-                <field name="source_bank_id"/>
-                <field name="destination_bank_id"/>
+                <field name="source_bank_id" />
+                <field name="destination_bank_id" />
             </xpath>
             <xpath expr="//field[@name='date_voucher']" position="after">
-                <field name="date_issue"/>
-                <field name="date_due"/>
+                <field name="date_issue" />
+                <field name="date_due" />
             </xpath>
         </data>
 
@@ -30,18 +32,21 @@
 <record id="account_giro_voucher_view_form" model="ir.ui.view">
     <field name="name">account.giro_voucher form</field>
     <field name="model">account.giro_voucher</field>
-    <field name="inherit_id" ref="account_voucher_bank_cash.account_voucher_bank_cash_common_view_form"/>
+    <field
+                name="inherit_id"
+                ref="account_voucher_bank_cash.account_voucher_bank_cash_common_view_form"
+            />
     <field name="mode">primary</field>
-    <field name="priority" eval="70"/>
+    <field name="priority" eval="70" />
     <field name="arch" type="xml">
         <data>
             <xpath expr="//field[@name='partner_id']" position="after">
-                <field name="source_bank_id"/>
-                <field name="destination_bank_id"/>
+                <field name="source_bank_id" />
+                <field name="destination_bank_id" />
             </xpath>
             <xpath expr="//field[@name='date_voucher']" position="after">
-                <field name="date_issue"/>
-                <field name="date_due"/>
+                <field name="date_issue" />
+                <field name="date_due" />
             </xpath>
         </data>
     </field>

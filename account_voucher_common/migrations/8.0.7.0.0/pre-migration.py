@@ -14,4 +14,5 @@ def migrate(cr, version):
             cr,
             """
             DROP TABLE rel_vtype_journal_approve_group CASCADE
-            """)
+            """,
+        )

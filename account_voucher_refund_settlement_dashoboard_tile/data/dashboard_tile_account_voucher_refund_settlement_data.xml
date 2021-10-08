@@ -1,12 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2020 OpenSynergy Indonesia
      Copyright 2020 PT Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <openerp>
 <data>
     <!--  Sale Refund Settlement: -->
-    <record id="dashboard_tile_all_account_voucher_sale_refund_settlement_draft" model="tile.tile">
+    <record
+            id="dashboard_tile_all_account_voucher_sale_refund_settlement_draft"
+            model="tile.tile"
+        >
         <field name="name">All Sale Refund Settlement: Draft</field>
         <field name="sequence">16</field>
         <field name="domain">
@@ -14,12 +16,21 @@
             ('state', '=', 'draft'),
         ]
         </field>
-        <field name="model_id" ref="account_voucher_refund_settlement.model_account_sale_refund_settlement"/>
-        <field name="action_id" ref="account_voucher_refund_settlement.account_sale_refund_settlement_action"/>
+        <field
+                name="model_id"
+                ref="account_voucher_refund_settlement.model_account_sale_refund_settlement"
+            />
+        <field
+                name="action_id"
+                ref="account_voucher_refund_settlement.account_sale_refund_settlement_action"
+            />
         <field name="primary_function">count</field>
         <field name="background_color">#776D8A</field>
     </record>
-    <record id="dashboard_tile_all_account_voucher_sale_refund_settlement_waiting_for_approval" model="tile.tile">
+    <record
+            id="dashboard_tile_all_account_voucher_sale_refund_settlement_waiting_for_approval"
+            model="tile.tile"
+        >
         <field name="name">All Sale Refund Settlement: Waiting For Approval</field>
         <field name="sequence">16</field>
         <field name="domain">
@@ -27,12 +38,21 @@
         ('state', '=', 'confirm'),
         ]
         </field>
-        <field name="model_id" ref="account_voucher_refund_settlement.model_account_sale_refund_settlement"/>
-        <field name="action_id" ref="account_voucher_refund_settlement.account_sale_refund_settlement_action"/>
+        <field
+                name="model_id"
+                ref="account_voucher_refund_settlement.model_account_sale_refund_settlement"
+            />
+        <field
+                name="action_id"
+                ref="account_voucher_refund_settlement.account_sale_refund_settlement_action"
+            />
         <field name="primary_function">count</field>
         <field name="background_color">#776D8A</field>
     </record>
-    <record id="dashboard_tile_all_account_voucher_sale_refund_settlement_ready_to_process" model="tile.tile">
+    <record
+            id="dashboard_tile_all_account_voucher_sale_refund_settlement_ready_to_process"
+            model="tile.tile"
+        >
         <field name="name">All Sale Refund Settlement: Ready To Process</field>
         <field name="sequence">16</field>
         <field name="domain">
@@ -40,13 +60,22 @@
         ('state', '=', 'approve'),
         ]
         </field>
-        <field name="model_id" ref="account_voucher_refund_settlement.model_account_sale_refund_settlement"/>
-        <field name="action_id" ref="account_voucher_refund_settlement.account_sale_refund_settlement_action"/>
+        <field
+                name="model_id"
+                ref="account_voucher_refund_settlement.model_account_sale_refund_settlement"
+            />
+        <field
+                name="action_id"
+                ref="account_voucher_refund_settlement.account_sale_refund_settlement_action"
+            />
         <field name="primary_function">count</field>
         <field name="background_color">#776D8A</field>
     </record>
     <!--  Purchase refund Settlement: -->
-    <record id="dashboard_tile_all_account_voucher_purchase_refund_settlement_draft" model="tile.tile">
+    <record
+            id="dashboard_tile_all_account_voucher_purchase_refund_settlement_draft"
+            model="tile.tile"
+        >
         <field name="name">All Purchase Refund Settlement: Draft</field>
         <field name="sequence">17</field>
         <field name="domain">
@@ -54,12 +83,21 @@
             ('state', '=', 'draft'),
         ]
         </field>
-        <field name="model_id" ref="account_voucher_refund_settlement.model_account_purchase_refund_settlement"/>
-        <field name="action_id" ref="account_voucher_refund_settlement.account_purchase_refund_settlement_action"/>
+        <field
+                name="model_id"
+                ref="account_voucher_refund_settlement.model_account_purchase_refund_settlement"
+            />
+        <field
+                name="action_id"
+                ref="account_voucher_refund_settlement.account_purchase_refund_settlement_action"
+            />
         <field name="primary_function">count</field>
         <field name="background_color">#9CADA4</field>
     </record>
-    <record id="dashboard_tile_all_account_voucher_purchase_refund_settlement_waiting_for_approval" model="tile.tile">
+    <record
+            id="dashboard_tile_all_account_voucher_purchase_refund_settlement_waiting_for_approval"
+            model="tile.tile"
+        >
         <field name="name">All Purchase Refund Settlement: Waiting For Approval</field>
         <field name="sequence">17</field>
         <field name="domain">
@@ -67,12 +105,21 @@
         ('state', '=', 'confirm'),
         ]
         </field>
-        <field name="model_id" ref="account_voucher_refund_settlement.model_account_purchase_refund_settlement"/>
-        <field name="action_id" ref="account_voucher_refund_settlement.account_purchase_refund_settlement_action"/>
+        <field
+                name="model_id"
+                ref="account_voucher_refund_settlement.model_account_purchase_refund_settlement"
+            />
+        <field
+                name="action_id"
+                ref="account_voucher_refund_settlement.account_purchase_refund_settlement_action"
+            />
         <field name="primary_function">count</field>
         <field name="background_color">#9CADA4</field>
     </record>
-    <record id="dashboard_tile_all_account_voucher_purchase_refund_settlement_ready_to_process" model="tile.tile">
+    <record
+            id="dashboard_tile_all_account_voucher_purchase_refund_settlement_ready_to_process"
+            model="tile.tile"
+        >
         <field name="name">All Purchase Refund Settlement: Ready To Process</field>
         <field name="sequence">17</field>
         <field name="domain">
@@ -80,8 +127,14 @@
         ('state', '=', 'approve'),
         ]
         </field>
-        <field name="model_id" ref="account_voucher_refund_settlement.model_account_purchase_refund_settlement"/>
-        <field name="action_id" ref="account_voucher_refund_settlement.account_purchase_refund_settlement_action"/>
+        <field
+                name="model_id"
+                ref="account_voucher_refund_settlement.model_account_purchase_refund_settlement"
+            />
+        <field
+                name="action_id"
+                ref="account_voucher_refund_settlement.account_purchase_refund_settlement_action"
+            />
         <field name="primary_function">count</field>
         <field name="background_color">#9CADA4</field>
     </record>

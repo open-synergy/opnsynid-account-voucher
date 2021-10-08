@@ -7,15 +7,9 @@ from openerp import models
 
 class ChequePaymentLine(models.Model):
     _name = "account.cheque_payment_line"
-    _inherit = [
-        "account.cheque_payment_line",
-        "account.voucher_line_common"
-    ]
+    _inherit = ["account.cheque_payment_line", "account.voucher_line_common"]
 
 
 class ChequePaymentLineTax(models.Model):
     _name = "account.cheque_payment_line_tax"
-    _inherit = [
-        "account.cheque_payment_line_tax",
-        "account.voucher_line_tax_common"
-    ]
+    _inherit = ["account.cheque_payment_line_tax", "account.voucher_line_tax_common"]

@@ -1,18 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2019 OpenSynergy Indonesia
      Copyright 2020 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <openerp>
 <data>
 
 <!-- CHEQUE RECEIPT -->
 <record id="base_workflow_cheque_receipt" model="base.workflow_policy">
-    <field name="model_id" ref="account_voucher_cheque.model_account_cheque_receipt"/>
+    <field name="model_id" ref="account_voucher_cheque.model_account_cheque_receipt" />
 </record>
-<record id="base_workflow_line_cheque_receipt_confirm" model="base.workflow_policy_line">
-    <field name="workflow_id" ref="account_voucher_cheque.base_workflow_cheque_receipt"/>
-    <field name="field_id" search="[('model_id.model','=','account.cheque_receipt'),('name','=','confirm_ok')]"/>
+<record
+            id="base_workflow_line_cheque_receipt_confirm"
+            model="base.workflow_policy_line"
+        >
+    <field
+                name="workflow_id"
+                ref="account_voucher_cheque.base_workflow_cheque_receipt"
+            />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','account.cheque_receipt'),('name','=','confirm_ok')]"
+            />
     <field name="python_code">obj_voucher_type_allowed_journal =\
     env["account.voucher_type_allowed_journal"]
 criteria = [
@@ -27,9 +35,18 @@ else:
     result = False
     </field>
 </record>
-<record id="base_workflow_line_cheque_receipt_restart_validation" model="base.workflow_policy_line">
-    <field name="workflow_id" ref="account_voucher_cheque.base_workflow_cheque_receipt"/>
-    <field name="field_id" search="[('model_id.model','=','account.cheque_receipt'),('name','=','restart_validation_ok')]"/>
+<record
+            id="base_workflow_line_cheque_receipt_restart_validation"
+            model="base.workflow_policy_line"
+        >
+    <field
+                name="workflow_id"
+                ref="account_voucher_cheque.base_workflow_cheque_receipt"
+            />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','account.cheque_receipt'),('name','=','restart_validation_ok')]"
+            />
     <field name="python_code">obj_voucher_type_allowed_journal =\
     env["account.voucher_type_allowed_journal"]
 criteria = [
@@ -44,9 +61,18 @@ else:
     result = False
     </field>
 </record>
-<record id="base_workflow_line_cheque_receipt_proforma" model="base.workflow_policy_line">
-    <field name="workflow_id" ref="account_voucher_cheque.base_workflow_cheque_receipt"/>
-    <field name="field_id" search="[('model_id.model','=','account.cheque_receipt'),('name','=','proforma_ok')]"/>
+<record
+            id="base_workflow_line_cheque_receipt_proforma"
+            model="base.workflow_policy_line"
+        >
+    <field
+                name="workflow_id"
+                ref="account_voucher_cheque.base_workflow_cheque_receipt"
+            />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','account.cheque_receipt'),('name','=','proforma_ok')]"
+            />
     <field name="python_code">obj_voucher_type_allowed_journal =\
     env["account.voucher_type_allowed_journal"]
 criteria = [
@@ -62,8 +88,14 @@ else:
     </field>
 </record>
 <record id="base_workflow_line_cheque_receipt_post" model="base.workflow_policy_line">
-    <field name="workflow_id" ref="account_voucher_cheque.base_workflow_cheque_receipt"/>
-    <field name="field_id" search="[('model_id.model','=','account.cheque_receipt'),('name','=','post_ok')]"/>
+    <field
+                name="workflow_id"
+                ref="account_voucher_cheque.base_workflow_cheque_receipt"
+            />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','account.cheque_receipt'),('name','=','post_ok')]"
+            />
     <field name="python_code">obj_voucher_type_allowed_journal =\
     env["account.voucher_type_allowed_journal"]
 criteria = [
@@ -79,8 +111,14 @@ else:
     </field>
 </record>
 <record id="base_workflow_line_cheque_receipt_cancel" model="base.workflow_policy_line">
-    <field name="workflow_id" ref="account_voucher_cheque.base_workflow_cheque_receipt"/>
-    <field name="field_id" search="[('model_id.model','=','account.cheque_receipt'),('name','=','cancel_ok')]"/>
+    <field
+                name="workflow_id"
+                ref="account_voucher_cheque.base_workflow_cheque_receipt"
+            />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','account.cheque_receipt'),('name','=','cancel_ok')]"
+            />
     <field name="python_code">obj_voucher_type_allowed_journal =\
     env["account.voucher_type_allowed_journal"]
 criteria = [
@@ -95,9 +133,18 @@ else:
     result = False
     </field>
 </record>
-<record id="base_workflow_line_cheque_receipt_restart" model="base.workflow_policy_line">
-    <field name="workflow_id" ref="account_voucher_cheque.base_workflow_cheque_receipt"/>
-    <field name="field_id" search="[('model_id.model','=','account.cheque_receipt'),('name','=','restart_ok')]"/>
+<record
+            id="base_workflow_line_cheque_receipt_restart"
+            model="base.workflow_policy_line"
+        >
+    <field
+                name="workflow_id"
+                ref="account_voucher_cheque.base_workflow_cheque_receipt"
+            />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','account.cheque_receipt'),('name','=','restart_ok')]"
+            />
     <field name="python_code">obj_voucher_type_allowed_journal =\
     env["account.voucher_type_allowed_journal"]
 criteria = [

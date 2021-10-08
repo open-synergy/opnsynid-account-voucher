@@ -3,7 +3,7 @@
 # Copyright 2020 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api
+from openerp import api, fields, models
 
 
 class VoucherLineTaxCommon(models.AbstractModel):
@@ -12,8 +12,10 @@ class VoucherLineTaxCommon(models.AbstractModel):
 
     @api.multi
     @api.depends(
-        "tax_id", "base_amount_computation_method",
-        "manual_base_amount", "tax_amount_computation_method",
+        "tax_id",
+        "base_amount_computation_method",
+        "manual_base_amount",
+        "tax_amount_computation_method",
         "manual_tax_amount",
     )
     def _compute_amount(self):
@@ -28,10 +30,8 @@ class VoucherLineTaxCommon(models.AbstractModel):
 
             if tax.tax_amount_computation_method == "system":
                 if tax.tax_id:
-                    tax_compute = tax.tax_id.compute_all(
-                        base_amount, 1)
-                    tax_amount = tax_compute["total_included"] - \
-                        tax_compute["total"]
+                    tax_compute = tax.tax_id.compute_all(base_amount, 1)
+                    tax_amount = tax_compute["total_included"] - tax_compute["total"]
             else:
                 tax_amount = tax.manual_tax_amount
 
@@ -115,24 +115,26 @@ class VoucherLineTaxCommon(models.AbstractModel):
         self.ensure_one()
         debit, credit = self._get_debit_credit()
         vline = self.voucher_line_id
-        partner_id = vline.partner_id and \
-            vline.partner_id.commercial_partner_id.id or \
-            False
+        partner_id = (
+            vline.partner_id and vline.partner_id.commercial_partner_id.id or False
+        )
         name = self.name + " for " + vline.name
         data = {
             "name": name,
             "debit": debit,
             "credit": credit,
             "account_id": self._get_account().id,
-            "analytic_account_id": vline.analytic_account_id and
-            vline.analytic_account_id.id or False,
+            "analytic_account_id": vline.analytic_account_id
+            and vline.analytic_account_id.id
+            or False,
             "amount_currency": self._get_amount_currency(),
             "currency_id": vline._get_line_currency(),
             "partner_id": partner_id,
             "move_id": vline.voucher_id.move_id.id,
             "tax_amount": self.tax_amount_in_company_currency,
-            "tax_code_id": self.tax_id.tax_code_id and
-            self.tax_id.tax_code_id.id or False,
+            "tax_code_id": self.tax_id.tax_code_id
+            and self.tax_id.tax_code_id.id
+            or False,
         }
         return data
 

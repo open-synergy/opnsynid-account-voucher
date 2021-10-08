@@ -3,7 +3,7 @@
 # Copyright 2020 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api
+from openerp import api, fields, models
 
 
 class ChequeVoucher(models.AbstractModel):
@@ -50,7 +50,9 @@ class ChequeVoucher(models.AbstractModel):
     )
 
     @api.onchange(
-        "company_id", "type_id", "partner_id",
+        "company_id",
+        "type_id",
+        "partner_id",
     )
     def onchange_source_bank_id(self):
         obj_partner = self.env["res.partner"]
@@ -67,8 +69,7 @@ class ChequeVoucher(models.AbstractModel):
                     ("commercial_partner_id", "=", commercial_partner.id),
                 ]
             elif self.type_id.header_type == "cr":
-                commercial_partner = self.company_id.partner_id.\
-                    commercial_partner_id
+                commercial_partner = self.company_id.partner_id.commercial_partner_id
                 criteria = [
                     ("commercial_partner_id", "=", commercial_partner.id),
                 ]

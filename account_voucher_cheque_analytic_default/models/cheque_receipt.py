@@ -7,7 +7,4 @@ from openerp import models
 
 class ChequeReceiptLine(models.Model):
     _name = "account.cheque_receipt_line"
-    _inherit = [
-        "account.cheque_receipt_line",
-        "account.voucher_line_common"
-    ]
+    _inherit = ["account.cheque_receipt_line", "account.voucher_line_common"]

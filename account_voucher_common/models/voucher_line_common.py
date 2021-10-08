@@ -3,9 +3,9 @@
 # Copyright 2020 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api
-from openerp.tools.translate import _
+from openerp import api, fields, models
 from openerp.exceptions import Warning as UserError
+from openerp.tools.translate import _
 
 
 class VoucherLineCommon(models.AbstractModel):
@@ -26,18 +26,16 @@ class VoucherLineCommon(models.AbstractModel):
             str_warning = _("Please select journal")
             if not line.currency_id or not line.company_currency_id:
                 raise UserError(str_warning)
-            amount_company_currency_move_date = \
-                amount_diff_in_company_currency = \
-                amount_company_currency_voucher_date = \
-                amount_before_tax = amount_tax = \
-                amount_after_tax = \
-                0.0
+            amount_company_currency_move_date = (
+                amount_diff_in_company_currency
+            ) = (
+                amount_company_currency_voucher_date
+            ) = amount_before_tax = amount_tax = amount_after_tax = 0.0
             voucher = line.voucher_id
             move_line = line.move_line_id
 
             voucher_rate = voucher.exchange_rate
-            move_date = move_line and move_line.date or \
-                voucher.date_voucher
+            move_date = move_line and move_line.date or voucher.date_voucher
 
             amount_before_tax = amount_after_tax = line.amount
 
@@ -48,22 +46,20 @@ class VoucherLineCommon(models.AbstractModel):
                 elif not tax.tax_id.price_include:
                     amount_after_tax += tax.tax_amount
 
-            amount_company_currency_voucher_date = amount_before_tax * \
-                voucher_rate
-            amount_company_currency_move_date = line.currency_id.\
-                with_context(date=move_date).compute(
-                    amount_before_tax, line.company_currency_id)
+            amount_company_currency_voucher_date = amount_before_tax * voucher_rate
+            amount_company_currency_move_date = line.currency_id.with_context(
+                date=move_date
+            ).compute(amount_before_tax, line.company_currency_id)
 
-            amount_diff_in_company_currency = \
-                amount_company_currency_voucher_date - \
-                amount_company_currency_move_date
+            amount_diff_in_company_currency = (
+                amount_company_currency_voucher_date - amount_company_currency_move_date
+            )
 
-            line.amount_diff_in_company_currency = \
-                amount_diff_in_company_currency
-            line.amount_company_currency_voucher_date = \
+            line.amount_diff_in_company_currency = amount_diff_in_company_currency
+            line.amount_company_currency_voucher_date = (
                 amount_company_currency_voucher_date
-            line.amount_company_currency_move_date = \
-                amount_company_currency_move_date
+            )
+            line.amount_company_currency_move_date = amount_company_currency_move_date
             line.amount_before_tax = amount_before_tax
             line.amount_tax = amount_tax
             line.amount_after_tax = amount_after_tax
@@ -193,12 +189,18 @@ class VoucherLineCommon(models.AbstractModel):
         company = self.env.user.company_id
         if amount < 0:
             credit = abs(amount)
-            account_id = company.income_currency_exchange_account_id and \
-                company.income_currency_exchange_account_id.id or False
+            account_id = (
+                company.income_currency_exchange_account_id
+                and company.income_currency_exchange_account_id.id
+                or False
+            )
         else:
             debit = abs(amount)
-            account_id = company.expense_currency_exchange_account_id and \
-                company.expense_currency_exchange_account_id.id or False
+            account_id = (
+                company.expense_currency_exchange_account_id
+                and company.expense_currency_exchange_account_id.id
+                or False
+            )
         return (debit, credit, account_id)
 
     @api.multi
@@ -224,14 +226,11 @@ class VoucherLineCommon(models.AbstractModel):
         self.ensure_one()
         obj_move_line = self.env["account.move.line"]
         pair = False
-        move = obj_move_line.create(
-            self._prepare_move_line())
+        move = obj_move_line.create(self._prepare_move_line())
         if self.amount_diff_in_company_currency > 0:
-            obj_move_line.create(
-                self._prepare_exchange_move_line())
+            obj_move_line.create(self._prepare_exchange_move_line())
         for tax in self.tax_ids:
-            obj_move_line.create(
-                tax._prepare_move_line())
+            obj_move_line.create(tax._prepare_move_line())
         if self.move_line_id:
             pair = move + self.move_line_id
         return pair
@@ -241,16 +240,17 @@ class VoucherLineCommon(models.AbstractModel):
         self.ensure_one()
         debit, credit = self._get_debit_credit()
         voucher = self.voucher_id
-        partner_id = self.partner_id and \
-            self.partner_id.commercial_partner_id.id or \
-            False
+        partner_id = (
+            self.partner_id and self.partner_id.commercial_partner_id.id or False
+        )
         data = {
             "name": self.name,
             "debit": debit,
             "credit": credit,
             "account_id": self.account_id.id,
-            "analytic_account_id": self.analytic_account_id and
-            self.analytic_account_id.id or False,
+            "analytic_account_id": self.analytic_account_id
+            and self.analytic_account_id.id
+            or False,
             "amount_currency": self._get_amount_currency(),
             "currency_id": self._get_line_currency(),
             "partner_id": partner_id,
@@ -264,16 +264,17 @@ class VoucherLineCommon(models.AbstractModel):
         debit, credit, account_id = self._get_currency_exchange_information()
         voucher = self.voucher_id
         name = _("Currency exchange for ") + self.name
-        partner_id = self.partner_id and \
-            self.partner_id.commercial_partner_id.id or \
-            False
+        partner_id = (
+            self.partner_id and self.partner_id.commercial_partner_id.id or False
+        )
         data = {
             "name": name,
             "debit": debit,
             "credit": credit,
             "account_id": account_id,
-            "analytic_account_id": self.analytic_account_id and
-            self.analytic_account_id.id or False,
+            "analytic_account_id": self.analytic_account_id
+            and self.analytic_account_id.id
+            or False,
             "amount_currency": 0.0,
             "currency_id": self._get_line_currency(),
             "partner_id": partner_id,
@@ -293,25 +294,24 @@ class VoucherLineCommon(models.AbstractModel):
             }
         }
         if self.type == "dr":
-            result["domain"]["move_line_id"].append(
-                ("credit", ">", 0))
+            result["domain"]["move_line_id"].append(("credit", ">", 0))
         else:
-            result["domain"]["move_line_id"].append(
-                ("debit", ">", 0))
+            result["domain"]["move_line_id"].append(("debit", ">", 0))
 
         if self.partner_id:
             if self.move_line_id:
                 result["domain"]["move_line_id"].append(
-                    ("partner_id", "=", self.partner_id.id))
+                    ("partner_id", "=", self.partner_id.id)
+                )
                 if self.move_line_id.partner_id != self.partner_id:
                     self.move_line_id = False
             else:
                 result["domain"]["move_line_id"].append(
-                    ("partner_id", "=", self.partner_id.id))
+                    ("partner_id", "=", self.partner_id.id)
+                )
         else:
             self.move_line_id = False
-            result["domain"]["move_line_id"].append(
-                ("partner_id", "=", False))
+            result["domain"]["move_line_id"].append(("partner_id", "=", False))
         return result
 
     @api.onchange("move_line_id")
@@ -329,8 +329,7 @@ class VoucherLineCommon(models.AbstractModel):
     @api.constrains("amount", "voucher_id")
     def _check_negative_value(self):
         str_error = _("Detail value has to be greater than 0")
-        if not self.voucher_id.type_id.detail_allow_negative and \
-                self.amount < 0:
+        if not self.voucher_id.type_id.detail_allow_negative and self.amount < 0:
             raise UserError(str_error)
 
     @api.multi
