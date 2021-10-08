@@ -1,18 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2019 OpenSynergy Indonesia
      Copyright 2020 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <openerp>
 <data>
 
 <!-- PURCHASE REFUND SETTLEMENT -->
 <record id="base_workflow_purchase_refund_settlement" model="base.workflow_policy">
-    <field name="model_id" ref="account_voucher_refund_settlement.model_account_purchase_refund_settlement"/>
+    <field
+                name="model_id"
+                ref="account_voucher_refund_settlement.model_account_purchase_refund_settlement"
+            />
 </record>
-<record id="base_workflow_line_purchase_refund_settlement_confirm" model="base.workflow_policy_line">
-    <field name="workflow_id" ref="account_voucher_refund_settlement.base_workflow_purchase_refund_settlement"/>
-    <field name="field_id" search="[('model_id.model','=','account.purchase_refund_settlement'),('name','=','confirm_ok')]"/>
+<record
+            id="base_workflow_line_purchase_refund_settlement_confirm"
+            model="base.workflow_policy_line"
+        >
+    <field
+                name="workflow_id"
+                ref="account_voucher_refund_settlement.base_workflow_purchase_refund_settlement"
+            />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','account.purchase_refund_settlement'),('name','=','confirm_ok')]"
+            />
     <field name="python_code">obj_voucher_type_allowed_journal =\
     env["account.voucher_type_allowed_journal"]
 criteria = [
@@ -27,9 +38,18 @@ else:
     result = False
     </field>
 </record>
-<record id="base_workflow_line_purchase_refund_settlement_restart_validation" model="base.workflow_policy_line">
-    <field name="workflow_id" ref="account_voucher_refund_settlement.base_workflow_purchase_refund_settlement"/>
-    <field name="field_id" search="[('model_id.model','=','account.purchase_refund_settlement'),('name','=','restart_validation_ok')]"/>
+<record
+            id="base_workflow_line_purchase_refund_settlement_restart_validation"
+            model="base.workflow_policy_line"
+        >
+    <field
+                name="workflow_id"
+                ref="account_voucher_refund_settlement.base_workflow_purchase_refund_settlement"
+            />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','account.purchase_refund_settlement'),('name','=','restart_validation_ok')]"
+            />
     <field name="python_code">obj_voucher_type_allowed_journal =\
     env["account.voucher_type_allowed_journal"]
 criteria = [
@@ -44,9 +64,18 @@ else:
     result = False
     </field>
 </record>
-<record id="base_workflow_line_purchase_refund_settlement_proforma" model="base.workflow_policy_line">
-    <field name="workflow_id" ref="account_voucher_refund_settlement.base_workflow_purchase_refund_settlement"/>
-    <field name="field_id" search="[('model_id.model','=','account.purchase_refund_settlement'),('name','=','proforma_ok')]"/>
+<record
+            id="base_workflow_line_purchase_refund_settlement_proforma"
+            model="base.workflow_policy_line"
+        >
+    <field
+                name="workflow_id"
+                ref="account_voucher_refund_settlement.base_workflow_purchase_refund_settlement"
+            />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','account.purchase_refund_settlement'),('name','=','proforma_ok')]"
+            />
     <field name="python_code">obj_voucher_type_allowed_journal =\
     env["account.voucher_type_allowed_journal"]
 criteria = [
@@ -61,9 +90,18 @@ else:
     result = False
     </field>
 </record>
-<record id="base_workflow_line_purchase_refund_settlement_post" model="base.workflow_policy_line">
-    <field name="workflow_id" ref="account_voucher_refund_settlement.base_workflow_purchase_refund_settlement"/>
-    <field name="field_id" search="[('model_id.model','=','account.purchase_refund_settlement'),('name','=','post_ok')]"/>
+<record
+            id="base_workflow_line_purchase_refund_settlement_post"
+            model="base.workflow_policy_line"
+        >
+    <field
+                name="workflow_id"
+                ref="account_voucher_refund_settlement.base_workflow_purchase_refund_settlement"
+            />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','account.purchase_refund_settlement'),('name','=','post_ok')]"
+            />
     <field name="python_code">obj_voucher_type_allowed_journal =\
     env["account.voucher_type_allowed_journal"]
 criteria = [
@@ -78,9 +116,18 @@ else:
     result = False
     </field>
 </record>
-<record id="base_workflow_line_purchase_refund_settlement_cancel" model="base.workflow_policy_line">
-    <field name="workflow_id" ref="account_voucher_refund_settlement.base_workflow_purchase_refund_settlement"/>
-    <field name="field_id" search="[('model_id.model','=','account.purchase_refund_settlement'),('name','=','cancel_ok')]"/>
+<record
+            id="base_workflow_line_purchase_refund_settlement_cancel"
+            model="base.workflow_policy_line"
+        >
+    <field
+                name="workflow_id"
+                ref="account_voucher_refund_settlement.base_workflow_purchase_refund_settlement"
+            />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','account.purchase_refund_settlement'),('name','=','cancel_ok')]"
+            />
     <field name="python_code">obj_voucher_type_allowed_journal =\
     env["account.voucher_type_allowed_journal"]
 criteria = [
@@ -95,9 +142,18 @@ else:
     result = False
     </field>
 </record>
-<record id="base_workflow_line_purchase_refund_settlement_restart" model="base.workflow_policy_line">
-    <field name="workflow_id" ref="account_voucher_refund_settlement.base_workflow_purchase_refund_settlement"/>
-    <field name="field_id" search="[('model_id.model','=','account.purchase_refund_settlement'),('name','=','restart_ok')]"/>
+<record
+            id="base_workflow_line_purchase_refund_settlement_restart"
+            model="base.workflow_policy_line"
+        >
+    <field
+                name="workflow_id"
+                ref="account_voucher_refund_settlement.base_workflow_purchase_refund_settlement"
+            />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','account.purchase_refund_settlement'),('name','=','restart_ok')]"
+            />
     <field name="python_code">obj_voucher_type_allowed_journal =\
     env["account.voucher_type_allowed_journal"]
 criteria = [
