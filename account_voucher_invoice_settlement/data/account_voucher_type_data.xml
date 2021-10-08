@@ -1,17 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2019 OpenSynergy Indonesia
      Copyright 2020 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <openerp>
 <data>
 
 <record id="voucher_type_invoice_settlement" model="account.voucher_type">
     <field name="name">Invoice Settlement</field>
     <field name="header_type">dr</field>
-    <field name="create_header_item" eval="0"/>
-    <field name="check_total" eval="0"/>
-    <field name="check_debit_credit" eval="1"/>
+    <field name="create_header_item" eval="0" />
+    <field name="check_total" eval="0" />
+    <field name="check_debit_credit" eval="1" />
 </record>
 
 </data>
