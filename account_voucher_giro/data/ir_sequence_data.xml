@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" ?>
 <!-- Copyright 2019 OpenSynergy Indonesia
      Copyright 2020 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.0) -->
@@ -8,13 +8,13 @@
     <field name="name">General Sequence: Giro Payment</field>
     <field name="padding">6</field>
     <field name="prefix">GIRO-PAY/%(y)s/</field>
-    <field eval="1" name="number_increment"/>
+    <field eval="1" name="number_increment" />
 </record>
 <record id="sequence_giro_receipt" model="ir.sequence">
     <field name="name">General Sequence: Giro Receipt</field>
     <field name="padding">6</field>
     <field name="prefix">GIRO-RCPT/%(y)s/</field>
-    <field eval="1" name="number_increment"/>
+    <field eval="1" name="number_increment" />
 </record>
 </data>
 </openerp>
