@@ -1,15 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2017 OpenSynergy Indonesia
      Copyright 2020 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <openerp>
 <data>
 
 <record id="account_cash_payment_view_tree" model="ir.ui.view">
     <field name="name">account.cash_payment tree</field>
     <field name="model">account.cash_payment</field>
-    <field name="inherit_id" ref="account_voucher_bank_cash.account_voucher_bank_cash_common_view_tree"/>
+    <field
+                name="inherit_id"
+                ref="account_voucher_bank_cash.account_voucher_bank_cash_common_view_tree"
+            />
     <field name="mode">primary</field>
     <field name="arch" type="xml">
         <data>
@@ -24,7 +26,10 @@
 <record id="account_cash_payment_view_form" model="ir.ui.view">
     <field name="name">account.cash_payment form</field>
     <field name="model">account.cash_payment</field>
-    <field name="inherit_id" ref="account_voucher_bank_cash.account_voucher_bank_cash_common_view_form"/>
+    <field
+                name="inherit_id"
+                ref="account_voucher_bank_cash.account_voucher_bank_cash_common_view_form"
+            />
     <field name="mode">primary</field>
     <field name="arch" type="xml">
         <data>
@@ -32,11 +37,19 @@
                 <attribute name="string"># Cash Payment</attribute>
             </xpath>
             <xpath expr="//field[@name='line_ids']" position="before">
-                <button name="%(account_voucher_common.wizard_import_move_line_action)d" type="action" string="Import Move Lines" states="draft" context="{'import_type':'cr'}"/>
+                <button
+                            name="%(account_voucher_common.wizard_import_move_line_action)d"
+                            type="action"
+                            string="Import Move Lines"
+                            states="draft"
+                            context="{'import_type':'cr'}"
+                        />
             </xpath>
             <xpath expr="//field[@name='line_ids']" position="attributes">
                 <attribute name="name">line_dr_ids</attribute>
-                <attribute name="context">{'default_type': 'dr', 'default_partner_id':partner_id, 'default_currency_id':currency_id, 'default_company_currency_id':company_currency_id}</attribute>
+                <attribute
+                            name="context"
+                        >{'default_type': 'dr', 'default_partner_id':partner_id, 'default_currency_id':currency_id, 'default_company_currency_id':company_currency_id}</attribute>
             </xpath>
         </data>
     </field>
@@ -48,18 +61,23 @@
     <field name="res_model">account.cash_payment</field>
     <field name="view_type">form</field>
     <field name="view_mode">tree,form</field>
-    <field name="search_view_id" ref="account_voucher_common.account_voucher_common_view_search"/>
-    <field name="context">{'default_filter_grp_draft':1,'default_filter_grp_confirm':1,'default_filter_grp_approve':1,'default_filter_grp_proforma':1}</field>
+    <field
+                name="search_view_id"
+                ref="account_voucher_common.account_voucher_common_view_search"
+            />
+    <field
+                name="context"
+            >{'default_filter_grp_draft':1,'default_filter_grp_confirm':1,'default_filter_grp_approve':1,'default_filter_grp_proforma':1}</field>
 </record>
 
 <menuitem
-    id="account_cash_payment_menu"
-    name="Cash Payment"
-    parent="account.menu_finance_bank_and_cash"
-    groups="account.group_account_user"
-    action="account_cash_payment_action"
-    sequence="11"
-    />
+            id="account_cash_payment_menu"
+            name="Cash Payment"
+            parent="account.menu_finance_bank_and_cash"
+            groups="account.group_account_user"
+            action="account_cash_payment_action"
+            sequence="11"
+        />
 
 
 </data>
