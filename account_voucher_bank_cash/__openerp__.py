@@ -32,6 +32,13 @@
         "views/account_cash_payment_views.xml",
         "views/account_cash_receipt_views.xml",
     ],
+    "demo": [
+        "demo/ir_sequence_demo.xml",
+        "demo/account_account_demo.xml",
+        "demo/account_journal_demo.xml",
+        "demo/account_voucher_type_allowed_journal_demo.xml",
+        "demo/tier_definition_demo.xml",
+    ],
     "images": [
         "static/description/banner.png",
     ],
