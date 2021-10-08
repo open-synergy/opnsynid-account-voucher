@@ -3,7 +3,7 @@
 # Copyright 2020 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api
+from openerp import api, fields, models
 
 
 class SaleRefundSettlement(models.Model):
@@ -14,8 +14,8 @@ class SaleRefundSettlement(models.Model):
     @api.model
     def _default_type_id(self):
         return self.env.ref(
-            "account_voucher_refund_settlement."
-            "voucher_type_sale_refund_settlement").id
+            "account_voucher_refund_settlement." "voucher_type_sale_refund_settlement"
+        ).id
 
     type_id = fields.Many2one(
         default=lambda self: self._default_type_id(),
