@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2020 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<openerp>
+<data>
+<!-- Sale Refund Settlement -->
+<record id="demo_allowed_journal1" model="account.voucher_type_allowed_journal">
+    <field
+                name="voucher_type_id"
+                ref="account_voucher_refund_settlement.voucher_type_sale_refund_settlement"
+            />
+    <field name="journal_id" ref="account_voucher_refund_settlement.demo_journal1" />
+</record>
+
+<!-- Purchase Refund Settlement -->
+<record id="demo_allowed_journal2" model="account.voucher_type_allowed_journal">
+    <field
+                name="voucher_type_id"
+                ref="account_voucher_refund_settlement.voucher_type_purchase_refund_settlement"
+            />
+    <field name="journal_id" ref="account_voucher_refund_settlement.demo_journal2" />
+</record>
+</data>
+</openerp>
