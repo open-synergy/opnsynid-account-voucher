@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2020 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<openerp>
+<data>
+<record id="demo_journal1" model="account.journal">
+    <field name="name">Cash USD - (test)</field>
+    <field name="code">TC02</field>
+    <field name="type">cash</field>
+    <field
+                name="default_debit_account_id"
+                ref="account_voucher_bank_cash.demo_account1"
+            />
+    <field
+                name="default_credit_account_id"
+                ref="account_voucher_bank_cash.demo_account1"
+            />
+    <field name="currency" ref="base.USD" />
+</record>
+</data>
+</openerp>
