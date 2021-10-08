@@ -9,7 +9,7 @@ class PurchaseRefundSettlementLine(models.Model):
     _name = "account.purchase_refund_settlement_line"
     _inherit = [
         "account.purchase_refund_settlement_line",
-        "account.voucher_line_common"
+        "account.voucher_line_common",
     ]
 
 
@@ -17,5 +17,5 @@ class PurchaseRefundSettlementLineTax(models.Model):
     _name = "account.purchase_refund_settlement_line_tax"
     _inherit = [
         "account.purchase_refund_settlement_line_tax",
-        "account.voucher_line_tax_common"
+        "account.voucher_line_tax_common",
     ]

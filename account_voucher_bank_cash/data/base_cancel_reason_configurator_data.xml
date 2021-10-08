@@ -1,24 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2019 OpenSynergy Indonesia
      Copyright 2020 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <openerp>
     <data>
         <record id="cancel_reason_bank_payment" model="base.cancel.reason_config">
-            <field name="name" ref="account_voucher_bank_cash.model_account_bank_payment"/>
+            <field
+                name="name"
+                ref="account_voucher_bank_cash.model_account_bank_payment"
+            />
             <field name="method_cancel_name">workflow_action_cancel</field>
         </record>
         <record id="cancel_reason_bank_receipt" model="base.cancel.reason_config">
-            <field name="name" ref="account_voucher_bank_cash.model_account_bank_receipt"/>
+            <field
+                name="name"
+                ref="account_voucher_bank_cash.model_account_bank_receipt"
+            />
             <field name="method_cancel_name">workflow_action_cancel</field>
         </record>
         <record id="cancel_reason_cash_payment" model="base.cancel.reason_config">
-            <field name="name" ref="account_voucher_bank_cash.model_account_cash_payment"/>
+            <field
+                name="name"
+                ref="account_voucher_bank_cash.model_account_cash_payment"
+            />
             <field name="method_cancel_name">workflow_action_cancel</field>
         </record>
         <record id="cancel_reason_cash_receipt" model="base.cancel.reason_config">
-            <field name="name" ref="account_voucher_bank_cash.model_account_cash_receipt"/>
+            <field
+                name="name"
+                ref="account_voucher_bank_cash.model_account_cash_receipt"
+            />
             <field name="method_cancel_name">workflow_action_cancel</field>
         </record>
     </data>

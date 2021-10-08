@@ -7,15 +7,9 @@ from openerp import models
 
 class BankReceiptLine(models.Model):
     _name = "account.bank_receipt_line"
-    _inherit = [
-        "account.bank_receipt_line",
-        "account.voucher_line_common"
-    ]
+    _inherit = ["account.bank_receipt_line", "account.voucher_line_common"]
 
 
 class BankReceiptLineTax(models.Model):
     _name = "account.bank_receipt_line_tax"
-    _inherit = [
-        "account.bank_receipt_line_tax",
-        "account.voucher_line_tax_common"
-    ]
+    _inherit = ["account.bank_receipt_line_tax", "account.voucher_line_tax_common"]

@@ -3,9 +3,9 @@
 # Copyright 2020 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api
-from openerp.tools.translate import _
+from openerp import api, fields, models
 from openerp.exceptions import Warning as UserError
+from openerp.tools.translate import _
 
 
 class GiroVoucher(models.AbstractModel):
@@ -63,15 +63,18 @@ class GiroVoucher(models.AbstractModel):
     )
 
     @api.constrains(
-        "state", "date_due", "date_voucher",
+        "state",
+        "date_due",
+        "date_voucher",
     )
     def _check_no_post_before_due(self):
-        if self.state == "post" and \
-                (self.date_voucher < self.date_due):
+        if self.state == "post" and (self.date_voucher < self.date_due):
             raise UserError(_("You cannot post giro before due date"))
 
     @api.onchange(
-        "company_id", "type_id", "partner_id",
+        "company_id",
+        "type_id",
+        "partner_id",
     )
     def onchange_source_bank_id(self):
         obj_partner = self.env["res.partner"]
@@ -88,8 +91,7 @@ class GiroVoucher(models.AbstractModel):
                     ("commercial_partner_id", "=", commercial_partner.id),
                 ]
             elif self.type_id.header_type == "cr":
-                commercial_partner = self.company_id.partner_id.\
-                    commercial_partner_id
+                commercial_partner = self.company_id.partner_id.commercial_partner_id
                 criteria = [
                     ("commercial_partner_id", "=", commercial_partner.id),
                 ]
@@ -101,7 +103,9 @@ class GiroVoucher(models.AbstractModel):
         return {"domain": domain}
 
     @api.onchange(
-        "company_id", "type_id", "partner_id",
+        "company_id",
+        "type_id",
+        "partner_id",
     )
     def onchange_destination_bank_id(self):
         obj_partner = self.env["res.partner"]
@@ -118,8 +122,7 @@ class GiroVoucher(models.AbstractModel):
                     ("commercial_partner_id", "=", commercial_partner.id),
                 ]
             elif self.type_id.header_type == "dr":
-                commercial_partner = self.company_id.partner_id.\
-                    commercial_partner_id
+                commercial_partner = self.company_id.partner_id.commercial_partner_id
                 criteria = [
                     ("commercial_partner_id", "=", commercial_partner.id),
                 ]

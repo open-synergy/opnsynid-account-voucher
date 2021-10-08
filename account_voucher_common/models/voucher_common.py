@@ -3,9 +3,9 @@
 # Copyright 2021 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api
-from openerp.tools.translate import _
+from openerp import api, fields, models
 from openerp.exceptions import Warning as UserError
+from openerp.tools.translate import _
 
 
 class VoucherCommon(models.AbstractModel):
@@ -46,8 +46,7 @@ class VoucherCommon(models.AbstractModel):
                 ("voucher_type_id", "=", voucher.type_id.id),
                 ("journal_id", "in", journal_ids),
             ]
-            journal_ids = obj_allowed.search(criteria).mapped(
-                lambda r: r.journal_id.id)
+            journal_ids = obj_allowed.search(criteria).mapped(lambda r: r.journal_id.id)
             voucher.allowed_journal_ids = journal_ids
 
     @api.multi
@@ -70,7 +69,8 @@ class VoucherCommon(models.AbstractModel):
         "amount",
         "currency_id",
         "exchange_rate",
-        "line_ids", "line_ids.amount",
+        "line_ids",
+        "line_ids.amount",
         "line_ids.move_line_id",
         "line_ids.amount_before_tax",
         "line_ids.amount_tax",
@@ -93,8 +93,7 @@ class VoucherCommon(models.AbstractModel):
 
             amount_diff = voucher.amount - line_total
             amount_diff_company_currency = amount_diff * voucher.exchange_rate
-            voucher.amount_diff_company_currency =\
-                amount_diff_company_currency
+            voucher.amount_diff_company_currency = amount_diff_company_currency
             voucher.amount_diff = amount_diff
             voucher.amount_debit = debit
             voucher.amount_credit = credit
@@ -517,8 +516,7 @@ class VoucherCommon(models.AbstractModel):
     @api.multi
     def _prepare_post_data(self):
         self.ensure_one()
-        move = self.env["account.move"].create(
-            self._prepare_account_move())
+        move = self.env["account.move"].create(self._prepare_account_move())
         data = {
             "state": "post",
             "move_id": move.id,
@@ -561,9 +559,12 @@ class VoucherCommon(models.AbstractModel):
         "state",
     )
     def _check_total(self):
-        if self.state == "confirm" and self.type_id.check_total and \
-                not self.currency_id.is_zero(self.amount_diff) and \
-                not self.writeoff_account_id:
+        if (
+            self.state == "confirm"
+            and self.type_id.check_total
+            and not self.currency_id.is_zero(self.amount_diff)
+            and not self.writeoff_account_id
+        ):
             raise UserError(_("There are still amount difference"))
 
     @api.constrains("partner_id", "line_ids")
@@ -578,8 +579,7 @@ class VoucherCommon(models.AbstractModel):
     @api.constrains("amount", "type_id")
     def _check_negative_value(self):
         str_error = _("Header value has to be greater than 0")
-        if not self.type_id.header_allow_negative and \
-                self.amount < 0:
+        if not self.type_id.header_allow_negative and self.amount < 0:
             raise UserError(str_error)
 
     @api.constrains(
@@ -597,8 +597,7 @@ class VoucherCommon(models.AbstractModel):
 
     @api.onchange("date_voucher")
     def onchange_date(self):
-        self.period_id = self.env[
-            "account.period"].find(self.date_voucher).id
+        self.period_id = self.env["account.period"].find(self.date_voucher).id
 
     @api.multi
     def _check_move(self):
@@ -613,8 +612,7 @@ class VoucherCommon(models.AbstractModel):
         self.ensure_one()
         for aml in self.move_line_ids:
             aml.refresh()
-            reconcile = aml.reconcile_id or aml.reconcile_partial_id or \
-                False
+            reconcile = aml.reconcile_id or aml.reconcile_partial_id or False
             if reconcile:
                 move_lines = reconcile.line_id
                 move_lines -= aml
@@ -623,8 +621,7 @@ class VoucherCommon(models.AbstractModel):
                 if len(move_lines) >= 2:
                     move_lines.reconcile_partial()
 
-    @api.onchange(
-        "journal_id")
+    @api.onchange("journal_id")
     def onchange_journal(self):
         self.account_id = False
         vtype = self.type_id
@@ -632,11 +629,17 @@ class VoucherCommon(models.AbstractModel):
             journal = self.journal_id
             if vtype.header_type:
                 if vtype.header_type == "dr":
-                    self.account_id = journal.default_debit_account_id and \
-                        journal.default_debit_account_id.id or False
+                    self.account_id = (
+                        journal.default_debit_account_id
+                        and journal.default_debit_account_id.id
+                        or False
+                    )
                 elif vtype.header_type == "cr":
-                    self.account_id = journal.default_credit_account_id and \
-                        journal.default_credit_account_id.id or False
+                    self.account_id = (
+                        journal.default_credit_account_id
+                        and journal.default_credit_account_id.id
+                        or False
+                    )
 
     @api.multi
     def _check_total_voucher(self):
@@ -646,19 +649,19 @@ class VoucherCommon(models.AbstractModel):
         obj_currency = self.env["res.currency"]
 
         if vtype.check_total and obj_currency.is_zero(
-                self.company_id.currency_id,
-                self.diff_amount_in_company_currency):
+            self.company_id.currency_id, self.diff_amount_in_company_currency
+        ):
             result = False
         return result
 
-    @api.constrains(
-        "amount_debit", "amount_credit",
-        "type_id", "state")
+    @api.constrains("amount_debit", "amount_credit", "type_id", "state")
     def _check_debit_credit(self):
         str_error = _("Unequal debit credit")
-        if self.type_id.check_debit_credit and \
-                (self.amount_debit != self.amount_credit) and \
-                self.state == "confirm":
+        if (
+            self.type_id.check_debit_credit
+            and (self.amount_debit != self.amount_credit)
+            and self.state == "confirm"
+        ):
             raise UserError(str_error)
 
     @api.multi
@@ -679,13 +682,11 @@ class VoucherCommon(models.AbstractModel):
         self.ensure_one()
         data = []
         vtype = self.type_id
-        writeoff_account =\
-            self.writeoff_account_id
+        writeoff_account = self.writeoff_account_id
 
         if vtype.create_header_item:
             data.append((0, 0, self._prepare_move_header()))
-        if writeoff_account and \
-                not self.currency_id.is_zero(self.amount_diff):
+        if writeoff_account and not self.currency_id.is_zero(self.amount_diff):
             data.append((0, 0, self._prepare_writeoff_header()))
         return data
 
@@ -704,9 +705,9 @@ class VoucherCommon(models.AbstractModel):
     def _prepare_move_header(self):
         self.ensure_one()
         debit, credit = self._get_header_debit_credit()
-        partner_id = self.partner_id and \
-            self.partner_id.commercial_partner_id.id or \
-            False
+        partner_id = (
+            self.partner_id and self.partner_id.commercial_partner_id.id or False
+        )
         data = {
             "name": self.description,
             "debit": debit,
@@ -722,9 +723,9 @@ class VoucherCommon(models.AbstractModel):
     def _prepare_writeoff_header(self):
         self.ensure_one()
         debit, credit = self._get_writeoff_debit_credit()
-        partner_id = self.partner_id and \
-            self.partner_id.commercial_partner_id.id or \
-            False
+        partner_id = (
+            self.partner_id and self.partner_id.commercial_partner_id.id or False
+        )
         data = {
             "name": "Write-Off " + self.description,
             "debit": debit,
@@ -784,23 +785,18 @@ class VoucherCommon(models.AbstractModel):
         self.ensure_one()
         debit = credit = 0.0
         vtype = self.type_id
-        amount_diff_company_currency =\
-            self.amount_diff_company_currency
+        amount_diff_company_currency = self.amount_diff_company_currency
 
         if amount_diff_company_currency < 0:
             if vtype.header_type == "dr":
-                debit = abs(
-                    amount_diff_company_currency)
+                debit = abs(amount_diff_company_currency)
             elif vtype.header_type == "cr":
-                credit = abs(
-                    amount_diff_company_currency)
+                credit = abs(amount_diff_company_currency)
         else:
             if vtype.header_type == "dr":
-                credit = abs(
-                    amount_diff_company_currency)
+                credit = abs(amount_diff_company_currency)
             elif vtype.header_type == "cr":
-                debit = abs(
-                    amount_diff_company_currency)
+                debit = abs(amount_diff_company_currency)
         return (debit, credit)
 
     @api.multi

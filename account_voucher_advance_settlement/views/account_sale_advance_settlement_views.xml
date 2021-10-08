@@ -1,15 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2017 OpenSynergy Indonesia
      Copyright 2020 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <openerp>
 <data>
 
 <record id="account_sale_advance_settlement_view_tree" model="ir.ui.view">
     <field name="name">account.sale_advance_settlement tree</field>
     <field name="model">account.sale_advance_settlement</field>
-    <field name="inherit_id" ref="account_voucher_settlement_common.account_voucher_common_settlement_view_tree"/>
+    <field
+                name="inherit_id"
+                ref="account_voucher_settlement_common.account_voucher_common_settlement_view_tree"
+            />
     <field name="mode">primary</field>
     <field name="arch" type="xml">
         <data>
@@ -24,7 +26,10 @@
 <record id="account_sale_advance_settlement_view_form" model="ir.ui.view">
     <field name="name">account.sale_advance_settlement form</field>
     <field name="model">account.sale_advance_settlement</field>
-    <field name="inherit_id" ref="account_voucher_settlement_common.account_voucher_common_settlement_view_form"/>
+    <field
+                name="inherit_id"
+                ref="account_voucher_settlement_common.account_voucher_common_settlement_view_form"
+            />
     <field name="mode">primary</field>
     <field name="arch" type="xml">
         <data>
@@ -41,18 +46,23 @@
     <field name="res_model">account.sale_advance_settlement</field>
     <field name="view_type">form</field>
     <field name="view_mode">tree,form</field>
-    <field name="search_view_id" ref="account_voucher_common.account_voucher_common_view_search"/>
-    <field name="context">{'default_filter_grp_draft':1,'default_filter_grp_confirm':1,'default_filter_grp_approve':1,'default_filter_grp_proforma':1}</field>
+    <field
+                name="search_view_id"
+                ref="account_voucher_common.account_voucher_common_view_search"
+            />
+    <field
+                name="context"
+            >{'default_filter_grp_draft':1,'default_filter_grp_confirm':1,'default_filter_grp_approve':1,'default_filter_grp_proforma':1}</field>
 </record>
 
 <menuitem
-    id="account_sale_advance_settlement_menu"
-    name="Sale Advance Settlement"
-    parent="account_voucher_settlement_common.account_settlement_voucher_menu"
-    groups="account.group_account_user"
-    action="account_sale_advance_settlement_action"
-    sequence="1"
-    />
+            id="account_sale_advance_settlement_menu"
+            name="Sale Advance Settlement"
+            parent="account_voucher_settlement_common.account_settlement_voucher_menu"
+            groups="account.group_account_user"
+            action="account_sale_advance_settlement_action"
+            sequence="1"
+        />
 
 
 </data>

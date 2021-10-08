@@ -3,7 +3,7 @@
 # Copyright 2020 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api
+from openerp import api, fields, models
 
 
 class PurchaseAdvanceSettlement(models.Model):
@@ -15,7 +15,8 @@ class PurchaseAdvanceSettlement(models.Model):
     def _default_type_id(self):
         return self.env.ref(
             "account_voucher_advance_settlement."
-            "voucher_type_purchase_advance_settlement").id
+            "voucher_type_purchase_advance_settlement"
+        ).id
 
     type_id = fields.Many2one(
         default=lambda self: self._default_type_id(),

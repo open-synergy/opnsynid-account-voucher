@@ -1,18 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2019 OpenSynergy Indonesia
      Copyright 2020 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <openerp>
 <data>
 
 <!-- GIRO PAYMENT -->
 <record id="base_workflow_giro_payment" model="base.workflow_policy">
-    <field name="model_id" ref="account_voucher_giro.model_account_giro_payment"/>
+    <field name="model_id" ref="account_voucher_giro.model_account_giro_payment" />
 </record>
 <record id="base_workflow_line_giro_payment_confirm" model="base.workflow_policy_line">
-    <field name="workflow_id" ref="account_voucher_giro.base_workflow_giro_payment"/>
-    <field name="field_id" search="[('model_id.model','=','account.giro_payment'),('name','=','confirm_ok')]"/>
+    <field name="workflow_id" ref="account_voucher_giro.base_workflow_giro_payment" />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','account.giro_payment'),('name','=','confirm_ok')]"
+            />
     <field name="python_code">obj_voucher_type_allowed_journal =\
     env["account.voucher_type_allowed_journal"]
 criteria = [
@@ -27,9 +29,15 @@ else:
     result = False
     </field>
 </record>
-<record id="base_workflow_line_giro_payment_restart_validation" model="base.workflow_policy_line">
-    <field name="workflow_id" ref="account_voucher_giro.base_workflow_giro_payment"/>
-    <field name="field_id" search="[('model_id.model','=','account.giro_payment'),('name','=','restart_validation_ok')]"/>
+<record
+            id="base_workflow_line_giro_payment_restart_validation"
+            model="base.workflow_policy_line"
+        >
+    <field name="workflow_id" ref="account_voucher_giro.base_workflow_giro_payment" />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','account.giro_payment'),('name','=','restart_validation_ok')]"
+            />
     <field name="python_code">obj_voucher_type_allowed_journal =\
     env["account.voucher_type_allowed_journal"]
 criteria = [
@@ -45,8 +53,11 @@ else:
     </field>
 </record>
 <record id="base_workflow_line_giro_payment_proforma" model="base.workflow_policy_line">
-    <field name="workflow_id" ref="account_voucher_giro.base_workflow_giro_payment"/>
-    <field name="field_id" search="[('model_id.model','=','account.giro_payment'),('name','=','proforma_ok')]"/>
+    <field name="workflow_id" ref="account_voucher_giro.base_workflow_giro_payment" />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','account.giro_payment'),('name','=','proforma_ok')]"
+            />
     <field name="python_code">obj_voucher_type_allowed_journal =\
     env["account.voucher_type_allowed_journal"]
 criteria = [
@@ -62,8 +73,11 @@ else:
     </field>
 </record>
 <record id="base_workflow_line_giro_payment_post" model="base.workflow_policy_line">
-    <field name="workflow_id" ref="account_voucher_giro.base_workflow_giro_payment"/>
-    <field name="field_id" search="[('model_id.model','=','account.giro_payment'),('name','=','post_ok')]"/>
+    <field name="workflow_id" ref="account_voucher_giro.base_workflow_giro_payment" />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','account.giro_payment'),('name','=','post_ok')]"
+            />
     <field name="python_code">obj_voucher_type_allowed_journal =\
     env["account.voucher_type_allowed_journal"]
 criteria = [
@@ -79,8 +93,11 @@ else:
     </field>
 </record>
 <record id="base_workflow_line_giro_payment_cancel" model="base.workflow_policy_line">
-    <field name="workflow_id" ref="account_voucher_giro.base_workflow_giro_payment"/>
-    <field name="field_id" search="[('model_id.model','=','account.giro_payment'),('name','=','cancel_ok')]"/>
+    <field name="workflow_id" ref="account_voucher_giro.base_workflow_giro_payment" />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','account.giro_payment'),('name','=','cancel_ok')]"
+            />
     <field name="python_code">obj_voucher_type_allowed_journal =\
     env["account.voucher_type_allowed_journal"]
 criteria = [
@@ -96,8 +113,11 @@ else:
     </field>
 </record>
 <record id="base_workflow_line_giro_payment_restart" model="base.workflow_policy_line">
-    <field name="workflow_id" ref="account_voucher_giro.base_workflow_giro_payment"/>
-    <field name="field_id" search="[('model_id.model','=','account.giro_payment'),('name','=','restart_ok')]"/>
+    <field name="workflow_id" ref="account_voucher_giro.base_workflow_giro_payment" />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','account.giro_payment'),('name','=','restart_ok')]"
+            />
     <field name="python_code">obj_voucher_type_allowed_journal =\
     env["account.voucher_type_allowed_journal"]
 criteria = [
