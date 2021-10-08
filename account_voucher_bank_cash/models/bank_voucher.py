@@ -3,7 +3,7 @@
 # Copyright 2020 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api
+from openerp import api, fields, models
 
 
 class BankVoucher(models.AbstractModel):
@@ -32,12 +32,10 @@ class BankVoucher(models.AbstractModel):
             },
         }
         if self.journal_id:
-            result["domain"]["payment_mode_id"] = \
-                [("journal", "=", self.journal_id.id)]
+            result["domain"]["payment_mode_id"] = [("journal", "=", self.journal_id.id)]
 
             if self.payment_mode_id:
-                if self.payment_mode_id.journal != \
-                        self.journal_id:
+                if self.payment_mode_id.journal != self.journal_id:
                     self.payment_mode_id = False
             else:
                 self.payment_mode_id = False
