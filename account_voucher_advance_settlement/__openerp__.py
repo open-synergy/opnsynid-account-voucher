@@ -25,6 +25,11 @@
         "views/account_sale_advance_settlement_views.xml",
         "views/account_purchase_advance_settlement_views.xml",
     ],
+    "demo": [
+        "demo/account_journal_demo.xml",
+        "demo/account_voucher_type_allowed_journal_demo.xml",
+        "demo/tier_definition_demo.xml",
+    ],
     "images": [
         "static/description/banner.png",
     ],
