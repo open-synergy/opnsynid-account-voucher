@@ -54,6 +54,8 @@ msgstr ""
 #. module: account_voucher_advance_settlement
 #: field:account.purchase_advance_settlement,allowed_journal_ids:0
 #: field:account.sale_advance_settlement,allowed_journal_ids:0
+#: model:ir.ui.menu,name:account_voucher_advance_settlement.account_voucher_purchase_advance_settlement_journal_menu
+#: model:ir.ui.menu,name:account_voucher_advance_settlement.account_voucher_sale_advance_settlement_journal_menu
 msgid "Allowed Journals"
 msgstr ""
 
@@ -211,6 +213,12 @@ msgstr ""
 #: field:account.sale_advance_settlement_line,company_currency_id:0
 #: field:account.sale_advance_settlement_line_tax,company_currency_id:0
 msgid "Company Currency"
+msgstr ""
+
+#. module: account_voucher_advance_settlement
+#: model:ir.ui.menu,name:account_voucher_advance_settlement.account_voucher_purchase_advance_settlement_menu
+#: model:ir.ui.menu,name:account_voucher_advance_settlement.account_voucher_sale_advance_settlement_menu
+msgid "Configuration"
 msgstr ""
 
 #. module: account_voucher_advance_settlement
@@ -525,7 +533,18 @@ msgstr ""
 #: model:ir.actions.act_window,name:account_voucher_advance_settlement.account_purchase_advance_settlement_action
 #: model:ir.model,name:account_voucher_advance_settlement.model_account_purchase_advance_settlement
 #: model:ir.ui.menu,name:account_voucher_advance_settlement.account_purchase_advance_settlement_menu
+#: model:ir.ui.menu,name:account_voucher_advance_settlement.menu_configuration_purchase_advance_settlement
 msgid "Purchase Advance Settlement"
+msgstr ""
+
+#. module: account_voucher_advance_settlement
+#: model:ir.actions.act_window,name:account_voucher_advance_settlement.account_voucher_purchase_advance_settlement_journal_action
+msgid "Purchase Advance Settlement Allowed Journal"
+msgstr ""
+
+#. module: account_voucher_advance_settlement
+#: model:ir.actions.act_window,name:account_voucher_advance_settlement.account_voucher_purchase_advance_settlement_action
+msgid "Purchase Advance Settlement Configuration"
 msgstr ""
 
 #. module: account_voucher_advance_settlement
@@ -572,7 +591,18 @@ msgstr ""
 #: model:ir.actions.act_window,name:account_voucher_advance_settlement.account_sale_advance_settlement_action
 #: model:ir.model,name:account_voucher_advance_settlement.model_account_sale_advance_settlement
 #: model:ir.ui.menu,name:account_voucher_advance_settlement.account_sale_advance_settlement_menu
+#: model:ir.ui.menu,name:account_voucher_advance_settlement.menu_configuration_sale_advance_settlement
 msgid "Sale Advance Settlement"
+msgstr ""
+
+#. module: account_voucher_advance_settlement
+#: model:ir.actions.act_window,name:account_voucher_advance_settlement.account_voucher_sale_advance_settlement_journal_action
+msgid "Sale Advance Settlement Allowed Journal"
+msgstr ""
+
+#. module: account_voucher_advance_settlement
+#: model:ir.actions.act_window,name:account_voucher_advance_settlement.account_voucher_sale_advance_settlement_action
+msgid "Sale Advance Settlement Configuration"
 msgstr ""
 
 #. module: account_voucher_advance_settlement
