@@ -29,7 +29,7 @@ msgid "Bank Payment Line"
 msgstr ""
 
 #. module: account_voucher_bank_cash_payment_order
-#: code:addons/account_voucher_bank_cash_payment_order/models/bank_payment.py:26
+#: code:addons/account_voucher_bank_cash_payment_order/models/bank_payment.py:24
 #, python-format
 msgid "Finish payment order first"
 msgstr ""
