@@ -42,6 +42,7 @@ msgstr ""
 
 #. module: account_voucher_invoice_settlement
 #: field:account.invoice_settlement,allowed_journal_ids:0
+#: model:ir.ui.menu,name:account_voucher_invoice_settlement.account_voucher_invoice_settlement_journal_menu
 msgid "Allowed Journals"
 msgstr ""
 
@@ -174,6 +175,11 @@ msgid "Company Currency"
 msgstr ""
 
 #. module: account_voucher_invoice_settlement
+#: model:ir.ui.menu,name:account_voucher_invoice_settlement.account_voucher_invoice_settlement_menu
+msgid "Configuration"
+msgstr ""
+
+#. module: account_voucher_invoice_settlement
 #: field:account.invoice_settlement,confirmed_user_id:0
 msgid "Confirmation By"
 msgstr ""
@@ -296,7 +302,18 @@ msgstr ""
 #: model:ir.actions.act_window,name:account_voucher_invoice_settlement.account_invoice_settlement_action
 #: model:ir.model,name:account_voucher_invoice_settlement.model_account_invoice_settlement
 #: model:ir.ui.menu,name:account_voucher_invoice_settlement.account_invoice_settlement_menu
+#: model:ir.ui.menu,name:account_voucher_invoice_settlement.menu_configuration_invoice_settlement
 msgid "Invoice Settlement"
+msgstr ""
+
+#. module: account_voucher_invoice_settlement
+#: model:ir.actions.act_window,name:account_voucher_invoice_settlement.account_voucher_invoice_settlement_journal_action
+msgid "Invoice Settlement Allowed Journal"
+msgstr ""
+
+#. module: account_voucher_invoice_settlement
+#: model:ir.actions.act_window,name:account_voucher_invoice_settlement.account_voucher_invoice_settlement_action
+msgid "Invoice Settlement Configuration"
 msgstr ""
 
 #. module: account_voucher_invoice_settlement
