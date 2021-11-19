@@ -51,6 +51,8 @@ msgstr ""
 #: field:account.cheque_payment,allowed_journal_ids:0
 #: field:account.cheque_receipt,allowed_journal_ids:0
 #: field:account.cheque_voucher,allowed_journal_ids:0
+#: model:ir.ui.menu,name:account_voucher_cheque.account_voucher_cheque_payment_journal_menu
+#: model:ir.ui.menu,name:account_voucher_cheque.account_voucher_cheque_receipt_journal_menu
 msgid "Allowed Journals"
 msgstr ""
 
@@ -212,7 +214,18 @@ msgstr ""
 #: model:ir.actions.act_window,name:account_voucher_cheque.account_cheque_payment_action
 #: model:ir.model,name:account_voucher_cheque.model_account_cheque_payment
 #: model:ir.ui.menu,name:account_voucher_cheque.account_cheque_payment_menu
+#: model:ir.ui.menu,name:account_voucher_cheque.menu_configuration_cheque_payment
 msgid "Cheque Payment"
+msgstr ""
+
+#. module: account_voucher_cheque
+#: model:ir.actions.act_window,name:account_voucher_cheque.account_voucher_cheque_payment_journal_action
+msgid "Cheque Payment Allowed Journal"
+msgstr ""
+
+#. module: account_voucher_cheque
+#: model:ir.actions.act_window,name:account_voucher_cheque.account_voucher_cheque_payment_action
+msgid "Cheque Payment Configuration"
 msgstr ""
 
 #. module: account_voucher_cheque
@@ -229,7 +242,18 @@ msgstr ""
 #: model:ir.actions.act_window,name:account_voucher_cheque.account_cheque_receipt_action
 #: model:ir.model,name:account_voucher_cheque.model_account_cheque_receipt
 #: model:ir.ui.menu,name:account_voucher_cheque.account_cheque_receipt_menu
+#: model:ir.ui.menu,name:account_voucher_cheque.menu_configuration_cheque_receipt
 msgid "Cheque Receipt"
+msgstr ""
+
+#. module: account_voucher_cheque
+#: model:ir.actions.act_window,name:account_voucher_cheque.account_voucher_cheque_receipt_journal_action
+msgid "Cheque Receipt Allowed Journal"
+msgstr ""
+
+#. module: account_voucher_cheque
+#: model:ir.actions.act_window,name:account_voucher_cheque.account_voucher_cheque_receipt_action
+msgid "Cheque Receipt Configuration"
 msgstr ""
 
 #. module: account_voucher_cheque
@@ -263,6 +287,12 @@ msgstr ""
 #: field:account.cheque_receipt_line_tax,company_currency_id:0
 #: field:account.cheque_voucher,company_currency_id:0
 msgid "Company Currency"
+msgstr ""
+
+#. module: account_voucher_cheque
+#: model:ir.ui.menu,name:account_voucher_cheque.account_voucher_cheque_payment_menu
+#: model:ir.ui.menu,name:account_voucher_cheque.account_voucher_cheque_receipt_menu
+msgid "Configuration"
 msgstr ""
 
 #. module: account_voucher_cheque
