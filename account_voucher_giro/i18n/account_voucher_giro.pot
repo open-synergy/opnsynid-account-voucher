@@ -51,6 +51,8 @@ msgstr ""
 #: field:account.giro_payment,allowed_journal_ids:0
 #: field:account.giro_receipt,allowed_journal_ids:0
 #: field:account.giro_voucher,allowed_journal_ids:0
+#: model:ir.ui.menu,name:account_voucher_giro.account_voucher_giro_payment_journal_menu
+#: model:ir.ui.menu,name:account_voucher_giro.account_voucher_giro_receipt_journal_menu
 msgid "Allowed Journals"
 msgstr ""
 
@@ -227,6 +229,12 @@ msgid "Company Currency"
 msgstr ""
 
 #. module: account_voucher_giro
+#: model:ir.ui.menu,name:account_voucher_giro.account_voucher_giro_payment_menu
+#: model:ir.ui.menu,name:account_voucher_giro.account_voucher_giro_receipt_menu
+msgid "Configuration"
+msgstr ""
+
+#. module: account_voucher_giro
 #: field:account.giro_payment,confirmed_user_id:0
 #: field:account.giro_receipt,confirmed_user_id:0
 #: field:account.giro_voucher,confirmed_user_id:0
@@ -398,7 +406,18 @@ msgstr ""
 #: model:ir.actions.act_window,name:account_voucher_giro.account_giro_payment_action
 #: model:ir.model,name:account_voucher_giro.model_account_giro_payment
 #: model:ir.ui.menu,name:account_voucher_giro.account_giro_payment_menu
+#: model:ir.ui.menu,name:account_voucher_giro.menu_configuration_giro_payment
 msgid "Giro Payment"
+msgstr ""
+
+#. module: account_voucher_giro
+#: model:ir.actions.act_window,name:account_voucher_giro.account_voucher_giro_payment_journal_action
+msgid "Giro Payment Allowed Journal"
+msgstr ""
+
+#. module: account_voucher_giro
+#: model:ir.actions.act_window,name:account_voucher_giro.account_voucher_giro_payment_action
+msgid "Giro Payment Configuration"
 msgstr ""
 
 #. module: account_voucher_giro
@@ -415,7 +434,18 @@ msgstr ""
 #: model:ir.actions.act_window,name:account_voucher_giro.account_giro_receipt_action
 #: model:ir.model,name:account_voucher_giro.model_account_giro_receipt
 #: model:ir.ui.menu,name:account_voucher_giro.account_giro_receipt_menu
+#: model:ir.ui.menu,name:account_voucher_giro.menu_configuration_giro_receipt
 msgid "Giro Receipt"
+msgstr ""
+
+#. module: account_voucher_giro
+#: model:ir.actions.act_window,name:account_voucher_giro.account_voucher_giro_receipt_journal_action
+msgid "Giro Receipt Allowed Journal"
+msgstr ""
+
+#. module: account_voucher_giro
+#: model:ir.actions.act_window,name:account_voucher_giro.account_voucher_giro_receipt_action
+msgid "Giro Receipt Configuration"
 msgstr ""
 
 #. module: account_voucher_giro
@@ -825,7 +855,7 @@ msgid "Write-Off Account"
 msgstr ""
 
 #. module: account_voucher_giro
-#: code:addons/account_voucher_giro/models/giro_voucher.py:71
+#: code:addons/account_voucher_giro/models/giro_voucher.py:72
 #, python-format
 msgid "You cannot post giro before due date"
 msgstr ""
