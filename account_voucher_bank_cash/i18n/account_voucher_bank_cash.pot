@@ -83,6 +83,10 @@ msgstr ""
 #: field:account.bank_voucher,allowed_journal_ids:0
 #: field:account.cash_payment,allowed_journal_ids:0
 #: field:account.cash_receipt,allowed_journal_ids:0
+#: model:ir.ui.menu,name:account_voucher_bank_cash.account_voucher_bank_payment_journal_menu
+#: model:ir.ui.menu,name:account_voucher_bank_cash.account_voucher_bank_receipt_journal_menu
+#: model:ir.ui.menu,name:account_voucher_bank_cash.account_voucher_cash_payment_journal_menu
+#: model:ir.ui.menu,name:account_voucher_bank_cash.account_voucher_cash_receipt_journal_menu
 msgid "Allowed Journals"
 msgstr ""
 
@@ -182,7 +186,18 @@ msgstr ""
 #: model:ir.actions.act_window,name:account_voucher_bank_cash.account_bank_payment_action
 #: model:ir.model,name:account_voucher_bank_cash.model_account_bank_payment
 #: model:ir.ui.menu,name:account_voucher_bank_cash.account_bank_payment_menu
+#: model:ir.ui.menu,name:account_voucher_bank_cash.menu_configuration_bank_payment
 msgid "Bank Payment"
+msgstr ""
+
+#. module: account_voucher_bank_cash
+#: model:ir.actions.act_window,name:account_voucher_bank_cash.account_voucher_bank_payment_journal_action
+msgid "Bank Payment Allowed Journal"
+msgstr ""
+
+#. module: account_voucher_bank_cash
+#: model:ir.actions.act_window,name:account_voucher_bank_cash.account_voucher_bank_payment_action
+msgid "Bank Payment Configuration"
 msgstr ""
 
 #. module: account_voucher_bank_cash
@@ -199,7 +214,18 @@ msgstr ""
 #: model:ir.actions.act_window,name:account_voucher_bank_cash.account_bank_receipt_action
 #: model:ir.model,name:account_voucher_bank_cash.model_account_bank_receipt
 #: model:ir.ui.menu,name:account_voucher_bank_cash.account_bank_receipt_menu
+#: model:ir.ui.menu,name:account_voucher_bank_cash.menu_configuration_bank_receipt
 msgid "Bank Receipt"
+msgstr ""
+
+#. module: account_voucher_bank_cash
+#: model:ir.actions.act_window,name:account_voucher_bank_cash.account_voucher_bank_receipt_journal_action
+msgid "Bank Receipt Allowed Journal"
+msgstr ""
+
+#. module: account_voucher_bank_cash
+#: model:ir.actions.act_window,name:account_voucher_bank_cash.account_voucher_bank_receipt_action
+msgid "Bank Receipt Configuration"
 msgstr ""
 
 #. module: account_voucher_bank_cash
@@ -331,7 +357,18 @@ msgstr ""
 #: model:ir.actions.act_window,name:account_voucher_bank_cash.account_cash_payment_action
 #: model:ir.model,name:account_voucher_bank_cash.model_account_cash_payment
 #: model:ir.ui.menu,name:account_voucher_bank_cash.account_cash_payment_menu
+#: model:ir.ui.menu,name:account_voucher_bank_cash.menu_configuration_cash_payment
 msgid "Cash Payment"
+msgstr ""
+
+#. module: account_voucher_bank_cash
+#: model:ir.actions.act_window,name:account_voucher_bank_cash.account_voucher_cash_payment_journal_action
+msgid "Cash Payment Allowed Journal"
+msgstr ""
+
+#. module: account_voucher_bank_cash
+#: model:ir.actions.act_window,name:account_voucher_bank_cash.account_voucher_cash_payment_action
+msgid "Cash Payment Configuration"
 msgstr ""
 
 #. module: account_voucher_bank_cash
@@ -348,7 +385,19 @@ msgstr ""
 #: model:ir.actions.act_window,name:account_voucher_bank_cash.account_cash_receipt_action
 #: model:ir.model,name:account_voucher_bank_cash.model_account_cash_receipt
 #: model:ir.ui.menu,name:account_voucher_bank_cash.account_cash_receipt_menu
+#: model:ir.ui.menu,name:account_voucher_bank_cash.account_voucher_cash_receipt_menu
+#: model:ir.ui.menu,name:account_voucher_bank_cash.menu_configuration_cash_receipt
 msgid "Cash Receipt"
+msgstr ""
+
+#. module: account_voucher_bank_cash
+#: model:ir.actions.act_window,name:account_voucher_bank_cash.account_voucher_cash_receipt_journal_action
+msgid "Cash Receipt Allowed Journal"
+msgstr ""
+
+#. module: account_voucher_bank_cash
+#: model:ir.actions.act_window,name:account_voucher_bank_cash.account_voucher_cash_receipt_action
+msgid "Cash Receipt Configuration"
 msgstr ""
 
 #. module: account_voucher_bank_cash
@@ -385,6 +434,13 @@ msgstr ""
 #: field:account.cash_receipt_line,company_currency_id:0
 #: field:account.cash_receipt_line_tax,company_currency_id:0
 msgid "Company Currency"
+msgstr ""
+
+#. module: account_voucher_bank_cash
+#: model:ir.ui.menu,name:account_voucher_bank_cash.account_voucher_bank_payment_menu
+#: model:ir.ui.menu,name:account_voucher_bank_cash.account_voucher_bank_receipt_menu
+#: model:ir.ui.menu,name:account_voucher_bank_cash.account_voucher_cash_payment_menu
+msgid "Configuration"
 msgstr ""
 
 #. module: account_voucher_bank_cash
