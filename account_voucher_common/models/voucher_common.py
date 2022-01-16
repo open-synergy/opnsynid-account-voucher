@@ -495,6 +495,7 @@ class VoucherCommon(models.AbstractModel):
             }
         )
         sequence = self.with_context(ctx)._create_sequence()
+
         data = {
             "state": "approve",
             "name": sequence,
@@ -653,6 +654,17 @@ class VoucherCommon(models.AbstractModel):
         ):
             result = False
         return result
+
+    @api.constrains("name")
+    def _check_name(self):
+        obj_voucher = self.env[self._name]
+        for record in self:
+            str_error = _("Document " + record.name + " has been used")
+            if record.name != "/":
+                criteria = [("name", "=", record.name), ("id", "!=", record.id)]
+                data = obj_voucher.search(criteria)
+                if data:
+                    raise UserError(str_error)
 
     @api.constrains("amount_debit", "amount_credit", "type_id", "state")
     def _check_debit_credit(self):
