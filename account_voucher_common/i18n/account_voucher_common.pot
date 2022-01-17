@@ -417,6 +417,12 @@ msgid "Display Name"
 msgstr ""
 
 #. module: account_voucher_common
+#: code:addons/account_voucher_common/models/voucher_common.py:662
+#, python-format
+msgid "Document  has been used"
+msgstr ""
+
+#. module: account_voucher_common
 #: view:account.voucher_type:account_voucher_common.account_voucher_type_view_form
 #: field:account.voucher_type,python_code:0
 #: view:account.voucher_type_allowed_journal:account_voucher_common.account_voucher_type_allowed_journal_view_form
@@ -442,7 +448,7 @@ msgid "Exchange Rate"
 msgstr ""
 
 #. module: account_voucher_common
-#: code:addons/account_voucher_common/models/voucher_common.py:589
+#: code:addons/account_voucher_common/models/voucher_common.py:590
 #, python-format
 msgid "Exchange rate value has to be greater than 0"
 msgstr ""
@@ -468,7 +474,7 @@ msgid "Header Type"
 msgstr ""
 
 #. module: account_voucher_common
-#: code:addons/account_voucher_common/models/voucher_common.py:581
+#: code:addons/account_voucher_common/models/voucher_common.py:582
 #, python-format
 msgid "Header value has to be greater than 0"
 msgstr ""
@@ -549,7 +555,7 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: account_voucher_common
-#: code:addons/account_voucher_common/models/voucher_common.py:572
+#: code:addons/account_voucher_common/models/voucher_common.py:573
 #, python-format
 msgid "Line partner is different from header partner"
 msgstr ""
@@ -816,7 +822,7 @@ msgid "The result of executing the expresion must be a domain."
 msgstr ""
 
 #. module: account_voucher_common
-#: code:addons/account_voucher_common/models/voucher_common.py:568
+#: code:addons/account_voucher_common/models/voucher_common.py:569
 #, python-format
 msgid "There are still amount difference"
 msgstr ""
@@ -843,7 +849,7 @@ msgid "Type"
 msgstr ""
 
 #. module: account_voucher_common
-#: code:addons/account_voucher_common/models/voucher_common.py:659
+#: code:addons/account_voucher_common/models/voucher_common.py:671
 #, python-format
 msgid "Unequal debit credit"
 msgstr ""
@@ -951,7 +957,7 @@ msgid "Write-Off Account"
 msgstr ""
 
 #. module: account_voucher_common
-#: code:addons/account_voucher_common/models/voucher_common.py:804
+#: code:addons/account_voucher_common/models/voucher_common.py:816
 #, python-format
 msgid "You can only delete data on draft state"
 msgstr ""
