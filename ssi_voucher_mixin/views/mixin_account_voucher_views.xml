@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 OpenSynergy Indonesia
+     Copyright 2022 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.0-standalone.html). -->
+<odoo>
+<record id="mixin_account_voucher_view_search" model="ir.ui.view">
+    <field name="name">mixin.account.voucher.search</field>
+    <field name="model">mixin.account.voucher</field>
+    <field name="arch" type="xml">
+        <search>
+            <field name="name" />
+            <field name="partner_id" />
+            <field name="date_voucher" />
+            <field name="company_id" groups="base.group_multi_company" />
+            <field name="currency_id" groups="base.group_multi_currency" />
+            <field name="type_id" invisible="1" />
+            <field name="journal_id" />
+            <field name="state" />
+            <field name="id" />
+            <filter
+                    name="needs_review"
+                    string="Needs my Review"
+                    domain="[('approval_ids','in',uid), ('state', 'not in', ['done', 'cancel'])]"
+                />
+            <group name="group_state" string="State">
+                <filter
+                        name="grp_draft"
+                        string="Draft"
+                        domain="[('state','=','draft')]"
+                    />
+                <filter
+                        name="grp_confirm"
+                        string="Waiting for Approval"
+                        domain="[('state','=','confirm')]"
+                    />
+                <filter
+                        name="grp_approved"
+                        string="Approved"
+                        domain="[('state','=','approve')]"
+                    />
+                <filter
+                        name="grp_proforma"
+                        string="Pro-Forma"
+                        domain="[('state','=','proforma')]"
+                    />
+                <filter
+                        name="grp_post"
+                        string="Posted"
+                        domain="[('state','=','post')]"
+                    />
+                <filter
+                        name="grp_cancel"
+                        string="Cancelled"
+                        domain="[('state','=','cancel')]"
+                    />
+            </group>
+            <group name="group_main" string="Group By..">
+                <filter
+                        name="grp_partner"
+                        string="Partner"
+                        context="{'group_by':'partner_id'}"
+                    />
+                <filter
+                        name="grp_journal"
+                        string="Journal"
+                        context="{'group_by':'journal_id'}"
+                    />
+                <filter
+                        name="grp_company"
+                        string="Company"
+                        context="{'group_by':'company_id'}"
+                        groups="base.group_multi_company"
+                    />
+                <filter
+                        name="grp_currency"
+                        string="Currency"
+                        context="{'group_by':'currency_id'}"
+                        groups="base.group_multi_currency"
+                    />
+                <filter
+                        name="grp_state"
+                        string="State"
+                        context="{'group_by':'state'}"
+                    />
+                <separator />
+                <filter
+                        name="grp_date_day"
+                        string="Voucher Date by Day"
+                        context="{'group_by':'date_voucher:day'}"
+                    />
+                <filter
+                        name="grp_date_week"
+                        string="Voucher Date by Week"
+                        context="{'group_by':'date_voucher:week'}"
+                    />
+                <filter
+                        name="grp_date_month"
+                        string="Voucher Date by Month"
+                        context="{'group_by':'date_voucher:month'}"
+                    />
+                <filter
+                        name="grp_date_year"
+                        string="Voucher Date by Year"
+                        context="{'group_by':'date_voucher:year'}"
+                    />
+            </group>
+        </search>
+    </field>
+</record>
+
+<record id="mixin_account_voucher_view_tree" model="ir.ui.view">
+    <field name="name">mixin.account.voucher.tree</field>
+    <field name="model">mixin.account.voucher</field>
+    <field name="arch" type="xml">
+        <tree>
+            <field name="display_name" />
+            <field name="description" />
+            <field name="partner_id" />
+            <field name="date_voucher" />
+            <field name="company_id" groups="base.group_multi_company" />
+            <field name="journal_id" />
+            <field name="currency_id" />
+            <field name="type_id" invisible="1" />
+            <field name="id" invisible="1" />
+            <field name="state" />
+        </tree>
+    </field>
+</record>
+
+<record id="mixin_account_voucher_view_form" model="ir.ui.view">
+    <field name="name">mixin.account.voucher.form</field>
+    <field name="model">mixin.account.voucher</field>
+    <field name="arch" type="xml">
+        <form>
+            <header>
+                <button
+                        name="action_approve_approval"
+                        string="Approve"
+                        type="object"
+                        class="oe_highlight"
+                        confirm="Approve data. Are you sure?"
+                        attrs="{'invisible':[('approve_ok','!=',True)]}"
+                    />
+                <button
+                        name="action_reject_approval"
+                        string="Reject"
+                        type="object"
+                        confirm="Reject data. Are you sure?"
+                        attrs="{'invisible':[('reject_ok','!=',True)]}"
+                    />
+                <button
+                        name="action_confirm"
+                        string="Confirm"
+                        type="object"
+                        class="oe_highlight"
+                        confirm="Confirm data. Are you sure?"
+                        attrs="{'invisible':[('confirm_ok','!=',True)]}"
+                    />
+                <button
+                        name="action_proforma"
+                        type="object"
+                        string="Pro-Forma"
+                        class="oe_highlight"
+                        attrs="{'invisible':[('proforma_ok','!=',True)]}"
+                    />
+                <button
+                        name="%(wizard_post_voucher_action)d"
+                        type="action"
+                        string="Post"
+                        class="oe_highlight"
+                        attrs="{'invisible':[('post_ok','!=',True)]}"
+                    />
+                <button
+                        name="%(ssi_transaction_cancel_mixin.base_select_cancel_reason_action)d"
+                        string="Cancel"
+                        type="action"
+                        attrs="{'invisible':[('cancel_ok','!=',True)]}"
+                    />
+                <button
+                        name="action_restart"
+                        string="Restart"
+                        type="object"
+                        confirm="Restart data. Are you sure?"
+                        attrs="{'invisible':[('restart_ok','!=',True)]}"
+                    />
+                <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="draft,confirm,open,proforma,post"
+                    />
+            </header>
+            <field name="need_validation" invisible="1" />
+            <field name="approved" invisible="1" />
+            <field name="rejected" invisible="1" />
+            <sheet>
+                <div
+                        class="oe_right oe_button_box"
+                        style="width: 300px;"
+                        name="buttons"
+                    >
+                </div>
+                <div class="oe_left" style="width: 500px;">
+                    <div class="oe_title" style="width: 500px;">
+                        <label for="display_name" />
+                        <h1>
+                            <field name="name" class="oe_edit_only" />
+                            <field name="display_name" class="oe_read_only" />
+                        </h1>
+                        <h2 attrs="{'invisible': [('state', '!=', 'cancel')]}">
+                            <label
+                                    for="cancel_reason_id"
+                                    string="Cancellation reason:"
+                                />
+                            <field name="cancel_reason_id" class="oe_inline" />
+                        </h2>
+                    </div>
+                </div>
+                <group name="group_1" colspan="4" col="2">
+                    <group name="group_1_1" colspan="1" col="2">
+                        <field name="company_id" groups="base.group_multi_company" />
+                        <field name="date_voucher" />
+                        <field name="type_id" invisible="1" />
+                    </group>
+                    <group name="group_1_2" colspan="1" col="2">
+                        <field
+                                name="journal_id"
+                                domain="[('id', 'in', allowed_journal_ids)]"
+                            />
+                        <field
+                                name="allowed_journal_ids"
+                                widget="many2many_tags"
+                                invisible="1"
+                            />
+                        <field name="account_id" invisible="1" />
+                        <field name="currency_id" invisible="1" />
+                        <field name="company_currency_id" invisible="1" />
+                    </group>
+                </group>
+                <label for="description" />
+                <field name="description" />
+                <notebook colspan="4">
+                    <page name="page_detail" string="Voucher Detail">
+                    </page>
+                    <page name="page_note" string="Notes">
+                        <field name="note" />
+                    </page>
+                    <page name="page_accounting" string="Accounting Information">
+                        <group name="accounting_1" colspan="4" col="2">
+                            <field name="move_id" />
+                        </group>
+                    </page>
+                    <page name="policy" string="Policies" groups="base.group_system">
+                        <group name="policy_1" colspan="4" col="2">
+                            <field name="policy_template_id" />
+                            <button
+                                    name="action_reload_policy_template"
+                                    type="object"
+                                    string="Reload Template Policy"
+                                    class="oe_highlight"
+                                    icon="fa-refresh"
+                                />
+                            <field name="confirm_ok" />
+                            <field name="approve_ok" />
+                            <field name="proforma_ok" />
+                            <field name="post_ok" />
+                            <field name="cancel_ok" />
+                            <field name="reject_ok" />
+                            <field name="restart_ok" />
+                            <field name="restart_approval_ok" />
+                        </group>
+                    </page>
+                    <page string="Approvals" name="multiple_approval">
+                        <group name="multiple_approval_1" colspan="4" col="2">
+                            <field name="approval_template_id" />
+                            <button
+                                    name="action_reload_approval_template"
+                                    string="Reload Template"
+                                    class="oe_highlight"
+                                    type="object"
+                                />
+                            <newLine />
+                            <field
+                                    name="active_approver_partner_ids"
+                                    widget="many2many_tags"
+                                />
+                        </group>
+                        <group name="multiple_approval_2" colspan="4" col="2">
+                            <button
+                                    name="action_reload_approval"
+                                    string="Reload Approval"
+                                    class="oe_highlight"
+                                    type="object"
+                                />
+                            <newLine />
+                            <field
+                                    name="approval_ids"
+                                    attrs="{'invisible':[('approval_ids', '=', [])]}"
+                                    nolabel="1"
+                                    readonly="1"
+                                />
+                        </group>
+                    </page>
+
+                </notebook>
+                <group name="group_2" colspan="4" col="2">
+                    <group name="group_2_1" colspan="1" col="2">
+                        <field name="exchange_rate" />
+                    </group>
+                    <group name="group_2_2" colspan="1" col="2">
+                        <field
+                                name="amount_diff"
+                                widget="monetary"
+                                options="{'currency_field': 'currency_id'}"
+                            />
+                        <field name="writeoff_account_id" />
+                    </group>
+                </group>
+            </sheet>
+            <div class="oe_chatter">
+                <field
+                        name="message_follower_ids"
+                        widget="mail_followers"
+                        groups="base.group_user"
+                    />
+                <field name="message_ids" widget="mail_thread" />
+            </div>
+        </form>
+    </field>
+</record>
+</odoo>

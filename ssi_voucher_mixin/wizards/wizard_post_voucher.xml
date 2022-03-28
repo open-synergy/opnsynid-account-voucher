@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 OpenSynergy Indonesia
+     Copyright 2022 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.0-standalone.html). -->
+<odoo>
+
+<record id="wizard_post_voucher_view_form" model="ir.ui.view">
+    <field name="name">Post Voucher</field>
+    <field name="model">account.wizard_post_voucher</field>
+    <field name="arch" type="xml">
+        <form>
+            <group name="group_1" colspan="4" col="2">
+                <field name="date_post" />
+            </group>
+            <footer>
+                <button
+                        name="action_post_voucher"
+                        type="object"
+                        string="Post"
+                        class="oe_highlight"
+                    />
+                or
+                <button special="cancel" string="Cancel" />
+            </footer>
+        </form>
+    </field>
+</record>
+
+<record id="wizard_post_voucher_action" model="ir.actions.act_window">
+    <field name="name">Post Voucher</field>
+    <field name="res_model">account.wizard_post_voucher</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+</record>
+</odoo>
