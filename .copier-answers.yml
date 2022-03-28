@@ -1,5 +1,5 @@
 # Do NOT update manually; changes here will be overwritten by Copier
-_commit: 4301baf
+_commit: f7e9316
 _src_path: gh:open-synergy/ssi-addons-repo-template
 dependency_installation_mode: OCA
 generate_requirements_txt: false
