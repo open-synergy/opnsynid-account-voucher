@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 OpenSynergy Indonesia
+     Copyright 2022 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.0-standalone.html). -->
+<odoo>
+      <menuitem
+        id="menu_configuration_sale_advance_settlement"
+        name="Sale Advance Settlement"
+        sequence="9"
+        parent="ssi_voucher_mixin.menu_account_configuration_voucher"
+    />
+
+      <menuitem
+        id="menu_configuration_purchase_advance_settlement"
+        name="Purchase Advance Settlement"
+        sequence="10"
+        parent="ssi_voucher_mixin.menu_account_configuration_voucher"
+    />
+</odoo>
