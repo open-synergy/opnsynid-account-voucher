@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 OpenSynergy Indonesia
+     Copyright 2022 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.0-standalone.html). -->
+<odoo>
+  <menuitem
+        id="menu_account_configuration_voucher"
+        name="Voucher"
+        sequence="11"
+        parent="account.menu_finance_configuration"
+    />
+    <menuitem
+        id="menu_account_configuration_voucher_type"
+        name="Voucher Type"
+        parent="menu_account_configuration_voucher"
+        sequence="1"
+    />
+</odoo>

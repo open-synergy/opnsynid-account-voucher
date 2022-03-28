@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 OpenSynergy Indonesia
+     Copyright 2022 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.0-standalone.html). -->
+<odoo>
+
+    <record id="account_voucher_type_view_search" model="ir.ui.view">
+        <field name="name">account.voucher.type.search</field>
+        <field name="model">account.voucher_type</field>
+        <field
+            name="inherit_id"
+            ref="ssi_master_data_mixin.mixin_master_data_view_search"
+        />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <data />
+        </field>
+    </record>
+
+    <record id="account_voucher_type_view_tree" model="ir.ui.view">
+        <field name="name">account.voucher.type.tree</field>
+        <field name="model">account.voucher_type</field>
+        <field
+            name="inherit_id"
+            ref="ssi_master_data_mixin.mixin_master_data_view_tree"
+        />
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <data />
+        </field>
+    </record>
+
+    <record id="account_voucher_type_view_form" model="ir.ui.view">
+        <field name="name">account.voucher_type form</field>
+        <field name="model">account.voucher_type</field>
+        <field name="arch" type="xml">
+            <form create="false" delete="false">
+                <header>
+                    <button
+                        name="action_execute"
+                        type="object"
+                        string="Apply"
+                        class="oe_highlight"
+                        confirm="Apply configuration. Are you sure?"
+                    />
+                </header>
+                <sheet>
+                    <group name="group_1">
+                        <div>
+                            <div>
+                                <label for="check_total" />
+                                <field name="check_total" class="oe_inline" />
+                            </div>
+                            <div>
+                                <label for="check_debit_credit" />
+                                <field name="check_debit_credit" class="oe_inline" />
+                            </div>
+                            <div>
+                                <label for="check_partner" />
+                                <field name="check_partner" class="oe_inline" />
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label for="header_allow_negative" />
+                                <field name="header_allow_negative" class="oe_inline" />
+                            </div>
+                            <div>
+                                <label for="create_header_item" />
+                                <field name="create_header_item" class="oe_inline" />
+                            </div>
+                            <div>
+                                <label for="header_type" />
+                                <field
+                                    name="header_type"
+                                    class="oe_inline"
+                                    widget="radio"
+                                />
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label for="detail_allow_negative" />
+                                <field name="detail_allow_negative" class="oe_inline" />
+                            </div>
+                        </div>
+                    </group>
+                    <notebook>
+                        <page name="page_python_expression" string="Domain Expression">
+                            <field name="python_code" nolabel="1" widget="ace" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

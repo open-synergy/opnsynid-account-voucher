@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 OpenSynergy Indonesia
+     Copyright 2022 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.0-standalone.html). -->
+<odoo>
+
+<record id="account_voucher_type_allowed_journal_view_tree" model="ir.ui.view">
+    <field name="name">account.voucher_type_allowed_journal tree</field>
+    <field name="model">account.voucher_type_allowed_journal</field>
+    <field name="arch" type="xml">
+        <tree>
+            <field name="voucher_type_id" invisible="1" />
+            <field name="journal_id" />
+            <field name="sequence_id" />
+        </tree>
+    </field>
+</record>
+
+<record id="account_voucher_type_allowed_journal_view_form" model="ir.ui.view">
+    <field name="name">account.voucher_type_allowed_journal form</field>
+    <field name="model">account.voucher_type_allowed_journal</field>
+    <field name="arch" type="xml">
+        <form>
+            <header />
+            <sheet>
+                <div
+                        class="oe_right oe_button_box"
+                        style="width: 300px;"
+                        name="buttons"
+                    />
+                <group name="group_1" colspan="4" col="2">
+                    <field name="voucher_type_id" invisible="1" />
+                    <field name="journal_id" />
+                    <field name="sequence_id" />
+                </group>
+                <notebook>
+                    <page name="page_policies" string="Policies">
+                        <group name="grp_policies_1" colspan="4" col="2">
+                            <field
+                                    name="allowed_confirm_group_ids"
+                                    widget="many2many_tags"
+                                />
+                            <field
+                                    name="allowed_restart_approval_group_ids"
+                                    widget="many2many_tags"
+                                />
+                            <field
+                                    name="allowed_proforma_group_ids"
+                                    widget="many2many_tags"
+                                />
+                            <field
+                                    name="allowed_post_group_ids"
+                                    widget="many2many_tags"
+                                />
+                            <field
+                                    name="allowed_cancel_group_ids"
+                                    widget="many2many_tags"
+                                />
+                            <field
+                                    name="allowed_approve_group_ids"
+                                    widget="many2many_tags"
+                                />
+                            <field
+                                    name="allowed_reject_group_ids"
+                                    widget="many2many_tags"
+                                />
+                            <field
+                                    name="allowed_restart_group_ids"
+                                    widget="many2many_tags"
+                                />
+                        </group>
+                    </page>
+                    <page name="page_python_expression" string="Domain Expression">
+                        <field name="python_code" nolabel="1" widget="ace" />
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+    </field>
+</record>
+</odoo>
