@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2022 OpenSynergy Indonesia
      Copyright 2022 PT. Simetri Sinergi Indonesia
-     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.0-standalone.html). -->
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0-standalone.html). -->
 <odoo>
 <data noupdate="0">
 <record id="policy_template_purchase_settlement" model="policy.template">
@@ -24,26 +24,10 @@
                 name="field_id"
                 search="[('model_id.model','=','account.purchase_advance_settlement'),('name','=','confirm_ok')]"
             />
-    <field name="restrict_state" eval="1" />
-    <field
-                name="state_ids"
-                search="[('field_id.model_id.model','=','account.purchase_advance_settlement'),('value','=','draft')]"
-            />
-    <field name="restrict_user" eval="0" />
-    <field name="restrict_additional" eval="1" />
-    <field name="additional_python_code">obj_voucher_type_allowed_journal =\
-    env["account.voucher_type_allowed_journal"]
-criteria = [
-    ("voucher_type_id", "=", document.type_id.id),
-    ("journal_id", "=", document.journal_id.id)
-]
-allowed_wokflow_policy =\
-    obj_voucher_type_allowed_journal.search(criteria)
-if allowed_wokflow_policy:
-    result = allowed_wokflow_policy.allowed_confirm_group_ids.ids
-else:
-    result = False
-    </field>
+            <field name="restrict_user" eval="1" />
+            <field name="computation_method">use_group</field>
+            <field name="group_ids" eval="[(6,0,[ref('base.group_user')])]" />
+            <field name="restrict_additional" eval="0" />
 </record>
 
 <record
@@ -60,21 +44,10 @@ else:
                 name="state_ids"
                 search="[('field_id.model_id.model','=','account.purchase_advance_settlement'),('value','=','confirm')]"
             />
-    <field name="restrict_user" eval="0" />
-    <field name="restrict_additional" eval="1" />
-    <field name="additional_python_code">obj_voucher_type_allowed_journal =\
-    env["account.voucher_type_allowed_journal"]
-criteria = [
-    ("voucher_type_id", "=", document.type_id.id),
-    ("journal_id", "=", document.journal_id.id)
-]
-allowed_wokflow_policy =\
-    obj_voucher_type_allowed_journal.search(criteria)
-if allowed_wokflow_policy:
-    result = allowed_wokflow_policy.allowed_restart_approval_group_ids.ids
-else:
-    result = False
-    </field>
+            <field name="restrict_user" eval="1" />
+            <field name="computation_method">use_group</field>
+            <field name="group_ids" eval="[(6,0,[ref('base.group_user')])]" />
+            <field name="restrict_additional" eval="0" />
 </record>
 
 <record
@@ -91,21 +64,10 @@ else:
                 name="state_ids"
                 search="[('field_id.model_id.model','=','account.purchase_advance_settlement'),('value','=','open')]"
             />
-    <field name="restrict_user" eval="0" />
-    <field name="restrict_additional" eval="1" />
-    <field name="additional_python_code">obj_voucher_type_allowed_journal =\
-    env["account.voucher_type_allowed_journal"]
-criteria = [
-    ("voucher_type_id", "=", document.type_id.id),
-    ("journal_id", "=", document.journal_id.id)
-]
-allowed_wokflow_policy =\
-    obj_voucher_type_allowed_journal.search(criteria)
-if allowed_wokflow_policy:
-    result = allowed_wokflow_policy.allowed_proforma_group_ids.ids
-else:
-    result = False
-    </field>
+            <field name="restrict_user" eval="1" />
+            <field name="computation_method">use_group</field>
+            <field name="group_ids" eval="[(6,0,[ref('base.group_user')])]" />
+            <field name="restrict_additional" eval="0" />
 </record>
 
 <record id="policy_template_purchase_settlement_post" model="policy.template_detail">
@@ -119,21 +81,10 @@ else:
                 name="state_ids"
                 search="[('field_id.model_id.model','=','account.purchase_advance_settlement'),('value','in',['proforma','open'])]"
             />
-    <field name="restrict_user" eval="0" />
-    <field name="restrict_additional" eval="1" />
-    <field name="additional_python_code">obj_voucher_type_allowed_journal =\
-    env["account.voucher_type_allowed_journal"]
-criteria = [
-    ("voucher_type_id", "=", document.type_id.id),
-    ("journal_id", "=", document.journal_id.id)
-]
-allowed_wokflow_policy =\
-    obj_voucher_type_allowed_journal.search(criteria)
-if allowed_wokflow_policy:
-    result = allowed_wokflow_policy.allowed_post_group_ids.ids
-else:
-    result = False
-    </field>
+            <field name="restrict_user" eval="1" />
+            <field name="computation_method">use_group</field>
+            <field name="group_ids" eval="[(6,0,[ref('base.group_user')])]" />
+            <field name="restrict_additional" eval="0" />
 </record>
 
 <record id="policy_template_purchase_settlement_cancel" model="policy.template_detail">
@@ -147,21 +98,10 @@ else:
                 name="state_ids"
                 search="[('field_id.model_id.model','=','account.purchase_advance_settlement'),('value','in',['draft','post','proforma','open','confirm','done'])]"
             />
-    <field name="restrict_user" eval="0" />
-    <field name="restrict_additional" eval="1" />
-    <field name="additional_python_code">obj_voucher_type_allowed_journal =\
-    env["account.voucher_type_allowed_journal"]
-criteria = [
-    ("voucher_type_id", "=", document.type_id.id),
-    ("journal_id", "=", document.journal_id.id)
-]
-allowed_wokflow_policy =\
-    obj_voucher_type_allowed_journal.search(criteria)
-if allowed_wokflow_policy:
-    result = allowed_wokflow_policy.allowed_cancel_group_ids.ids
-else:
-    result = False
-    </field>
+            <field name="restrict_user" eval="1" />
+            <field name="computation_method">use_group</field>
+            <field name="group_ids" eval="[(6,0,[ref('base.group_user')])]" />
+            <field name="restrict_additional" eval="0" />
 </record>
 
 <record id="policy_template_purchase_settlement_restart" model="policy.template_detail">
@@ -175,21 +115,10 @@ else:
                 name="state_ids"
                 search="[('field_id.model_id.model','=','account.purchase_advance_settlement'),('value','in',['cancel','reject'])]"
             />
-    <field name="restrict_user" eval="0" />
-    <field name="restrict_additional" eval="1" />
-    <field name="additional_python_code">obj_voucher_type_allowed_journal =\
-    env["account.voucher_type_allowed_journal"]
-criteria = [
-    ("voucher_type_id", "=", document.type_id.id),
-    ("journal_id", "=", document.journal_id.id)
-]
-allowed_wokflow_policy =\
-    obj_voucher_type_allowed_journal.search(criteria)
-if allowed_wokflow_policy:
-    result = allowed_wokflow_policy.allowed_restart_group_ids.ids
-else:
-    result = False
-    </field>
+            <field name="restrict_user" eval="1" />
+            <field name="computation_method">use_group</field>
+            <field name="group_ids" eval="[(6,0,[ref('base.group_user')])]" />
+            <field name="restrict_additional" eval="0" />
 </record>
 
 <record id="policy_template_purchase_settlement_reject" model="policy.template_detail">
@@ -203,21 +132,10 @@ else:
                 name="state_ids"
                 search="[('field_id.model_id.model','=','account.purchase_advance_settlement'),('value','=','confirm')]"
             />
-    <field name="restrict_user" eval="0" />
-    <field name="restrict_additional" eval="1" />
-    <field name="additional_python_code">obj_voucher_type_allowed_journal =\
-    env["account.voucher_type_allowed_journal"]
-criteria = [
-    ("voucher_type_id", "=", document.type_id.id),
-    ("journal_id", "=", document.journal_id.id)
-]
-allowed_wokflow_policy =\
-    obj_voucher_type_allowed_journal.search(criteria)
-if allowed_wokflow_policy:
-    result = allowed_wokflow_policy.allowed_reject_group_ids.ids
-else:
-    result = False
-    </field>
+            <field name="restrict_user" eval="1" />
+            <field name="computation_method">use_group</field>
+            <field name="group_ids" eval="[(6,0,[ref('base.group_user')])]" />
+            <field name="restrict_additional" eval="0" />
 </record>
 
 <record id="policy_template_purchase_settlement_approve" model="policy.template_detail">
@@ -231,21 +149,10 @@ else:
                 name="state_ids"
                 search="[('field_id.model_id.model','=','account.purchase_advance_settlement'),('value','=','confirm')]"
             />
-    <field name="restrict_user" eval="0" />
-    <field name="restrict_additional" eval="1" />
-    <field name="additional_python_code">obj_voucher_type_allowed_journal =\
-    env["account.voucher_type_allowed_journal"]
-criteria = [
-    ("voucher_type_id", "=", document.type_id.id),
-    ("journal_id", "=", document.journal_id.id)
-]
-allowed_wokflow_policy =\
-    obj_voucher_type_allowed_journal.search(criteria)
-if allowed_wokflow_policy:
-    result = allowed_wokflow_policy.allowed_approve_group_ids.ids
-else:
-    result = False
-    </field>
+            <field name="restrict_user" eval="1" />
+            <field name="computation_method">use_group</field>
+            <field name="group_ids" eval="[(6,0,[ref('base.group_user')])]" />
+            <field name="restrict_additional" eval="0" />
 </record>
 
 </data>
