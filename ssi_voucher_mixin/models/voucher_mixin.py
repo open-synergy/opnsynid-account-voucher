@@ -1,6 +1,6 @@
 # Copyright 2022 OpenSynergy Indonesia
 # Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.0-standalone.html).
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0-standalone.html).
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
@@ -10,6 +10,7 @@ class MixinAccountVoucher(models.AbstractModel):
     _name = "mixin.account.voucher"
     _description = "Abstract Class for Accounting Voucher"
     _inherit = [
+        "mail.activity.mixin",
         "mixin.transaction_confirm",
         "mixin.transaction_cancel",
         "mixin.transaction_open",
