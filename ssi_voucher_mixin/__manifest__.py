@@ -1,14 +1,14 @@
 # Copyright 2022 OpenSynergy Indonesia
 # Copyright 2022 PT. Simetri Sinergi Indonesia
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.0-standalone.html).
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0-standalone.html).
 # pylint: disable=locally-disabled, manifest-required-author
 {
     "name": "Account Voucher Mixin",
     "version": "14.0.1.0.0",
     "category": "Accounting",
     "website": "https://simetri-sinergi.id",
-    "author": "PT. Simetri Sinergi Indonesia, OpenSynergy Indonesia",
-    "license": "AGPL-3",
+    "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",
+    "license": "LGPL-3",
     "installable": True,
     "depends": [
         "account",
