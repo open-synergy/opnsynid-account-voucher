@@ -20,7 +20,7 @@ class WizardPostVoucher(models.TransientModel):
         active_id = self.env.context.get("active_id")
         vouchers = self.env[active_model].browse([active_id])
         vouchers.write(self._prepare_write_data())
-        vouchers.action_post()
+        vouchers.action_done()
 
     def _prepare_write_data(self):
         self.ensure_one()
