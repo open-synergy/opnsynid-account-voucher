@@ -50,36 +50,16 @@
             <field name="restrict_additional" eval="0" />
 </record>
 
-<record
-            id="policy_template_purchase_settlement_proforma"
-            model="policy.template_detail"
-        >
+<record id="policy_template_purchase_settlement_done" model="policy.template_detail">
     <field name="template_id" ref="policy_template_purchase_settlement" />
     <field
                 name="field_id"
-                search="[('model_id.model','=','account.purchase_advance_settlement'),('name','=','proforma_ok')]"
+                search="[('model_id.model','=','account.purchase_advance_settlement'),('name','=','done_ok')]"
             />
     <field name="restrict_state" eval="1" />
     <field
                 name="state_ids"
                 search="[('field_id.model_id.model','=','account.purchase_advance_settlement'),('value','=','open')]"
-            />
-            <field name="restrict_user" eval="1" />
-            <field name="computation_method">use_group</field>
-            <field name="group_ids" eval="[(6,0,[ref('base.group_user')])]" />
-            <field name="restrict_additional" eval="0" />
-</record>
-
-<record id="policy_template_purchase_settlement_post" model="policy.template_detail">
-    <field name="template_id" ref="policy_template_purchase_settlement" />
-    <field
-                name="field_id"
-                search="[('model_id.model','=','account.purchase_advance_settlement'),('name','=','post_ok')]"
-            />
-    <field name="restrict_state" eval="1" />
-    <field
-                name="state_ids"
-                search="[('field_id.model_id.model','=','account.purchase_advance_settlement'),('value','in',['proforma','open'])]"
             />
             <field name="restrict_user" eval="1" />
             <field name="computation_method">use_group</field>
@@ -96,7 +76,7 @@
     <field name="restrict_state" eval="1" />
     <field
                 name="state_ids"
-                search="[('field_id.model_id.model','=','account.purchase_advance_settlement'),('value','in',['draft','post','proforma','open','confirm','done'])]"
+                search="[('field_id.model_id.model','=','account.purchase_advance_settlement'),('value','in',['draft','done','open','confirm','done'])]"
             />
             <field name="restrict_user" eval="1" />
             <field name="computation_method">use_group</field>
