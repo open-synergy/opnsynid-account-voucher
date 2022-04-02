@@ -15,6 +15,7 @@
             <field name="currency_id" groups="base.group_multi_currency" />
             <field name="type_id" invisible="1" />
             <field name="journal_id" />
+            <field name="date_voucher"/>
             <field name="state" />
             <field name="id" />
             <filter
@@ -37,11 +38,6 @@
                         name="grp_approved"
                         string="Approved"
                         domain="[('state','=','approve')]"
-                    />
-                <filter
-                        name="grp_proforma"
-                        string="Pro-Forma"
-                        domain="[('state','=','proforma')]"
                     />
                 <filter
                         name="grp_post"
@@ -84,24 +80,9 @@
                     />
                 <separator />
                 <filter
-                        name="grp_date_day"
-                        string="Voucher Date by Day"
-                        context="{'group_by':'date_voucher:day'}"
-                    />
-                <filter
-                        name="grp_date_week"
-                        string="Voucher Date by Week"
-                        context="{'group_by':'date_voucher:week'}"
-                    />
-                <filter
-                        name="grp_date_month"
-                        string="Voucher Date by Month"
-                        context="{'group_by':'date_voucher:month'}"
-                    />
-                <filter
-                        name="grp_date_year"
-                        string="Voucher Date by Year"
-                        context="{'group_by':'date_voucher:year'}"
+                        name="grp_date"
+                        string="Voucher Date"
+                        context="{'group_by':'date_voucher'}"
                     />
             </group>
         </search>
@@ -112,8 +93,9 @@
     <field name="name">mixin.account.voucher.tree</field>
     <field name="model">mixin.account.voucher</field>
     <field name="arch" type="xml">
-        <tree>
-            <field name="display_name" />
+      <tree>
+            <field name="id" optional="hide" />
+            <field name="display_name" string="# Document" decoration-bf="1"/>
             <field name="description" />
             <field name="partner_id" />
             <field name="date_voucher" />
@@ -121,8 +103,14 @@
             <field name="journal_id" />
             <field name="currency_id" />
             <field name="type_id" invisible="1" />
-            <field name="id" invisible="1" />
-            <field name="state" />
+            <field name="activity_ids" widget="list_activity" optional="show" />
+            <field
+                    name="state"
+                    widget="badge"
+                    decoration-info="state == 'draft'"
+                    decoration-success="state == 'done'"
+                    decoration-muted="state == 'cancel'"
+                />
         </tree>
     </field>
 </record>
@@ -157,18 +145,11 @@
                         attrs="{'invisible':[('confirm_ok','!=',True)]}"
                     />
                 <button
-                        name="action_proforma"
-                        type="object"
-                        string="Pro-Forma"
-                        class="oe_highlight"
-                        attrs="{'invisible':[('proforma_ok','!=',True)]}"
-                    />
-                <button
                         name="%(wizard_post_voucher_action)d"
                         type="action"
                         string="Post"
                         class="oe_highlight"
-                        attrs="{'invisible':[('post_ok','!=',True)]}"
+                        attrs="{'invisible':[('done_ok','!=',True)]}"
                     />
                 <button
                         name="%(ssi_transaction_cancel_mixin.base_select_cancel_reason_action)d"
@@ -186,7 +167,7 @@
                 <field
                         name="state"
                         widget="statusbar"
-                        statusbar_visible="draft,confirm,open,proforma,post"
+                        statusbar_visible="draft,confirm,open,post"
                     />
             </header>
             <field name="need_validation" invisible="1" />
@@ -201,7 +182,7 @@
                 </div>
                 <div class="oe_left" style="width: 500px;">
                     <div class="oe_title" style="width: 500px;">
-                        <label for="display_name" />
+                        <label for="display_name" string="# Document"/>
                         <h1>
                             <field name="name" class="oe_edit_only" />
                             <field name="display_name" class="oe_read_only" />
@@ -261,8 +242,7 @@
                                 />
                             <field name="confirm_ok" />
                             <field name="approve_ok" />
-                            <field name="proforma_ok" />
-                            <field name="post_ok" />
+                            <field name="done_ok" />
                             <field name="cancel_ok" />
                             <field name="reject_ok" />
                             <field name="restart_ok" />
@@ -309,8 +289,6 @@
                     <group name="group_2_2" colspan="1" col="2">
                         <field
                                 name="amount_diff"
-                                widget="monetary"
-                                options="{'currency_field': 'currency_id'}"
                             />
                         <field name="writeoff_account_id" />
                     </group>

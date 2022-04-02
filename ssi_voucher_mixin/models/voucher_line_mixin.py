@@ -24,7 +24,7 @@ class MixinAccountVoucherLine(models.AbstractModel):
         string="Account",
         comodel_name="account.account",
         required=True,
-        domain=[("type", "not in", ["view", "consolidation", "closed"])],
+        domain=[],
     )
     analytic_account_id = fields.Many2one(
         string="Analytic Account",
@@ -57,8 +57,9 @@ class MixinAccountVoucherLine(models.AbstractModel):
         string="Company Currency",
         comodel_name="res.currency",
     )
-    amount = fields.Float(
+    amount = fields.Monetary(
         string="Amount",
+        currency_field="currency_id",
     )
     product_id = fields.Many2one(
         string="Product",
@@ -71,8 +72,9 @@ class MixinAccountVoucherLine(models.AbstractModel):
     product_qty = fields.Float(
         string="Qty",
     )
-    product_unit_price = fields.Float(
+    product_unit_price = fields.Monetary(
         string="Unit Price",
+        currency_field="currency_id",
     )
 
     @api.depends(
@@ -126,19 +128,22 @@ class MixinAccountVoucherLine(models.AbstractModel):
             line.amount_tax = amount_tax
             line.amount_after_tax = amount_after_tax
 
-    amount_diff_in_company_currency = fields.Float(
+    amount_diff_in_company_currency = fields.Monetary(
         string="Diff Amount In Company Currency",
         compute="_compute_amount",
+        currency_field="company_currency_id",
         store=True,
     )
-    amount_company_currency_move_date = fields.Float(
+    amount_company_currency_move_date = fields.Monetary(
         string="Amount In Company Currency At Move Date",
         compute="_compute_amount",
+        currency_field="company_currency_id",
         store=True,
     )
-    amount_company_currency_voucher_date = fields.Float(
+    amount_company_currency_voucher_date = fields.Monetary(
         string="Amount In Company Currency At Voucher Date",
         compute="_compute_amount",
+        currency_field="company_currency_id",
         store=True,
     )
     tax_ids = fields.One2many(
@@ -146,19 +151,22 @@ class MixinAccountVoucherLine(models.AbstractModel):
         comodel_name="mixin.account.voucher.line.tax",
         inverse_name="voucher_line_id",
     )
-    amount_before_tax = fields.Float(
+    amount_before_tax = fields.Monetary(
         string="Amount Before Tax",
         compute="_compute_amount",
+        currency_field="currency_id",
         store=True,
     )
-    amount_after_tax = fields.Float(
+    amount_after_tax = fields.Monetary(
         string="Amount After Tax",
         compute="_compute_amount",
+        currency_field="currency_id",
         store=True,
     )
-    amount_tax = fields.Float(
+    amount_tax = fields.Monetary(
         string="Amount Tax",
         compute="_compute_amount",
+        currency_field="currency_id",
         store=True,
     )
 
@@ -275,50 +283,6 @@ class MixinAccountVoucherLine(models.AbstractModel):
             "move_id": voucher.move_id.id,
         }
         return data
-
-    @api.onchange("partner_id", "type")
-    def onchange_move_line_id(self):
-
-        result = {
-            "domain": {
-                "move_line_id": [
-                    ("reconcile_id", "=", False),
-                    ("account_id.reconcile", "=", True),
-                ]
-            }
-        }
-        if self.type == "dr":
-            result["domain"]["move_line_id"].append(("credit", ">", 0))
-        else:
-            result["domain"]["move_line_id"].append(("debit", ">", 0))
-
-        if self.partner_id:
-            if self.move_line_id:
-                result["domain"]["move_line_id"].append(
-                    ("partner_id", "=", self.partner_id.id)
-                )
-                if self.move_line_id.partner_id != self.partner_id:
-                    self.move_line_id = False
-            else:
-                result["domain"]["move_line_id"].append(
-                    ("partner_id", "=", self.partner_id.id)
-                )
-        else:
-            self.move_line_id = False
-            result["domain"]["move_line_id"].append(("partner_id", "=", False))
-        return result
-
-    @api.onchange("move_line_id")
-    def onchange_account_id(self):
-        self.account_id = False
-        if self.move_line_id:
-            self.account_id = self.move_line_id.account_id.id
-
-    @api.onchange("move_line_id")
-    def onchange_name(self):
-        self.name = "/"
-        if self.move_line_id:
-            self.name = self.move_line_id.name
 
     @api.constrains("amount", "voucher_id")
     def _check_negative_value(self):

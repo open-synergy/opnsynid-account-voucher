@@ -14,6 +14,7 @@ class MixinAccountVoucher(models.AbstractModel):
         "mixin.transaction_confirm",
         "mixin.transaction_cancel",
         "mixin.transaction_open",
+        "mixin.transaction_done",
     ]
     _approval_from_state = "draft"
     _approval_to_state = "open"
@@ -27,9 +28,8 @@ class MixinAccountVoucher(models.AbstractModel):
         policy_field = [
             "confirm_ok",
             "open_ok",
-            "proforma_ok",
             "approve_ok",
-            "post_ok",
+            "done_ok",
             "cancel_ok",
             "reject_ok",
             "restart_ok",
@@ -58,7 +58,6 @@ class MixinAccountVoucher(models.AbstractModel):
     description = fields.Char(
         string="Description",
         required=True,
-        default="/",
         readonly=True,
         states={
             "draft": [
@@ -101,9 +100,7 @@ class MixinAccountVoucher(models.AbstractModel):
                 ("readonly", False),
             ],
         },
-        domain=[
-            ("type", "not in", ["view", "consolidation", "closed"]),
-        ],
+        domain=[],
     )
     type_id = fields.Many2one(
         string="Voucher Type",
@@ -220,10 +217,11 @@ class MixinAccountVoucher(models.AbstractModel):
             voucher.amount_debit = debit
             voucher.amount_credit = credit
 
-    amount = fields.Float(
+    amount = fields.Monetary(
         string="Total Voucher",
         readonly=True,
         default=0.0,
+        currency_field="currency_id",
         states={
             "draft": [
                 ("readonly", False),
@@ -241,29 +239,34 @@ class MixinAccountVoucher(models.AbstractModel):
             ],
         },
     )
-    amount_in_company_currency = fields.Float(
+    amount_in_company_currency = fields.Monetary(
         string="Total Voucher in Company Currency",
         compute="_compute_amount",
+        currency_field="company_currency_id",
         store=True,
     )
-    amount_diff = fields.Float(
+    amount_diff = fields.Monetary(
         string="Amount Diff.",
         compute="_compute_amount",
+        currency_field="currency_id",
         store=True,
     )
-    amount_diff_company_currency = fields.Float(
+    amount_diff_company_currency = fields.Monetary(
         string="Amount Diff. in Company Currency",
         compute="_compute_amount",
+        currency_field="company_currency_id",
         store=True,
     )
-    amount_debit = fields.Float(
+    amount_debit = fields.Monetary(
         string="Debit",
         compute="_compute_amount",
+        currency_field="currency_id",
         store=True,
     )
-    amount_credit = fields.Float(
+    amount_credit = fields.Monetary(
         string="Credit",
         compute="_compute_amount",
+        currency_field="currency_id",
         store=True,
     )
     line_ids = fields.One2many(
@@ -278,7 +281,7 @@ class MixinAccountVoucher(models.AbstractModel):
         },
     )
     line_dr_ids = fields.One2many(
-        string="Debit",
+        string="Debit Lines",
         comodel_name="mixin.account.voucher.line",
         inverse_name="voucher_id",
         domain=[
@@ -295,7 +298,7 @@ class MixinAccountVoucher(models.AbstractModel):
         },
     )
     line_cr_ids = fields.One2many(
-        string="Credit",
+        string="Credit Lines",
         comodel_name="mixin.account.voucher.line",
         inverse_name="voucher_id",
         domain=[
@@ -328,8 +331,7 @@ class MixinAccountVoucher(models.AbstractModel):
             ("draft", "Draft"),
             ("confirm", "Waiting for Approval"),
             ("open", "On Progress"),
-            ("proforma", "Proforma"),
-            ("post", "Posted"),
+            ("done", "Posted"),
             ("cancel", "Cancelled"),
             ("reject", "Rejected"),
         ],
@@ -337,17 +339,6 @@ class MixinAccountVoucher(models.AbstractModel):
         readonly=True,
         default="draft",
         copy=False,
-        track_visibility="onchange",
-    )
-    proforma_ok = fields.Boolean(
-        string="Can Proforma",
-        compute="_compute_policy",
-        store=False,
-    )
-    post_ok = fields.Boolean(
-        string="Can Post",
-        compute="_compute_policy",
-        store=False,
     )
 
     def action_cancel(self, cancel_reason=False):
@@ -360,33 +351,22 @@ class MixinAccountVoucher(models.AbstractModel):
             voucher.move_id.with_context(force_delete=True).unlink()
         return res
 
-    def action_proforma(self):
+    def action_done(self):
+        _super = super(MixinAccountVoucher, self)
+        result = _super.action_done()
         for voucher in self:
-            data = voucher._prepare_proforma_data()
-            voucher.write(data)
-
-    def action_post(self):
-        for voucher in self:
-            data = voucher._prepare_post_data()
-            voucher.write(data)
             voucher._create_line_aml()
 
-    def _prepare_proforma_data(self):
+    def _prepare_done_data(self):
         self.ensure_one()
-        data = {
-            "state": "proforma",
-        }
-        return data
-
-    def _prepare_post_data(self):
-        self.ensure_one()
+        _super = super(MixinAccountVoucher, self)
+        result = _super._prepare_done_data()
         obj_account_move = self.env["account.move"]
         move = obj_account_move.create(self._prepare_account_move())
-        data = {
-            "state": "post",
+        result.update({
             "move_id": move.id,
-        }
-        return data
+        })
+        return result
 
     @api.constrains(
         "type_id",
@@ -484,17 +464,6 @@ class MixinAccountVoucher(models.AbstractModel):
         ):
             result = False
         return result
-
-    @api.constrains("name")
-    def _check_name(self):
-        obj_voucher = self.env[self._name]
-        for record in self:
-            str_error = _("Document " + record.name + " has been used")
-            if record.name != "/":
-                criteria = [("name", "=", record.name), ("id", "!=", record.id)]
-                data = obj_voucher.search(criteria)
-                if data:
-                    raise UserError(str_error)
 
     @api.constrains("amount_debit", "amount_credit", "type_id", "state")
     def _check_debit_credit(self):
@@ -631,10 +600,3 @@ class MixinAccountVoucher(models.AbstractModel):
             elif vtype.header_type == "cr":
                 debit = abs(amount_diff_company_currency)
         return (debit, credit)
-
-    def action_approve_approval(self):
-        _super = super(MixinAccountVoucher, self)
-        _super.action_approve_approval()
-        for document in self:
-            if document.approved:
-                document.action_open()
