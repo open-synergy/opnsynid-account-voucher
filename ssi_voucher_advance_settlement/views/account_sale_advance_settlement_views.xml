@@ -13,12 +13,7 @@
         />
     <field name="mode">primary</field>
     <field name="arch" type="xml">
-        <data>
-            <xpath expr="//field[@name='display_name']" position="attributes">
-                <attribute name="string"># Sale Advance Settlement</attribute>
-            </xpath>
-        </data>
-
+        <data />
     </field>
 </record>
 
@@ -32,9 +27,6 @@
     <field name="mode">primary</field>
     <field name="arch" type="xml">
         <data>
-            <xpath expr="//label[@for='display_name']" position="attributes">
-                <attribute name="string"># Sale Advance Settlement</attribute>
-            </xpath>
             <xpath expr="//group[@name='group_2_2']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
@@ -53,7 +45,7 @@
         />
     <field
             name="context"
-        >{'default_filter_grp_draft':1,'default_filter_grp_confirm':1,'default_filter_grp_approve':1,'default_filter_grp_proforma':1}</field>
+        >{'default_filter_grp_draft':1,'default_filter_grp_confirm':1,'default_filter_grp_approve':1}</field>
 </record>
 
 <menuitem
