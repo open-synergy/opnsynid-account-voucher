@@ -353,7 +353,7 @@ class MixinAccountVoucher(models.AbstractModel):
 
     def action_done(self):
         _super = super(MixinAccountVoucher, self)
-        result = _super.action_done()
+        _super.action_done()
         for voucher in self:
             voucher._create_line_aml()
 
@@ -363,9 +363,11 @@ class MixinAccountVoucher(models.AbstractModel):
         result = _super._prepare_done_data()
         obj_account_move = self.env["account.move"]
         move = obj_account_move.create(self._prepare_account_move())
-        result.update({
-            "move_id": move.id,
-        })
+        result.update(
+            {
+                "move_id": move.id,
+            }
+        )
         return result
 
     @api.constrains(

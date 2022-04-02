@@ -10,12 +10,11 @@
         <search>
             <field name="name" />
             <field name="partner_id" />
-            <field name="date_voucher" />
             <field name="company_id" groups="base.group_multi_company" />
             <field name="currency_id" groups="base.group_multi_currency" />
             <field name="type_id" invisible="1" />
             <field name="journal_id" />
-            <field name="date_voucher"/>
+            <field name="date_voucher" />
             <field name="state" />
             <field name="id" />
             <filter
@@ -95,7 +94,7 @@
     <field name="arch" type="xml">
       <tree>
             <field name="id" optional="hide" />
-            <field name="display_name" string="# Document" decoration-bf="1"/>
+            <field name="display_name" string="# Document" decoration-bf="1" />
             <field name="description" />
             <field name="partner_id" />
             <field name="date_voucher" />
@@ -182,7 +181,7 @@
                 </div>
                 <div class="oe_left" style="width: 500px;">
                     <div class="oe_title" style="width: 500px;">
-                        <label for="display_name" string="# Document"/>
+                        <label for="display_name" string="# Document" />
                         <h1>
                             <field name="name" class="oe_edit_only" />
                             <field name="display_name" class="oe_read_only" />
@@ -287,9 +286,7 @@
                         <field name="exchange_rate" />
                     </group>
                     <group name="group_2_2" colspan="1" col="2">
-                        <field
-                                name="amount_diff"
-                            />
+                        <field name="amount_diff" />
                         <field name="writeoff_account_id" />
                     </group>
                 </group>
