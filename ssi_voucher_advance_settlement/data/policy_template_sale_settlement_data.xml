@@ -117,10 +117,11 @@
                 name="state_ids"
                 search="[('field_id.model_id.model','=','account.sale_advance_settlement'),('value','=','confirm')]"
             />
-            <field name="restrict_user" eval="1" />
-            <field name="computation_method">use_group</field>
-            <field name="group_ids" eval="[(6,0,[ref('base.group_user')])]" />
-            <field name="restrict_additional" eval="0" />
+    <field name="restrict_user" eval="0" />
+    <field name="restrict_additional" eval="1" />
+    <field name="additional_python_code">result = False
+if env.user.id in document.active_approver_user_ids.ids:
+    result = True</field>
 </record>
 
 <record id="policy_template_sale_settlement_approve" model="policy.template_detail">
@@ -134,10 +135,11 @@
                 name="state_ids"
                 search="[('field_id.model_id.model','=','account.sale_advance_settlement'),('value','=','confirm')]"
             />
-            <field name="restrict_user" eval="1" />
-            <field name="computation_method">use_group</field>
-            <field name="group_ids" eval="[(6,0,[ref('base.group_user')])]" />
-            <field name="restrict_additional" eval="0" />
+    <field name="restrict_user" eval="0" />
+    <field name="restrict_additional" eval="1" />
+    <field name="additional_python_code">result = False
+if env.user.id in document.active_approver_user_ids.ids:
+    result = True</field>
 </record>
 
 </data>
