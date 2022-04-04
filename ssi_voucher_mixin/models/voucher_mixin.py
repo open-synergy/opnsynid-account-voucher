@@ -10,7 +10,6 @@ class MixinAccountVoucher(models.AbstractModel):
     _name = "mixin.account.voucher"
     _description = "Abstract Class for Accounting Voucher"
     _inherit = [
-        "mail.activity.mixin",
         "mixin.transaction_confirm",
         "mixin.transaction_cancel",
         "mixin.transaction_open",
