@@ -142,5 +142,23 @@ if env.user.id in document.active_approver_user_ids.ids:
     result = True</field>
 </record>
 
+<record
+            id="policy_template_sale_settlement_manual_number"
+            model="policy.template_detail"
+        >
+    <field name="template_id" ref="policy_template_sale_settlement" />
+    <field
+                name="field_id"
+                search="[('model_id.model','=','account.sale_advance_settlement'),('name','=','manual_number_ok')]"
+            />
+    <field name="restrict_state" eval="1" />
+    <field
+                name="state_ids"
+                search="[('field_id.model_id.model','=','account.sale_advance_settlement'),('value','=','draft')]"
+            />
+    <field name="restrict_user" eval="0" />
+    <field name="restrict_additional" eval="0" />
+</record>
+
 </data>
 </odoo>
