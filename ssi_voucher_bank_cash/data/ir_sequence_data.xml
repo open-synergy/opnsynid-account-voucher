@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<!-- Copyright 2022 OpenSynergy Indonesia
+     Copyright 2022 PT. Simetri Sinergi Indonesia
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <data noupdate="1">
+        <record id="sequence_bank_payment" model="ir.sequence">
+            <field name="name">General Sequence: Bank Payment</field>
+            <field name="code">account.bank_payment</field>
+            <field name="prefix">BNK-PAY/%(y)s/</field>
+            <field eval="1" name="number_next" />
+            <field eval="1" name="number_increment" />
+            <field name="padding" eval="6" />
+            <field name="use_date_range" eval="1" />
+            <field eval="False" name="company_id" />
+        </record>
+        <record id="sequence_bank_receipt" model="ir.sequence">
+            <field name="name">General Sequence: Bank Receipt</field>
+            <field name="code">account.bank_receipt</field>
+            <field name="prefix">BNK-RCPT/%(y)s/</field>
+            <field eval="1" name="number_next" />
+            <field eval="1" name="number_increment" />
+            <field name="padding" eval="6" />
+            <field name="use_date_range" eval="1" />
+            <field eval="False" name="company_id" />
+        </record>
+        <record id="sequence_cash_payment" model="ir.sequence">
+            <field name="name">General Sequence: Cash Payment</field>
+            <field name="code">account.cash_payment</field>
+            <field name="prefix">CASH-PAY/%(y)s/</field>
+            <field eval="1" name="number_next" />
+            <field eval="1" name="number_increment" />
+            <field name="padding" eval="6" />
+            <field name="use_date_range" eval="1" />
+            <field eval="False" name="company_id" />
+        </record>
+        <record id="sequence_cash_receipt" model="ir.sequence">
+            <field name="name">General Sequence: Cash Receipt</field>
+            <field name="code">account.cash_receipt</field>
+            <field name="prefix">CASH-RCPT/%(y)s/</field>
+            <field eval="1" name="number_next" />
+            <field eval="1" name="number_increment" />
+            <field name="padding" eval="6" />
+            <field name="use_date_range" eval="1" />
+            <field eval="False" name="company_id" />
+        </record>
+    </data>
+</odoo>
