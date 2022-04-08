@@ -183,7 +183,11 @@
                     <div class="oe_title" style="width: 500px;">
                         <label for="display_name" string="# Document" />
                         <h1>
-                            <field name="name" class="oe_edit_only" />
+                            <field
+                                    name="name"
+                                    class="oe_edit_only"
+                                    attrs="{'readonly':[('manual_number_ok','=',False)]}"
+                                />
                             <field name="display_name" class="oe_read_only" />
                         </h1>
                         <h2 attrs="{'invisible': [('state', '!=', 'cancel')]}">
@@ -246,6 +250,7 @@
                             <field name="reject_ok" />
                             <field name="restart_ok" />
                             <field name="restart_approval_ok" />
+                            <field name="manual_number_ok" />
                         </group>
                     </page>
                     <page string="Approvals" name="multiple_approval">

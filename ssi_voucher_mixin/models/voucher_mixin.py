@@ -33,6 +33,7 @@ class MixinAccountVoucher(models.AbstractModel):
             "reject_ok",
             "restart_ok",
             "restart_approval_ok",
+            "manual_number_ok",
         ]
         res += policy_field
         return res
@@ -361,7 +362,9 @@ class MixinAccountVoucher(models.AbstractModel):
         _super = super(MixinAccountVoucher, self)
         result = _super._prepare_done_data()
         obj_account_move = self.env["account.move"]
-        move = obj_account_move.create(self._prepare_account_move())
+        move = obj_account_move.with_context(check_move_validity=False).create(
+            self._prepare_account_move()
+        )
         result.update(
             {
                 "move_id": move.id,

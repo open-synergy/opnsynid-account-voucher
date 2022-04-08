@@ -106,7 +106,7 @@ class WizardImportMoveLine(models.TransientModel):
                 0,
                 0,
                 {
-                    "name": move.name,
+                    "name": move.name or "-",
                     "partner_id": move.partner_id and move.partner_id.id or False,
                     "move_line_id": move.id,
                     "account_id": move.account_id.id,
