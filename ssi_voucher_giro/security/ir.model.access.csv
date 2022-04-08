@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+account_giro_receipt_user,account.giro_receipt,model_account_giro_receipt,base.group_user,1,1,1,1
+account_giro_receipt_line_user,account.giro_receipt_line,model_account_giro_receipt_line,base.group_user,1,1,1,1
+account_giro_receipt_line_tax_user,account.giro_receipt_line_tax,model_account_giro_receipt_line_tax,base.group_user,1,1,1,1
+account_giro_payment_user,account.giro_payment,model_account_giro_payment,base.group_user,1,1,1,1
+account_giro_payment_line_user,account.giro_payment_line,model_account_giro_payment_line,base.group_user,1,1,1,1
+account_giro_payment_line_tax_user,account.giro_payment_line_tax,model_account_giro_payment_line_tax,base.group_user,1,1,1,1
+account_giro_receipt_all,account.giro_receipt,model_account_giro_receipt,,1,0,0,0
+account_giro_receipt_line_all,account.giro_receipt_line,model_account_giro_receipt_line,,1,0,0,0
+account_giro_receipt_line_tax_all,account.giro_receipt_line_tax,model_account_giro_receipt_line_tax,,1,0,0,0
+account_giro_payment_all,account.giro_payment,model_account_giro_payment,,1,0,0,0
+account_giro_payment_line_all,account.giro_payment_line,model_account_giro_payment_line,,1,0,0,0
+account_giro_payment_line_tax_all,account.giro_payment_line_tax,model_account_giro_payment_line_tax,,1,0,0,0
