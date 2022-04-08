@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 OpenSynergy Indonesia
+     Copyright 2022 PT. Simetri Sinergi Indonesia
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0-standalone.html). -->
+<odoo>
+<data noupdate="1">
+<record id="approval_template_giro_payment" model="approval.template">
+    <field name="name">Standard: Giro Payment</field>
+    <field name="model_id" ref="ssi_voucher_giro.model_account_giro_payment" />
+    <field name="sequence" eval="100" />
+    <field name="computation_method">use_python</field>
+    <field name="python_code">result = True</field>
+    <field name="validate_sequence" eval="1" />
+</record>
+<record id="approval_template_detail_giro_payment" model="approval.template_detail">
+    <field name="template_id" ref="approval_template_giro_payment" />
+    <field name="approver_selection_method">use_group</field>
+    <field name="approver_group_ids" eval="[(6,0,[ref('base.group_user')])]" />
+</record>
+</data>
+</odoo>

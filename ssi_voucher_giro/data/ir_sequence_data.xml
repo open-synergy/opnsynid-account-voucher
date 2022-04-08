@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<!-- Copyright 2022 OpenSynergy Indonesia
+     Copyright 2022 PT. Simetri Sinergi Indonesia
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <data noupdate="1">
+        <record id="sequence_giro_payment" model="ir.sequence">
+            <field name="name">General Sequence: Giro Payment</field>
+            <field name="code">account.giro_payment</field>
+            <field name="prefix">GIRO-PAY/%(y)s/</field>
+            <field eval="1" name="number_next" />
+            <field eval="1" name="number_increment" />
+            <field name="padding" eval="6" />
+            <field name="use_date_range" eval="1" />
+            <field eval="False" name="company_id" />
+        </record>
+        <record id="sequence_giro_receipt" model="ir.sequence">
+            <field name="name">General Sequence: Giro Receipt</field>
+            <field name="code">account.giro_receipt</field>
+            <field name="prefix">GIRO-RCPT/%(y)s/</field>
+            <field eval="1" name="number_next" />
+            <field eval="1" name="number_increment" />
+            <field name="padding" eval="6" />
+            <field name="use_date_range" eval="1" />
+            <field eval="False" name="company_id" />
+        </record>
+    </data>
+</odoo>
