@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+account_cheque_receipt_user,account.cheque_receipt,model_account_cheque_receipt,base.group_user,1,1,1,1
+account_cheque_receipt_line_user,account.cheque_receipt_line,model_account_cheque_receipt_line,base.group_user,1,1,1,1
+account_cheque_receipt_line_tax_user,account.cheque_receipt_line_tax,model_account_cheque_receipt_line_tax,base.group_user,1,1,1,1
+account_cheque_payment_user,account.cheque_payment,model_account_cheque_payment,base.group_user,1,1,1,1
+account_cheque_payment_line_user,account.cheque_payment_line,model_account_cheque_payment_line,base.group_user,1,1,1,1
+account_cheque_payment_line_tax_user,account.cheque_payment_line_tax,model_account_cheque_payment_line_tax,base.group_user,1,1,1,1
+account_cheque_receipt_all,account.cheque_receipt,model_account_cheque_receipt,,1,0,0,0
+account_cheque_receipt_line_all,account.cheque_receipt_line,model_account_cheque_receipt_line,,1,0,0,0
+account_cheque_receipt_line_tax_all,account.cheque_receipt_line_tax,model_account_cheque_receipt_line_tax,,1,0,0,0
+account_cheque_payment_all,account.cheque_payment,model_account_cheque_payment,,1,0,0,0
+account_cheque_payment_line_all,account.cheque_payment_line,model_account_cheque_payment_line,,1,0,0,0
+account_cheque_payment_line_tax_all,account.cheque_payment_line_tax,model_account_cheque_payment_line_tax,,1,0,0,0

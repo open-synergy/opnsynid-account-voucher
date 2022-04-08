@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 OpenSynergy Indonesia
+     Copyright 2022 PT. Simetri Sinergi Indonesia
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
+<odoo>
+    <menuitem
+        id="menu_configuration_cheque_receipt"
+        name="Cheque Receipt"
+        sequence="5"
+        parent="ssi_voucher_mixin.menu_account_configuration_voucher"
+    />
+
+    <menuitem
+        id="menu_configuration_cheque_payment"
+        name="Cheque Payment"
+        sequence="6"
+        parent="ssi_voucher_mixin.menu_account_configuration_voucher"
+    />
+</odoo>
