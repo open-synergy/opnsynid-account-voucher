@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 OpenSynergy Indonesia
+     Copyright 2022 PT. Simetri Sinergi Indonesia
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
+<odoo>
+
+<record id="account_purchase_refund_settlement_view_tree" model="ir.ui.view">
+    <field name="name">account.purchase_refund_settlement tree</field>
+    <field name="model">account.purchase_refund_settlement</field>
+    <field
+            name="inherit_id"
+            ref="ssi_voucher_settlement_common.account_voucher_common_settlement_view_tree"
+        />
+    <field name="mode">primary</field>
+    <field name="arch" type="xml">
+        <data>
+            <xpath expr="//field[@name='display_name']" position="attributes">
+                <attribute name="string"># Purchase Refund Settlement</attribute>
+            </xpath>
+        </data>
+
+    </field>
+</record>
+
+<record id="account_purchase_refund_settlement_view_form" model="ir.ui.view">
+    <field name="name">account.purchase_refund_settlement form</field>
+    <field name="model">account.purchase_refund_settlement</field>
+    <field
+            name="inherit_id"
+            ref="ssi_voucher_settlement_common.account_voucher_common_settlement_view_form"
+        />
+    <field name="mode">primary</field>
+    <field name="arch" type="xml">
+        <data>
+            <xpath expr="//label[@for='display_name']" position="attributes">
+                <attribute name="string"># Purchase Refund Settlement</attribute>
+            </xpath>
+            <xpath expr="//group[@name='group_2_2']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </data>
+    </field>
+</record>
+
+<record id="account_purchase_refund_settlement_action" model="ir.actions.act_window">
+    <field name="name">Purchase Refund Settlement</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">account.purchase_refund_settlement</field>
+    <field name="view_mode">tree,form</field>
+    <field
+            name="search_view_id"
+            ref="ssi_voucher_mixin.mixin_account_voucher_view_search"
+        />
+    <field
+            name="context"
+        >{'default_filter_grp_draft':1,'default_filter_grp_confirm':1,'default_filter_grp_approve':1,'default_filter_grp_proforma':1}</field>
+</record>
+
+<menuitem
+        id="account_purchase_refund_settlement_menu"
+        name="Purchase Refund Settlement"
+        parent="ssi_voucher_settlement_common.account_settlement_voucher_menu"
+        groups="account.group_account_user"
+        action="account_purchase_refund_settlement_action"
+        sequence="1"
+    />
+</odoo>
