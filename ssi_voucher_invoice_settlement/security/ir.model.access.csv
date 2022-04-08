@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+account_invoice_settlement_user,account.invoice_settlement,model_account_invoice_settlement,base.group_user,1,1,1,1
+account_invoice_settlement_line_user,account.invoice_settlement_line,model_account_invoice_settlement_line,base.group_user,1,1,1,1
+account_invoice_settlement_line_tax_user,account.invoice_settlement_line_tax,model_account_invoice_settlement_line_tax,base.group_user,1,1,1,1
+account_invoice_settlement_all,account.invoice_settlement,model_account_invoice_settlement,,1,0,0,0
+account_invoice_settlement_line_all,account.invoice_settlement_line,model_account_invoice_settlement_line,,1,0,0,0
+account_invoice_settlement_line_tax_all,account.invoice_settlement_line_tax,model_account_invoice_settlement_line_tax,,1,0,0,0
