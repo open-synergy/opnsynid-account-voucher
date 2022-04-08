@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 OpenSynergy Indonesia
+     Copyright 2022 PT. Simetri Sinergi Indonesia
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
+<odoo>
+  <!-- Bank Receipt -->
+  <record id="account_voucher_bank_receipt_action" model="ir.actions.act_window">
+      <field name="name">Bank Receipt Configuration</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">account.voucher_type</field>
+      <field name="view_mode">form</field>
+      <field name="target">inline</field>
+      <field name="res_id" ref="ssi_voucher_bank_cash.voucher_type_bank_receipt" />
+  </record>
+
+  <menuitem
+        id="account_voucher_bank_receipt_menu"
+        name="Configuration"
+        parent="menu_configuration_bank_receipt"
+        action="account_voucher_bank_receipt_action"
+        sequence="1"
+    />
+
+  <record
+        id="account_voucher_bank_receipt_journal_action"
+        model="ir.actions.act_window"
+    >
+      <field name="name">Bank Receipt Allowed Journal</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">account.voucher_type_allowed_journal</field>
+      <field name="view_mode">tree,form</field>
+      <field
+            name="domain"
+            eval="[('voucher_type_id','=',ref('ssi_voucher_bank_cash.voucher_type_bank_receipt'))]"
+        />
+      <field
+            name="context"
+            eval="{'default_voucher_type_id': ref('ssi_voucher_bank_cash.voucher_type_bank_receipt')}"
+        />
+  </record>
+
+  <menuitem
+        id="account_voucher_bank_receipt_journal_menu"
+        name="Allowed Journals"
+        parent="menu_configuration_bank_receipt"
+        action="account_voucher_bank_receipt_journal_action"
+        sequence="2"
+    />
+
+  <record id="account_voucher_bank_payment_action" model="ir.actions.act_window">
+      <field name="name">Bank Payment Configuration</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">account.voucher_type</field>
+      <field name="view_mode">form</field>
+      <field name="target">inline</field>
+      <field name="res_id" ref="ssi_voucher_bank_cash.voucher_type_bank_payment" />
+  </record>
+
+  <menuitem
+        id="account_voucher_bank_payment_menu"
+        name="Configuration"
+        parent="ssi_voucher_bank_cash.menu_configuration_bank_payment"
+        action="account_voucher_bank_payment_action"
+        sequence="1"
+    />
+
+  <record
+        id="account_voucher_bank_payment_journal_action"
+        model="ir.actions.act_window"
+    >
+      <field name="name">Bank Payment Allowed Journal</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">account.voucher_type_allowed_journal</field>
+      <field name="view_mode">tree,form</field>
+      <field
+            name="domain"
+            eval="[('voucher_type_id','=',ref('ssi_voucher_bank_cash.voucher_type_bank_payment'))]"
+        />
+      <field
+            name="context"
+            eval="{'default_voucher_type_id': ref('ssi_voucher_bank_cash.voucher_type_bank_payment')}"
+        />
+  </record>
+
+  <menuitem
+        id="account_voucher_bank_payment_journal_menu"
+        name="Allowed Journals"
+        parent="menu_configuration_bank_payment"
+        action="account_voucher_bank_payment_journal_action"
+        sequence="2"
+    />
+
+  <record id="account_voucher_cash_receipt_action" model="ir.actions.act_window">
+      <field name="name">Cash Receipt Configuration</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">account.voucher_type</field>
+      <field name="view_mode">form</field>
+      <field name="target">inline</field>
+      <field name="res_id" ref="ssi_voucher_bank_cash.voucher_type_cash_receipt" />
+  </record>
+
+  <menuitem
+        id="account_voucher_cash_receipt_menu"
+        name="Cash Receipt"
+        parent="ssi_voucher_bank_cash.menu_configuration_cash_receipt"
+        action="account_voucher_cash_receipt_action"
+        sequence="1"
+    />
+
+  <record
+        id="account_voucher_cash_receipt_journal_action"
+        model="ir.actions.act_window"
+    >
+      <field name="name">Cash Receipt Allowed Journal</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">account.voucher_type_allowed_journal</field>
+      <field name="view_mode">tree,form</field>
+      <field
+            name="domain"
+            eval="[('voucher_type_id','=',ref('ssi_voucher_bank_cash.voucher_type_cash_receipt'))]"
+        />
+      <field
+            name="context"
+            eval="{'default_voucher_type_id': ref('ssi_voucher_bank_cash.voucher_type_cash_receipt')}"
+        />
+  </record>
+
+  <menuitem
+        id="account_voucher_cash_receipt_journal_menu"
+        name="Allowed Journals"
+        parent="ssi_voucher_bank_cash.menu_configuration_cash_receipt"
+        action="account_voucher_cash_receipt_journal_action"
+        sequence="2"
+    />
+
+  <record id="account_voucher_cash_payment_action" model="ir.actions.act_window">
+      <field name="name">Cash Payment Configuration</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">account.voucher_type</field>
+      <field name="view_mode">form</field>
+      <field name="target">inline</field>
+      <field name="res_id" ref="ssi_voucher_bank_cash.voucher_type_cash_payment" />
+  </record>
+
+  <menuitem
+        id="account_voucher_cash_payment_menu"
+        name="Configuration"
+        parent="ssi_voucher_bank_cash.menu_configuration_cash_payment"
+        action="account_voucher_cash_payment_action"
+        sequence="1"
+    />
+
+  <record
+        id="account_voucher_cash_payment_journal_action"
+        model="ir.actions.act_window"
+    >
+      <field name="name">Cash Payment Allowed Journal</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">account.voucher_type_allowed_journal</field>
+      <field name="view_mode">tree,form</field>
+      <field
+            name="domain"
+            eval="[('voucher_type_id','=',ref('ssi_voucher_bank_cash.voucher_type_cash_payment'))]"
+        />
+      <field
+            name="context"
+            eval="{'default_voucher_type_id': ref('ssi_voucher_bank_cash.voucher_type_cash_payment')}"
+        />
+  </record>
+
+  <menuitem
+        id="account_voucher_cash_payment_journal_menu"
+        name="Allowed Journals"
+        parent="ssi_voucher_bank_cash.menu_configuration_cash_payment"
+        action="account_voucher_cash_payment_journal_action"
+        sequence="2"
+    />
+</odoo>

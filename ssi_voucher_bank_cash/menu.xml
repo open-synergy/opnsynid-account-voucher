@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 OpenSynergy Indonesia
+     Copyright 2022 PT. Simetri Sinergi Indonesia
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
+<odoo>
+    <menuitem
+        id="menu_configuration_bank_receipt"
+        name="Bank Receipt"
+        sequence="1"
+        parent="ssi_voucher_mixin.menu_account_configuration_voucher"
+    />
+
+    <menuitem
+        id="menu_configuration_bank_payment"
+        name="Bank Payment"
+        sequence="2"
+        parent="ssi_voucher_mixin.menu_account_configuration_voucher"
+    />
+
+    <menuitem
+        id="menu_configuration_cash_receipt"
+        name="Cash Receipt"
+        sequence="3"
+        parent="ssi_voucher_mixin.menu_account_configuration_voucher"
+    />
+
+    <menuitem
+        id="menu_configuration_cash_payment"
+        name="Cash Payment"
+        sequence="4"
+        parent="ssi_voucher_mixin.menu_account_configuration_voucher"
+    />
+
+    <menuitem
+        id="account_bank_cash_menu"
+        name="Bank &amp; Cash"
+        parent="account.menu_finance"
+        sequence="4"
+    />
+</odoo>

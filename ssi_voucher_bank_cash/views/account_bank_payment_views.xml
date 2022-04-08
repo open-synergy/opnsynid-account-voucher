@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 OpenSynergy Indonesia
+     Copyright 2022 PT. Simetri Sinergi Indonesia
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
+<odoo>
+<record id="account_bank_payment_view_tree" model="ir.ui.view">
+    <field name="name">account.bank_payment tree</field>
+    <field name="model">account.bank_payment</field>
+    <field
+            name="inherit_id"
+            ref="ssi_voucher_bank_cash.account_bank_voucher_view_tree"
+        />
+    <field name="mode">primary</field>
+    <field name="arch" type="xml">
+        <data>
+            <xpath expr="//field[@name='display_name']" position="attributes">
+                <attribute name="string"># Bank Payment</attribute>
+            </xpath>
+        </data>
+
+    </field>
+</record>
+
+<record id="account_bank_payment_view_form" model="ir.ui.view">
+    <field name="name">account.bank_payment form</field>
+    <field name="model">account.bank_payment</field>
+    <field
+            name="inherit_id"
+            ref="ssi_voucher_bank_cash.account_bank_voucher_view_form"
+        />
+    <field name="mode">primary</field>
+    <field name="arch" type="xml">
+        <data>
+            <xpath expr="//label[@for='display_name']" position="attributes">
+                <attribute name="string"># Bank Payment</attribute>
+            </xpath>
+            <xpath expr="//field[@name='line_ids']" position="before">
+                <button
+                        name="%(ssi_voucher_mixin.wizard_import_move_line_action)d"
+                        type="action"
+                        string="Import Move Lines"
+                        states="draft"
+                        context="{'import_type':'cr'}"
+                    />
+            </xpath>
+            <xpath expr="//field[@name='line_ids']" position="attributes">
+                <attribute name="name">line_dr_ids</attribute>
+                <attribute
+                        name="context"
+                    >{'default_type': 'dr', 'default_partner_id':partner_id, 'default_currency_id':currency_id, 'default_company_currency_id':company_currency_id}</attribute>
+            </xpath>
+        </data>
+    </field>
+</record>
+
+<record id="account_bank_payment_action" model="ir.actions.act_window">
+    <field name="name">Bank Payment</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">account.bank_payment</field>
+    <field name="view_mode">tree,form</field>
+    <field
+            name="search_view_id"
+            ref="ssi_voucher_mixin.mixin_account_voucher_view_search"
+        />
+    <field
+            name="context"
+        >{'default_filter_grp_draft':1,'default_filter_grp_confirm':1,'default_filter_grp_approve':1,'default_filter_grp_proforma':1}</field>
+</record>
+
+<menuitem
+        id="account_bank_payment_menu"
+        name="Bank Payment"
+        parent="account_bank_cash_menu"
+        groups="account.group_account_user"
+        action="account_bank_payment_action"
+        sequence="11"
+    />
+</odoo>
