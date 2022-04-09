@@ -12,12 +12,7 @@
         />
         <field name="mode">primary</field>
         <field name="arch" type="xml">
-            <data>
-                <xpath expr="//field[@name='display_name']" position="attributes">
-                    <attribute name="string"># Giro</attribute>
-                </xpath>
-            </data>
-
+            <data />
         </field>
     </record>
 
@@ -31,9 +26,6 @@
         <field name="mode">primary</field>
         <field name="arch" type="xml">
             <data>
-                <xpath expr="//label[@for='display_name']" position="attributes">
-                    <attribute name="string"># Giro</attribute>
-                </xpath>
                 <xpath expr="//field[@name='line_ids']" position="before">
                     <button
                         name="%(ssi_voucher_mixin.wizard_import_move_line_action)d"
@@ -41,6 +33,8 @@
                         string="Import Move Lines"
                         states="draft"
                         context="{'import_type':'dr'}"
+                        class="oe_highlight"
+                        icon="fa-download"
                     />
                 </xpath>
                 <xpath expr="//field[@name='line_ids']" position="attributes">
@@ -54,7 +48,7 @@
     </record>
 
     <record id="account_giro_receipt_action" model="ir.actions.act_window">
-        <field name="name">Giro Receipt</field>
+        <field name="name">Giro Receipts</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">account.giro_receipt</field>
         <field name="view_mode">tree,form</field>
@@ -69,9 +63,8 @@
 
     <menuitem
         id="account_giro_receipt_menu"
-        name="Giro Receipt"
+        name="Giro Receipts"
         parent="ssi_voucher_bank_cash.account_bank_cash_menu"
-        groups="account.group_account_user"
         action="account_giro_receipt_action"
         sequence="20"
     />
