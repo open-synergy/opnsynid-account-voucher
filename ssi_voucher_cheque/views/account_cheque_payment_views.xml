@@ -13,11 +13,7 @@
         <field name="mode">primary</field>
         <field name="priority" eval="71" />
         <field name="arch" type="xml">
-            <data>
-                <xpath expr="//field[@name='display_name']" position="attributes">
-                    <attribute name="string"># Cheque</attribute>
-                </xpath>
-            </data>
+            <data />
 
         </field>
     </record>
@@ -33,9 +29,6 @@
         <field name="priority" eval="71" />
         <field name="arch" type="xml">
             <data>
-                <xpath expr="//label[@for='display_name']" position="attributes">
-                    <attribute name="string"># Cheque</attribute>
-                </xpath>
                 <xpath expr="//field[@name='line_ids']" position="before">
                     <button
                         name="%(ssi_voucher_mixin.wizard_import_move_line_action)d"
@@ -43,6 +36,8 @@
                         string="Import Move Lines"
                         states="draft"
                         context="{'import_type':'cr'}"
+                        class="oe_highlight"
+                        icon="fa-download"
                     />
                 </xpath>
                 <xpath expr="//field[@name='line_ids']" position="attributes">
@@ -56,7 +51,7 @@
     </record>
 
     <record id="account_cheque_payment_action" model="ir.actions.act_window">
-        <field name="name">Cheque Payment</field>
+        <field name="name">Cheque Payments</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">account.cheque_payment</field>
         <field name="view_mode">tree,form</field>
@@ -71,9 +66,8 @@
 
     <menuitem
         id="account_cheque_payment_menu"
-        name="Cheque Payment"
+        name="Cheque Payments"
         parent="ssi_voucher_bank_cash.account_bank_cash_menu"
-        groups="account.group_account_user"
         action="account_cheque_payment_action"
         sequence="30"
     />
