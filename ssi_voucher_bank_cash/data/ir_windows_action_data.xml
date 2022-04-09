@@ -25,7 +25,7 @@
         id="account_voucher_bank_receipt_journal_action"
         model="ir.actions.act_window"
     >
-      <field name="name">Bank Receipt Allowed Journal</field>
+      <field name="name">Bank Receipt Allowed Journals</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">account.voucher_type_allowed_journal</field>
       <field name="view_mode">tree,form</field>
@@ -68,7 +68,7 @@
         id="account_voucher_bank_payment_journal_action"
         model="ir.actions.act_window"
     >
-      <field name="name">Bank Payment Allowed Journal</field>
+      <field name="name">Bank Payment Allowed Journals</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">account.voucher_type_allowed_journal</field>
       <field name="view_mode">tree,form</field>
@@ -111,7 +111,7 @@
         id="account_voucher_cash_receipt_journal_action"
         model="ir.actions.act_window"
     >
-      <field name="name">Cash Receipt Allowed Journal</field>
+      <field name="name">Cash Receipt Allowed Journals</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">account.voucher_type_allowed_journal</field>
       <field name="view_mode">tree,form</field>
@@ -154,7 +154,7 @@
         id="account_voucher_cash_payment_journal_action"
         model="ir.actions.act_window"
     >
-      <field name="name">Cash Payment Allowed Journal</field>
+      <field name="name">Cash Payment Allowed Journals</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">account.voucher_type_allowed_journal</field>
       <field name="view_mode">tree,form</field>

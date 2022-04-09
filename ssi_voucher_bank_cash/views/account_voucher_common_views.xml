@@ -12,7 +12,7 @@
     <field name="arch" type="xml">
         <data>
             <xpath expr="//field[@name='currency_id']" position="after">
-                <field name="amount" />
+                <field name="amount" sum="Total Voucher" />
             </xpath>
         </data>
     </field>
@@ -29,18 +29,10 @@
                 <field name="partner_id" />
             </xpath>
             <xpath expr="//field[@name='exchange_rate']" position="before">
-                <field
-                        name="amount"
-                        widget="monetary"
-                        options="{'currency_field': 'currency_id'}"
-                    />
+                <field name="amount" />
             </xpath>
             <xpath expr="//field[@name='exchange_rate']" position="after">
-                <field
-                        name="amount_in_company_currency"
-                        widget="monetary"
-                        options="{'currency_field': 'company_currency_id'}"
-                    />
+                <field name="amount_in_company_currency" />
             </xpath>
             <xpath expr="//page[@name='page_detail']" position="inside">
                 <field name="line_ids" colspan="4" nolabel="1">
@@ -49,47 +41,36 @@
                         <field name="partner_id" />
                         <field name="move_line_id" />
                         <field name="account_id" />
+                        <field name="currency_id" invisible="1" />
                         <field
                                 name="analytic_account_id"
                                 groups="analytic.group_analytic_accounting"
                             />
-                        <field name="amount" />
+                        <field name="amount" sum="Total Amount" />
                     </tree>
                     <form>
                         <group name="group_3" colspan="4" col="2">
                             <group name="group_3_1" colspan="1" col="2">
                                 <field name="partner_id" />
-                                <field name="move_line_id" />
+                                <field
+                                        name="move_line_id"
+                                        readonly="1"
+                                        force_save="1"
+                                    />
                                 <field name="type" invisible="1" />
                                 <field name="account_id" />
                                 <field
                                         name="analytic_account_id"
                                         groups="analytic.group_analytic_accounting"
                                     />
-                                <field
-                                        name="amount"
-                                        widget="monetary"
-                                        options="{'currency_field': 'currency_id'}"
-                                    />
+                                <field name="amount" />
                             </group>
                             <group name="group_3_1" colspan="1" col="2">
                                 <field name="currency_id" invisible="1" />
                                 <field name="company_currency_id" invisible="1" />
-                                <field
-                                        name="amount_company_currency_move_date"
-                                        widget="monetary"
-                                        options="{'currency_field': 'company_currency_id'}"
-                                    />
-                                <field
-                                        name="amount_company_currency_voucher_date"
-                                        widget="monetary"
-                                        options="{'currency_field': 'company_currency_id'}"
-                                    />
-                                <field
-                                        name="amount_diff_in_company_currency"
-                                        widget="monetary"
-                                        options="{'currency_field': 'company_currency_id'}"
-                                    />
+                                <field name="amount_company_currency_move_date" />
+                                <field name="amount_company_currency_voucher_date" />
+                                <field name="amount_diff_in_company_currency" />
                             </group>
                         </group>
                         <label for="name" />
@@ -118,54 +99,30 @@
                                         <field name="base_amount_computation_method" />
                                         <field
                                                 name="manual_base_amount"
-                                                widget="monetary"
-                                                options="{'currency_field':'currency_id'}"
                                                 attrs="{'invisible':[('base_amount_computation_method','=','system')]}"
                                             />
                                         <field
                                                 name="base_amount"
                                                 attrs="{'invisible':[('base_amount_computation_method','=','manual')]}"
-                                                widget="monetary"
-                                                options="{'currency_field':'currency_id'}"
                                             />
                                         <field name="tax_amount_computation_method" />
                                         <field
                                                 name="manual_tax_amount"
-                                                widget="monetary"
-                                                options="{'currency_field':'currency_id'}"
                                                 attrs="{'invisible':[('tax_amount_computation_method','=','system')]}"
                                             />
                                         <field
                                                 name="tax_amount"
                                                 attrs="{'invisible':[('tax_amount_computation_method','=','manual')]}"
-                                                widget="monetary"
-                                                options="{'currency_field':'currency_id'}"
                                             />
-                                        <field
-                                                name="tax_amount_in_company_currency"
-                                                widget="monetary"
-                                                options="{'currency_field':'company_currency_id'}"
-                                            />
+                                        <field name="tax_amount_in_company_currency" />
                                     </group>
                                 </group>
                             </form>
                         </field>
                         <group name="group_5" colspan="4" col="2">
-                            <field
-                                    name="amount_before_tax"
-                                    widget="monetary"
-                                    options="{'currency_field':'currency_id'}"
-                                />
-                            <field
-                                    name="amount_tax"
-                                    widget="monetary"
-                                    options="{'currency_field':'currency_id'}"
-                                />
-                            <field
-                                    name="amount_after_tax"
-                                    widget="monetary"
-                                    options="{'currency_field':'currency_id'}"
-                                />
+                            <field name="amount_before_tax" />
+                            <field name="amount_tax" />
+                            <field name="amount_after_tax" />
                         </group>
                     </form>
                 </field>
