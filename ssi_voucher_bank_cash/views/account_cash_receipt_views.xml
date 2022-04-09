@@ -12,12 +12,7 @@
         />
     <field name="mode">primary</field>
     <field name="arch" type="xml">
-        <data>
-            <xpath expr="//field[@name='display_name']" position="attributes">
-                <attribute name="string"># Cash Receipt</attribute>
-            </xpath>
-        </data>
-
+        <data />
     </field>
 </record>
 
@@ -31,9 +26,6 @@
     <field name="mode">primary</field>
     <field name="arch" type="xml">
         <data>
-            <xpath expr="//label[@for='display_name']" position="attributes">
-                <attribute name="string"># Cash Receipt</attribute>
-            </xpath>
             <xpath expr="//field[@name='line_ids']" position="before">
                 <button
                         name="%(ssi_voucher_mixin.wizard_import_move_line_action)d"
@@ -41,6 +33,8 @@
                         string="Import Move Lines"
                         states="draft"
                         context="{'import_type':'dr'}"
+                        class="oe_highlight"
+                        icon="fa-download"
                     />
             </xpath>
             <xpath expr="//field[@name='line_ids']" position="attributes">
@@ -54,7 +48,7 @@
 </record>
 
 <record id="account_cash_receipt_action" model="ir.actions.act_window">
-    <field name="name">Cash Receipt</field>
+    <field name="name">Cash Receipts</field>
     <field name="type">ir.actions.act_window</field>
     <field name="res_model">account.cash_receipt</field>
     <field name="view_mode">tree,form</field>
@@ -69,7 +63,7 @@
 
 <menuitem
         id="account_cash_receipt_menu"
-        name="Cash Receipt"
+        name="Cash Receipts"
         parent="account_bank_cash_menu"
         groups="account.group_account_user"
         action="account_cash_receipt_action"
