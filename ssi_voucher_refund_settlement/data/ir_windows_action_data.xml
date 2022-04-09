@@ -30,7 +30,7 @@
         id="account_voucher_sale_refund_settlement_journal_action"
         model="ir.actions.act_window"
     >
-      <field name="name">Sale Refund Settlement Allowed Journal</field>
+      <field name="name">Sale Refund Settlement Allowed Journals</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">account.voucher_type_allowed_journal</field>
       <field name="view_mode">tree,form</field>
@@ -79,7 +79,7 @@
         id="account_voucher_purchase_refund_settlement_journal_action"
         model="ir.actions.act_window"
     >
-      <field name="name">Purchase Refund Settlement Allowed Journal</field>
+      <field name="name">Purchase Refund Settlement Allowed Journals</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">account.voucher_type_allowed_journal</field>
       <field name="view_mode">tree,form</field>
