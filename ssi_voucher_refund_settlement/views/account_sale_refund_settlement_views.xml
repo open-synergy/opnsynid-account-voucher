@@ -13,12 +13,7 @@
         />
     <field name="mode">primary</field>
     <field name="arch" type="xml">
-        <data>
-            <xpath expr="//field[@name='display_name']" position="attributes">
-                <attribute name="string"># Sale Refund Settlement</attribute>
-            </xpath>
-        </data>
-
+        <data />
     </field>
 </record>
 
@@ -32,9 +27,6 @@
     <field name="mode">primary</field>
     <field name="arch" type="xml">
         <data>
-            <xpath expr="//label[@for='display_name']" position="attributes">
-                <attribute name="string"># Sale Refund Settlement</attribute>
-            </xpath>
             <xpath expr="//group[@name='group_2_2']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
@@ -43,7 +35,7 @@
 </record>
 
 <record id="account_sale_refund_settlement_action" model="ir.actions.act_window">
-    <field name="name">Sale Refund Settlement</field>
+    <field name="name">Sale Refund Settlements</field>
     <field name="type">ir.actions.act_window</field>
     <field name="res_model">account.sale_refund_settlement</field>
     <field name="view_mode">tree,form</field>
@@ -58,9 +50,8 @@
 
 <menuitem
         id="account_sale_refund_settlement_menu"
-        name="Sale Refund Settlement"
+        name="Sale Refunds"
         parent="ssi_voucher_settlement_common.account_settlement_voucher_menu"
-        groups="account.group_account_user"
         action="account_sale_refund_settlement_action"
         sequence="1"
     />
