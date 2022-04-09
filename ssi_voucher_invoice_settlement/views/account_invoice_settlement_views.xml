@@ -12,12 +12,7 @@
         />
     <field name="mode">primary</field>
     <field name="arch" type="xml">
-        <data>
-            <xpath expr="//field[@name='display_name']" position="attributes">
-                <attribute name="string"># Invoice Settlement</attribute>
-            </xpath>
-        </data>
-
+        <data />
     </field>
 </record>
 
@@ -31,9 +26,6 @@
     <field name="mode">primary</field>
     <field name="arch" type="xml">
         <data>
-            <xpath expr="//label[@for='display_name']" position="attributes">
-                <attribute name="string"># Invoice Settlement</attribute>
-            </xpath>
             <xpath expr="//group[@name='group_2_2']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
@@ -42,7 +34,7 @@
 </record>
 
 <record id="account_invoice_settlement_action" model="ir.actions.act_window">
-    <field name="name">Invoice Settlement</field>
+    <field name="name">Invoice Settlements</field>
     <field name="type">ir.actions.act_window</field>
     <field name="res_model">account.invoice_settlement</field>
     <field name="view_mode">tree,form</field>
@@ -57,9 +49,8 @@
 
 <menuitem
         id="account_invoice_settlement_menu"
-        name="Invoice Settlement"
+        name="Invoices"
         parent="ssi_voucher_settlement_common.account_settlement_voucher_menu"
-        groups="account.group_account_user"
         action="account_invoice_settlement_action"
         sequence="5"
     />
