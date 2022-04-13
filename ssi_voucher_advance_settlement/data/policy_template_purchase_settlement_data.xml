@@ -24,6 +24,11 @@
                 name="field_id"
                 search="[('model_id.model','=','account.purchase_advance_settlement'),('name','=','confirm_ok')]"
             />
+            <field name="restrict_state" eval="1" />
+            <field
+                name="state_ids"
+                search="[('field_id.model_id.model','=','account.bank_payment'),('value','=','draft')]"
+            />
             <field name="restrict_user" eval="1" />
             <field name="computation_method">use_group</field>
             <field name="group_ids" eval="[(6,0,[ref('base.group_user')])]" />
