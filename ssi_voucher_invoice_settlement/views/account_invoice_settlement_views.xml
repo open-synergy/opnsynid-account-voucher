@@ -49,9 +49,19 @@
 
 <menuitem
         id="account_invoice_settlement_menu"
-        name="Invoices"
-        parent="ssi_voucher_settlement_common.account_settlement_voucher_menu"
+        name="Invoice Settlements"
+        parent="ssi_financial_accounting.menu_account_receivable"
+        groups="ssi_voucher_invoice_settlement.invoice_settlement_user_group"
         action="account_invoice_settlement_action"
-        sequence="5"
+        sequence="60"
+    />
+
+<menuitem
+        id="account_invoice_settlement_menu2"
+        name="Invoice Settlements"
+        parent="ssi_financial_accounting.menu_account_payable"
+        groups="ssi_voucher_invoice_settlement.invoice_settlement_user_group"
+        action="account_invoice_settlement_action"
+        sequence="60"
     />
 </odoo>
