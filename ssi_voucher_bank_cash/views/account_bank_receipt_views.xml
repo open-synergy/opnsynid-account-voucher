@@ -64,8 +64,8 @@
 <menuitem
         id="account_bank_receipt_menu"
         name="Bank Receipts"
-        parent="account_bank_cash_menu"
-        groups="account.group_account_user"
+        parent="ssi_financial_accounting.menu_bank_cash"
+        groups="bank_receipt_user_group"
         action="account_bank_receipt_action"
         sequence="10"
     />

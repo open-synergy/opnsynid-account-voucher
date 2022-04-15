@@ -64,9 +64,9 @@
 <menuitem
         id="account_cash_receipt_menu"
         name="Cash Receipts"
-        parent="account_bank_cash_menu"
-        groups="account.group_account_user"
+        parent="ssi_financial_accounting.menu_bank_cash"
+        groups="cash_receipt_user_group"
         action="account_cash_receipt_action"
-        sequence="11"
+        sequence="30"
     />
 </odoo>
