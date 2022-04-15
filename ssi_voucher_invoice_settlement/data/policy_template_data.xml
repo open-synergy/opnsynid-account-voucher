@@ -3,9 +3,9 @@
      Copyright 2022 PT. Simetri Sinergi Indonesia
      License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0-standalone.html). -->
 <odoo>
-<data noupdate="0">
+<data noupdate="1">
 <record id="policy_template_invoice_settlement" model="policy.template">
-    <field name="name">Standard: Invoice Settlement</field>
+    <field name="name">Standard</field>
     <field
                 name="model_id"
                 ref="ssi_voucher_invoice_settlement.model_account_invoice_settlement"
@@ -31,7 +31,10 @@
             />
     <field name="restrict_user" eval="1" />
     <field name="computation_method">use_group</field>
-    <field name="group_ids" eval="[(6,0,[ref('base.group_user')])]" />
+    <field
+                name="group_ids"
+                eval="[(6,0,[ref('ssi_voucher_invoice_settlement.invoice_settlement_user_group')])]"
+            />
     <field name="restrict_additional" eval="0" />
 </record>
 
@@ -51,7 +54,10 @@
             />
     <field name="restrict_user" eval="1" />
     <field name="computation_method">use_group</field>
-    <field name="group_ids" eval="[(6,0,[ref('base.group_user')])]" />
+    <field
+                name="group_ids"
+                eval="[(6,0,[ref('ssi_voucher_invoice_settlement.invoice_settlement_validator_group')])]"
+            />
     <field name="restrict_additional" eval="0" />
 </record>
 
@@ -68,7 +74,10 @@
             />
     <field name="restrict_user" eval="1" />
     <field name="computation_method">use_group</field>
-    <field name="group_ids" eval="[(6,0,[ref('base.group_user')])]" />
+    <field
+                name="group_ids"
+                eval="[(6,0,[ref('ssi_voucher_invoice_settlement.invoice_settlement_user_group')])]"
+            />
     <field name="restrict_additional" eval="0" />
 </record>
 
@@ -85,7 +94,10 @@
             />
     <field name="restrict_user" eval="1" />
     <field name="computation_method">use_group</field>
-    <field name="group_ids" eval="[(6,0,[ref('base.group_user')])]" />
+    <field
+                name="group_ids"
+                eval="[(6,0,[ref('ssi_voucher_invoice_settlement.invoice_settlement_validator_group')])]"
+            />
     <field name="restrict_additional" eval="0" />
 </record>
 
@@ -102,7 +114,10 @@
             />
     <field name="restrict_user" eval="1" />
     <field name="computation_method">use_group</field>
-    <field name="group_ids" eval="[(6,0,[ref('base.group_user')])]" />
+    <field
+                name="group_ids"
+                eval="[(6,0,[ref('ssi_voucher_invoice_settlement.invoice_settlement_validator_group')])]"
+            />
     <field name="restrict_additional" eval="0" />
 </record>
 
@@ -156,7 +171,12 @@ if env.user.id in document.active_approver_user_ids.ids:
                 name="state_ids"
                 search="[('field_id.model_id.model','=','account.invoice_settlement'),('value','=','draft')]"
             />
-    <field name="restrict_user" eval="0" />
+    <field name="restrict_user" eval="1" />
+    <field name="computation_method">use_group</field>
+    <field
+                name="group_ids"
+                eval="[(6,0,[ref('ssi_voucher_invoice_settlement.invoice_settlement_validator_group')])]"
+            />
     <field name="restrict_additional" eval="0" />
 </record>
 
