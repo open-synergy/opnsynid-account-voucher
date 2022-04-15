@@ -23,6 +23,7 @@
         id="account_voucher_sale_advance_settlement_menu"
         name="Configuration"
         parent="ssi_voucher_advance_settlement.menu_configuration_sale_advance_settlement"
+        groups="ssi_voucher_advance_settlement.sale_advance_settlement_configurator_group"
         action="account_voucher_sale_advance_settlement_action"
         sequence="1"
     />
@@ -49,6 +50,7 @@
         id="account_voucher_sale_advance_settlement_journal_menu"
         name="Allowed Journals"
         parent="ssi_voucher_advance_settlement.menu_configuration_sale_advance_settlement"
+        groups="ssi_voucher_advance_settlement.sale_advance_settlement_configurator_group"
         action="account_voucher_sale_advance_settlement_journal_action"
         sequence="2"
     />
@@ -72,6 +74,7 @@
         id="account_voucher_purchase_advance_settlement_menu"
         name="Configuration"
         parent="ssi_voucher_advance_settlement.menu_configuration_purchase_advance_settlement"
+        groups="ssi_voucher_advance_settlement.purchase_advance_settlement_configurator_group"
         action="account_voucher_purchase_advance_settlement_action"
         sequence="1"
     />
@@ -98,6 +101,7 @@
         id="account_voucher_purchase_advance_settlement_journal_menu"
         name="Allowed Journals"
         parent="ssi_voucher_advance_settlement.menu_configuration_purchase_advance_settlement"
+        groups="ssi_voucher_advance_settlement.purchase_advance_settlement_configurator_group"
         action="account_voucher_purchase_advance_settlement_journal_action"
         sequence="2"
     />

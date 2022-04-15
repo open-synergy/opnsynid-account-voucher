@@ -3,9 +3,9 @@
      Copyright 2022 PT. Simetri Sinergi Indonesia
      License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0-standalone.html). -->
 <odoo>
-<data noupdate="0">
+<data noupdate="1">
 <record id="policy_template_purchase_settlement" model="policy.template">
-    <field name="name">Standard: Purchase Advance Settlement</field>
+    <field name="name">Standard</field>
     <field
                 name="model_id"
                 ref="ssi_voucher_advance_settlement.model_account_purchase_advance_settlement"
@@ -24,15 +24,18 @@
                 name="field_id"
                 search="[('model_id.model','=','account.purchase_advance_settlement'),('name','=','confirm_ok')]"
             />
-            <field name="restrict_state" eval="1" />
-            <field
+    <field name="restrict_state" eval="1" />
+    <field
                 name="state_ids"
                 search="[('field_id.model_id.model','=','account.bank_payment'),('value','=','draft')]"
             />
-            <field name="restrict_user" eval="1" />
-            <field name="computation_method">use_group</field>
-            <field name="group_ids" eval="[(6,0,[ref('base.group_user')])]" />
-            <field name="restrict_additional" eval="0" />
+    <field name="restrict_user" eval="1" />
+    <field name="computation_method">use_group</field>
+    <field
+                name="group_ids"
+                eval="[(6,0,[ref('ssi_voucher_advance_settlement.purchase_advance_settlement_user_group')])]"
+            />
+    <field name="restrict_additional" eval="0" />
 </record>
 
 <record
@@ -49,10 +52,13 @@
                 name="state_ids"
                 search="[('field_id.model_id.model','=','account.purchase_advance_settlement'),('value','=','confirm')]"
             />
-            <field name="restrict_user" eval="1" />
-            <field name="computation_method">use_group</field>
-            <field name="group_ids" eval="[(6,0,[ref('base.group_user')])]" />
-            <field name="restrict_additional" eval="0" />
+    <field name="restrict_user" eval="1" />
+    <field name="computation_method">use_group</field>
+    <field
+                name="group_ids"
+                eval="[(6,0,[ref('ssi_voucher_advance_settlement.purchase_advance_settlement_validator_group')])]"
+            />
+    <field name="restrict_additional" eval="0" />
 </record>
 
 <record id="policy_template_purchase_settlement_done" model="policy.template_detail">
@@ -66,10 +72,13 @@
                 name="state_ids"
                 search="[('field_id.model_id.model','=','account.purchase_advance_settlement'),('value','=','open')]"
             />
-            <field name="restrict_user" eval="1" />
-            <field name="computation_method">use_group</field>
-            <field name="group_ids" eval="[(6,0,[ref('base.group_user')])]" />
-            <field name="restrict_additional" eval="0" />
+    <field name="restrict_user" eval="1" />
+    <field name="computation_method">use_group</field>
+    <field
+                name="group_ids"
+                eval="[(6,0,[ref('ssi_voucher_advance_settlement.purchase_advance_settlement_user_group')])]"
+            />
+    <field name="restrict_additional" eval="0" />
 </record>
 
 <record id="policy_template_purchase_settlement_cancel" model="policy.template_detail">
@@ -83,10 +92,13 @@
                 name="state_ids"
                 search="[('field_id.model_id.model','=','account.purchase_advance_settlement'),('value','in',['draft','done','open','confirm','done'])]"
             />
-            <field name="restrict_user" eval="1" />
-            <field name="computation_method">use_group</field>
-            <field name="group_ids" eval="[(6,0,[ref('base.group_user')])]" />
-            <field name="restrict_additional" eval="0" />
+    <field name="restrict_user" eval="1" />
+    <field name="computation_method">use_group</field>
+    <field
+                name="group_ids"
+                eval="[(6,0,[ref('ssi_voucher_advance_settlement.purchase_advance_settlement_validator_group')])]"
+            />
+    <field name="restrict_additional" eval="0" />
 </record>
 
 <record id="policy_template_purchase_settlement_restart" model="policy.template_detail">
@@ -100,10 +112,13 @@
                 name="state_ids"
                 search="[('field_id.model_id.model','=','account.purchase_advance_settlement'),('value','in',['cancel','reject'])]"
             />
-            <field name="restrict_user" eval="1" />
-            <field name="computation_method">use_group</field>
-            <field name="group_ids" eval="[(6,0,[ref('base.group_user')])]" />
-            <field name="restrict_additional" eval="0" />
+    <field name="restrict_user" eval="1" />
+    <field name="computation_method">use_group</field>
+    <field
+                name="group_ids"
+                eval="[(6,0,[ref('ssi_voucher_advance_settlement.purchase_advance_settlement_validator_group')])]"
+            />
+    <field name="restrict_additional" eval="0" />
 </record>
 
 <record id="policy_template_purchase_settlement_reject" model="policy.template_detail">
@@ -156,7 +171,12 @@ if env.user.id in document.active_approver_user_ids.ids:
                 name="state_ids"
                 search="[('field_id.model_id.model','=','account.purchase_advance_settlement'),('value','=','draft')]"
             />
-    <field name="restrict_user" eval="0" />
+    <field name="restrict_user" eval="1" />
+    <field name="computation_method">use_group</field>
+    <field
+                name="group_ids"
+                eval="[(6,0,[ref('ssi_voucher_advance_settlement.purchase_advance_settlement_validator_group')])]"
+            />
     <field name="restrict_additional" eval="0" />
 </record>
 

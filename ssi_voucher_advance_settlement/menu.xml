@@ -6,14 +6,14 @@
       <menuitem
         id="menu_configuration_sale_advance_settlement"
         name="Sale Advance Settlement"
-        sequence="9"
-        parent="ssi_voucher_mixin.menu_account_configuration_voucher"
+        sequence="110"
+        parent="ssi_financial_accounting.menu_financial_accounting_configuration"
     />
 
       <menuitem
         id="menu_configuration_purchase_advance_settlement"
         name="Purchase Advance Settlement"
-        sequence="10"
-        parent="ssi_voucher_mixin.menu_account_configuration_voucher"
+        sequence="111"
+        parent="ssi_financial_accounting.menu_financial_accounting_configuration"
     />
 </odoo>
