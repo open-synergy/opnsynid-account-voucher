@@ -64,9 +64,9 @@
 <menuitem
         id="account_bank_payment_menu"
         name="Bank Payments"
-        parent="account_bank_cash_menu"
-        groups="account.group_account_user"
+        parent="ssi_financial_accounting.menu_bank_cash"
+        groups="bank_payment_user_group"
         action="account_bank_payment_action"
-        sequence="11"
+        sequence="20"
     />
 </odoo>

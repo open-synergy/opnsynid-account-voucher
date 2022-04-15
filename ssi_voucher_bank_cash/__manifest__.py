@@ -3,7 +3,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 {
     "name": "Bank & Cash Accounting Voucher",
-    "version": "14.0.1.0.0",
+    "version": "14.0.2.0.0",
     "category": "Accounting",
     "website": "https://simetri-sinergi.id",
     "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",
@@ -12,8 +12,11 @@
     "depends": [
         "ssi_voucher_mixin",
         "account_payment",
+        "ssi_financial_accounting",
     ],
     "data": [
+        "security/ir_module_category_data.xml",
+        "security/res_group_data.xml",
         "security/ir.model.access.csv",
         "menu.xml",
         "data/account_voucher_type_data.xml",
@@ -38,7 +41,11 @@
         "views/account_cash_payment_views.xml",
         "views/account_cash_receipt_views.xml",
     ],
-    "demo": [],
+    "demo": [
+        "demo/account_account_demo.xml",
+        "demo/account_journal_demo.xml",
+        "demo/account_voucher_type_allowed_journal_demo.xml",
+    ],
     "images": [
         "static/description/banner.png",
     ],
