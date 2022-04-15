@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 OpenSynergy Indonesia
+     Copyright 2022 PT. Simetri Sinergi Indonesia
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
+<odoo>
+<record id="sale_refund_settlement_module_category" model="ir.module.category">
+    <field name="name">Sale Refund Settlement</field>
+    <field
+            name="parent_id"
+            ref="ssi_financial_accounting.financial_accounting_module_category"
+        />
+</record>
+
+<record id="purchase_refund_settlement_module_category" model="ir.module.category">
+    <field name="name">Purchase Refund Settlement</field>
+    <field
+            name="parent_id"
+            ref="ssi_financial_accounting.financial_accounting_module_category"
+        />
+</record>
+
+</odoo>

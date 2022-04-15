@@ -50,9 +50,10 @@
 
 <menuitem
         id="account_sale_refund_settlement_menu"
-        name="Sale Refunds"
-        parent="ssi_voucher_settlement_common.account_settlement_voucher_menu"
+        name="Sale Refund Settlements"
+        parent="ssi_financial_accounting.menu_account_receivable"
+        groups="ssi_voucher_refund_settlement.sale_refund_settlement_user_group"
         action="account_sale_refund_settlement_action"
-        sequence="1"
+        sequence="40"
     />
 </odoo>

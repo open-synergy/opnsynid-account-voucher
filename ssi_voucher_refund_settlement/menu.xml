@@ -6,14 +6,14 @@
   <menuitem
         id="menu_configuration_sale_refund_settlement"
         name="Sale Refund Settlement"
-        sequence="11"
-        parent="ssi_voucher_mixin.menu_account_configuration_voucher"
+        sequence="112"
+        parent="ssi_financial_accounting.menu_financial_accounting_configuration"
     />
 
   <menuitem
         id="menu_configuration_purchase_refund_settlement"
         name="Purchase Refund Settlement"
-        sequence="12"
-        parent="ssi_voucher_mixin.menu_account_configuration_voucher"
+        sequence="113"
+        parent="ssi_financial_accounting.menu_financial_accounting_configuration"
     />
 </odoo>

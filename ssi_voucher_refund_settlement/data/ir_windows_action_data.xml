@@ -22,6 +22,7 @@
         id="account_voucher_sale_refund_settlement_menu"
         name="Configuration"
         parent="ssi_voucher_refund_settlement.menu_configuration_sale_refund_settlement"
+        groups="ssi_voucher_refund_settlement.sale_refund_settlement_configurator_group"
         action="account_voucher_sale_refund_settlement_action"
         sequence="1"
     />
@@ -48,6 +49,7 @@
         id="account_voucher_sale_refund_settlement_journal_menu"
         name="Allowed Journals"
         parent="ssi_voucher_refund_settlement.menu_configuration_sale_refund_settlement"
+        groups="ssi_voucher_refund_settlement.sale_refund_settlement_configurator_group"
         action="account_voucher_sale_refund_settlement_journal_action"
         sequence="2"
     />
@@ -71,6 +73,7 @@
         id="account_voucher_purchase_refund_settlement_menu"
         name="Configuration"
         parent="ssi_voucher_refund_settlement.menu_configuration_purchase_refund_settlement"
+        groups="ssi_voucher_refund_settlement.purchase_refund_settlement_configurator_group"
         action="account_voucher_purchase_refund_settlement_action"
         sequence="1"
     />
@@ -97,6 +100,7 @@
         id="account_voucher_purchase_refund_settlement_journal_menu"
         name="Allowed Journals"
         parent="ssi_voucher_refund_settlement.menu_configuration_purchase_refund_settlement"
+        groups="ssi_voucher_refund_settlement.purchase_refund_settlement_configurator_group"
         action="account_voucher_purchase_refund_settlement_journal_action"
         sequence="2"
     />
