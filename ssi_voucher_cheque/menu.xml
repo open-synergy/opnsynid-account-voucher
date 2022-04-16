@@ -6,14 +6,14 @@
     <menuitem
         id="menu_configuration_cheque_receipt"
         name="Cheque Receipt"
-        sequence="5"
-        parent="ssi_voucher_mixin.menu_account_configuration_voucher"
+        sequence="105"
+        parent="ssi_financial_accounting.menu_financial_accounting_configuration"
     />
 
     <menuitem
         id="menu_configuration_cheque_payment"
         name="Cheque Payment"
-        sequence="6"
-        parent="ssi_voucher_mixin.menu_account_configuration_voucher"
+        sequence="106"
+        parent="ssi_financial_accounting.menu_financial_accounting_configuration"
     />
 </odoo>
