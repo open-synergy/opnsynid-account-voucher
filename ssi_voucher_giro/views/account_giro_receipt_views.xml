@@ -64,8 +64,9 @@
     <menuitem
         id="account_giro_receipt_menu"
         name="Giro Receipts"
-        parent="ssi_voucher_bank_cash.account_bank_cash_menu"
+        parent="ssi_financial_accounting.menu_bank_cash"
+        groups="ssi_voucher_giro.giro_receipt_user_group"
         action="account_giro_receipt_action"
-        sequence="20"
+        sequence="70"
     />
 </odoo>

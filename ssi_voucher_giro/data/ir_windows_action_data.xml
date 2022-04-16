@@ -16,6 +16,7 @@
         id="account_voucher_giro_receipt_menu"
         name="Configuration"
         parent="ssi_voucher_giro.menu_configuration_giro_receipt"
+        groups="ssi_voucher_giro.giro_receipt_configurator_group"
         action="account_voucher_giro_receipt_action"
         sequence="1"
     />
@@ -42,6 +43,7 @@
         id="account_voucher_giro_receipt_journal_menu"
         name="Allowed Journals"
         parent="ssi_voucher_giro.menu_configuration_giro_receipt"
+        groups="ssi_voucher_giro.giro_receipt_configurator_group"
         action="ssi_voucher_giro.account_voucher_giro_receipt_journal_action"
         sequence="2"
     />
@@ -59,6 +61,7 @@
         id="account_voucher_giro_payment_menu"
         name="Configuration"
         parent="ssi_voucher_giro.menu_configuration_giro_payment"
+        groups="ssi_voucher_giro.giro_payment_configurator_group"
         action="account_voucher_giro_payment_action"
         sequence="1"
     />
@@ -85,6 +88,7 @@
         id="account_voucher_giro_payment_journal_menu"
         name="Allowed Journals"
         parent="ssi_voucher_giro.menu_configuration_giro_payment"
+        groups="ssi_voucher_giro.giro_payment_configurator_group"
         action="ssi_voucher_giro.account_voucher_giro_payment_journal_action"
         sequence="2"
     />
