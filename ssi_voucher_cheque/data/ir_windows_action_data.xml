@@ -17,6 +17,7 @@
         id="account_voucher_cheque_receipt_menu"
         name="Configuration"
         parent="ssi_voucher_cheque.menu_configuration_cheque_receipt"
+        groups="ssi_voucher_cheque.cheque_receipt_configurator_group"
         action="account_voucher_cheque_receipt_action"
         sequence="1"
     />
@@ -43,6 +44,7 @@
         id="account_voucher_cheque_receipt_journal_menu"
         name="Allowed Journals"
         parent="ssi_voucher_cheque.menu_configuration_cheque_receipt"
+        groups="ssi_voucher_cheque.cheque_receipt_configurator_group"
         action="account_voucher_cheque_receipt_journal_action"
         sequence="2"
     />
@@ -60,6 +62,7 @@
         id="account_voucher_cheque_payment_menu"
         name="Configuration"
         parent="ssi_voucher_cheque.menu_configuration_cheque_payment"
+        groups="ssi_voucher_cheque.cheque_payment_configurator_group"
         action="account_voucher_cheque_payment_action"
         sequence="1"
     />
@@ -86,6 +89,7 @@
         id="account_voucher_cheque_payment_journal_menu"
         name="Allowed Journals"
         parent="ssi_voucher_cheque.menu_configuration_cheque_payment"
+        groups="ssi_voucher_cheque.cheque_payment_configurator_group"
         action="account_voucher_cheque_payment_journal_action"
         sequence="2"
     />
