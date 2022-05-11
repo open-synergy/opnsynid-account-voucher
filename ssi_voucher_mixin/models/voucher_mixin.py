@@ -21,6 +21,36 @@ class MixinAccountVoucher(models.AbstractModel):
     _after_approved_method = "action_open"
     _create_sequence_state = "open"
 
+    _statusbar_visible_label = "draft,confirm,open,post"
+
+    _automatically_insert_view_element = True
+    _header_button_order = [
+        "action_confirm",
+        "action_approve_approval",
+        "action_reject_approval",
+        "%(wizard_post_voucher_action)d",
+        "%(ssi_transaction_cancel_mixin.base_select_cancel_reason_action)d",
+        "action_restart",
+    ]
+    _policy_field_order = [
+        "confirm_ok",
+        "approve_ok",
+        "done_ok",
+        "cancel_ok",
+        "reject_ok",
+        "restart_ok",
+        "restart_approval_ok",
+        "manual_number_ok",
+    ]
+    _state_filter_order = [
+        "dom_confirm",
+        "dom_approved",
+        "dom_post",
+        "dom_reject",
+        "dom_done",
+        "dom_cancel",
+    ]
+
     @api.model
     def _get_policy_field(self):
         res = super(MixinAccountVoucher, self)._get_policy_field()
@@ -344,7 +374,7 @@ class MixinAccountVoucher(models.AbstractModel):
     def action_cancel(self, cancel_reason=False):
         _super = super(MixinAccountVoucher, self)
         res = _super.action_cancel(cancel_reason)
-        for voucher in self:
+        for voucher in self.sudo():
             voucher._unreconcile_aml()
             if voucher._check_move():
                 voucher.move_id.button_cancel()
@@ -354,7 +384,7 @@ class MixinAccountVoucher(models.AbstractModel):
     def action_done(self):
         _super = super(MixinAccountVoucher, self)
         _super.action_done()
-        for voucher in self:
+        for voucher in self.sudo():
             voucher._create_line_aml()
 
     def _prepare_done_data(self):
