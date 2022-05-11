@@ -1,25 +1,49 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-account_bank_receipt_user,account.bank_receipt,model_account_bank_receipt,base.group_user,1,1,1,1
-account_bank_receipt_line_user,account.bank_receipt_line,model_account_bank_receipt_line,base.group_user,1,1,1,1
-account_bank_receipt_line_tax_user,account.bank_receipt_line_tax,model_account_bank_receipt_line_tax,base.group_user,1,1,1,1
-account_bank_payment_user,account.bank_payment,model_account_bank_payment,base.group_user,1,1,1,1
-account_bank_payment_line_user,account.bank_payment_line,model_account_bank_payment_line,base.group_user,1,1,1,1
-account_bank_payment_line_tax_user,account.bank_payment_line_tax,model_account_bank_payment_line_tax,base.group_user,1,1,1,1
-account_cash_receipt_user,account.cash_receipt,model_account_cash_receipt,base.group_user,1,1,1,1
-account_cash_receipt_line_user,account.cash_receipt_line,model_account_cash_receipt_line,base.group_user,1,1,1,1
-account_cash_receipt_line_tax_user,account.cash_receipt_line_tax,model_account_cash_receipt_line_tax,base.group_user,1,1,1,1
-account_cash_payment_user,account.cash_payment,model_account_cash_payment,base.group_user,1,1,1,1
-account_cash_payment_line_user,account.cash_payment_line,model_account_cash_payment_line,base.group_user,1,1,1,1
-account_cash_payment_line_tax_user,account.cash_payment_line_tax,model_account_cash_payment_line_tax,base.group_user,1,1,1,1
-account_bank_receipt_all,account.bank_receipt,model_account_bank_receipt,,1,0,0,0
-account_bank_receipt_line_all,account.bank_receipt_line,model_account_bank_receipt_line,,1,0,0,0
-account_bank_receipt_line_tax_all,account.bank_receipt_line_tax,model_account_bank_receipt_line_tax,,1,0,0,0
-account_bank_payment_all,account.bank_payment,model_account_bank_payment,,1,0,0,0
-account_bank_payment_line_all,account.bank_payment_line,model_account_bank_payment_line,,1,0,0,0
-account_bank_payment_line_tax_all,account.bank_payment_line_tax,model_account_bank_payment_line_tax,,1,0,0,0
-account_cash_receipt_all,account.cash_receipt,model_account_cash_receipt,,1,0,0,0
-account_cash_receipt_line_all,account.cash_receipt_line,model_account_cash_receipt_line,,1,0,0,0
-account_cash_receipt_line_tax_all,account.cash_receipt_line_tax,model_account_cash_receipt_line_tax,,1,0,0,0
-account_cash_payment_all,account.cash_payment,model_account_cash_payment,,1,0,0,0
-account_cash_payment_line_all,account.cash_payment_line,model_account_cash_payment_line,,1,0,0,0
-account_cash_payment_line_tax_all,account.cash_payment_line_tax,model_account_cash_payment_line_tax,,1,0,0,0
+access_bank_receipt_all,account.bank_receipt - all,model_account_bank_receipt,,1,0,0,0
+access_bank_receipt_viewer,account.bank_receipt - viewer,model_account_bank_receipt,bank_receipt_viewer_group,1,0,0,0
+access_bank_receipt_user,account.bank_receipt - user,model_account_bank_receipt,bank_receipt_user_group,1,1,1,1
+access_bank_receipt_validator,account.bank_receipt – validator,model_account_bank_receipt,bank_receipt_validator_group,1,1,1,1
+access_bank_receipt_line_all,account.bank_receipt_line - all,model_account_bank_receipt_line,,1,0,0,0
+access_bank_receipt_line_viewer,account.bank_receipt_line - viewer,model_account_bank_receipt_line,bank_receipt_viewer_group,1,0,0,0
+access_bank_receipt_line_user,account.bank_receipt_line - user,model_account_bank_receipt_line,bank_receipt_user_group,1,1,1,1
+access_bank_receipt_line_validator,account.bank_receipt_line – validator,model_account_bank_receipt_line,bank_receipt_validator_group,1,1,1,1
+access_bank_receipt_line_tax_all,account.bank_receipt_line_tax - all,model_account_bank_receipt_line_tax,,1,0,0,0
+access_bank_receipt_line_tax_viewer,account.bank_receipt_line_tax - viewer,model_account_bank_receipt_line_tax,bank_receipt_viewer_group,1,0,0,0
+access_bank_receipt_line_tax_user,account.bank_receipt_line_tax - user,model_account_bank_receipt_line_tax,bank_receipt_user_group,1,1,1,1
+access_bank_receipt_line_tax_validator,account.bank_receipt_line_tax – validator,model_account_bank_receipt_line_tax,bank_receipt_validator_group,1,1,1,1
+access_bank_payment_all,account.bank_payment - all,model_account_bank_payment,,1,0,0,0
+access_bank_payment_viewer,account.bank_payment - viewer,model_account_bank_payment,bank_payment_viewer_group,1,0,0,0
+access_bank_payment_user,account.bank_payment - user,model_account_bank_payment,bank_payment_user_group,1,1,1,1
+access_bank_payment_validator,account.bank_payment – validator,model_account_bank_payment,bank_payment_validator_group,1,1,1,1
+access_bank_payment_line_all,account.bank_payment_line - all,model_account_bank_payment_line,,1,0,0,0
+access_bank_payment_line_viewer,account.bank_payment_line - viewer,model_account_bank_payment_line,bank_payment_viewer_group,1,0,0,0
+access_bank_payment_line_user,account.bank_payment_line - user,model_account_bank_payment_line,bank_payment_user_group,1,1,1,1
+access_bank_payment_line_validator,account.bank_payment_line – validator,model_account_bank_payment_line,bank_payment_validator_group,1,1,1,1
+access_bank_payment_line_tax_all,account.bank_payment_line_tax - all,model_account_bank_payment_line_tax,,1,0,0,0
+access_bank_payment_line_tax_viewer,account.bank_payment_line_tax - viewer,model_account_bank_payment_line_tax,bank_payment_viewer_group,1,0,0,0
+access_bank_payment_line_tax_user,account.bank_payment_line_tax - user,model_account_bank_payment_line_tax,bank_payment_user_group,1,1,1,1
+access_bank_payment_line_tax_validator,account.bank_payment_line_tax – validator,model_account_bank_payment_line_tax,bank_payment_validator_group,1,1,1,1
+access_cash_receipt_all,account.cash_receipt - all,model_account_cash_receipt,,1,0,0,0
+access_cash_receipt_viewer,account.cash_receipt - viewer,model_account_cash_receipt,cash_receipt_viewer_group,1,0,0,0
+access_cash_receipt_user,account.cash_receipt - user,model_account_cash_receipt,cash_receipt_user_group,1,1,1,1
+access_cash_receipt_validator,account.cash_receipt – validator,model_account_cash_receipt,cash_receipt_validator_group,1,1,1,1
+access_cash_receipt_line_all,account.cash_receipt_line - all,model_account_cash_receipt_line,,1,0,0,0
+access_cash_receipt_line_viewer,account.cash_receipt_line - viewer,model_account_cash_receipt_line,cash_receipt_viewer_group,1,0,0,0
+access_cash_receipt_line_user,account.cash_receipt_line - user,model_account_cash_receipt_line,cash_receipt_user_group,1,1,1,1
+access_cash_receipt_line_validator,account.cash_receipt_line – validator,model_account_cash_receipt_line,cash_receipt_validator_group,1,1,1,1
+access_cash_receipt_line_tax_all,account.cash_receipt_line_tax - all,model_account_cash_receipt_line_tax,,1,0,0,0
+access_cash_receipt_line_tax_viewer,account.cash_receipt_line_tax - viewer,model_account_cash_receipt_line_tax,cash_receipt_viewer_group,1,0,0,0
+access_cash_receipt_line_tax_user,account.cash_receipt_line_tax - user,model_account_cash_receipt_line_tax,cash_receipt_user_group,1,1,1,1
+access_cash_receipt_line_tax_validator,account.cash_receipt_line_tax – validator,model_account_cash_receipt_line_tax,cash_receipt_validator_group,1,1,1,1
+access_cash_payment_all,account.cash_payment - all,model_account_cash_payment,,1,0,0,0
+access_cash_payment_viewer,account.cash_payment - viewer,model_account_cash_payment,cash_payment_viewer_group,1,0,0,0
+access_cash_payment_user,account.cash_payment - user,model_account_cash_payment,cash_payment_user_group,1,1,1,1
+access_cash_payment_validator,account.cash_payment – validator,model_account_cash_payment,cash_payment_validator_group,1,1,1,1
+access_cash_payment_line_all,account.cash_payment_line - all,model_account_cash_payment_line,,1,0,0,0
+access_cash_payment_line_viewer,account.cash_payment_line - viewer,model_account_cash_payment_line,cash_payment_viewer_group,1,0,0,0
+access_cash_payment_line_user,account.cash_payment_line - user,model_account_cash_payment_line,cash_payment_user_group,1,1,1,1
+access_cash_payment_line_validator,account.cash_payment_line – validator,model_account_cash_payment_line,cash_payment_validator_group,1,1,1,1
+access_cash_payment_line_tax_all,account.cash_payment_line_tax - all,model_account_cash_payment_line_tax,,1,0,0,0
+access_cash_payment_line_tax_viewer,account.cash_payment_line_tax - viewer,model_account_cash_payment_line_tax,cash_payment_viewer_group,1,0,0,0
+access_cash_payment_line_tax_user,account.cash_payment_line_tax - user,model_account_cash_payment_line_tax,cash_payment_user_group,1,1,1,1
+access_cash_payment_line_tax_validator,account.cash_payment_line_tax – validator,model_account_cash_payment_line_tax,cash_payment_validator_group,1,1,1,1

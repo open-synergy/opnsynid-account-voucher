@@ -3,15 +3,69 @@
      Copyright 2022 PT. Simetri Sinergi Indonesia
      License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
 <odoo>
+<!-- Configurator -->
+<record id="bank_receipt_configurator_group" model="res.groups">
+    <field name="name">Bank Receipt</field>
+    <field
+            name="category_id"
+            ref="ssi_financial_accounting.financial_accounting_configurator_module_category"
+        />
+    <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+</record>
+<record id="bank_payment_configurator_group" model="res.groups">
+    <field name="name">Bank Payment</field>
+    <field
+            name="category_id"
+            ref="ssi_financial_accounting.financial_accounting_configurator_module_category"
+        />
+    <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+</record>
+<record id="cash_receipt_configurator_group" model="res.groups">
+    <field name="name">Cash Receipt</field>
+    <field
+            name="category_id"
+            ref="ssi_financial_accounting.financial_accounting_configurator_module_category"
+        />
+    <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+</record>
+<record id="cash_payment_configurator_group" model="res.groups">
+    <field name="name">Cash Payment</field>
+    <field
+            name="category_id"
+            ref="ssi_financial_accounting.financial_accounting_configurator_module_category"
+        />
+    <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+</record>
+
+<!-- Workflow -->
 <!-- Bank Receipt -->
+<record id="bank_receipt_viewer_group" model="res.groups">
+    <field name="name">Viewer</field>
+    <field
+            name="category_id"
+            ref="ssi_voucher_bank_cash.bank_receipt_module_category"
+        />
+</record>
 <record id="bank_receipt_user_group" model="res.groups">
     <field name="name">User</field>
     <field
             name="category_id"
             ref="ssi_voucher_bank_cash.bank_receipt_module_category"
         />
+    <field name="implied_ids" eval="[(4, ref('bank_receipt_viewer_group'))]" />
 </record>
-
 <record id="bank_receipt_validator_group" model="res.groups">
     <field name="name">Validator</field>
     <field
@@ -24,28 +78,22 @@
             eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
         />
 </record>
-
-<record id="bank_receipt_configurator_group" model="res.groups">
-    <field name="name">Bank Receipt</field>
+<!-- Bank Payment -->
+<record id="bank_payment_viewer_group" model="res.groups">
+    <field name="name">Viewer</field>
     <field
             name="category_id"
-            ref="ssi_financial_accounting.financial_accounting_configurator_module_category"
-        />
-    <field
-            name="users"
-            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+            ref="ssi_voucher_bank_cash.bank_payment_module_category"
         />
 </record>
-
-<!-- Bank Payment -->
 <record id="bank_payment_user_group" model="res.groups">
     <field name="name">User</field>
     <field
             name="category_id"
             ref="ssi_voucher_bank_cash.bank_payment_module_category"
         />
+    <field name="implied_ids" eval="[(4, ref('bank_payment_viewer_group'))]" />
 </record>
-
 <record id="bank_payment_validator_group" model="res.groups">
     <field name="name">Validator</field>
     <field
@@ -58,28 +106,22 @@
             eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
         />
 </record>
-
-<record id="bank_payment_configurator_group" model="res.groups">
-    <field name="name">Bank Payment</field>
+<!-- Cash Receipt -->
+<record id="cash_receipt_viewer_group" model="res.groups">
+    <field name="name">Viewer</field>
     <field
             name="category_id"
-            ref="ssi_financial_accounting.financial_accounting_configurator_module_category"
-        />
-    <field
-            name="users"
-            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+            ref="ssi_voucher_bank_cash.cash_receipt_module_category"
         />
 </record>
-
-<!-- Cash Receipt -->
 <record id="cash_receipt_user_group" model="res.groups">
     <field name="name">User</field>
     <field
             name="category_id"
             ref="ssi_voucher_bank_cash.cash_receipt_module_category"
         />
+    <field name="implied_ids" eval="[(4, ref('cash_receipt_viewer_group'))]" />
 </record>
-
 <record id="cash_receipt_validator_group" model="res.groups">
     <field name="name">Validator</field>
     <field
@@ -92,28 +134,22 @@
             eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
         />
 </record>
-
-<record id="cash_receipt_configurator_group" model="res.groups">
-    <field name="name">Cash Receipt</field>
+<!-- Cash Payment -->
+<record id="cash_payment_viewer_group" model="res.groups">
+    <field name="name">Viewer</field>
     <field
             name="category_id"
-            ref="ssi_financial_accounting.financial_accounting_configurator_module_category"
-        />
-    <field
-            name="users"
-            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+            ref="ssi_voucher_bank_cash.cash_payment_module_category"
         />
 </record>
-
-<!-- Cash Payment -->
 <record id="cash_payment_user_group" model="res.groups">
     <field name="name">User</field>
     <field
             name="category_id"
             ref="ssi_voucher_bank_cash.cash_payment_module_category"
         />
+    <field name="implied_ids" eval="[(4, ref('cash_payment_viewer_group'))]" />
 </record>
-
 <record id="cash_payment_validator_group" model="res.groups">
     <field name="name">Validator</field>
     <field
@@ -127,12 +163,38 @@
         />
 </record>
 
-<record id="cash_payment_configurator_group" model="res.groups">
-    <field name="name">Cash Payment</field>
+<!-- Data Ownership -->
+<record id="bank_receipt_company_group" model="res.groups">
+    <field name="name">Company</field>
+    <field name="category_id" ref="bank_receipt_data_ownership_module_category" />
+    <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
     <field
-            name="category_id"
-            ref="ssi_financial_accounting.financial_accounting_configurator_module_category"
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
         />
+</record>
+<record id="bank_payment_company_group" model="res.groups">
+    <field name="name">Company</field>
+    <field name="category_id" ref="bank_payment_data_ownership_module_category" />
+    <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
+    <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+</record>
+<record id="cash_receipt_company_group" model="res.groups">
+    <field name="name">Company</field>
+    <field name="category_id" ref="cash_receipt_data_ownership_module_category" />
+    <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
+    <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+</record>
+<record id="cash_payment_company_group" model="res.groups">
+    <field name="name">Company</field>
+    <field name="category_id" ref="cash_payment_data_ownership_module_category" />
+    <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
     <field
             name="users"
             eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
