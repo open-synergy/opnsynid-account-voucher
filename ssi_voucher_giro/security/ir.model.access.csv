@@ -1,13 +1,25 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-account_giro_receipt_user,account.giro_receipt,model_account_giro_receipt,base.group_user,1,1,1,1
-account_giro_receipt_line_user,account.giro_receipt_line,model_account_giro_receipt_line,base.group_user,1,1,1,1
-account_giro_receipt_line_tax_user,account.giro_receipt_line_tax,model_account_giro_receipt_line_tax,base.group_user,1,1,1,1
-account_giro_payment_user,account.giro_payment,model_account_giro_payment,base.group_user,1,1,1,1
-account_giro_payment_line_user,account.giro_payment_line,model_account_giro_payment_line,base.group_user,1,1,1,1
-account_giro_payment_line_tax_user,account.giro_payment_line_tax,model_account_giro_payment_line_tax,base.group_user,1,1,1,1
-account_giro_receipt_all,account.giro_receipt,model_account_giro_receipt,,1,0,0,0
-account_giro_receipt_line_all,account.giro_receipt_line,model_account_giro_receipt_line,,1,0,0,0
-account_giro_receipt_line_tax_all,account.giro_receipt_line_tax,model_account_giro_receipt_line_tax,,1,0,0,0
-account_giro_payment_all,account.giro_payment,model_account_giro_payment,,1,0,0,0
-account_giro_payment_line_all,account.giro_payment_line,model_account_giro_payment_line,,1,0,0,0
-account_giro_payment_line_tax_all,account.giro_payment_line_tax,model_account_giro_payment_line_tax,,1,0,0,0
+access_giro_receipt_all,account.giro_receipt - all,model_account_giro_receipt,,1,0,0,0
+access_giro_receipt_viewer,account.giro_receipt - viewer,model_account_giro_receipt,giro_receipt_viewer_group,1,0,0,0
+access_giro_receipt_user,account.giro_receipt - user,model_account_giro_receipt,giro_receipt_user_group,1,1,1,1
+access_giro_receipt_validator,account.giro_receipt – validator,model_account_giro_receipt,giro_receipt_validator_group,1,1,1,1
+access_giro_receipt_line_all,account.giro_receipt_line - all,model_account_giro_receipt_line,,1,0,0,0
+access_giro_receipt_line_viewer,account.giro_receipt_line - viewer,model_account_giro_receipt_line,giro_receipt_viewer_group,1,0,0,0
+access_giro_receipt_line_user,account.giro_receipt_line - user,model_account_giro_receipt_line,giro_receipt_user_group,1,1,1,1
+access_giro_receipt_line_validator,account.giro_receipt_line – validator,model_account_giro_receipt_line,giro_receipt_validator_group,1,1,1,1
+access_giro_receipt_line_tax_all,account.giro_receipt_line_tax - all,model_account_giro_receipt_line_tax,,1,0,0,0
+access_giro_receipt_line_tax_viewer,account.giro_receipt_line_tax - viewer,model_account_giro_receipt_line_tax,giro_receipt_viewer_group,1,0,0,0
+access_giro_receipt_line_tax_user,account.giro_receipt_line_tax - user,model_account_giro_receipt_line_tax,giro_receipt_user_group,1,1,1,1
+access_giro_receipt_line_tax_validator,account.giro_receipt_line_tax – validator,model_account_giro_receipt_line_tax,giro_receipt_validator_group,1,1,1,1
+access_giro_payment_all,account.giro_payment - all,model_account_giro_payment,,1,0,0,0
+access_giro_payment_viewer,account.giro_payment - viewer,model_account_giro_payment,giro_payment_viewer_group,1,0,0,0
+access_giro_payment_user,account.giro_payment - user,model_account_giro_payment,giro_payment_user_group,1,1,1,1
+access_giro_payment_validator,account.giro_payment – validator,model_account_giro_payment,giro_payment_validator_group,1,1,1,1
+access_giro_payment_line_all,account.giro_payment_line - all,model_account_giro_payment_line,,1,0,0,0
+access_giro_payment_line_viewer,account.giro_payment_line - viewer,model_account_giro_payment_line,giro_payment_viewer_group,1,0,0,0
+access_giro_payment_line_user,account.giro_payment_line - user,model_account_giro_payment_line,giro_payment_user_group,1,1,1,1
+access_giro_payment_line_validator,account.giro_payment_line – validator,model_account_giro_payment_line,giro_payment_validator_group,1,1,1,1
+access_giro_payment_line_tax_all,account.giro_payment_line_tax - all,model_account_giro_payment_line_tax,,1,0,0,0
+access_giro_payment_line_tax_viewer,account.giro_payment_line_tax - viewer,model_account_giro_payment_line_tax,giro_payment_viewer_group,1,0,0,0
+access_giro_payment_line_tax_user,account.giro_payment_line_tax - user,model_account_giro_payment_line_tax,giro_payment_user_group,1,1,1,1
+access_giro_payment_line_tax_validator,account.giro_payment_line_tax – validator,model_account_giro_payment_line_tax,giro_payment_validator_group,1,1,1,1
