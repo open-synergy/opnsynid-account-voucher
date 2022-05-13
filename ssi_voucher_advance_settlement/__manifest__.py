@@ -4,7 +4,7 @@
 # pylint: disable=locally-disabled, manifest-required-author
 {
     "name": "Advance Settlement Voucher",
-    "version": "14.0.2.0.0",
+    "version": "14.0.2.1.0",
     "category": "Accounting",
     "website": "https://simetri-sinergi.id",
     "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",
@@ -17,6 +17,7 @@
     "data": [
         "security/ir_module_category_data.xml",
         "security/res_group_data.xml",
+        "security/ir_rule_data.xml",
         "security/ir.model.access.csv",
         "menu.xml",
         "data/account_voucher_type_data.xml",
