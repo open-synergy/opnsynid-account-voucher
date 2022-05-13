@@ -3,12 +3,14 @@
      Copyright 2022 PT. Simetri Sinergi Indonesia
      License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
 <odoo>
+<!-- Workflow -->
 <record id="sale_advance_settlement_module_category" model="ir.module.category">
     <field name="name">Sale Advance Settlement</field>
     <field
             name="parent_id"
             ref="ssi_financial_accounting.financial_accounting_module_category"
         />
+    <field name="sequence">1</field>
 </record>
 
 <record id="purchase_advance_settlement_module_category" model="ir.module.category">
@@ -17,6 +19,26 @@
             name="parent_id"
             ref="ssi_financial_accounting.financial_accounting_module_category"
         />
+    <field name="sequence">1</field>
+</record>
+
+<!-- Data Ownership -->
+<record id="sale_adv_data_ownership_module_category" model="ir.module.category">
+    <field name="name">Sale Advance Settlement</field>
+    <field
+            name="parent_id"
+            ref="ssi_financial_accounting.financial_accounting_data_ownership_module_category"
+        />
+    <field name="sequence">1</field>
+</record>
+
+<record id="pur_adv_data_ownership_module_category" model="ir.module.category">
+    <field name="name">Purchase Advance Settlement</field>
+    <field
+            name="parent_id"
+            ref="ssi_financial_accounting.financial_accounting_data_ownership_module_category"
+        />
+    <field name="sequence">1</field>
 </record>
 
 </odoo>
