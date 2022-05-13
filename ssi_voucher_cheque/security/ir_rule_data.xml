@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 OpenSynergy Indonesia
+     Copyright 2022 PT. Simetri Sinergi Indonesia
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
+<odoo>
+    <!-- Cheque Receipt -->
+    <record id="cheque_receipt_internal_user_rule" model="ir.rule">
+        <field name="name">Cheque Receipt - Internal Users</field>
+        <field name="model_id" ref="model_account_cheque_receipt" />
+        <field name="groups" eval="[(4, ref('base.group_user'))]" />
+        <field name="domain_force">[('user_id','=',user.id)]</field>
+        <field name="perm_unlink" eval="1" />
+        <field name="perm_write" eval="1" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_create" eval="1" />
+    </record>
+    <record id="cheque_receipt_company_rule" model="ir.rule">
+        <field name="name">Cheque Receipt - Responsible to company data</field>
+        <field name="model_id" ref="model_account_cheque_receipt" />
+        <field name="groups" eval="[(4, ref('cheque_receipt_company_group'))]" />
+        <field name="domain_force">[('company_id','=',user.company_id.id)]</field>
+        <field name="perm_unlink" eval="1" />
+        <field name="perm_write" eval="1" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_create" eval="1" />
+    </record>
+    <!-- Cheque Payment -->
+    <record id="cheque_payment_internal_user_rule" model="ir.rule">
+        <field name="name">Cheque Payment - Internal Users</field>
+        <field name="model_id" ref="model_account_cheque_payment" />
+        <field name="groups" eval="[(4, ref('base.group_user'))]" />
+        <field name="domain_force">[('user_id','=',user.id)]</field>
+        <field name="perm_unlink" eval="1" />
+        <field name="perm_write" eval="1" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_create" eval="1" />
+    </record>
+    <record id="cheque_payment_company_rule" model="ir.rule">
+        <field name="name">Cheque Payment - Responsible to company data</field>
+        <field name="model_id" ref="model_account_cheque_payment" />
+        <field name="groups" eval="[(4, ref('cheque_payment_company_group'))]" />
+        <field name="domain_force">[('company_id','=',user.company_id.id)]</field>
+        <field name="perm_unlink" eval="1" />
+        <field name="perm_write" eval="1" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_create" eval="1" />
+    </record>
+</odoo>
