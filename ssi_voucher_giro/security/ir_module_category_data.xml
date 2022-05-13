@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2022 OpenSynergy Indonesia
      Copyright 2022 PT. Simetri Sinergi Indonesia
-     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
+     License LGPL-4.0 or later (http://www.gnu.org/licenses/lgpl). -->
 <odoo>
+    <!-- Workflow -->
 <record id="giro_receipt_module_category" model="ir.module.category">
     <field name="name">Giro Receipt</field>
     <field
             name="parent_id"
             ref="ssi_financial_accounting.financial_accounting_module_category"
         />
+    <field name="sequence">4</field>
 </record>
 
 <record id="giro_payment_module_category" model="ir.module.category">
@@ -17,6 +19,26 @@
             name="parent_id"
             ref="ssi_financial_accounting.financial_accounting_module_category"
         />
+    <field name="sequence">4</field>
+</record>
+
+<!-- Data Ownership -->
+<record id="giro_receipt_data_ownership_module_category" model="ir.module.category">
+    <field name="name">Giro Receipts</field>
+    <field
+            name="parent_id"
+            ref="ssi_financial_accounting.financial_accounting_data_ownership_module_category"
+        />
+    <field name="sequence">4</field>
+</record>
+
+<record id="giro_payment_data_ownership_module_category" model="ir.module.category">
+    <field name="name">Giro Payment</field>
+    <field
+            name="parent_id"
+            ref="ssi_financial_accounting.financial_accounting_data_ownership_module_category"
+        />
+    <field name="sequence">4</field>
 </record>
 
 </odoo>
