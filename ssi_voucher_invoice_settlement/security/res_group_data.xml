@@ -3,37 +3,61 @@
      Copyright 2022 PT. Simetri Sinergi Indonesia
      License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
 <odoo>
-<record id="invoice_settlement_user_group" model="res.groups">
-    <field name="name">User</field>
-    <field
+    <record id="invoice_settlement_viewer_group" model="res.groups">
+        <field name="name">Viewer</field>
+        <field
             name="category_id"
             ref="ssi_voucher_invoice_settlement.invoice_settlement_module_category"
         />
-</record>
+    </record>
+    <record id="invoice_settlement_user_group" model="res.groups">
+        <field name="name">User</field>
+        <field
+            name="category_id"
+            ref="ssi_voucher_invoice_settlement.invoice_settlement_module_category"
+        />
+        <field
+            name="implied_ids"
+            eval="[(4, ref('invoice_settlement_viewer_group'))]"
+        />
+    </record>
 
-<record id="invoice_settlement_validator_group" model="res.groups">
-    <field name="name">Validator</field>
-    <field
+    <record id="invoice_settlement_validator_group" model="res.groups">
+        <field name="name">Validator</field>
+        <field
             name="category_id"
             ref="ssi_voucher_invoice_settlement.invoice_settlement_module_category"
         />
-    <field name="implied_ids" eval="[(4, ref('invoice_settlement_user_group'))]" />
-    <field
+        <field name="implied_ids" eval="[(4, ref('invoice_settlement_user_group'))]" />
+        <field
             name="users"
             eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
         />
-</record>
+    </record>
 
-<record id="invoice_settlement_configurator_group" model="res.groups">
-    <field name="name">Invoice Settlement</field>
-    <field
+    <record id="invoice_settlement_configurator_group" model="res.groups">
+        <field name="name">Invoice Settlement</field>
+        <field
             name="category_id"
-            ref="ssi_voucher_invoice_settlement.invoice_settlement_module_category"
+            ref="ssi_financial_accounting.financial_accounting_configurator_module_category"
         />
-    <field
+        <field
             name="users"
             eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
         />
-</record>
+    </record>
+
+    <record id="invoice_settlement_company_group" model="res.groups">
+        <field name="name">Company</field>
+        <field
+            name="category_id"
+            ref="invoice_settlement_data_ownership_module_category"
+        />
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
 
 </odoo>
