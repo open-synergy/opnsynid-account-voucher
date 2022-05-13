@@ -3,12 +3,14 @@
      Copyright 2022 PT. Simetri Sinergi Indonesia
      License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
 <odoo>
+    <!-- Workflow -->
 <record id="cheque_receipt_module_category" model="ir.module.category">
     <field name="name">Cheque Receipt</field>
     <field
             name="parent_id"
             ref="ssi_financial_accounting.financial_accounting_module_category"
         />
+    <field name="sequence">3</field>
 </record>
 
 <record id="cheque_payment_module_category" model="ir.module.category">
@@ -17,6 +19,26 @@
             name="parent_id"
             ref="ssi_financial_accounting.financial_accounting_module_category"
         />
+    <field name="sequence">3</field>
+</record>
+
+<!-- Data Ownership -->
+<record id="cheque_receipt_data_ownership_module_category" model="ir.module.category">
+    <field name="name">Cheque Receipts</field>
+    <field
+            name="parent_id"
+            ref="ssi_financial_accounting.financial_accounting_data_ownership_module_category"
+        />
+    <field name="sequence">3</field>
+</record>
+
+<record id="cheque_payment_data_ownership_module_category" model="ir.module.category">
+    <field name="name">Cheque Payment</field>
+    <field
+            name="parent_id"
+            ref="ssi_financial_accounting.financial_accounting_data_ownership_module_category"
+        />
+    <field name="sequence">3</field>
 </record>
 
 </odoo>
