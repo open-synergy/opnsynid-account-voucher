@@ -60,7 +60,9 @@
                                     name="analytic_account_id"
                                     groups="analytic.group_analytic_accounting"
                                 />
-                            <field name="amount" sum="Total Amount" />
+                            <field name="amount_before_tax" sum="Total Before Tax" />
+                            <field name="amount_tax" sum="Total Tax" />
+                            <field name="amount_after_tax" sum="Total After Tax" />
                         </tree>
                         <form>
                             <group name="group_3" colspan="4" col="2">
@@ -174,7 +176,9 @@
                                     name="analytic_account_id"
                                     groups="analytic.group_analytic_accounting"
                                 />
-                            <field name="amount" sum="Total Amount" />
+                            <field name="amount_before_tax" sum="Total Before Tax" />
+                            <field name="amount_tax" sum="Total Tax" />
+                            <field name="amount_after_tax" sum="Total After Tax" />
                         </tree>
                         <form>
                             <group name="group_6" colspan="4" col="2">
