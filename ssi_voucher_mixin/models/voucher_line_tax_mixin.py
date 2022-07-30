@@ -21,20 +21,26 @@ class MixinAccountVoucherLineTax(models.AbstractModel):
             base_amount = tax_amount = tax_amount_in_company_currency = 0.0
             vline = tax.voucher_line_id
             voucher = vline.voucher_id
-            if tax.base_amount_computation_method == "system":
-                base_amount = vline.amount
-            else:
+            taxes = False
+
+            if tax.base_amount_computation_method == "manual":
                 base_amount = tax.manual_base_amount
 
-            if tax.tax_amount_computation_method == "system":
-                if tax.tax_id:
-                    tax_compute = tax.tax_id.compute_all(base_amount, 1)
-                    tax_amount = tax_compute["total_included"] - tax_compute["total"]
-            else:
+            if tax.tax_amount_computation_method == "manual":
                 tax_amount = tax.manual_tax_amount
 
-            tax_amount_in_company_currency = voucher.exchange_rate * tax_amount
+            if tax.tax_id:
+                taxes = tax.tax_id.compute_all(
+                    vline.amount, vline.currency_id, 1.0, product=False, partner=False
+                )
 
+            if tax.base_amount_computation_method == "system" and taxes:
+                base_amount = taxes["total_excluded"]
+
+            if tax.tax_amount_computation_method == "system" and taxes:
+                tax_amount = taxes["total_included"] - taxes["total_excluded"]
+
+            tax_amount_in_company_currency = voucher.exchange_rate * tax_amount
             tax.base_amount = base_amount
             tax.tax_amount = tax_amount
             tax.tax_amount_in_company_currency = tax_amount_in_company_currency
@@ -120,7 +126,7 @@ class MixinAccountVoucherLineTax(models.AbstractModel):
             "name": name,
             "debit": debit,
             "credit": credit,
-            "account_id": self._get_account().id,
+            "account_id": self._get_account_id(),
             "analytic_account_id": vline.analytic_account_id
             and vline.analytic_account_id.id
             or False,
@@ -128,33 +134,32 @@ class MixinAccountVoucherLineTax(models.AbstractModel):
             "currency_id": vline._get_line_currency(),
             "partner_id": partner_id,
             "move_id": vline.voucher_id.move_id.id,
-            "tax_amount": self.tax_amount_in_company_currency,
-            "tax_code_id": self.tax_id.tax_code_id
-            and self.tax_id.tax_code_id.id
-            or False,
         }
         return data
 
-    def _get_account(self):
+    def _get_account_id(self):
         self.ensure_one()
         vline = self.voucher_line_id
-        result = vline.account_id
-        if self.tax_id.account_collected_id:
-            result = self.tax_id.account_collected_id
+        result = vline.account_id.id
+        if self.tax_id:
+            taxes = self.tax_id.compute_all(
+                vline.amount, vline.currency_id, 1.0, product=False, partner=False
+            )
+            result = taxes["taxes"][0]["account_id"]
         return result
 
     def _get_debit_credit(self):
         self.ensure_one()
         debit = credit = 0.0
         vline = self.voucher_line_id
-        amount = self.tax_amount_in_company_currency
+        amount = abs(self.tax_amount_in_company_currency)
         if vline.type == "dr":
-            if amount > 0:
+            if self.tax_amount_in_company_currency > 0:
                 debit = amount
             else:
                 credit = amount
         else:
-            if amount > 0:
+            if self.tax_amount_in_company_currency > 0:
                 credit = amount
             else:
                 debit = amount

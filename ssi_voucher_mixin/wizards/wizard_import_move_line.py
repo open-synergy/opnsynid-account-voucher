@@ -99,8 +99,7 @@ class WizardImportMoveLine(models.TransientModel):
         lines = []
 
         for move in self.move_line_ids:
-            # raise UserError(_("%s")%(move.amount_residual))
-            amount = move.amount_residual / voucher.exchange_rate
+            amount = move.amount_residual_currency
             line_type = self.import_type == "dr" and "cr" or "dr"
             res = (
                 0,

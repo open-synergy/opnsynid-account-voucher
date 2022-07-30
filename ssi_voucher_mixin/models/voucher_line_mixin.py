@@ -191,7 +191,7 @@ class MixinAccountVoucherLine(models.AbstractModel):
         debit = credit = 0.0
         amount = self.amount_diff_in_company_currency
         company = self.env.user.company_id
-        if amount < 0:
+        if (amount > 0 and self.type == "cr") or (amount < 0 and self.type == "dr"):
             credit = abs(amount)
             account_id = (
                 company.income_currency_exchange_account_id
@@ -231,10 +231,16 @@ class MixinAccountVoucherLine(models.AbstractModel):
         move = obj_move_line.with_context(check_move_validity=False).create(
             self._prepare_move_line()
         )
-        if self.amount_diff_in_company_currency > 0:
-            obj_move_line.create(self._prepare_exchange_move_line())
+        company_currency = self.company_currency_id
+
+        if not company_currency.is_zero(self.amount_diff_in_company_currency):
+            obj_move_line.with_context(check_move_validity=False).create(
+                self._prepare_exchange_move_line()
+            )
         for tax in self.tax_ids:
-            obj_move_line.create(tax._prepare_move_line())
+            obj_move_line.with_context(check_move_validity=False).create(
+                tax._prepare_move_line()
+            )
         if self.move_line_id:
             pair = move + self.move_line_id
         return pair
