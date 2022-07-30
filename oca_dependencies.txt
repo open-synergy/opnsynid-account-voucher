@@ -2,3 +2,7 @@
 
 ssi-mixin https://github.com/open-synergy/ssi-mixin 14.0
 ssi-financial-accounting https://github.com/open-synergy/ssi-financial-accounting 14.0
+oca-server-tools https://github.com/OCA/server-tools.git 14.0
+oca-currency https://github.com/OCA/currency.git 14.0
+oca-reporting-engine https://github.com/OCA/reporting-engine.git 14.0
+oca-account-financial-reporting https://github.com/OCA/account-financial-reporting.git 14.0
