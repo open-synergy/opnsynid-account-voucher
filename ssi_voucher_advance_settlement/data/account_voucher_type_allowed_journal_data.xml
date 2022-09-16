@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 OpenSynergy Indonesia
+     Copyright 2022 PT. Simetri Sinergi Indonesia
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
+<odoo>
+<data noupdate="1">
+<!-- Sale Advance Settlement -->
+<record id="allowed_journal_sas" model="account.voucher_type_allowed_journal">
+    <field
+                name="voucher_type_id"
+                ref="ssi_voucher_advance_settlement.voucher_type_sale_advance_settlement"
+            />
+    <field name="journal_id" ref="ssi_voucher_advance_settlement.journal_sas" />
+</record>
+
+<!-- Purchase Advance Settlement -->
+<record id="allowed_journal_pas" model="account.voucher_type_allowed_journal">
+    <field
+                name="voucher_type_id"
+                ref="ssi_voucher_advance_settlement.voucher_type_purchase_advance_settlement"
+            />
+    <field name="journal_id" ref="ssi_voucher_advance_settlement.journal_pas" />
+</record>
+</data>
+</odoo>
