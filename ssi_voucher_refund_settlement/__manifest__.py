@@ -3,7 +3,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 {
     "name": "Refund Settlement Voucher",
-    "version": "14.0.2.1.0",
+    "version": "14.0.2.2.0",
     "category": "Accounting",
     "website": "https://simetri-sinergi.id",
     "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",
@@ -28,6 +28,8 @@
         "data/policy_template_sale_refund_settlement_data.xml",
         "data/sequence_template_purchase_settlement_data.xml",
         "data/sequence_template_sale_settlement_data.xml",
+        "data/account_journal_data.xml",
+        "data/account_voucher_type_allowed_journal_data.xml",
         "views/account_sale_refund_settlement_views.xml",
         "views/account_purchase_refund_settlement_views.xml",
     ],
