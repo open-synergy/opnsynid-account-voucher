@@ -4,7 +4,7 @@
 # pylint: disable=locally-disabled, manifest-required-author
 {
     "name": "Account Voucher Mixin",
-    "version": "14.0.1.3.1",
+    "version": "14.0.1.4.0",
     "category": "Accounting",
     "website": "https://simetri-sinergi.id",
     "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",
@@ -24,6 +24,7 @@
         "security/ir.model.access.csv",
         "wizards/wizard_post_voucher.xml",
         "wizards/wizard_import_move_line.xml",
+        "wizards/wizard_add_journal_to_voucher_type.xml",
         "views/account_voucher_type_views.xml",
         "views/mixin_account_voucher_views.xml",
         "views/account_voucher_type_allowed_journal_views.xml",

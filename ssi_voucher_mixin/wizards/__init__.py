@@ -4,4 +4,5 @@
 from . import (
     wizard_post_voucher,
     wizard_import_move_line,
+    wizard_add_journal_to_voucher_type,
 )
