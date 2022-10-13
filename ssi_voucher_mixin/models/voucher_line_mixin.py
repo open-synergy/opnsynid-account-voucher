@@ -173,7 +173,7 @@ class MixinAccountVoucherLine(models.AbstractModel):
     def _get_debit_credit(self):
         self.ensure_one()
         debit = credit = 0.0
-        amount = self.amount_company_currency_move_date
+        amount = self.amount_company_currency_voucher_date
         if self.type == "dr":
             if amount > 0:
                 debit = abs(amount)
@@ -192,14 +192,14 @@ class MixinAccountVoucherLine(models.AbstractModel):
         amount = self.amount_diff_in_company_currency
         company = self.env.user.company_id
         if (amount > 0 and self.type == "cr") or (amount < 0 and self.type == "dr"):
-            credit = abs(amount)
+            debit = abs(amount)
             account_id = (
                 company.income_currency_exchange_account_id
                 and company.income_currency_exchange_account_id.id
                 or False
             )
         else:
-            debit = abs(amount)
+            credit = abs(amount)
             account_id = (
                 company.expense_currency_exchange_account_id
                 and company.expense_currency_exchange_account_id.id
