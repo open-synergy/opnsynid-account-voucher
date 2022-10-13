@@ -230,7 +230,12 @@ class MixinAccountVoucher(models.AbstractModel):
             amount_company_currency = 0.0
             line_total = 0.0
             debit = credit = 0.0
-            amount_company_currency = voucher.amount * voucher.exchange_rate
+            amount_company_currency = voucher.currency_id._convert(
+                from_amount=voucher.amount,
+                to_currency=voucher.company_currency_id,
+                company=voucher.company_id,
+                date=voucher.date_voucher,
+            )
             voucher.amount_in_company_currency = amount_company_currency
 
             for line in voucher.line_ids:
