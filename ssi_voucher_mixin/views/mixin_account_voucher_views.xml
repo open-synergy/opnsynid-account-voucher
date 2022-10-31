@@ -10,6 +10,7 @@
             name="inherit_id"
             ref="ssi_transaction_mixin.mixin_transaction_view_search"
         />
+    <field name="mode">primary</field>
     <field name="arch" type="xml">
         <data>
             <xpath expr="//field[@name='state']" position="after">
@@ -57,6 +58,7 @@
     <field name="name">mixin.account.voucher.tree</field>
     <field name="model">mixin.account.voucher</field>
     <field name="inherit_id" ref="ssi_transaction_mixin.mixin_transaction_view_tree" />
+    <field name="mode">primary</field>
     <field name="arch" type="xml">
         <xpath expr="//field[@name='display_name']" position="after">
             <field name="description" />
@@ -72,6 +74,7 @@
 <record id="mixin_account_voucher_view_form" model="ir.ui.view">
     <field name="name">mixin.account.voucher.form</field>
     <field name="model">mixin.account.voucher</field>
+    <field name="mode">primary</field>
     <field name="inherit_id" ref="ssi_transaction_mixin.mixin_transaction_view_form" />
     <field name="arch" type="xml">
         <data>
