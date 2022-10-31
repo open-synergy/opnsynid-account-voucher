@@ -111,9 +111,13 @@ class MixinAccountVoucherLine(models.AbstractModel):
                     amount_after_tax += tax.tax_amount
 
             amount_company_currency_voucher_date = amount_before_tax * voucher_rate
-            amount_company_currency_move_date = line.currency_id.with_context(
-                date=move_date
-            ).compute(amount_before_tax, line.company_currency_id)
+
+            if move_line:
+                amount_company_currency_move_date = move_line
+            else:
+                amount_company_currency_move_date = line.currency_id.with_context(
+                    date=move_date
+                ).compute(amount_before_tax, line.company_currency_id)
 
             amount_diff_in_company_currency = (
                 amount_company_currency_voucher_date - amount_company_currency_move_date
@@ -191,7 +195,7 @@ class MixinAccountVoucherLine(models.AbstractModel):
         debit = credit = 0.0
         amount = self.amount_diff_in_company_currency
         company = self.env.user.company_id
-        if (amount > 0 and self.type == "cr") or (amount < 0 and self.type == "dr"):
+        if (amount < 0 and self.type == "cr") or (amount > 0 and self.type == "dr"):
             debit = abs(amount)
             account_id = (
                 company.income_currency_exchange_account_id
