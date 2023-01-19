@@ -29,7 +29,6 @@ class MixinAccountVoucherLine(models.AbstractModel):
     analytic_account_id = fields.Many2one(
         string="Analytic Account",
         comodel_name="account.analytic.account",
-        domain=[("type", "!=", "view")],
     )
     partner_id = fields.Many2one(
         string="Partner",
