@@ -611,16 +611,8 @@ class VoucherCommon(models.AbstractModel):
     @api.multi
     def _unreconcile_aml(self):
         self.ensure_one()
-        for aml in self.move_line_ids:
-            aml.refresh()
-            reconcile = aml.reconcile_id or aml.reconcile_partial_id or False
-            if reconcile:
-                move_lines = reconcile.line_id
-                move_lines -= aml
-                reconcile.unlink()
-
-                if len(move_lines) >= 2:
-                    move_lines.reconcile_partial()
+        obj_account_move_line = self.env["account.move.line"]
+        obj_account_move_line._remove_move_reconcile(move_ids=self.move_line_ids.ids)
 
     @api.onchange("journal_id")
     def onchange_journal(self):
