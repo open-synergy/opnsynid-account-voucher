@@ -7,6 +7,6 @@
         id="menu_configuration_invoice_settlement"
         name="Invoice Settlement"
         sequence="13"
-        parent="ssi_voucher_mixin.menu_account_configuration_voucher"
+        parent="ssi_financial_accounting.menu_financial_accounting_configuration"
     />
 </odoo>
