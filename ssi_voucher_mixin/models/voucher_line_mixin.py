@@ -194,7 +194,7 @@ class MixinAccountVoucherLine(models.AbstractModel):
         debit = credit = 0.0
         amount = self.amount_diff_in_company_currency
         company = self.env.user.company_id
-        if amount < 0:
+        if (self.type == "dr" and amount > 0.0) or (self.type == "cr" and amount < 0.0):
             debit = abs(amount)
             account_id = (
                 company.expense_currency_exchange_account_id
