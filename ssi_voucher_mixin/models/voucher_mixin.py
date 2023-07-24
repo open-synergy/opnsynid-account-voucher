@@ -427,11 +427,12 @@ class MixinAccountVoucher(models.AbstractModel):
     def _check_partner(self):
         str_error = _("Line partner is different from header partner")
         for document in self:
-            if document.partner_id:
-                partner = document.partner_id
-                for line in document.line_ids:
-                    if line.partner_id != partner:
-                        raise UserError(str_error)
+            if document.type_id.check_partner:
+                if document.partner_id:
+                    partner = document.partner_id
+                    for line in document.line_ids:
+                        if line.partner_id != partner:
+                            raise UserError(str_error)
 
     @api.constrains("amount", "type_id")
     def _check_negative_value(self):
