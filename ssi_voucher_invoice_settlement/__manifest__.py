@@ -3,7 +3,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 {
     "name": "Invoice Settlement Voucher",
-    "version": "14.0.2.2.0",
+    "version": "14.0.2.2.1",
     "category": "Accounting",
     "website": "https://simetri-sinergi.id",
     "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",
