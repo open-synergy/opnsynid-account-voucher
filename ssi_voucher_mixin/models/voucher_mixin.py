@@ -640,3 +640,14 @@ class MixinAccountVoucher(models.AbstractModel):
             elif vtype.header_type == "cr":
                 debit = abs(amount_diff_company_currency)
         return (debit, credit)
+
+    def copy(self, default=None):
+        self.ensure_one()
+        _super = super(MixinAccountVoucher, self)
+        new_voucher = _super.copy(default)
+        default = dict(default or {})
+
+        for line in self.line_ids:
+            line.copy(default={"voucher_id": new_voucher.id})
+
+        return new_voucher
