@@ -25,7 +25,7 @@ addon | version | maintainers | summary
 [ssi_voucher_invoice_settlement](ssi_voucher_invoice_settlement/) | 14.0.2.2.1 |  | Invoice Settlement Voucher
 [ssi_voucher_mixin](ssi_voucher_mixin/) | 14.0.1.6.5 |  | Account Voucher Mixin
 [ssi_voucher_refund_settlement](ssi_voucher_refund_settlement/) | 14.0.2.2.1 |  | Refund Settlement Voucher
-[ssi_voucher_settlement_common](ssi_voucher_settlement_common/) | 14.0.1.3.1 |  | Settlement Voucher Common
+[ssi_voucher_settlement_common](ssi_voucher_settlement_common/) | 14.0.1.3.2 |  | Settlement Voucher Common
 
 [//]: # (end addons)
 
