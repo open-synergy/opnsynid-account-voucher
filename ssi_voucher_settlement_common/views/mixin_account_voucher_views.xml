@@ -43,114 +43,106 @@
                         class="oe_highlight"
                         icon="fa-download"
                     />
-                <group name="grp_dr" string="Debit Lines">
-                    <field
-                            name="line_dr_ids"
-                            colspan="4"
-                            nolabel="1"
-                            context="{'default_type':'dr', 'default_partner_id':partner_id, 'default_currency_id':currency_id, 'default_company_currency_id':company_currency_id}"
-                        >
-                        <tree>
-                            <field name="name" />
-                            <field name="partner_id" />
-                            <field name="move_line_id" />
-                            <field name="account_id" />
-                            <field name="currency_id" invisible="1" />
-                            <field
-                                    name="analytic_account_id"
-                                    groups="analytic.group_analytic_accounting"
-                                />
-                            <field name="amount_before_tax" sum="Total Before Tax" />
-                            <field name="amount_tax" sum="Total Tax" />
-                            <field name="amount_after_tax" sum="Total After Tax" />
-                        </tree>
-                        <form>
-                            <group name="group_3" colspan="4" col="2">
-                                <group name="group_3_1" colspan="1" col="2">
-                                    <field name="partner_id" />
-                                    <field
-                                            name="move_line_id"
-                                            readonly="1"
-                                            force_save="1"
-                                        />
-                                    <field name="type" invisible="1" />
-                                    <field name="account_id" />
-                                    <field
-                                            name="analytic_account_id"
-                                            groups="analytic.group_analytic_accounting"
-                                        />
-                                    <field name="amount" />
-                                </group>
-                                <group name="group_3_1" colspan="1" col="2">
-                                    <field name="currency_id" invisible="1" />
-                                    <field name="company_currency_id" invisible="1" />
-                                    <field name="amount_company_currency_move_date" />
-                                    <field
-                                            name="amount_company_currency_voucher_date"
-                                        />
-                                    <field name="amount_diff_in_company_currency" />
-                                </group>
+                <separator colspan="4" string="Debit Lines" />
+                <field
+                        name="line_dr_ids"
+                        colspan="4"
+                        nolabel="1"
+                        context="{'default_type':'dr', 'default_partner_id':partner_id, 'default_currency_id':currency_id, 'default_company_currency_id':company_currency_id}"
+                    >
+                    <tree>
+                        <field name="name" />
+                        <field name="partner_id" />
+                        <field name="move_line_id" />
+                        <field name="account_id" />
+                        <field name="currency_id" invisible="1" />
+                        <field
+                                name="analytic_account_id"
+                                groups="analytic.group_analytic_accounting"
+                            />
+                        <field name="amount_before_tax" sum="Total Before Tax" />
+                        <field name="amount_tax" sum="Total Tax" />
+                        <field name="amount_after_tax" sum="Total After Tax" />
+                    </tree>
+                    <form>
+                        <group name="group_3" colspan="4" col="2">
+                            <group name="group_3_1" colspan="1" col="2">
+                                <field name="partner_id" />
+                                <field
+                                        name="move_line_id"
+                                        readonly="1"
+                                        force_save="1"
+                                    />
+                                <field name="type" invisible="1" />
+                                <field name="account_id" />
+                                <field
+                                        name="analytic_account_id"
+                                        groups="analytic.group_analytic_accounting"
+                                    />
+                                <field name="amount" />
                             </group>
-                            <label for="name" />
-                            <field name="name" />
-                            <label for="tax_ids" />
-                            <field name="tax_ids" colspan="4" nolabel="1">
-                                <tree>
-                                    <field name="name" />
-                                    <field name="tax_id" />
-                                    <field name="base_amount" />
-                                    <field name="tax_amount" />
-                                    <field name="tax_amount_in_company_currency" />
-                                </tree>
-                                <form>
-                                    <group name="group_4" colspan="4" col="2">
-                                        <group name="group_4_1" colspan="1" col="2">
-                                            <field name="tax_id" />
-                                            <field name="name" />
-                                            <field name="currency_id" invisible="1" />
-                                            <field
-                                                    name="company_currency_id"
-                                                    invisible="1"
-                                                />
-                                        </group>
-                                        <group name="group_4_2" colspan="1" col="2">
-                                            <field
-                                                    name="base_amount_computation_method"
-                                                />
-                                            <field
-                                                    name="manual_base_amount"
-                                                    attrs="{'invisible':[('base_amount_computation_method','=','system')]}"
-                                                />
-                                            <field
-                                                    name="base_amount"
-                                                    attrs="{'invisible':[('base_amount_computation_method','=','manual')]}"
-                                                />
-                                            <field
-                                                    name="tax_amount_computation_method"
-                                                />
-                                            <field
-                                                    name="manual_tax_amount"
-                                                    attrs="{'invisible':[('tax_amount_computation_method','=','system')]}"
-                                                />
-                                            <field
-                                                    name="tax_amount"
-                                                    attrs="{'invisible':[('tax_amount_computation_method','=','manual')]}"
-                                                />
-                                            <field
-                                                    name="tax_amount_in_company_currency"
-                                                />
-                                        </group>
+                            <group name="group_3_1" colspan="1" col="2">
+                                <field name="currency_id" invisible="1" />
+                                <field name="company_currency_id" invisible="1" />
+                                <field name="amount_company_currency_move_date" />
+                                <field name="amount_company_currency_voucher_date" />
+                                <field name="amount_diff_in_company_currency" />
+                            </group>
+                        </group>
+                        <label for="name" />
+                        <field name="name" />
+                        <label for="tax_ids" />
+                        <field name="tax_ids" colspan="4" nolabel="1">
+                            <tree>
+                                <field name="name" />
+                                <field name="tax_id" />
+                                <field name="base_amount" />
+                                <field name="tax_amount" />
+                                <field name="tax_amount_in_company_currency" />
+                            </tree>
+                            <form>
+                                <group name="group_4" colspan="4" col="2">
+                                    <group name="group_4_1" colspan="1" col="2">
+                                        <field name="tax_id" />
+                                        <field name="name" />
+                                        <field name="currency_id" invisible="1" />
+                                        <field
+                                                name="company_currency_id"
+                                                invisible="1"
+                                            />
                                     </group>
-                                </form>
-                            </field>
-                            <group name="group_5" colspan="4" col="2">
-                                <field name="amount_before_tax" />
-                                <field name="amount_tax" />
-                                <field name="amount_after_tax" />
-                            </group>
-                        </form>
-                    </field>
-                </group>
+                                    <group name="group_4_2" colspan="1" col="2">
+                                        <field name="base_amount_computation_method" />
+                                        <field
+                                                name="manual_base_amount"
+                                                attrs="{'invisible':[('base_amount_computation_method','=','system')]}"
+                                            />
+                                        <field
+                                                name="base_amount"
+                                                attrs="{'invisible':[('base_amount_computation_method','=','manual')]}"
+                                            />
+                                        <field name="tax_amount_computation_method" />
+                                        <field
+                                                name="manual_tax_amount"
+                                                attrs="{'invisible':[('tax_amount_computation_method','=','system')]}"
+                                            />
+                                        <field
+                                                name="tax_amount"
+                                                attrs="{'invisible':[('tax_amount_computation_method','=','manual')]}"
+                                            />
+                                        <field name="tax_amount_in_company_currency" />
+                                    </group>
+                                </group>
+                            </form>
+                        </field>
+                        <group name="group_5" colspan="4" col="2">
+                            <field name="amount_before_tax" />
+                            <field name="amount_tax" />
+                            <field name="amount_after_tax" />
+                        </group>
+                    </form>
+                </field>
+
                 <button
                         name="%(ssi_voucher_mixin.wizard_import_move_line_action)d"
                         type="action"
@@ -160,113 +152,104 @@
                         class="oe_highlight"
                         icon="fa-download"
                     />
-                <group name="grp_cr" string="Credit Lines">
-                    <field
-                            name="line_cr_ids"
-                            colspan="4"
-                            nolabel="1"
-                            context="{'default_type':'cr', 'default_partner_id':partner_id, 'default_currency_id':currency_id, 'default_company_currency_id':company_currency_id}"
-                        >
-                        <tree>
-                            <field name="name" />
-                            <field name="partner_id" />
-                            <field name="account_id" />
-                            <field name="currency_id" invisible="1" />
-                            <field
-                                    name="analytic_account_id"
-                                    groups="analytic.group_analytic_accounting"
-                                />
-                            <field name="amount_before_tax" sum="Total Before Tax" />
-                            <field name="amount_tax" sum="Total Tax" />
-                            <field name="amount_after_tax" sum="Total After Tax" />
-                        </tree>
-                        <form>
-                            <group name="group_6" colspan="4" col="2">
-                                <group name="group_6_1" colspan="1" col="2">
-                                    <field name="partner_id" />
-                                    <field
-                                            name="move_line_id"
-                                            readonly="1"
-                                            force_save="1"
-                                        />
-                                    <field name="type" invisible="1" />
-                                    <field name="account_id" />
-                                    <field
-                                            name="analytic_account_id"
-                                            groups="analytic.group_analytic_accounting"
-                                        />
-                                    <field name="amount" />
-                                </group>
-                                <group name="group_6_1" colspan="1" col="2">
-                                    <field name="currency_id" invisible="1" />
-                                    <field name="company_currency_id" invisible="1" />
-                                    <field name="amount_company_currency_move_date" />
-                                    <field
-                                            name="amount_company_currency_voucher_date"
-                                        />
-                                    <field name="amount_diff_in_company_currency" />
-                                </group>
+                <separator colspan="4" string="Credit Lines" />
+                <field
+                        name="line_cr_ids"
+                        colspan="4"
+                        nolabel="1"
+                        context="{'default_type':'cr', 'default_partner_id':partner_id, 'default_currency_id':currency_id, 'default_company_currency_id':company_currency_id}"
+                    >
+                    <tree>
+                        <field name="name" />
+                        <field name="partner_id" />
+                        <field name="account_id" />
+                        <field name="currency_id" invisible="1" />
+                        <field
+                                name="analytic_account_id"
+                                groups="analytic.group_analytic_accounting"
+                            />
+                        <field name="amount_before_tax" sum="Total Before Tax" />
+                        <field name="amount_tax" sum="Total Tax" />
+                        <field name="amount_after_tax" sum="Total After Tax" />
+                    </tree>
+                    <form>
+                        <group name="group_6" colspan="4" col="2">
+                            <group name="group_6_1" colspan="1" col="2">
+                                <field name="partner_id" />
+                                <field
+                                        name="move_line_id"
+                                        readonly="1"
+                                        force_save="1"
+                                    />
+                                <field name="type" invisible="1" />
+                                <field name="account_id" />
+                                <field
+                                        name="analytic_account_id"
+                                        groups="analytic.group_analytic_accounting"
+                                    />
+                                <field name="amount" />
                             </group>
-                            <label for="name" />
-                            <field name="name" />
-                            <label for="tax_ids" />
-                            <field name="tax_ids" colspan="4" nolabel="1">
-                                <tree>
-                                    <field name="name" />
-                                    <field name="tax_id" />
-                                    <field name="base_amount" />
-                                    <field name="tax_amount" />
-                                    <field name="tax_amount_in_company_currency" />
-                                </tree>
-                                <form>
-                                    <group name="group_7" colspan="4" col="2">
-                                        <group name="group_7_1" colspan="1" col="2">
-                                            <field name="tax_id" />
-                                            <field name="name" />
-                                            <field name="currency_id" invisible="1" />
-                                            <field
-                                                    name="company_currency_id"
-                                                    invisible="1"
-                                                />
-                                        </group>
-                                        <group name="group_7_2" colspan="1" col="2">
-                                            <field
-                                                    name="base_amount_computation_method"
-                                                />
-                                            <field
-                                                    name="manual_base_amount"
-                                                    attrs="{'invisible':[('base_amount_computation_method','=','system')]}"
-                                                />
-                                            <field
-                                                    name="base_amount"
-                                                    attrs="{'invisible':[('base_amount_computation_method','=','manual')]}"
-                                                />
-                                            <field
-                                                    name="tax_amount_computation_method"
-                                                />
-                                            <field
-                                                    name="manual_tax_amount"
-                                                    attrs="{'invisible':[('tax_amount_computation_method','=','system')]}"
-                                                />
-                                            <field
-                                                    name="tax_amount"
-                                                    attrs="{'invisible':[('tax_amount_computation_method','=','manual')]}"
-                                                />
-                                            <field
-                                                    name="tax_amount_in_company_currency"
-                                                />
-                                        </group>
+                            <group name="group_6_1" colspan="1" col="2">
+                                <field name="currency_id" invisible="1" />
+                                <field name="company_currency_id" invisible="1" />
+                                <field name="amount_company_currency_move_date" />
+                                <field name="amount_company_currency_voucher_date" />
+                                <field name="amount_diff_in_company_currency" />
+                            </group>
+                        </group>
+                        <label for="name" />
+                        <field name="name" />
+                        <label for="tax_ids" />
+                        <field name="tax_ids" colspan="4" nolabel="1">
+                            <tree>
+                                <field name="name" />
+                                <field name="tax_id" />
+                                <field name="base_amount" />
+                                <field name="tax_amount" />
+                                <field name="tax_amount_in_company_currency" />
+                            </tree>
+                            <form>
+                                <group name="group_7" colspan="4" col="2">
+                                    <group name="group_7_1" colspan="1" col="2">
+                                        <field name="tax_id" />
+                                        <field name="name" />
+                                        <field name="currency_id" invisible="1" />
+                                        <field
+                                                name="company_currency_id"
+                                                invisible="1"
+                                            />
                                     </group>
-                                </form>
-                            </field>
-                            <group name="group_8" colspan="4" col="2">
-                                <field name="amount_before_tax" />
-                                <field name="amount_tax" />
-                                <field name="amount_after_tax" />
-                            </group>
-                        </form>
-                    </field>
-                </group>
+                                    <group name="group_7_2" colspan="1" col="2">
+                                        <field name="base_amount_computation_method" />
+                                        <field
+                                                name="manual_base_amount"
+                                                attrs="{'invisible':[('base_amount_computation_method','=','system')]}"
+                                            />
+                                        <field
+                                                name="base_amount"
+                                                attrs="{'invisible':[('base_amount_computation_method','=','manual')]}"
+                                            />
+                                        <field name="tax_amount_computation_method" />
+                                        <field
+                                                name="manual_tax_amount"
+                                                attrs="{'invisible':[('tax_amount_computation_method','=','system')]}"
+                                            />
+                                        <field
+                                                name="tax_amount"
+                                                attrs="{'invisible':[('tax_amount_computation_method','=','manual')]}"
+                                            />
+                                        <field name="tax_amount_in_company_currency" />
+                                    </group>
+                                </group>
+                            </form>
+                        </field>
+                        <group name="group_8" colspan="4" col="2">
+                            <field name="amount_before_tax" />
+                            <field name="amount_tax" />
+                            <field name="amount_after_tax" />
+                        </group>
+                    </form>
+                </field>
             </xpath>
         </data>
     </field>
