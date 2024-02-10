@@ -63,7 +63,7 @@ class WizardImportMoveLine(models.TransientModel):
                 ("account_id.reconcile", "=", True),
                 ("reconciled", "=", False),
                 ("partner_id", "=", commercial_partner_id),
-                ("state", "=", "posted"),
+                ("move_id.state", "=", "posted"),
             ]
             if self.import_type == "dr":
                 criteria.append(("debit", ">", 0))
