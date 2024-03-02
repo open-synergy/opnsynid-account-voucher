@@ -60,4 +60,30 @@
         />
     </record>
 
+    <record id="invoice_settlement_company_child_group" model="res.groups">
+        <field name="name">Company and All Child Companies</field>
+        <field
+            name="category_id"
+            ref="invoice_settlement_data_ownership_module_category"
+        />
+        <field name="implied_ids" eval="[(4, ref('invoice_settlement_company_group'))]" />
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="invoice_settlement_all_group" model="res.groups">
+        <field name="name">All</field>
+        <field
+            name="category_id"
+            ref="invoice_settlement_data_ownership_module_category"
+        />
+        <field name="implied_ids" eval="[(4, ref('invoice_settlement_company_child_group'))]" />
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
 </odoo>
