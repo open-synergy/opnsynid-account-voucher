@@ -25,10 +25,13 @@
     </record>
     <record id="invoice_settlement_companies_rule" model="ir.rule">
         <field
-                name="name"
-            >Invoice Settlement - Responsible to company and all child companies data</field>
+            name="name"
+        >Invoice Settlement - Responsible to company and all child companies data</field>
         <field name="model_id" ref="model_account_invoice_settlement" />
-        <field name="groups" eval="[(4, ref('invoice_settlement_company_child_group'))]" />
+        <field
+            name="groups"
+            eval="[(4, ref('invoice_settlement_company_child_group'))]"
+        />
         <field name="domain_force">[('company_id','in',user.company_ids.ids)]</field>
         <field name="perm_unlink" eval="1" />
         <field name="perm_write" eval="1" />
