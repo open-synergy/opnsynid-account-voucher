@@ -44,7 +44,7 @@ class MixinChequeVoucher(models.AbstractModel):
         },
     )
     partner_id = fields.Many2one(
-        required=True,
+        required=False,
     )
 
     @api.onchange(
