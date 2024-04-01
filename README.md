@@ -20,7 +20,7 @@ addon | version | maintainers | summary
 --- | --- | --- | ---
 [ssi_voucher_advance_settlement](ssi_voucher_advance_settlement/) | 14.0.2.2.1 |  | Advance Settlement Voucher
 [ssi_voucher_bank_cash](ssi_voucher_bank_cash/) | 14.0.2.2.1 |  | Bank & Cash Accounting Voucher
-[ssi_voucher_cheque](ssi_voucher_cheque/) | 14.0.2.1.1 |  | Cheque Accounting Voucher
+[ssi_voucher_cheque](ssi_voucher_cheque/) | 14.0.2.2.0 |  | Cheque Accounting Voucher
 [ssi_voucher_giro](ssi_voucher_giro/) | 14.0.2.1.1 |  | Giro Accounting Voucher
 [ssi_voucher_invoice_settlement](ssi_voucher_invoice_settlement/) | 14.0.2.3.0 |  | Invoice Settlement Voucher
 [ssi_voucher_mixin](ssi_voucher_mixin/) | 14.0.1.7.0 |  | Account Voucher Mixin
