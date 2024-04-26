@@ -5,6 +5,13 @@
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
+SUMMARY_FIELDS = [
+    "partner_id",
+    "account_id",
+    "tax_ids",
+    "amount",
+]
+
 
 class MixinAccountVoucherLine(models.AbstractModel):
     _name = "mixin.account.voucher.line"
@@ -308,3 +315,15 @@ class MixinAccountVoucherLine(models.AbstractModel):
         if self.currency_id != company_currency:
             result = self.currency_id.id
         return result
+
+    @api.model
+    def create(self, vals):
+        res = super(MixinAccountVoucherLine, self).create(vals)
+        res.voucher_id.generate_summary()
+        return res
+
+    def write(self, vals):
+        res = super(MixinAccountVoucherLine, self).write(vals)
+        if any(field in vals for field in SUMMARY_FIELDS):
+            self.voucher_id.generate_summary()
+        return res

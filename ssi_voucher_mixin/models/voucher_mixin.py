@@ -375,6 +375,12 @@ class MixinAccountVoucher(models.AbstractModel):
         default="draft",
         copy=False,
     )
+    line_summary_ids = fields.One2many(
+        string="Voucher Line Summary",
+        comodel_name="account.voucher.line.summary",
+        inverse_name="voucher_id",
+        readonly=True
+    )
 
     def action_cancel(self, cancel_reason=False):
         _super = super(MixinAccountVoucher, self)
@@ -651,3 +657,27 @@ class MixinAccountVoucher(models.AbstractModel):
             line.copy(default={"voucher_id": new_voucher.id})
 
         return new_voucher
+
+    def generate_summary(self):
+        for rec in self:
+            rec.line_summary_ids.unlink()
+            summary_dict = {}
+            for line in rec.line_ids:
+                key = (line.partner_id.id, line.account_id.id)
+                summary_dict.setdefault(key, {})
+                summary_dict[key]['amount_before_tax'] = (summary_dict[key].get('amount_before_tax', 0)
+                                                          + line.amount_before_tax)
+                summary_dict[key]['amount_tax'] = summary_dict[key].get('amount_tax', 0) + line.amount_tax
+                summary_dict[key]['amount_after_tax'] = (summary_dict[key].get('amount_after_tax', 0)
+                                                         + line.amount_after_tax)
+            for partner_account, amount in summary_dict.items():
+                partner_id, account_id = partner_account
+                self.env["account.voucher.line.summary"].create({
+                    "voucher_id": rec.id,
+                    "partner_id": partner_id,
+                    "account_id": account_id,
+                    "currency_id": rec.currency_id.id,
+                    "amount_before_tax": amount["amount_before_tax"],
+                    "amount_tax": amount["amount_tax"],
+                    "amount_after_tax": amount["amount_after_tax"],
+                })

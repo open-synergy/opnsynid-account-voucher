@@ -28,6 +28,7 @@
         "views/account_voucher_type_views.xml",
         "views/mixin_account_voucher_views.xml",
         "views/account_voucher_type_allowed_journal_views.xml",
+        "views/account_voucher_line_summary_views.xml",
     ],
     "images": [
         "static/description/banner.png",
