@@ -8,5 +8,5 @@ from . import (
     voucher_mixin,
     voucher_line_mixin,
     voucher_line_tax_mixin,
-    account_voucher_line_summary,
+    voucher_line_summary_mixin,
 )

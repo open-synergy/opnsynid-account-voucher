@@ -2,12 +2,13 @@
 # Copyright 2024 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import fields, models, tools
+from odoo import fields, models
 
 
-class AccountVoucherLineSummary(models.Model):
-    _name = "account.voucher.line.summary"
-    _description = "Account Voucher Line Summary"
+class MixinAccountVoucherLineSummary(models.AbstractModel):
+    _name = "mixin.account.voucher.line.summary"
+    _description = "Abstract Class for Account Voucher Line Summary"
+    _auto = False
 
     voucher_id = fields.Many2one(
         string="Voucher",

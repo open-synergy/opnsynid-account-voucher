@@ -100,9 +100,6 @@
             <xpath expr="//notebook/page[@name='note']" position="before">
                 <page name="page_detail" string="Voucher Detail">
                 </page>
-                <page name="page_summary" string="Summary">
-                    <field name="line_summary_ids"/>
-                </page>
             </xpath>
             <xpath expr="//notebook/page[@name='note']" position="after">
                 <page name="page_accounting" string="Accounting Information">
