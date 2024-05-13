@@ -32,6 +32,19 @@
             <xpath expr="//field[@name='writeoff_account_id']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
+            <xpath expr="//page[@name='page_detail']" position="after">
+                <page name="page_summary" string="Summary">
+                    <field name="line_summary_ids" nolabel="1">
+                        <tree>
+                            <field name="account_id" />
+                            <field name="partner_id" />
+                            <field name="amount_before_tax" />
+                            <field name="amount_tax" />
+                            <field name="amount_after_tax" />
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
         </data>
     </field>
 </record>
