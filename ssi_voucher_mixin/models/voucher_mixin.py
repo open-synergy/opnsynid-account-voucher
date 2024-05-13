@@ -375,6 +375,12 @@ class MixinAccountVoucher(models.AbstractModel):
         default="draft",
         copy=False,
     )
+    line_summary_ids = fields.One2many(
+        string="Voucher Line Summary",
+        comodel_name="mixin.account.voucher.line.summary",
+        inverse_name="voucher_id",
+        readonly=True,
+    )
 
     def action_cancel(self, cancel_reason=False):
         _super = super(MixinAccountVoucher, self)

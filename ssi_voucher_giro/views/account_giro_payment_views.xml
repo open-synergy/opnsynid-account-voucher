@@ -45,6 +45,19 @@
                         name="context"
                     >{'default_type': 'dr', 'default_partner_id':partner_id, 'default_currency_id':currency_id, 'default_company_currency_id':company_currency_id}</attribute>
                 </xpath>
+                <xpath expr="//page[@name='page_detail']" position="after">
+                    <page name="page_summary" string="Summary">
+                        <field name="line_summary_ids" nolabel="1">
+                            <tree>
+                                <field name="account_id" />
+                                <field name="partner_id" />
+                                <field name="amount_before_tax" />
+                                <field name="amount_tax" />
+                                <field name="amount_after_tax" />
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
             </data>
         </field>
     </record>
