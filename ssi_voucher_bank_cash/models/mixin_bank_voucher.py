@@ -7,5 +7,9 @@ from odoo import models
 
 class MixinBankVoucher(models.AbstractModel):
     _name = "mixin.bank_voucher"
-    _inherit = "mixin.account.voucher"
+    _inherit = [
+        "mixin.account.voucher",
+        "mixin.work_object",
+    ]
     _description = "Bank Voucher"
+    _work_log_create_page = True

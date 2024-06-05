@@ -7,7 +7,7 @@ from odoo import api, fields, models
 
 class CashPayment(models.Model):
     _name = "account.cash_payment"
-    _inherit = "mixin.account.voucher"
+    _inherit = "mixin.bank_voucher"
     _description = "Cash Payment"
 
     @api.model
