@@ -13,7 +13,6 @@
         "ssi_voucher_mixin",
         "account_payment",
         "ssi_financial_accounting",
-        "ssi_work_log_mixin",
     ],
     "data": [
         "security/ir_module_category_data.xml",
