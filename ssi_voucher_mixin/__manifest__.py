@@ -18,6 +18,7 @@
         "ssi_transaction_done_mixin",
         "ssi_transaction_cancel_mixin",
         "ssi_transaction_open_mixin",
+        "ssi_work_log_mixin",
     ],
     "data": [
         "menu.xml",

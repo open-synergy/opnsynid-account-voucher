@@ -14,12 +14,14 @@ class MixinAccountVoucher(models.AbstractModel):
         "mixin.transaction_cancel",
         "mixin.transaction_open",
         "mixin.transaction_done",
+        "mixin.work_object",
     ]
     _approval_from_state = "draft"
     _approval_to_state = "open"
     _approval_state = "confirm"
     _after_approved_method = "action_open"
     _create_sequence_state = "open"
+    _work_log_create_page = True
 
     _statusbar_visible_label = "draft,confirm,open,post"
 
