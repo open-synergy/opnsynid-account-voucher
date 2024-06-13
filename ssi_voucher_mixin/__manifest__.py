@@ -4,7 +4,7 @@
 # pylint: disable=locally-disabled, manifest-required-author
 {
     "name": "Account Voucher Mixin",
-    "version": "14.0.2.0.0",
+    "version": "14.0.1.8.0",
     "category": "Accounting",
     "website": "https://simetri-sinergi.id",
     "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",
@@ -18,7 +18,6 @@
         "ssi_transaction_done_mixin",
         "ssi_transaction_cancel_mixin",
         "ssi_transaction_open_mixin",
-        "ssi_work_log_mixin",
     ],
     "data": [
         "menu.xml",
