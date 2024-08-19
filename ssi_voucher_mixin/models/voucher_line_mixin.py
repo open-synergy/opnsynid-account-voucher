@@ -173,10 +173,15 @@ class MixinAccountVoucherLine(models.AbstractModel):
     def _get_debit_credit(self):
         self.ensure_one()
         debit = credit = 0.0
-        if self.move_line_id:
-            amount = self.amount_company_currency_move_date
-        else:
-            amount = self.amount_company_currency_voucher_date
+
+        # TODO:
+        # if self.move_line_id:
+        #     amount = self.amount_company_currency_move_date
+        # else:
+        #     amount = self.amount_company_currency_voucher_date
+
+        amount = self.amount_company_currency_voucher_date
+
         if self.type == "dr":
             if amount > 0:
                 debit = abs(amount)
@@ -194,18 +199,32 @@ class MixinAccountVoucherLine(models.AbstractModel):
         debit = credit = 0.0
         amount = self.amount_diff_in_company_currency
         company = self.env.user.company_id
-        if (self.type == "dr" and amount > 0.0) or (self.type == "cr" and amount < 0.0):
+        if self.type == "dr" and amount > 0.0:
+            credit = abs(amount)
+            account_id = (
+                company.expense_currency_exchange_account_id
+                and company.expense_currency_exchange_account_id.id
+                or False
+            )
+        elif self.type == "dr" and amount < 0.0:
             debit = abs(amount)
             account_id = (
                 company.expense_currency_exchange_account_id
                 and company.expense_currency_exchange_account_id.id
                 or False
             )
-        else:
+        elif self.type == "cr" and amount < 0.0:
             credit = abs(amount)
             account_id = (
-                company.income_currency_exchange_account_id
-                and company.income_currency_exchange_account_id.id
+                company.expense_currency_exchange_account_id
+                and company.expense_currency_exchange_account_id.id
+                or False
+            )
+        elif self.type == "cr" and amount > 0.0:
+            debit = abs(amount)
+            account_id = (
+                company.expense_currency_exchange_account_id
+                and company.expense_currency_exchange_account_id.id
                 or False
             )
         return (debit, credit, account_id)
