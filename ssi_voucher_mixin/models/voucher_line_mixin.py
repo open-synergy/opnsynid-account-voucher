@@ -178,7 +178,7 @@ class MixinAccountVoucherLine(models.AbstractModel):
         # else:
         #     amount = self.amount_company_currency_voucher_date
 
-        amount = self.amount_company_currency_voucher_date
+        amount = self.amount_company_currency_move_date
 
         if self.type == "dr":
             if amount > 0:
