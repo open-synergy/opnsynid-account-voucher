@@ -89,9 +89,7 @@ class MixinAccountVoucherLine(models.AbstractModel):
             str_warning = _("Please select journal")
             if not line.currency_id or not line.company_currency_id:
                 raise UserError(str_warning)
-            amount_company_currency_move_date = (
-                amount_diff_in_company_currency
-            ) = (
+            amount_company_currency_move_date = amount_diff_in_company_currency = (
                 amount_company_currency_voucher_date
             ) = amount_before_tax = amount_tax = amount_after_tax = 0.0
             voucher = line.voucher_id
@@ -200,28 +198,28 @@ class MixinAccountVoucherLine(models.AbstractModel):
         amount = self.amount_diff_in_company_currency
         company = self.env.user.company_id
         if self.type == "dr" and amount > 0.0:
-            credit = abs(amount)
+            debit = abs(amount)
             account_id = (
                 company.expense_currency_exchange_account_id
                 and company.expense_currency_exchange_account_id.id
                 or False
             )
         elif self.type == "dr" and amount < 0.0:
-            debit = abs(amount)
-            account_id = (
-                company.expense_currency_exchange_account_id
-                and company.expense_currency_exchange_account_id.id
-                or False
-            )
-        elif self.type == "cr" and amount < 0.0:
             credit = abs(amount)
             account_id = (
                 company.expense_currency_exchange_account_id
                 and company.expense_currency_exchange_account_id.id
                 or False
             )
-        elif self.type == "cr" and amount > 0.0:
+        elif self.type == "cr" and amount < 0.0:
             debit = abs(amount)
+            account_id = (
+                company.expense_currency_exchange_account_id
+                and company.expense_currency_exchange_account_id.id
+                or False
+            )
+        elif self.type == "cr" and amount > 0.0:
+            credit = abs(amount)
             account_id = (
                 company.expense_currency_exchange_account_id
                 and company.expense_currency_exchange_account_id.id
