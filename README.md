@@ -23,7 +23,7 @@ addon | version | maintainers | summary
 [ssi_voucher_cheque](ssi_voucher_cheque/) | 14.0.2.3.0 |  | Cheque Accounting Voucher
 [ssi_voucher_giro](ssi_voucher_giro/) | 14.0.2.2.0 |  | Giro Accounting Voucher
 [ssi_voucher_invoice_settlement](ssi_voucher_invoice_settlement/) | 14.0.2.4.0 |  | Invoice Settlement Voucher
-[ssi_voucher_mixin](ssi_voucher_mixin/) | 14.0.1.9.0 |  | Account Voucher Mixin
+[ssi_voucher_mixin](ssi_voucher_mixin/) | 14.0.1.10.0 |  | Account Voucher Mixin
 [ssi_voucher_mixin_work_log](ssi_voucher_mixin_work_log/) | 14.0.1.0.0 |  | Account Voucher Mixin - Work Log Integration
 [ssi_voucher_refund_settlement](ssi_voucher_refund_settlement/) | 14.0.2.3.0 |  | Refund Settlement Voucher
 [ssi_voucher_settlement_common](ssi_voucher_settlement_common/) | 14.0.1.3.3 |  | Settlement Voucher Common
