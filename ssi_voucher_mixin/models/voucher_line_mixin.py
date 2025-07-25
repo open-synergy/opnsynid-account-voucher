@@ -124,9 +124,11 @@ class MixinAccountVoucherLine(models.AbstractModel):
                     date=move_date
                 ).compute(amount_before_tax, line.company_currency_id)
 
-            amount_diff_in_company_currency = (
-                amount_company_currency_voucher_date - amount_company_currency_move_date
-            )
+            if move_line:
+                amount_diff_in_company_currency = (
+                    amount_company_currency_voucher_date
+                    - amount_company_currency_move_date
+                )
 
             line.amount_diff_in_company_currency = amount_diff_in_company_currency
             line.amount_company_currency_voucher_date = (
