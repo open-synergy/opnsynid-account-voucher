@@ -111,11 +111,15 @@ class MixinAccountVoucherLine(models.AbstractModel):
 
             if move_line:
                 if move_line.currency_id.rate_inverted:
-                    move_date_rate = abs(move_line.balance) / abs(move_line.amount_currency)
+                    move_date_rate = abs(move_line.balance) / abs(
+                        move_line.amount_currency
+                    )
                 else:
-                    move_date_rate = abs(move_line.amount_currency) / abs(move_line.balance)
+                    move_date_rate = abs(move_line.amount_currency) / abs(
+                        move_line.balance
+                    )
                 amount_company_currency_move_date = amount_before_tax * move_date_rate
-            else:    
+            else:
                 amount_company_currency_move_date = line.currency_id.with_context(
                     date=move_date
                 ).compute(amount_before_tax, line.company_currency_id)
@@ -179,13 +183,10 @@ class MixinAccountVoucherLine(models.AbstractModel):
         self.ensure_one()
         debit = credit = 0.0
 
-        # TODO:
-        # if self.move_line_id:
-        #     amount = self.amount_company_currency_move_date
-        # else:
-        #     amount = self.amount_company_currency_voucher_date
-
-        amount = self.amount_company_currency_move_date
+        if self.move_line_id:
+            amount = self.amount_company_currency_move_date
+        else:
+            amount = self.amount_company_currency_voucher_date
 
         if self.type == "dr":
             if amount > 0:
