@@ -53,7 +53,7 @@ class MixinAccountVoucher(models.AbstractModel):
 
     @api.model
     def _get_policy_field(self):
-        res = super(MixinAccountVoucher, self)._get_policy_field()
+        res = super()._get_policy_field()
         policy_field = [
             "confirm_ok",
             "open_ok",
@@ -70,7 +70,7 @@ class MixinAccountVoucher(models.AbstractModel):
 
     @api.depends("policy_template_id")
     def _compute_policy(self):
-        _super = super(MixinAccountVoucher, self)
+        _super = super()
         _super._compute_policy()
 
     name = fields.Char(
@@ -230,13 +230,7 @@ class MixinAccountVoucher(models.AbstractModel):
             amount_company_currency = 0.0
             line_total = 0.0
             debit = credit = 0.0
-            amount_company_currency = voucher.currency_id._convert(
-                from_amount=voucher.amount,
-                to_currency=voucher.company_currency_id,
-                company=voucher.company_id,
-                date=voucher.date_voucher,
-            )
-            voucher.amount_in_company_currency = amount_company_currency
+            amount_company_currency = voucher.amount * voucher.exchange_rate
 
             for line in voucher.line_ids:
                 line_total += line.amount_after_tax
@@ -247,6 +241,7 @@ class MixinAccountVoucher(models.AbstractModel):
 
             amount_diff = voucher.amount - line_total
             amount_diff_company_currency = amount_diff * voucher.exchange_rate
+            voucher.amount_in_company_currency = amount_company_currency
             voucher.amount_diff_company_currency = amount_diff_company_currency
             voucher.amount_diff = amount_diff
             voucher.amount_debit = debit
@@ -383,7 +378,7 @@ class MixinAccountVoucher(models.AbstractModel):
     )
 
     def action_cancel(self, cancel_reason=False):
-        _super = super(MixinAccountVoucher, self)
+        _super = super()
         res = _super.action_cancel(cancel_reason)
         for voucher in self.sudo():
             voucher._unreconcile_aml()
@@ -393,14 +388,14 @@ class MixinAccountVoucher(models.AbstractModel):
         return res
 
     def action_done(self):
-        _super = super(MixinAccountVoucher, self)
+        _super = super()
         _super.action_done()
         for voucher in self.sudo():
             voucher._create_line_aml()
 
     def _prepare_done_data(self):
         self.ensure_one()
-        _super = super(MixinAccountVoucher, self)
+        _super = super()
         result = _super._prepare_done_data()
         obj_account_move = self.env["account.move"]
         move = obj_account_move.with_context(check_move_validity=False).create(
@@ -649,7 +644,7 @@ class MixinAccountVoucher(models.AbstractModel):
 
     def copy(self, default=None):
         self.ensure_one()
-        _super = super(MixinAccountVoucher, self)
+        _super = super()
         new_voucher = _super.copy(default)
         default = dict(default or {})
 
