@@ -13,6 +13,7 @@ setuptools.setup(
         'odoo14-addon-ssi_voucher_cheque',
         'odoo14-addon-ssi_voucher_giro',
         'odoo14-addon-ssi_voucher_invoice_settlement',
+        'odoo14-addon-ssi_voucher_invoice_settlement_operating_unit',
         'odoo14-addon-ssi_voucher_mixin',
         'odoo14-addon-ssi_voucher_mixin_work_log',
         'odoo14-addon-ssi_voucher_refund_settlement',
