@@ -291,6 +291,7 @@ msgid "Bank & Cash"
 msgstr ""
 
 #. module: ssi_voucher_bank_cash
+#: model:account.voucher_type,name:ssi_voucher_bank_cash.voucher_type_bank_payment
 #: model:ir.model,name:ssi_voucher_bank_cash.model_account_bank_payment
 #: model:ir.module.category,name:ssi_voucher_bank_cash.bank_payment_data_ownership_module_category
 #: model:ir.module.category,name:ssi_voucher_bank_cash.bank_payment_module_category
@@ -331,6 +332,7 @@ msgid "Bank Payments"
 msgstr ""
 
 #. module: ssi_voucher_bank_cash
+#: model:account.voucher_type,name:ssi_voucher_bank_cash.voucher_type_bank_receipt
 #: model:ir.model,name:ssi_voucher_bank_cash.model_account_bank_receipt
 #: model:ir.module.category,name:ssi_voucher_bank_cash.bank_receipt_data_ownership_module_category
 #: model:ir.module.category,name:ssi_voucher_bank_cash.bank_receipt_module_category
@@ -498,6 +500,7 @@ msgid ""
 msgstr ""
 
 #. module: ssi_voucher_bank_cash
+#: model:account.voucher_type,name:ssi_voucher_bank_cash.voucher_type_cash_payment
 #: model:ir.model,name:ssi_voucher_bank_cash.model_account_cash_payment
 #: model:ir.module.category,name:ssi_voucher_bank_cash.cash_payment_data_ownership_module_category
 #: model:ir.module.category,name:ssi_voucher_bank_cash.cash_payment_module_category
@@ -538,6 +541,7 @@ msgid "Cash Payments"
 msgstr ""
 
 #. module: ssi_voucher_bank_cash
+#: model:account.voucher_type,name:ssi_voucher_bank_cash.voucher_type_cash_receipt
 #: model:ir.model,name:ssi_voucher_bank_cash.model_account_cash_receipt
 #: model:ir.module.category,name:ssi_voucher_bank_cash.cash_receipt_data_ownership_module_category
 #: model:ir.module.category,name:ssi_voucher_bank_cash.cash_receipt_module_category
