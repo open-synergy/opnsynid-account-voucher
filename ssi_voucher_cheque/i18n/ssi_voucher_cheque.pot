@@ -312,6 +312,7 @@ msgid ""
 msgstr ""
 
 #. module: ssi_voucher_cheque
+#: model:account.voucher_type,name:ssi_voucher_cheque.voucher_type_cheque_payment
 #: model:ir.model,name:ssi_voucher_cheque.model_account_cheque_payment
 #: model:ir.module.category,name:ssi_voucher_cheque.cheque_payment_data_ownership_module_category
 #: model:ir.module.category,name:ssi_voucher_cheque.cheque_payment_module_category
@@ -352,6 +353,7 @@ msgid "Cheque Payments"
 msgstr ""
 
 #. module: ssi_voucher_cheque
+#: model:account.voucher_type,name:ssi_voucher_cheque.voucher_type_cheque_receipt
 #: model:ir.model,name:ssi_voucher_cheque.model_account_cheque_receipt
 #: model:ir.module.category,name:ssi_voucher_cheque.cheque_receipt_module_category
 #: model:ir.ui.menu,name:ssi_voucher_cheque.menu_configuration_cheque_receipt
