@@ -3,6 +3,20 @@
      Copyright 2022 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
+
+<record id="account_invoice_settlement_view_search" model="ir.ui.view">
+    <field name="name">account.invoice_settlement search</field>
+    <field name="model">account.invoice_settlement</field>
+    <field
+            name="inherit_id"
+            ref="ssi_voucher_settlement_common.account_voucher_common_settlement_view_search"
+        />
+    <field name="mode">primary</field>
+    <field name="arch" type="xml">
+        <data />
+    </field>
+</record>
+
 <record id="account_invoice_settlement_view_tree" model="ir.ui.view">
     <field name="name">account.invoice_settlement tree</field>
     <field name="model">account.invoice_settlement</field>
