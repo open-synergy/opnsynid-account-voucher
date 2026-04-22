@@ -530,6 +530,7 @@ msgid "Font awesome icon e.g. fa-tasks"
 msgstr ""
 
 #. module: ssi_voucher_giro
+#: model:account.voucher_type,name:ssi_voucher_giro.voucher_type_giro_payment
 #: model:ir.model,name:ssi_voucher_giro.model_account_giro_payment
 #: model:ir.module.category,name:ssi_voucher_giro.giro_payment_data_ownership_module_category
 #: model:ir.module.category,name:ssi_voucher_giro.giro_payment_module_category
@@ -570,6 +571,7 @@ msgid "Giro Payments"
 msgstr ""
 
 #. module: ssi_voucher_giro
+#: model:account.voucher_type,name:ssi_voucher_giro.voucher_type_giro_receipt
 #: model:ir.model,name:ssi_voucher_giro.model_account_giro_receipt
 #: model:ir.module.category,name:ssi_voucher_giro.giro_receipt_module_category
 #: model:ir.ui.menu,name:ssi_voucher_giro.menu_configuration_giro_receipt
