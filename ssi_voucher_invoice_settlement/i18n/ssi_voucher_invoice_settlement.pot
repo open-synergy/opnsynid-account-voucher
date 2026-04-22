@@ -411,6 +411,7 @@ msgid "If checked, some messages have a delivery error."
 msgstr ""
 
 #. module: ssi_voucher_invoice_settlement
+#: model:account.voucher_type,name:ssi_voucher_invoice_settlement.voucher_type_invoice_settlement
 #: model:ir.model,name:ssi_voucher_invoice_settlement.model_account_invoice_settlement
 #: model:ir.module.category,name:ssi_voucher_invoice_settlement.invoice_settlement_data_ownership_module_category
 #: model:ir.module.category,name:ssi_voucher_invoice_settlement.invoice_settlement_module_category
