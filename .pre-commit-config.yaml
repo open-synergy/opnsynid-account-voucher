@@ -28,7 +28,7 @@ repos:
         language: fail
         files: "\\.rej$"
   - repo: https://github.com/oca/maintainer-tools
-    rev: 9677259b405cc28bb973bfcfeb867d8a7783f166
+    rev: f9b919b9868143135a9c9cb03021089cabba8223
     hooks:
       # update the NOT INSTALLABLE ADDONS section above
       - id: oca-update-pre-commit-excluded-addons

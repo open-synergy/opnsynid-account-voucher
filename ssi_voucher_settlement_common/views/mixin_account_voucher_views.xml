@@ -4,6 +4,19 @@
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.0-standalone.html). -->
 <odoo>
 
+<record id="account_voucher_common_settlement_view_search" model="ir.ui.view">
+    <field name="name">mixin.account.voucher.settlement.search</field>
+    <field name="model">mixin.account.voucher</field>
+    <field
+            name="inherit_id"
+            ref="ssi_voucher_mixin.mixin_account_voucher_view_search"
+        />
+    <field name="mode">primary</field>
+    <field name="arch" type="xml">
+        <data />
+    </field>
+</record>
+
 <record id="account_voucher_common_settlement_view_tree" model="ir.ui.view">
     <field name="name">mixin.account.voucher.settlement.tree</field>
     <field name="model">mixin.account.voucher</field>
