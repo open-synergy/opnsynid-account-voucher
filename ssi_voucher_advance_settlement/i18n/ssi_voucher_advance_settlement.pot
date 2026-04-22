@@ -673,6 +673,7 @@ msgid "Product"
 msgstr ""
 
 #. module: ssi_voucher_advance_settlement
+#: model:account.voucher_type,name:ssi_voucher_advance_settlement.voucher_type_purchase_advance_settlement
 #: model:ir.actions.act_window,name:ssi_voucher_advance_settlement.account_purchase_advance_settlement_action
 #: model:ir.model,name:ssi_voucher_advance_settlement.model_account_purchase_advance_settlement
 #: model:ir.module.category,name:ssi_voucher_advance_settlement.pur_adv_data_ownership_module_category
@@ -766,6 +767,7 @@ msgid "Reviewer"
 msgstr ""
 
 #. module: ssi_voucher_advance_settlement
+#: model:account.voucher_type,name:ssi_voucher_advance_settlement.voucher_type_sale_advance_settlement
 #: model:ir.actions.act_window,name:ssi_voucher_advance_settlement.account_sale_advance_settlement_action
 #: model:ir.model,name:ssi_voucher_advance_settlement.model_account_sale_advance_settlement
 #: model:ir.module.category,name:ssi_voucher_advance_settlement.sale_adv_data_ownership_module_category
