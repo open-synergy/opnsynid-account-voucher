@@ -673,6 +673,7 @@ msgid "Product"
 msgstr ""
 
 #. module: ssi_voucher_refund_settlement
+#: model:account.voucher_type,name:ssi_voucher_refund_settlement.voucher_type_purchase_refund_settlement
 #: model:ir.model,name:ssi_voucher_refund_settlement.model_account_purchase_refund_settlement
 #: model:ir.module.category,name:ssi_voucher_refund_settlement.pur_ref_data_ownership_module_category
 #: model:ir.module.category,name:ssi_voucher_refund_settlement.purchase_refund_settlement_module_category
@@ -770,6 +771,7 @@ msgid "Reviewer"
 msgstr ""
 
 #. module: ssi_voucher_refund_settlement
+#: model:account.voucher_type,name:ssi_voucher_refund_settlement.voucher_type_sale_refund_settlement
 #: model:ir.model,name:ssi_voucher_refund_settlement.model_account_sale_refund_settlement
 #: model:ir.module.category,name:ssi_voucher_refund_settlement.sale_ref_data_ownership_module_category
 #: model:ir.module.category,name:ssi_voucher_refund_settlement.sale_refund_settlement_module_category
