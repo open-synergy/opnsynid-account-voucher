@@ -1,0 +1,190 @@
+scenarios:
+  - name: "Giro Payment - Full Workflow (draft to done)"
+    steps:
+      - step: "Create debit account for giro payment test"
+        action: "create"
+        model: "account.account"
+        save_as: "debit_account"
+        values:
+          name: "Test Expense Account (Giro Payment)"
+          code: "XGPT_DR01"
+          user_type_id: "REF: account.data_account_type_expenses"
+
+      - step: "Get demo bank journal"
+        action: "ref"
+        xml_id: "ssi_voucher_bank_cash.demo_journal1"
+        save_as: "bank_journal"
+
+      - step: "Get demo bank account"
+        action: "ref"
+        xml_id: "ssi_voucher_bank_cash.demo_account1"
+        save_as: "bank_account"
+
+      - step: "Create giro payment in draft"
+        action: "create"
+        model: "account.giro_payment"
+        save_as: "giro_payment"
+        as_user: "base.user_admin"
+        values:
+          description: "Test Giro Payment Full Workflow"
+          journal_id: "EVAL: registry['bank_journal'].id"
+          account_id: "EVAL: registry['bank_account'].id"
+          partner_id: "REF: base.res_partner_1"
+          date_issue: "2024-01-15"
+          date_due: "2024-01-15"
+          amount: 100.0
+          line_ids:
+            - - 0
+              - 0
+              - name: "Test Debit Line"
+                account_id: "EVAL: registry['debit_account'].id"
+                type: "dr"
+                amount: 100.0
+
+      - step: "Assert giro payment created in draft"
+        action: "assert"
+        target: "giro_payment"
+        asserts:
+          id:
+            type: "value"
+            operator: "is_truthy"
+          state:
+            type: "value"
+            expected: "draft"
+          amount:
+            type: "value"
+            expected: 100.0
+
+      - step: "Confirm giro payment"
+        action: "call"
+        target: "giro_payment"
+        method: "action_confirm"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "confirm"
+
+      - step: "Invalidate cache after confirm"
+        action: "call"
+        target: "giro_payment"
+        method: "invalidate_cache"
+
+      - step: "Approve giro payment"
+        action: "call"
+        target: "giro_payment"
+        method: "action_approve_approval"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "open"
+
+      - step: "Invalidate cache after open"
+        action: "call"
+        target: "giro_payment"
+        method: "invalidate_cache"
+
+      - step: "Post giro payment"
+        action: "call"
+        target: "giro_payment"
+        method: "action_done"
+        as_user: "base.user_admin"
+        context:
+          bypass_policy_check: true
+        asserts:
+          state:
+            type: "value"
+            expected: "done"
+
+  - name: "Giro Receipt - Full Workflow (draft to done)"
+    steps:
+      - step: "Create credit account for giro receipt test"
+        action: "create"
+        model: "account.account"
+        save_as: "credit_account"
+        values:
+          name: "Test Revenue Account (Giro Receipt)"
+          code: "XGRT_CR01"
+          user_type_id: "REF: account.data_account_type_revenue"
+
+      - step: "Get demo bank journal"
+        action: "ref"
+        xml_id: "ssi_voucher_bank_cash.demo_journal1"
+        save_as: "bank_journal"
+
+      - step: "Get demo bank account"
+        action: "ref"
+        xml_id: "ssi_voucher_bank_cash.demo_account1"
+        save_as: "bank_account"
+
+      - step: "Create giro receipt in draft"
+        action: "create"
+        model: "account.giro_receipt"
+        save_as: "giro_receipt"
+        as_user: "base.user_admin"
+        values:
+          description: "Test Giro Receipt Full Workflow"
+          journal_id: "EVAL: registry['bank_journal'].id"
+          account_id: "EVAL: registry['bank_account'].id"
+          partner_id: "REF: base.res_partner_1"
+          date_issue: "2024-01-15"
+          date_due: "2024-01-15"
+          amount: 200.0
+          line_ids:
+            - - 0
+              - 0
+              - name: "Test Credit Line"
+                account_id: "EVAL: registry['credit_account'].id"
+                type: "cr"
+                amount: 200.0
+
+      - step: "Assert giro receipt created in draft"
+        action: "assert"
+        target: "giro_receipt"
+        asserts:
+          state:
+            type: "value"
+            expected: "draft"
+
+      - step: "Confirm giro receipt"
+        action: "call"
+        target: "giro_receipt"
+        method: "action_confirm"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "confirm"
+
+      - step: "Invalidate cache after confirm"
+        action: "call"
+        target: "giro_receipt"
+        method: "invalidate_cache"
+
+      - step: "Approve giro receipt"
+        action: "call"
+        target: "giro_receipt"
+        method: "action_approve_approval"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "open"
+
+      - step: "Invalidate cache after open"
+        action: "call"
+        target: "giro_receipt"
+        method: "invalidate_cache"
+
+      - step: "Post giro receipt"
+        action: "call"
+        target: "giro_receipt"
+        method: "action_done"
+        as_user: "base.user_admin"
+        context:
+          bypass_policy_check: true
+        asserts:
+          state:
+            type: "value"
+            expected: "done"
