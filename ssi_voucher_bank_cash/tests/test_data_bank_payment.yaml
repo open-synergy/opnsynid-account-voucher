@@ -1,0 +1,365 @@
+scenarios:
+  - name: "Bank Payment - Full Workflow (draft to done)"
+    steps:
+      - step: "Create debit account for bank payment test"
+        action: "create"
+        model: "account.account"
+        save_as: "debit_account"
+        values:
+          name: "Test Expense Account (Bank Payment)"
+          code: "XBPT_DR01"
+          user_type_id: "REF: account.data_account_type_expenses"
+
+      - step: "Get demo bank journal"
+        action: "ref"
+        xml_id: "ssi_voucher_bank_cash.demo_journal1"
+        save_as: "bank_journal"
+
+      - step: "Get demo bank account"
+        action: "ref"
+        xml_id: "ssi_voucher_bank_cash.demo_account1"
+        save_as: "bank_account"
+
+      - step: "Create bank payment in draft"
+        action: "create"
+        model: "account.bank_payment"
+        save_as: "bank_payment"
+        as_user: "base.user_admin"
+        values:
+          description: "Test Bank Payment Full Workflow"
+          journal_id: "EVAL: registry['bank_journal'].id"
+          account_id: "EVAL: registry['bank_account'].id"
+          amount: 100.0
+          line_ids:
+            - - 0
+              - 0
+              - name: "Test Debit Line"
+                account_id: "EVAL: registry['debit_account'].id"
+                type: "dr"
+                amount: 100.0
+
+      - step: "Assert bank payment created in draft"
+        action: "assert"
+        target: "bank_payment"
+        asserts:
+          id:
+            type: "value"
+            operator: "is_truthy"
+          state:
+            type: "value"
+            expected: "draft"
+          amount:
+            type: "value"
+            expected: 100.0
+
+      - step: "Confirm bank payment"
+        action: "call"
+        target: "bank_payment"
+        method: "action_confirm"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "confirm"
+
+      - step: "Invalidate cache after confirm"
+        action: "call"
+        target: "bank_payment"
+        method: "invalidate_cache"
+
+      - step: "Approve bank payment"
+        action: "call"
+        target: "bank_payment"
+        method: "action_approve_approval"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "open"
+
+      - step: "Invalidate cache after open"
+        action: "call"
+        target: "bank_payment"
+        method: "invalidate_cache"
+
+      - step: "Post bank payment"
+        action: "call"
+        target: "bank_payment"
+        method: "action_done"
+        as_user: "base.user_admin"
+        context:
+          bypass_policy_check: true
+        asserts:
+          state:
+            type: "value"
+            expected: "done"
+
+  - name: "Bank Receipt - Full Workflow (draft to done)"
+    steps:
+      - step: "Create credit account for bank receipt test"
+        action: "create"
+        model: "account.account"
+        save_as: "credit_account"
+        values:
+          name: "Test Revenue Account (Bank Receipt)"
+          code: "XBRT_CR01"
+          user_type_id: "REF: account.data_account_type_revenue"
+
+      - step: "Get demo bank journal"
+        action: "ref"
+        xml_id: "ssi_voucher_bank_cash.demo_journal1"
+        save_as: "bank_journal"
+
+      - step: "Get demo bank account"
+        action: "ref"
+        xml_id: "ssi_voucher_bank_cash.demo_account1"
+        save_as: "bank_account"
+
+      - step: "Create bank receipt in draft"
+        action: "create"
+        model: "account.bank_receipt"
+        save_as: "bank_receipt"
+        as_user: "base.user_admin"
+        values:
+          description: "Test Bank Receipt Full Workflow"
+          journal_id: "EVAL: registry['bank_journal'].id"
+          account_id: "EVAL: registry['bank_account'].id"
+          amount: 200.0
+          line_ids:
+            - - 0
+              - 0
+              - name: "Test Credit Line"
+                account_id: "EVAL: registry['credit_account'].id"
+                type: "cr"
+                amount: 200.0
+
+      - step: "Assert bank receipt created in draft"
+        action: "assert"
+        target: "bank_receipt"
+        asserts:
+          id:
+            type: "value"
+            operator: "is_truthy"
+          state:
+            type: "value"
+            expected: "draft"
+
+      - step: "Confirm bank receipt"
+        action: "call"
+        target: "bank_receipt"
+        method: "action_confirm"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "confirm"
+
+      - step: "Invalidate cache after confirm"
+        action: "call"
+        target: "bank_receipt"
+        method: "invalidate_cache"
+
+      - step: "Approve bank receipt"
+        action: "call"
+        target: "bank_receipt"
+        method: "action_approve_approval"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "open"
+
+      - step: "Invalidate cache after open"
+        action: "call"
+        target: "bank_receipt"
+        method: "invalidate_cache"
+
+      - step: "Post bank receipt"
+        action: "call"
+        target: "bank_receipt"
+        method: "action_done"
+        as_user: "base.user_admin"
+        context:
+          bypass_policy_check: true
+        asserts:
+          state:
+            type: "value"
+            expected: "done"
+
+  - name: "Cash Payment - Full Workflow (draft to done)"
+    steps:
+      - step: "Create debit account for cash payment test"
+        action: "create"
+        model: "account.account"
+        save_as: "debit_account"
+        values:
+          name: "Test Expense Account (Cash Payment)"
+          code: "XCPT_DR01"
+          user_type_id: "REF: account.data_account_type_expenses"
+
+      - step: "Get demo cash journal"
+        action: "ref"
+        xml_id: "ssi_voucher_bank_cash.demo_journal2"
+        save_as: "cash_journal"
+
+      - step: "Get demo cash account"
+        action: "ref"
+        xml_id: "ssi_voucher_bank_cash.demo_account2"
+        save_as: "cash_account"
+
+      - step: "Create cash payment in draft"
+        action: "create"
+        model: "account.cash_payment"
+        save_as: "cash_payment"
+        as_user: "base.user_admin"
+        values:
+          description: "Test Cash Payment Full Workflow"
+          journal_id: "EVAL: registry['cash_journal'].id"
+          account_id: "EVAL: registry['cash_account'].id"
+          amount: 50.0
+          line_ids:
+            - - 0
+              - 0
+              - name: "Test Debit Line"
+                account_id: "EVAL: registry['debit_account'].id"
+                type: "dr"
+                amount: 50.0
+
+      - step: "Assert cash payment created in draft"
+        action: "assert"
+        target: "cash_payment"
+        asserts:
+          state:
+            type: "value"
+            expected: "draft"
+
+      - step: "Confirm cash payment"
+        action: "call"
+        target: "cash_payment"
+        method: "action_confirm"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "confirm"
+
+      - step: "Invalidate cache after confirm"
+        action: "call"
+        target: "cash_payment"
+        method: "invalidate_cache"
+
+      - step: "Approve cash payment"
+        action: "call"
+        target: "cash_payment"
+        method: "action_approve_approval"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "open"
+
+      - step: "Invalidate cache after open"
+        action: "call"
+        target: "cash_payment"
+        method: "invalidate_cache"
+
+      - step: "Post cash payment"
+        action: "call"
+        target: "cash_payment"
+        method: "action_done"
+        as_user: "base.user_admin"
+        context:
+          bypass_policy_check: true
+        asserts:
+          state:
+            type: "value"
+            expected: "done"
+
+  - name: "Cash Receipt - Full Workflow (draft to done)"
+    steps:
+      - step: "Create credit account for cash receipt test"
+        action: "create"
+        model: "account.account"
+        save_as: "credit_account"
+        values:
+          name: "Test Revenue Account (Cash Receipt)"
+          code: "XCRT_CR01"
+          user_type_id: "REF: account.data_account_type_revenue"
+
+      - step: "Get demo cash journal"
+        action: "ref"
+        xml_id: "ssi_voucher_bank_cash.demo_journal2"
+        save_as: "cash_journal"
+
+      - step: "Get demo cash account"
+        action: "ref"
+        xml_id: "ssi_voucher_bank_cash.demo_account2"
+        save_as: "cash_account"
+
+      - step: "Create cash receipt in draft"
+        action: "create"
+        model: "account.cash_receipt"
+        save_as: "cash_receipt"
+        as_user: "base.user_admin"
+        values:
+          description: "Test Cash Receipt Full Workflow"
+          journal_id: "EVAL: registry['cash_journal'].id"
+          account_id: "EVAL: registry['cash_account'].id"
+          amount: 75.0
+          line_ids:
+            - - 0
+              - 0
+              - name: "Test Credit Line"
+                account_id: "EVAL: registry['credit_account'].id"
+                type: "cr"
+                amount: 75.0
+
+      - step: "Assert cash receipt created in draft"
+        action: "assert"
+        target: "cash_receipt"
+        asserts:
+          state:
+            type: "value"
+            expected: "draft"
+
+      - step: "Confirm cash receipt"
+        action: "call"
+        target: "cash_receipt"
+        method: "action_confirm"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "confirm"
+
+      - step: "Invalidate cache after confirm"
+        action: "call"
+        target: "cash_receipt"
+        method: "invalidate_cache"
+
+      - step: "Approve cash receipt"
+        action: "call"
+        target: "cash_receipt"
+        method: "action_approve_approval"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "open"
+
+      - step: "Invalidate cache after open"
+        action: "call"
+        target: "cash_receipt"
+        method: "invalidate_cache"
+
+      - step: "Post cash receipt"
+        action: "call"
+        target: "cash_receipt"
+        method: "action_done"
+        as_user: "base.user_admin"
+        context:
+          bypass_policy_check: true
+        asserts:
+          state:
+            type: "value"
+            expected: "done"

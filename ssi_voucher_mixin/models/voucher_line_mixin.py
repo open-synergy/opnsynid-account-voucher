@@ -89,7 +89,9 @@ class MixinAccountVoucherLine(models.AbstractModel):
             str_warning = _("Please select journal")
             if not line.currency_id or not line.company_currency_id:
                 raise UserError(str_warning)
-            amount_company_currency_move_date = amount_diff_in_company_currency = (
+            amount_company_currency_move_date = (
+                amount_diff_in_company_currency
+            ) = (
                 amount_company_currency_voucher_date
             ) = amount_before_tax = amount_tax = amount_after_tax = 0.0
             voucher = line.voucher_id

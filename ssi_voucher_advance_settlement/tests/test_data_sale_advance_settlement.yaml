@@ -1,0 +1,199 @@
+scenarios:
+  - name: "Sale Advance Settlement - Full Workflow (draft to done)"
+    steps:
+      - step: "Create debit account"
+        action: "create"
+        model: "account.account"
+        save_as: "dr_account"
+        values:
+          name: "Test Debit Account (Sale Advance Settlement)"
+          code: "XSAS_DR01"
+          user_type_id: "REF: account.data_account_type_expenses"
+
+      - step: "Create credit account"
+        action: "create"
+        model: "account.account"
+        save_as: "cr_account"
+        values:
+          name: "Test Credit Account (Sale Advance Settlement)"
+          code: "XSAS_CR01"
+          user_type_id: "REF: account.data_account_type_revenue"
+
+      - step: "Get demo sale advance settlement journal"
+        action: "ref"
+        xml_id: "ssi_voucher_advance_settlement.demo_journal1"
+        save_as: "journal"
+
+      - step: "Create sale advance settlement in draft"
+        action: "create"
+        model: "account.sale_advance_settlement"
+        save_as: "settlement"
+        as_user: "base.user_admin"
+        values:
+          description: "Test Sale Advance Settlement"
+          journal_id: "EVAL: registry['journal'].id"
+          amount: 0.0
+          line_ids:
+            - - 0
+              - 0
+              - name: "Debit Line"
+                account_id: "EVAL: registry['dr_account'].id"
+                type: "dr"
+                amount: 100.0
+            - - 0
+              - 0
+              - name: "Credit Line"
+                account_id: "EVAL: registry['cr_account'].id"
+                type: "cr"
+                amount: 100.0
+
+      - step: "Assert settlement created in draft"
+        action: "assert"
+        target: "settlement"
+        asserts:
+          id:
+            type: "value"
+            operator: "is_truthy"
+          state:
+            type: "value"
+            expected: "draft"
+
+      - step: "Confirm settlement"
+        action: "call"
+        target: "settlement"
+        method: "action_confirm"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "confirm"
+
+      - step: "Invalidate cache after confirm"
+        action: "call"
+        target: "settlement"
+        method: "invalidate_cache"
+
+      - step: "Approve settlement"
+        action: "call"
+        target: "settlement"
+        method: "action_approve_approval"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "open"
+
+      - step: "Invalidate cache after open"
+        action: "call"
+        target: "settlement"
+        method: "invalidate_cache"
+
+      - step: "Post settlement"
+        action: "call"
+        target: "settlement"
+        method: "action_done"
+        as_user: "base.user_admin"
+        context:
+          bypass_policy_check: true
+        asserts:
+          state:
+            type: "value"
+            expected: "done"
+
+  - name: "Purchase Advance Settlement - Full Workflow (draft to done)"
+    steps:
+      - step: "Create debit account"
+        action: "create"
+        model: "account.account"
+        save_as: "dr_account"
+        values:
+          name: "Test Debit Account (Purchase Advance Settlement)"
+          code: "XPAS_DR01"
+          user_type_id: "REF: account.data_account_type_expenses"
+
+      - step: "Create credit account"
+        action: "create"
+        model: "account.account"
+        save_as: "cr_account"
+        values:
+          name: "Test Credit Account (Purchase Advance Settlement)"
+          code: "XPAS_CR01"
+          user_type_id: "REF: account.data_account_type_revenue"
+
+      - step: "Get demo purchase advance settlement journal"
+        action: "ref"
+        xml_id: "ssi_voucher_advance_settlement.demo_journal2"
+        save_as: "journal"
+
+      - step: "Create purchase advance settlement in draft"
+        action: "create"
+        model: "account.purchase_advance_settlement"
+        save_as: "settlement"
+        as_user: "base.user_admin"
+        values:
+          description: "Test Purchase Advance Settlement"
+          journal_id: "EVAL: registry['journal'].id"
+          amount: 0.0
+          line_ids:
+            - - 0
+              - 0
+              - name: "Debit Line"
+                account_id: "EVAL: registry['dr_account'].id"
+                type: "dr"
+                amount: 150.0
+            - - 0
+              - 0
+              - name: "Credit Line"
+                account_id: "EVAL: registry['cr_account'].id"
+                type: "cr"
+                amount: 150.0
+
+      - step: "Assert settlement created in draft"
+        action: "assert"
+        target: "settlement"
+        asserts:
+          state:
+            type: "value"
+            expected: "draft"
+
+      - step: "Confirm settlement"
+        action: "call"
+        target: "settlement"
+        method: "action_confirm"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "confirm"
+
+      - step: "Invalidate cache after confirm"
+        action: "call"
+        target: "settlement"
+        method: "invalidate_cache"
+
+      - step: "Approve settlement"
+        action: "call"
+        target: "settlement"
+        method: "action_approve_approval"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "open"
+
+      - step: "Invalidate cache after open"
+        action: "call"
+        target: "settlement"
+        method: "invalidate_cache"
+
+      - step: "Post settlement"
+        action: "call"
+        target: "settlement"
+        method: "action_done"
+        as_user: "base.user_admin"
+        context:
+          bypass_policy_check: true
+        asserts:
+          state:
+            type: "value"
+            expected: "done"

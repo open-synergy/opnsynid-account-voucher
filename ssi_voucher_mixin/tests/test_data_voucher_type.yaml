@@ -1,0 +1,144 @@
+scenarios:
+  - name: "Voucher Type - Create Master Data"
+    steps:
+      - step: "Create voucher type"
+        action: "create"
+        model: "account.voucher_type"
+        save_as: "voucher_type"
+        values:
+          name: "Test Voucher Type"
+          code: "TVT001"
+          check_total: false
+          check_debit_credit: false
+          create_header_item: false
+          header_allow_negative: true
+          detail_allow_negative: true
+
+      - step: "Assert voucher type created"
+        action: "assert"
+        target: "voucher_type"
+        asserts:
+          id:
+            type: "value"
+            operator: "is_truthy"
+          name:
+            type: "value"
+            expected: "Test Voucher Type"
+          code:
+            type: "value"
+            expected: "TVT001"
+
+  - name: "Voucher Type - Edit Name"
+    steps:
+      - step: "Create voucher type"
+        action: "create"
+        model: "account.voucher_type"
+        save_as: "voucher_type"
+        values:
+          name: "Voucher Type Edit Test"
+          code: "TVT002"
+
+      - step: "Edit voucher type name"
+        action: "write"
+        target: "voucher_type"
+        values:
+          name: "Voucher Type Edited"
+
+      - step: "Assert name updated"
+        action: "assert"
+        target: "voucher_type"
+        asserts:
+          name:
+            type: "value"
+            expected: "Voucher Type Edited"
+
+  - name: "Voucher Type - Add Allowed Journal"
+    steps:
+      - step: "Create voucher type"
+        action: "create"
+        model: "account.voucher_type"
+        save_as: "voucher_type"
+        values:
+          name: "Voucher Type Journal Test"
+          code: "TVT003"
+
+      - step: "Search a bank journal"
+        action: "search"
+        model: "account.journal"
+        domain:
+          - ["type", "=", "bank"]
+        save_as: "bank_journal"
+        limit: 1
+
+      - step: "Create allowed journal"
+        action: "create"
+        model: "account.voucher_type_allowed_journal"
+        save_as: "allowed_journal"
+        values:
+          voucher_type_id: "EVAL: registry['voucher_type'].id"
+          journal_id: "EVAL: registry['bank_journal'].id"
+
+      - step: "Assert allowed journal created"
+        action: "assert"
+        target: "allowed_journal"
+        asserts:
+          id:
+            type: "value"
+            operator: "is_truthy"
+
+  - name: "Voucher Type - Delete"
+    steps:
+      - step: "Create voucher type"
+        action: "create"
+        model: "account.voucher_type"
+        save_as: "voucher_type"
+        values:
+          name: "Voucher Type Delete Test"
+          code: "TVT004"
+
+      - step: "Delete voucher type"
+        action: "call"
+        target: "voucher_type"
+        method: "unlink"
+
+      - step: "Verify deleted"
+        action: "search"
+        model: "account.voucher_type"
+        domain:
+          - ["code", "=", "TVT004"]
+        save_as: "result"
+        expect_count: 0
+
+  - name: "Account Journal - Add To Voucher Type"
+    steps:
+      - step: "Create voucher type"
+        action: "create"
+        model: "account.voucher_type"
+        save_as: "voucher_type"
+        values:
+          name: "Voucher Type Add Journal Test"
+          code: "TVT005"
+
+      - step: "Search a general journal"
+        action: "search"
+        model: "account.journal"
+        domain:
+          - ["type", "=", "general"]
+        save_as: "general_journal"
+        limit: 1
+
+      - step: "Add journal to voucher type via method"
+        action: "call"
+        target: "general_journal"
+        method: "add_to_voucher_type"
+        args:
+          - "EVAL: registry['voucher_type']"
+
+      - step: "Assert allowed journal exists"
+        action: "search"
+        model: "account.voucher_type_allowed_journal"
+        domain:
+          - ["voucher_type_id", "=", "EVAL: registry['voucher_type'].id"]
+          - ["journal_id", "=", "EVAL: registry['general_journal'].id"]
+        save_as: "allowed_journal_result"
+        expect_count: 1

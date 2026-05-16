@@ -1,0 +1,199 @@
+scenarios:
+  - name: "Invoice Settlement - Full Workflow (draft to done)"
+    steps:
+      - step: "Create debit account"
+        action: "create"
+        model: "account.account"
+        save_as: "dr_account"
+        values:
+          name: "Test Debit Account (Invoice Settlement)"
+          code: "XISETT_DR01"
+          user_type_id: "REF: account.data_account_type_expenses"
+
+      - step: "Create credit account"
+        action: "create"
+        model: "account.account"
+        save_as: "cr_account"
+        values:
+          name: "Test Credit Account (Invoice Settlement)"
+          code: "XISETT_CR01"
+          user_type_id: "REF: account.data_account_type_revenue"
+
+      - step: "Get demo invoice settlement journal"
+        action: "ref"
+        xml_id: "ssi_voucher_invoice_settlement.demo_journal_invoice_settlement"
+        save_as: "journal"
+
+      - step: "Create invoice settlement in draft"
+        action: "create"
+        model: "account.invoice_settlement"
+        save_as: "settlement"
+        as_user: "base.user_admin"
+        values:
+          description: "Test Invoice Settlement"
+          journal_id: "EVAL: registry['journal'].id"
+          amount: 0.0
+          line_ids:
+            - - 0
+              - 0
+              - name: "Debit Line"
+                account_id: "EVAL: registry['dr_account'].id"
+                type: "dr"
+                amount: 100.0
+            - - 0
+              - 0
+              - name: "Credit Line"
+                account_id: "EVAL: registry['cr_account'].id"
+                type: "cr"
+                amount: 100.0
+
+      - step: "Assert settlement created in draft"
+        action: "assert"
+        target: "settlement"
+        asserts:
+          id:
+            type: "value"
+            operator: "is_truthy"
+          state:
+            type: "value"
+            expected: "draft"
+
+      - step: "Confirm settlement"
+        action: "call"
+        target: "settlement"
+        method: "action_confirm"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "confirm"
+
+      - step: "Invalidate cache after confirm"
+        action: "call"
+        target: "settlement"
+        method: "invalidate_cache"
+
+      - step: "Approve settlement"
+        action: "call"
+        target: "settlement"
+        method: "action_approve_approval"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "open"
+
+      - step: "Invalidate cache after open"
+        action: "call"
+        target: "settlement"
+        method: "invalidate_cache"
+
+      - step: "Post settlement"
+        action: "call"
+        target: "settlement"
+        method: "action_done"
+        as_user: "base.user_admin"
+        context:
+          bypass_policy_check: true
+        asserts:
+          state:
+            type: "value"
+            expected: "done"
+
+  - name: "Invoice Settlement - Second Workflow"
+    steps:
+      - step: "Create debit account"
+        action: "create"
+        model: "account.account"
+        save_as: "dr_account"
+        values:
+          name: "Test Debit Account (Invoice Settlement 2)"
+          code: "XISETT2_DR01"
+          user_type_id: "REF: account.data_account_type_expenses"
+
+      - step: "Create credit account"
+        action: "create"
+        model: "account.account"
+        save_as: "cr_account"
+        values:
+          name: "Test Credit Account (Invoice Settlement 2)"
+          code: "XISETT2_CR01"
+          user_type_id: "REF: account.data_account_type_revenue"
+
+      - step: "Get demo invoice settlement journal"
+        action: "ref"
+        xml_id: "ssi_voucher_invoice_settlement.demo_journal_invoice_settlement"
+        save_as: "journal"
+
+      - step: "Create invoice settlement in draft"
+        action: "create"
+        model: "account.invoice_settlement"
+        save_as: "settlement"
+        as_user: "base.user_admin"
+        values:
+          description: "Test Invoice Settlement 2"
+          journal_id: "EVAL: registry['journal'].id"
+          amount: 0.0
+          line_ids:
+            - - 0
+              - 0
+              - name: "Debit Line"
+                account_id: "EVAL: registry['dr_account'].id"
+                type: "dr"
+                amount: 200.0
+            - - 0
+              - 0
+              - name: "Credit Line"
+                account_id: "EVAL: registry['cr_account'].id"
+                type: "cr"
+                amount: 200.0
+
+      - step: "Assert settlement created in draft"
+        action: "assert"
+        target: "settlement"
+        asserts:
+          state:
+            type: "value"
+            expected: "draft"
+
+      - step: "Confirm settlement"
+        action: "call"
+        target: "settlement"
+        method: "action_confirm"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "confirm"
+
+      - step: "Invalidate cache after confirm"
+        action: "call"
+        target: "settlement"
+        method: "invalidate_cache"
+
+      - step: "Approve settlement"
+        action: "call"
+        target: "settlement"
+        method: "action_approve_approval"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "open"
+
+      - step: "Invalidate cache after open"
+        action: "call"
+        target: "settlement"
+        method: "invalidate_cache"
+
+      - step: "Post settlement"
+        action: "call"
+        target: "settlement"
+        method: "action_done"
+        as_user: "base.user_admin"
+        context:
+          bypass_policy_check: true
+        asserts:
+          state:
+            type: "value"
+            expected: "done"

@@ -2,12 +2,10 @@
 <!-- Copyright 2022 OpenSynergy Indonesia
      Copyright 2022 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-<odoo>
-<data noupdate="1">
+<odoo noupdate="1">
     <record id="journal_ins" model="account.journal">
         <field name="name">Invoice Settlement</field>
         <field name="code">INS</field>
         <field name="type">general</field>
     </record>
-</data>
 </odoo>

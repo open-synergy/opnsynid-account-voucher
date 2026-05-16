@@ -1,3 +1,4 @@
+odoo-yaml-test
 odoo14-addon-ssi-work-log-mixin
 odoo14-addon-currency-rate-inverted
 odoo14-addon-ssi-operating-unit-mixin
