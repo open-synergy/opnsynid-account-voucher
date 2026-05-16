@@ -2,14 +2,12 @@
 <!-- Copyright 2022 OpenSynergy Indonesia
      Copyright 2022 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-<odoo>
-<data noupdate="1">
+<odoo noupdate="1">
     <record id="allowed_journal_ins" model="account.voucher_type_allowed_journal">
         <field
-                name="voucher_type_id"
-                ref="ssi_voucher_invoice_settlement.voucher_type_invoice_settlement"
-            />
+            name="voucher_type_id"
+            ref="ssi_voucher_invoice_settlement.voucher_type_invoice_settlement"
+        />
         <field name="journal_id" ref="ssi_voucher_invoice_settlement.journal_ins" />
     </record>
-</data>
 </odoo>
