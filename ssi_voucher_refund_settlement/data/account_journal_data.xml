@@ -2,8 +2,7 @@
 <!-- Copyright 2022 OpenSynergy Indonesia
      Copyright 2022 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-<odoo>
-<data noupdate="1">
+<odoo noupdate="1">
     <record id="journal_srs" model="account.journal">
         <field name="name">Sale Refund Settlement</field>
         <field name="code">SRS</field>
@@ -15,5 +14,4 @@
         <field name="code">PRS</field>
         <field name="type">general</field>
     </record>
-</data>
 </odoo>

@@ -3,7 +3,6 @@
      Copyright 2022 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
-    <data>
         <record id="demo_journal_sale_refund" model="account.journal">
             <field name="name">Sale Refund Settlement - (test)</field>
             <field name="code">TSRS1</field>
@@ -15,5 +14,4 @@
             <field name="code">TPRS1</field>
             <field name="type">general</field>
         </record>
-    </data>
-</odoo>
+    </odoo>
