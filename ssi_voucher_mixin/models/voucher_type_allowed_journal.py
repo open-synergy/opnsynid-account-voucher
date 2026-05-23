@@ -19,7 +19,6 @@ class VoucherTypeAllowedJournal(models.Model):
         string="Journal",
         comodel_name="account.journal",
         required=True,
-        ondelete="cascade",
     )
     python_code = fields.Text(
         string="Domain Expression",
