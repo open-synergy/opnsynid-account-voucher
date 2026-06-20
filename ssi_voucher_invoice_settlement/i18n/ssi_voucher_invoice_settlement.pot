@@ -810,6 +810,7 @@ msgstr ""
 
 #. module: ssi_voucher_invoice_settlement
 #: model:ir.model.fields,field_description:ssi_voucher_invoice_settlement.field_account_invoice_settlement__type_id
+#: model_terms:ir.ui.view,arch_db:ssi_voucher_invoice_settlement.account_invoice_settlement_view_search
 msgid "Voucher Type"
 msgstr ""
 
