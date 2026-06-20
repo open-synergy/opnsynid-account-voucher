@@ -332,11 +332,13 @@ msgstr ""
 
 #. module: ssi_voucher_mixin
 #: model:ir.model.fields,field_description:ssi_voucher_mixin.field_account_voucher_type__check_partner
+#: model_terms:ir.ui.view,arch_db:ssi_voucher_mixin.account_voucher_type_view_search
 msgid "Check Partner"
 msgstr ""
 
 #. module: ssi_voucher_mixin
 #: model:ir.model.fields,field_description:ssi_voucher_mixin.field_account_voucher_type__check_total
+#: model_terms:ir.ui.view,arch_db:ssi_voucher_mixin.account_voucher_type_view_search
 msgid "Check Total"
 msgstr ""
 
@@ -434,6 +436,11 @@ msgid "Credit"
 msgstr ""
 
 #. module: ssi_voucher_mixin
+#: model_terms:ir.ui.view,arch_db:ssi_voucher_mixin.account_voucher_type_view_search
+msgid "Credit Header"
+msgstr ""
+
+#. module: ssi_voucher_mixin
 #: model:ir.model.fields,field_description:ssi_voucher_mixin.field_mixin_account_voucher__line_cr_ids
 msgid "Credit Lines"
 msgstr ""
@@ -462,6 +469,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:ssi_voucher_mixin.field_mixin_account_voucher__amount_debit
 #: model:ir.model.fields.selection,name:ssi_voucher_mixin.selection__account_voucher_type__header_type__dr
 msgid "Debit"
+msgstr ""
+
+#. module: ssi_voucher_mixin
+#: model_terms:ir.ui.view,arch_db:ssi_voucher_mixin.account_voucher_type_view_search
+msgid "Debit Header"
 msgstr ""
 
 #. module: ssi_voucher_mixin
@@ -594,6 +606,7 @@ msgstr ""
 
 #. module: ssi_voucher_mixin
 #: model:ir.model.fields,field_description:ssi_voucher_mixin.field_account_voucher_type__header_type
+#: model_terms:ir.ui.view,arch_db:ssi_voucher_mixin.account_voucher_type_view_search
 msgid "Header Type"
 msgstr ""
 
