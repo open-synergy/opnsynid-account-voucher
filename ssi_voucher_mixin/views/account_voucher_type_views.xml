@@ -13,7 +13,38 @@
         />
         <field name="mode">primary</field>
         <field name="arch" type="xml">
-            <data />
+            <data>
+                <xpath expr="//group[@name='dom_active']" position="after">
+                    <separator />
+                    <filter
+                        name="filter_header_type_dr"
+                        string="Debit Header"
+                        domain="[('header_type','=','dr')]"
+                    />
+                    <filter
+                        name="filter_header_type_cr"
+                        string="Credit Header"
+                        domain="[('header_type','=','cr')]"
+                    />
+                    <separator />
+                    <filter
+                        name="filter_check_total"
+                        string="Check Total"
+                        domain="[('check_total','=',True)]"
+                    />
+                    <filter
+                        name="filter_check_partner"
+                        string="Check Partner"
+                        domain="[('check_partner','=',True)]"
+                    />
+                    <separator />
+                    <filter
+                        name="grp_header_type"
+                        string="Header Type"
+                        context="{'group_by':'header_type'}"
+                    />
+                </xpath>
+            </data>
         </field>
     </record>
 
