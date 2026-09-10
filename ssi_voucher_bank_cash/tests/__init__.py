@@ -3,3 +3,4 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from . import test_bank_payment  # noqa: F401
+from . import test_import_move_line_currency  # noqa: F401
