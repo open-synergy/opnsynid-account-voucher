@@ -96,11 +96,26 @@ class WizardImportMoveLine(models.TransientModel):
         return result
 
     def action_import_move_line(self):
+        """Copy selected move lines into the voucher as draft detail lines.
+
+        The residual amount of each selected ``account.move.line`` is
+        expressed in that line's own currency (``amount_residual_currency``).
+        When the voucher's currency differs (e.g. importing an IDR
+        clearing line into a USD voucher), the raw figure is converted to
+        the voucher currency using the exchange rate effective on the
+        voucher date, so ``line.amount`` always lands in the currency
+        ``line.amount`` is denominated in (``voucher.currency_id``).
+        """
         voucher = self._get_object()
         lines = []
 
         for move in self.move_line_ids:
-            amount = move.amount_residual_currency
+            amount = move.currency_id._convert(
+                move.amount_residual_currency,
+                voucher.currency_id,
+                voucher.company_id,
+                voucher.date_voucher,
+            )
             line_type = self.import_type == "dr" and "cr" or "dr"
             res = (
                 0,

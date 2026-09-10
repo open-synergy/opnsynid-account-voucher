@@ -85,6 +85,22 @@ class MixinAccountVoucherLine(models.AbstractModel):
         "voucher_id.exchange_rate",
     )
     def _compute_amount(self):
+        """Compute line amounts in company & voucher currency.
+
+        For a line tied to a ``move_line_id`` whose currency differs
+        from the line's own currency (bridging: importing a move line
+        from another currency into this voucher, e.g. via the Import
+        Move Lines wizard), the ratio-based ``move_date_rate`` formula
+        does not apply -- the source line is not denominated in the
+        same currency being reconciled, so the ratio collapses toward
+        1 and understates the real company-currency amount. In that
+        case ``amount_company_currency_move_date`` is instead set to
+        the source line's own company-currency residual
+        (``move_line.amount_residual``), which is the amount that must
+        be neutralized for the clearing account to balance against the
+        source document. Same-currency reconciliation (the case that
+        already worked) keeps the original ratio formula unchanged.
+        """
         for line in self:
             str_warning = _("Please select journal")
             if not line.currency_id or not line.company_currency_id:
@@ -111,20 +127,25 @@ class MixinAccountVoucherLine(models.AbstractModel):
 
             amount_company_currency_voucher_date = amount_before_tax * voucher_rate
 
-            if move_line:
-                if move_line.currency_id.rate_inverted:
-                    move_date_rate = abs(move_line.balance) / abs(
-                        move_line.amount_currency
+            if move_line and move_line.currency_id != line.currency_id:
+                amount_company_currency_move_date = abs(move_line.amount_residual)
+            else:
+                if move_line:
+                    if move_line.currency_id.rate_inverted:
+                        move_date_rate = abs(move_line.balance) / abs(
+                            move_line.amount_currency
+                        )
+                    else:
+                        move_date_rate = abs(move_line.amount_currency) / abs(
+                            move_line.balance
+                        )
+                    amount_company_currency_move_date = (
+                        amount_before_tax * move_date_rate
                     )
                 else:
-                    move_date_rate = abs(move_line.amount_currency) / abs(
-                        move_line.balance
-                    )
-                amount_company_currency_move_date = amount_before_tax * move_date_rate
-            else:
-                amount_company_currency_move_date = line.currency_id.with_context(
-                    date=move_date
-                ).compute(amount_before_tax, line.company_currency_id)
+                    amount_company_currency_move_date = line.currency_id.with_context(
+                        date=move_date
+                    ).compute(amount_before_tax, line.company_currency_id)
 
             if move_line:
                 amount_diff_in_company_currency = (
