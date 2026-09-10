@@ -1,0 +1,481 @@
+options:
+  auto_refresh: true
+
+scenarios:
+  - name: "Import Move Lines - Cross Currency Conversion"
+    steps:
+      - step: "Create source-side test currency (no pre-existing rates)"
+        action: "create"
+        model: "res.currency"
+        save_as: "currency_a"
+        values:
+          name: "XFA"
+          symbol: "A$"
+          rounding: 0.01
+
+      - step: "Create destination-side test currency (no pre-existing rates)"
+        action: "create"
+        model: "res.currency"
+        save_as: "currency_b"
+        values:
+          name: "XFB"
+          symbol: "B$"
+          rounding: 0.01
+
+      - step: "Pin a deterministic rate for the source currency"
+        action: "create"
+        model: "res.currency.rate"
+        save_as: "currency_a_rate"
+        as_user: "base.user_admin"
+        values:
+          currency_id: "REC: currency_a.id"
+          company_id: "REC: company.id"
+          name: "2000-01-01"
+          rate: 2.0
+
+      - step: "Pin a deterministic rate for the destination currency"
+        action: "create"
+        model: "res.currency.rate"
+        save_as: "currency_b_rate"
+        as_user: "base.user_admin"
+        values:
+          currency_id: "REC: currency_b.id"
+          company_id: "REC: company.id"
+          name: "2000-01-01"
+          rate: 1.0
+
+      - step: "Create source bank account"
+        action: "create"
+        model: "account.account"
+        save_as: "src_bank_account"
+        values:
+          name: "Test Source Bank Account (Import Cross Currency)"
+          code: "XIML_SRCBK1"
+          user_type_id: "REF: account.data_account_type_liquidity"
+          internal_type: "liquidity"
+          reconcile: false
+
+      - step: "Create destination bank account"
+        action: "create"
+        model: "account.account"
+        save_as: "dst_bank_account"
+        values:
+          name: "Test Destination Bank Account (Import Cross Currency)"
+          code: "XIML_DSTBK1"
+          user_type_id: "REF: account.data_account_type_liquidity"
+          internal_type: "liquidity"
+          reconcile: false
+
+      - step: "Create clearing account (reconcilable)"
+        action: "create"
+        model: "account.account"
+        save_as: "clearing_account"
+        values:
+          name: "Test Clearing Account (Import Cross Currency)"
+          code: "XIML_CLR1"
+          user_type_id: "REF: account.data_account_type_current_assets"
+          reconcile: true
+
+      - step: "Create source bank journal"
+        action: "create"
+        model: "account.journal"
+        save_as: "src_bank_journal"
+        values:
+          name: "Source Bank - (import cross currency test)"
+          code: "XIML1"
+          type: "bank"
+          currency_id: "REC: currency_a.id"
+          default_account_id: "REC: src_bank_account.id"
+          suspense_account_id: "REC: src_bank_account.id"
+
+      - step: "Create destination bank journal"
+        action: "create"
+        model: "account.journal"
+        save_as: "dst_bank_journal"
+        values:
+          name: "Destination Bank - (import cross currency test)"
+          code: "XIML3"
+          type: "bank"
+          currency_id: "REC: currency_b.id"
+          default_account_id: "REC: dst_bank_account.id"
+          suspense_account_id: "REC: dst_bank_account.id"
+
+      - step: "Create source Bank Payment in the source currency"
+        action: "create"
+        model: "account.bank_payment"
+        save_as: "bank_payment_src"
+        as_user: "base.user_admin"
+        values:
+          description: "Transfer out (source currency side) - clearing"
+          journal_id: "REC: src_bank_journal.id"
+          account_id: "REC: src_bank_account.id"
+          amount: 1000.0
+          exchange_rate: 0.5
+          line_ids:
+            - - 0
+              - 0
+              - name: "Clearing to destination account"
+                account_id: "REC: clearing_account.id"
+                type: "dr"
+                amount: 1000.0
+
+      - step: "Assert source Bank Payment created in draft"
+        action: "assert"
+        target: "bank_payment_src"
+        asserts:
+          id:
+            type: "value"
+            operator: "is_truthy"
+          state:
+            type: "value"
+            expected: "draft"
+
+      - step: "Confirm source Bank Payment"
+        action: "call"
+        target: "bank_payment_src"
+        method: "action_confirm"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "confirm"
+
+      - step: "Approve source Bank Payment"
+        action: "call"
+        target: "bank_payment_src"
+        method: "action_approve_approval"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "open"
+
+      - step: "Post source Bank Payment"
+        action: "call"
+        target: "bank_payment_src"
+        method: "action_done"
+        as_user: "base.user_admin"
+        context:
+          bypass_policy_check: true
+        asserts:
+          state:
+            type: "value"
+            expected: "done"
+
+      - step: "Find the source clearing move line"
+        action: "search"
+        model: "account.move.line"
+        domain:
+          - ["account_id", "=", "REC: clearing_account.id"]
+          - ["move_id", "=", "REC: bank_payment_src.move_id.id"]
+        save_as: "source_clearing_ml"
+        expect_count: 1
+
+      - step: "Assert source clearing line residual before import"
+        action: "assert"
+        target: "source_clearing_ml"
+        asserts:
+          amount_residual_currency:
+            type: "value"
+            expected: 1000.0
+          amount_residual:
+            type: "value"
+            expected: 500.0
+          reconciled:
+            type: "value"
+            expected: false
+
+      - step: "Create destination Bank Receipt in the destination currency"
+        action: "create"
+        model: "account.bank_receipt"
+        save_as: "bank_receipt_dst"
+        as_user: "base.user_admin"
+        values:
+          description: "Transfer in (destination currency side)"
+          journal_id: "REC: dst_bank_journal.id"
+          account_id: "REC: dst_bank_account.id"
+          amount: 500.0
+
+      - step: "Assert destination voucher currency is the destination currency"
+        action: "assert"
+        target: "bank_receipt_dst"
+        asserts:
+          currency_id:
+            type: "m2o"
+            expected: "REC: currency_b"
+
+      - step: "Create Import Move Lines wizard for destination"
+        action: "create"
+        model: "account.wizard_import_move_line"
+        save_as: "import_wizard"
+        as_user: "base.user_admin"
+        context:
+          active_model: "account.bank_receipt"
+          active_id: "REC: bank_receipt_dst.id"
+        values:
+          partner_id: "REC: user.partner_id.id"
+          import_type: "dr"
+          move_line_ids:
+            - - 6
+              - 0
+              - - "REC: source_clearing_ml.id"
+
+      - step: "Run the import"
+        action: "call"
+        target: "import_wizard"
+        method: "action_import_move_line"
+        as_user: "base.user_admin"
+        context:
+          active_model: "account.bank_receipt"
+          active_id: "REC: bank_receipt_dst.id"
+
+      - step: "Find the imported destination line"
+        action: "search"
+        model: "account.bank_receipt_line"
+        domain:
+          - ["voucher_id", "=", "REC: bank_receipt_dst.id"]
+        save_as: "imported_line_dst"
+        expect_count: 1
+
+      - step: "Assert imported line is converted to destination currency"
+        action: "assert"
+        target: "imported_line_dst"
+        asserts:
+          amount:
+            type: "value"
+            expected: 500.0
+          type:
+            type: "value"
+            expected: "cr"
+          amount_company_currency_move_date:
+            type: "value"
+            expected: 500.0
+          amount_diff_in_company_currency:
+            type: "value"
+            expected: 0.0
+
+      - step: "Confirm destination Bank Receipt"
+        action: "call"
+        target: "bank_receipt_dst"
+        method: "action_confirm"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "confirm"
+
+      - step: "Approve destination Bank Receipt"
+        action: "call"
+        target: "bank_receipt_dst"
+        method: "action_approve_approval"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "open"
+
+      - step: "Post destination Bank Receipt"
+        action: "call"
+        target: "bank_receipt_dst"
+        method: "action_done"
+        as_user: "base.user_admin"
+        context:
+          bypass_policy_check: true
+        asserts:
+          state:
+            type: "value"
+            expected: "done"
+
+      - step: "Find the destination clearing move line"
+        action: "search"
+        model: "account.move.line"
+        domain:
+          - ["account_id", "=", "REC: clearing_account.id"]
+          - ["move_id", "=", "REC: bank_receipt_dst.move_id.id"]
+        save_as: "dest_clearing_ml"
+        expect_count: 1
+
+      - step: "Assert destination clearing line matches source residual"
+        action: "assert"
+        target: "dest_clearing_ml"
+        asserts:
+          credit:
+            type: "value"
+            expected: 500.0
+          debit:
+            type: "value"
+            expected: 0.0
+
+      - step: "Assert source clearing line fully reconciled"
+        action: "assert"
+        target: "source_clearing_ml"
+        asserts:
+          reconciled:
+            type: "value"
+            expected: true
+          amount_residual:
+            type: "value"
+            expected: 0.0
+
+      - step: "Assert destination clearing line fully reconciled"
+        action: "assert"
+        target: "dest_clearing_ml"
+        asserts:
+          reconciled:
+            type: "value"
+            expected: true
+          amount_residual:
+            type: "value"
+            expected: 0.0
+
+  - name: "Import Move Lines - Same Currency Regression"
+    steps:
+      - step: "Create USD bank account for same-currency scenario"
+        action: "create"
+        model: "account.account"
+        save_as: "usd_bank_account2"
+        values:
+          name: "Test USD Bank Account (Import Same Currency)"
+          code: "XIML_USDBK2"
+          user_type_id: "REF: account.data_account_type_liquidity"
+          internal_type: "liquidity"
+          reconcile: false
+
+      - step: "Create clearing account for same-currency scenario"
+        action: "create"
+        model: "account.account"
+        save_as: "clearing_account2"
+        values:
+          name: "Test Clearing Account (Import Same Currency)"
+          code: "XIML_CLR2"
+          user_type_id: "REF: account.data_account_type_current_assets"
+          reconcile: true
+
+      - step: "Create USD bank journal for same-currency scenario"
+        action: "create"
+        model: "account.journal"
+        save_as: "usd_bank_journal2"
+        values:
+          name: "USD Bank - (import same currency test)"
+          code: "XIML2"
+          type: "bank"
+          currency_id: "REF: base.USD"
+          default_account_id: "REC: usd_bank_account2.id"
+          suspense_account_id: "REC: usd_bank_account2.id"
+
+      - step: "Create source Bank Payment in USD"
+        action: "create"
+        model: "account.bank_payment"
+        save_as: "bank_payment_src2"
+        as_user: "base.user_admin"
+        values:
+          description: "Transfer out (USD side, same currency)"
+          journal_id: "REC: usd_bank_journal2.id"
+          account_id: "REC: usd_bank_account2.id"
+          amount: 200.0
+          line_ids:
+            - - 0
+              - 0
+              - name: "Clearing to destination account"
+                account_id: "REC: clearing_account2.id"
+                type: "dr"
+                amount: 200.0
+
+      - step: "Confirm source Bank Payment (same currency)"
+        action: "call"
+        target: "bank_payment_src2"
+        method: "action_confirm"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "confirm"
+
+      - step: "Approve source Bank Payment (same currency)"
+        action: "call"
+        target: "bank_payment_src2"
+        method: "action_approve_approval"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "open"
+
+      - step: "Post source Bank Payment (same currency)"
+        action: "call"
+        target: "bank_payment_src2"
+        method: "action_done"
+        as_user: "base.user_admin"
+        context:
+          bypass_policy_check: true
+        asserts:
+          state:
+            type: "value"
+            expected: "done"
+
+      - step: "Find the source clearing move line (same currency)"
+        action: "search"
+        model: "account.move.line"
+        domain:
+          - ["account_id", "=", "REC: clearing_account2.id"]
+          - ["move_id", "=", "REC: bank_payment_src2.move_id.id"]
+        save_as: "source_clearing_ml2"
+        expect_count: 1
+
+      - step: "Create destination Bank Receipt in USD (same currency)"
+        action: "create"
+        model: "account.bank_receipt"
+        save_as: "bank_receipt_dst2"
+        as_user: "base.user_admin"
+        values:
+          description: "Transfer in (USD side, same currency)"
+          journal_id: "REC: usd_bank_journal2.id"
+          account_id: "REC: usd_bank_account2.id"
+          amount: 200.0
+
+      - step: "Create Import Move Lines wizard (same currency)"
+        action: "create"
+        model: "account.wizard_import_move_line"
+        save_as: "import_wizard2"
+        as_user: "base.user_admin"
+        context:
+          active_model: "account.bank_receipt"
+          active_id: "REC: bank_receipt_dst2.id"
+        values:
+          partner_id: "REC: user.partner_id.id"
+          import_type: "dr"
+          move_line_ids:
+            - - 6
+              - 0
+              - - "REC: source_clearing_ml2.id"
+
+      - step: "Run the import (same currency)"
+        action: "call"
+        target: "import_wizard2"
+        method: "action_import_move_line"
+        as_user: "base.user_admin"
+        context:
+          active_model: "account.bank_receipt"
+          active_id: "REC: bank_receipt_dst2.id"
+
+      - step: "Find the imported destination line (same currency)"
+        action: "search"
+        model: "account.bank_receipt_line"
+        domain:
+          - ["voucher_id", "=", "REC: bank_receipt_dst2.id"]
+        save_as: "imported_line_dst2"
+        expect_count: 1
+
+      - step: "Assert same-currency import keeps the old ratio formula"
+        action: "assert"
+        target: "imported_line_dst2"
+        asserts:
+          amount:
+            type: "value"
+            expected: 200.0
+          amount_company_currency_move_date:
+            type: "value"
+            expected: 200.0
+          amount_diff_in_company_currency:
+            type: "value"
+            expected: 0.0
