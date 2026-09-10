@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Bank & Cash Accounting Voucher",
-    "version": "14.0.4.1.0",
+    "version": "14.0.4.1.1",
     "category": "Accounting",
     "website": "https://simetri-sinergi.id",
     "author": "OpenSynergy Indonesia, PT. Simetri Sinergi Indonesia",
